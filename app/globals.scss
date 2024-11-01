@@ -1,3 +1,6 @@
+@use '../style/tailwind';
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-jp-dynamic-subset.min.css");
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -25,6 +28,7 @@ body {
 }
 
 * {
+  font-family: "Pretendard JP Variable", "Pretendard JP", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Hiragino Sans", "Apple SD Gothic Neo", Meiryo, "Noto Sans JP", "Noto Sans KR", "Malgun Gothic", Osaka, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   box-sizing: border-box;
   padding: 0;
   margin: 0;

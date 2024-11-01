@@ -1,0 +1,363 @@
+{
+  "common": {
+    "other": {
+      "days": " days ago",
+      "hrs": "hr",
+      "mins": " min before"
+    },
+    "emptyname": "PRIVATE"
+  },
+  "error404": {
+    "e404_1": "Wrong connection found (404)",
+    "e404_2": "If this message keep showing, please contact developer"
+  },
+  "error500": {
+    "e500_1": "There are 2 reasons for you to see this page",
+    "e500_2": "1. Please sign in first.",
+    "e500_3": "If you get this message even if you are signed in, please contact developer",
+    "e500_4": "2. This page would be only accessible by account owner",
+    "e500_5": "",
+    "e500_6": "Contact: Twitter "
+  },
+  "header": {
+    "mydata": {
+      "title": "My Data",
+      "profile": "Profile",
+      "mygf": "GF skill",
+      "mydm": "DM skill",
+      "count": "Most played",
+      "snapshot": "Skill Table Snapshot"
+    },
+    "skill": {
+      "title": "Skill",
+      "recent": "Recent updated users",
+      "rank": "Skill ranking",
+      "exc": "Theoretical Skill",
+      "countrank": "Play count ranking"
+    },
+    "pattern": {
+      "title": "Pattern",
+      "list": "Pattern List",
+      "noplay": "Patterns not played",
+      "table": "Clear table"
+    },
+    "tower": "Tower",
+    "login": "Sign in/up",
+    "logout": "Sign out",
+    "theme": "Dark Mode",
+    "search": {
+      "title": "Search type",
+      "music": "Music title",
+      "gskill": "Skill point of GuitarFreaks",
+      "dskill": "Skill point of DrumMania",
+      "player": "Player name"
+    },
+    "test": "This service is under maintenance now. It sometimes become unstable."
+  },
+  "footer": {
+    "fanpage": "This web site is fan page. And does not have any purpose of profit.",
+    "langsel": "Language select"
+  },
+  "index": {
+    "self": {
+      "title": "User",
+      "login": "Sign in",
+      "loginFirst": " first please"
+    },
+    "notice": "Notice",
+    "about": {
+      "title": "What is this web site?",
+      "cont": "You can record your GITADORA skill data and share with other players.\n        Please check announcement from Twitter account."
+    },
+    "script": {
+      "title": "Update script",
+      "cont": "You can click/touch on script to copy",
+      "scriptTitle": "Script",
+      "scriptNoLogin": "Please sign in first. Script differs to account",
+      "scriptLogin": "URL written differs each user. DO NOT SHARE your URL",
+      "alert": "All the script copied except front letter \"j\""
+    },
+    "notice2": {
+      "title": "Announcement",
+      "desc": "The most recent 3 announcements are displayed"
+    },
+    "howto": {
+      "title": "How to use",
+      "desc1": "Move to GITADORA homepage, copy and paste script",
+      "desc2": "Be sure to sign in first before run script",
+      "desc3": "Don't forget to include「javascript:」",
+      "browser": "Recommended browsers",
+      "desc4": "Select each button to update your data",
+      "lang": "Supported languages"
+    }
+  },
+  "notice": {
+    "title": "Announcement",
+    "no": "No",
+    "noti": "Title",
+    "date": "Time"
+  },
+  "pattern": {
+    "music": {
+      "count": "Clear",
+      "rank": "Rank",
+      "rate": "Rate",
+      "score": "Score",
+      "combo": "Combo",
+      "skill": "Skill",
+      "oldrate": "Old Rate"
+    },
+    "noplay": {
+      "desc": "This page shows patterns that you have not played",
+      "all": "For all data",
+      "ver": "For current ver",
+      "filter": {
+        "btn": {
+          "title": "Title",
+          "version": "Version"
+        }
+      }
+    },
+    "rank": {
+      "title": "Pattern ranking",
+      "desc1": "Please select difficulty on each music",
+      "desc2": "After login, you can go to record page when you click on name of music",
+      "ptinfo": "Music Info",
+      "selectver": "Please select version",
+      "filter": {
+        "btn": {
+          "title": "Title",
+          "version": "Version"
+        }
+      }
+    },
+    "rankeach": {
+      "title": "Pattern ranking",
+      "desc": "Here's user ranking on this pattern",
+      "pattern": "About this pattern",
+      "mine": "Your record",
+      "table": {
+        "ptinfo": "Pattern info",
+        "ranking": "Ranking"
+      }
+    }
+  },
+  "recent": {
+    "recent": "Recent updated users",
+    "notice": "Notice",
+    "click": "* Touch skill to go to skill table *"
+  },
+  "search": {
+    "title": "Search result",
+    "desc": "This result does not distinct upper/lower cases",
+    "table": {
+      "empty": "Nothing to show"
+    }
+  },
+  "skill": {
+    "countrank": {
+      "title": "Play Count Ranking",
+      "desc": {
+        "desc1": "Private option > Name, profile link disappear",
+        "desc2": "Play count = Number of stages",
+        "desc3": "For exact count, you need to update all patterns"
+      }
+    },
+    "ranking": {
+      "title": "Skill Ranking",
+      "totaltitle": "Skill ranking (Total)",
+      "desc": "This ranking is only for registered users",
+      "table": {
+        "comp": "Comparison",
+        "uptime": "Update"
+      },
+      "click": "* Touch skill to go to skill table *"
+    },
+    "table": {
+      "scrshot": "Take picture for this table",
+      "btnShareTable": "Share usage skill table",
+      "btnNormalTable": "Normal sized skill table",
+      "order": {
+        "skillasc": "Skill asc",
+        "skilldesc": "Skill desc",
+        "titleasc": "Music asc",
+        "titledesc": "Music desc",
+        "verasc": "Version asc",
+        "verdesc": "Version desc",
+        "rateasc": "Rate asc",
+        "ratedesc": "Rate desc",
+        "playdesc": "Play count desc"
+      },
+      "tablehead": {
+        "empty": "Nothing to show"
+      },
+      "float": "Open/Close skill table menu",
+      "snapshot": {
+        "button": "Create a new snapshot",
+        "created": "Table saved"
+      },
+      "exc": "all exc skills",
+      "filter": {
+        "btn": {
+          "title": "Title",
+          "version": "Version"
+        }
+      }
+    }
+  },
+  "tower": {
+    "towerlist": {
+      "main": {
+        "desc": "Select tower",
+        "skilltower": "Skill tower",
+        "sptower": "Special tower",
+        "howto": "How to update tower"
+      },
+      "detail": {
+        "progress": "Progress",
+        "below": "Needed: Under floors cleared",
+        "titlechangable": "Title Changable",
+        "titleunchangable": "Title Unchangable",
+        "btntitlechange": "Title change",
+        "require1": "All ",
+        "require2": " patterns, ",
+        "require3": " clear needed"
+      },
+      "howto": {
+        "step1": "1. Add patterns you cleared into 'Favorite' folder from in-game or homepage.",
+        "step2": "2. In SIN Updater, press 'GF Favorites' or 'DM Favirotes' button to update these songs."
+      },
+      "title": {
+        "changed": "Title has changed."
+      }
+    },
+    "towerstatus": {
+      "towerhead": "Tower clear status",
+      "nodata": "No data found. Data can be updated from profile page by account owner.",
+      "floor": "F",
+      "titlehead": "Title list",
+      "duplicate": "There is possibility of duplication of title",
+      "btntitle": "To the title list",
+      "btntop": "To the top of the page"
+    },
+    "towertitle": {
+      "title": "Change displayed title icon",
+      "body": "Change to icon below"
+    }
+  },
+  "user": {
+    "login": {
+      "title": "Sign in",
+      "google": "This service only supports Google account login",
+      "titleAppFail": "Sign in failure",
+      "contentAppFailTitle": "Unknown error made login sequence fail",
+      "contentAppFail": "",
+      "loginErrorModal": {
+        "title": "Sign-in failed",
+        "body": {
+          "p1": "Unknown login error has occurred",
+          "p2": "This error may occurred from Google. Please try from other device, or wait for a second.",
+          "p3": "You can't sign in from private mode like Incognito/InPrivate",
+          "msg": "Error Message"
+        }
+      }
+    },
+    "join": {
+      "title": "Welcome to Skill Navigator",
+      "desc": "Click on the button below to create and add new user data",
+      "btnsign": "Enroll",
+      "btndecline": "Cancel",
+      "existAccess": "Invalid access from existing account",
+      "invalidAccess": "Something is wrong. Please contact developer"
+    },
+    "playcount": {
+      "desc_1": "You need to update ",
+      "desc_2": "all pattern data",
+      "desc_3": " to show exact my best list",
+      "button": {
+        "music": "For songs",
+        "pt": "For patterns",
+        "gf": "For patterns (GF)",
+        "dm": "For patterns (DM)",
+        "scrshot": "Take screen shot"
+      },
+      "table": {
+        "time": " times"
+      },
+      "nodata": "No data found"
+    },
+    "profile": {
+      "profile": "User Info",
+      "table1": {
+        "prof": "Profile",
+        "title": "Title",
+        "name": "Name",
+        "comment": "Comment",
+        "emptyname": "PRIVATE"
+      },
+      "oldver": {
+        "more": "Click to see old versions",
+        "less": "Close"
+      },
+      "graph": "Skill Graph",
+      "detail": "Details",
+      "button": {
+        "title": "Shortcut",
+        "chkpskill": "Skill table",
+        "setdataopen": "Open to public setting",
+        "changecomment": "Change comment",
+        "clearRankTable": "Clear table",
+        "mybest": "Play count",
+        "compare": "Skill comparision",
+        "reset": "Skill data reset",
+        "resetdanger": "This button will reset all the skill data and CANNOT be restored. Will you continue?",
+        "resetdone": "Skill data reset complete",
+        "countupdate": "Update playcount",
+        "countdesc": "When you find your play count is not updated after you used updater, please press the button below",
+        "towerupdate": "Update tower status",
+        "towerstatus": "Show tower status"
+      },
+      "detailed": {
+        "s": "Skill",
+        "clv": "Clear",
+        "flv": "FC",
+        "elv": "EXC",
+        "count": "Play count",
+        "notopen": "Closed",
+        "countdesc": "About play count\n            * Play count is sum of all number stages (Including stage failure)\n            * Others can or cannot see your data via your settings\n            * You need all pattern data to check exact play count"
+      },
+      "board": {
+        "title": "Player Board"
+      },
+      "dataopen": {
+        "yes": "Open",
+        "no": "Close"
+      },
+      "changecomment": {
+        "desc": "Input your commend (Maximun 25)"
+      },
+      "towerupdate": {
+        "alert": "It takes maximum 2~3 minutes (normally within 10 sec) and DO NOT leave this page while executing it",
+        "done": "Tower data updated"
+      },
+      "click": "* Touch skill to go to skill table *"
+    },
+    "reset": {
+      "title": "About data reset",
+      "desc1": "This process removes all your data and you can not restore it",
+      "desc2t": "Data that will be removed",
+      "desc2s": "title, name, GF/DM user data (including skill, all skill, clear time, max clear lv, fc time, max fc lv, exc time, max exc lv, play count), play data on each music (including skill, rank, combo, play time, clear time, rate, score, skill meter, old rate)",
+      "desc3": "Your account does not removed but you can disconnect GITADORA Info from Google account management",
+      "desc4": "Google - My account - Account setting - App and web pages - App management - GITADORA Info",
+      "desc5": "Are you sure to delete all data?"
+    },
+    "snapshot": {
+      "desc1": "This page shows snapshot list",
+      "desc2": "Only you can see this page",
+      "desc3": "(Sharing each skill table via link is available)",
+      "btnN": "Normal",
+      "btnS": "Share",
+      "btnD": "Download"
+    }
+  }
+}
