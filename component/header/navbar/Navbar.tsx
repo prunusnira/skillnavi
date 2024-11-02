@@ -10,7 +10,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
-    const { theme, setTheme, handleLinkMain } = useNavbar();
+    const { isMenuOpen, theme, setTheme, handleLinkMain, controlMenu } =
+        useNavbar();
     const t = useTranslations('header');
 
     return (
@@ -56,8 +57,14 @@ const Navbar = () => {
 
                 {/* 메뉴 버튼 */}
                 <NavItem>
-                    <div className={cn('btn-transparent')}>
+                    <div
+                        className={cn('btn-transparent z-10')}
+                        onClick={() => controlMenu()}
+                    >
                         <FontAwesomeIcon
+                            className={cn('cursor-pointer', {
+                                ['text-black']: isMenuOpen,
+                            })}
                             icon={faBars}
                             style={{ cursor: 'pointer' }}
                         />

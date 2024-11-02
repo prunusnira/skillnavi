@@ -24,6 +24,9 @@ module.exports = {
                 toggleOn: 'toggleOn 0.5s forwards',
                 toggleOff: 'toggleOff 0.5s forwards',
             },
+            transitionProperty: {
+                right: 'right',
+            },
         },
     },
     plugins: [],
