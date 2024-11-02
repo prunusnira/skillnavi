@@ -1,8 +1,8 @@
 import { useAtom } from 'jotai/index';
 import { atomEnv } from '@/jotai/atomEnv';
-import { useRouter } from 'next-nprogress-bar';
 import { LINK } from '@/data/url';
 import { useMemo } from 'react';
+import { useRouter } from '@/i18n/routing';
 
 const useNavbar = () => {
     const [
@@ -20,12 +20,18 @@ const useNavbar = () => {
         setEnv({ type: 'theme', data: theme });
     };
 
+    const controlMenu = () => {
+        setEnv({ type: 'menu', data: !env.menu });
+    };
+
     const theme = useMemo(() => env.theme, [env]);
 
     return {
+        isMenuOpen: env.menu,
         theme,
         setTheme,
         handleLinkMain,
+        controlMenu,
     };
 };
 

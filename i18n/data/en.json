@@ -20,6 +20,9 @@
     "e500_6": "Contact: Twitter "
   },
   "header": {
+    "index": {
+      "title": "Skill Navigator"
+    },
     "mydata": {
       "title": "My Data",
       "profile": "Profile",
@@ -41,7 +44,9 @@
       "noplay": "Patterns not played",
       "table": "Clear table"
     },
-    "tower": "Tower",
+    "tower": {
+      "title": "Tower"
+    },
     "login": "Sign in/up",
     "logout": "Sign out",
     "theme": "Dark Mode",
