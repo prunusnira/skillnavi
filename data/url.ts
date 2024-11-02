@@ -5,8 +5,9 @@ import { Order } from '@/data/filter/Order';
 export const IMG = process.env.NEXT_PUBLIC_URL_IMG || '';
 
 export const LINK = {
-    MAIN: '/index',
+    MAIN: '/',
     PROFILE: {
+        self: '/profile',
         main: (id: number) => `/profile/${id}`,
         myskill: (type: GameType) => `/myskill/${type}`,
         playcount: '/playcount', // 기존의 마이베스트임
