@@ -20,6 +20,9 @@
         "e500_6": "お問い合わせ：Twitter "
     },
     "header": {
+        "index": {
+            "title": "Skill Navigator"
+        },
         "mydata": {
             "title": "マイデータ",
             "profile": "プロフィール",
@@ -41,7 +44,9 @@
             "noplay": "未プレイ譜面",
             "table": "クリアテーブル"
         },
-        "tower": "タワー",
+        "tower": {
+            "title": "タワー"
+        },
         "login": "加入・ログイン",
         "logout": "ログアウト",
         "theme": "Darkモード",

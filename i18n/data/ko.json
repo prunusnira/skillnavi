@@ -20,6 +20,9 @@
         "e500_6": "문의처: Twitter "
     },
     "header": {
+        "index": {
+            "title": "Skill Navigator"
+        },
         "mydata": {
             "title": "내 데이터",
             "profile": "프로필",
@@ -41,7 +44,9 @@
             "noplay": "미 플레이 패턴",
             "table": "클리어 테이블"
         },
-        "tower": "타워",
+        "tower": {
+            "title": "타워"
+        },
         "login": "가입/로그인",
         "logout": "로그아웃",
         "theme": "다크모드",
