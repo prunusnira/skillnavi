@@ -1,5 +1,5 @@
 import Navbar from '@/component/header/navbar/Navbar';
-import Sidebar from '@/component/header/sidebar';
+import Sidebar from '@/component/header/sidebar/Sidebar';
 import HeaderNotice from '@/component/header/notice';
 import { cn } from '@/module/util/cn';
 

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.scss';
-import Header from '@/component/header/header';
+import Header from '@/component/header/Header';
 import Footer from '@/component/footer/footer';
 import Wrappers from '@/module/wrapper/wrappers';
 import { getLocale, getMessages } from 'next-intl/server';
