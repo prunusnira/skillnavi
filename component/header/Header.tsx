@@ -5,7 +5,9 @@ import { cn } from '@/module/util/cn';
 
 const Header = () => {
     return (
-        <header className={cn(['w-full h-[60px] px-[20px] py-[10px]'])}>
+        <header
+            className={cn(['w-full h-[60px] px-[20px] py-[10px] sticky top-0'])}
+        >
             {/* nav bar */}
             <Navbar />
 
