@@ -1,49 +1,11 @@
-@use '@/theme/color';
-@use '@/theme/size';
-@use '@/theme/design';
-@use '@/theme/font';
-
 .wrapper {
-  width: 95%;
-  max-width: 1024px;
-  min-height: 300px;
-  border-radius: design.$borderSM;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 2px 2px color.$colorBGDark;
-
-  @media (max-width: size.$breakMO) {
-    max-width: 100%;
-  }
+  @apply w-[95%] max-w-screen-lg min-h-[300px] p-1.5;
 
   .title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 0 16px;
-    background-color: color.$colorTitle;
-    color: color.$colorBlack;
-
-    .dark {
-      background-color: color.$colorGray;
-      color: color.$colorWhite;
-    }
-
-    .cardTitle {
-      padding: 10px;
-      font-size: font.$sizeMD;
-      font-weight: font.$weightBold;
-    }
+    @apply w-full bg-gray-800 text-white text-lg font-extrabold rounded-t-2xl px-5 py-2.5;
   }
 
   .contents {
-    background-color: color.$colorBody;
-    color: color.$colorBlack;
-
-    .dark {
-      background-color: color.$colorBodyDark;
-      color: color.$colorWhite;
-    }
+    @apply bg-gray-700 w-full h-full;
   }
 }
