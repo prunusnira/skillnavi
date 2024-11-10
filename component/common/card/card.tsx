@@ -1,33 +1,22 @@
 'use client';
 
-import { clsx } from 'clsx';
 import style from './card.module.scss';
-import { useAtomValue } from 'jotai';
-import { atomEnv } from '@/jotai/atomEnv';
+import { cn } from '@/module/util/cn';
 
 interface Props {
-    title: React.ReactNode;
+    title?: string;
     children: React.ReactNode;
 }
 
 const Card = ({ title, children }: Props) => {
-    const env = useAtomValue(atomEnv);
     return (
         // 공통 카드 ui
-        <section className={clsx(style.wrapper)}>
-            {/* 타이틀 영역 */}
+        <section className={cn(style.wrapper, 'flex-col-center')}>
+            {title && <div className={cn(style.title)}>{title}</div>}
             <div
-                className={clsx(style.title, {
-                    [style.dark]: env.theme === 'dark',
-                })}
-            >
-                {title}
-            </div>
-
-            {/* 콘텐츠 영역 */}
-            <div
-                className={clsx(style.contents, {
-                    [style.dark]: env.theme === 'dark',
+                className={cn(style.contents, 'flex-col-center', {
+                    ['rounded-2xl']: !title,
+                    ['rounded-b-2xl rounded-t-none']: !!title,
                 })}
             >
                 {children}
