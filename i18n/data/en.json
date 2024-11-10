@@ -69,7 +69,13 @@
       "login": "Sign in",
       "loginFirst": " first please"
     },
-    "notice": "Notice",
+    "notice": {
+      "title": "Notice",
+      "desc": "The most recent 3 announcements are displayed",
+      "id": "ID",
+      "summary": "Title",
+      "date": "Date"
+    },
     "about": {
       "title": "What is this web site?",
       "cont": "You can record your GITADORA skill data and share with other players.\n        Please check announcement from Twitter account."
@@ -81,10 +87,6 @@
       "scriptNoLogin": "Please sign in first. Script differs to account",
       "scriptLogin": "URL written differs each user. DO NOT SHARE your URL",
       "alert": "All the script copied except front letter \"j\""
-    },
-    "notice2": {
-      "title": "Announcement",
-      "desc": "The most recent 3 announcements are displayed"
     },
     "howto": {
       "title": "How to use",

@@ -6,6 +6,7 @@ import Wrappers from '@/module/wrapper/wrappers';
 import { getLocale, getMessages } from 'next-intl/server';
 import { Suspense } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
+import { cn } from '@/module/util/cn';
 
 export const metadata: Metadata = {
     title: 'Skill Navigator',
@@ -22,12 +23,14 @@ export default async function RootLayout({
 
     return (
         <html lang={locale}>
-            <body>
+            <body className={cn('w-full flex flex-col items-center')}>
                 <NextIntlClientProvider messages={messages}>
                     <Wrappers>
                         <Suspense>
                             <Header />
-                            {children}
+                            <main className={cn('max-w-screen-xl w-full')}>
+                                {children}
+                            </main>
                             <Footer />
                         </Suspense>
                     </Wrappers>
