@@ -1,0 +1,19 @@
+.noticeCard {
+  @apply flex flex-col w-full;
+
+  .noticeItem {
+    @apply flex w-full px-4;
+
+    .noticeId {
+      @apply w-10 flex justify-center items-center shrink-0;
+    }
+
+    .noticeTitle {
+      @apply flex-grow flex items-center;
+    }
+
+    .noticeTime {
+      @apply w-28 flex justify-center items-center shrink-0;
+    }
+  }
+}

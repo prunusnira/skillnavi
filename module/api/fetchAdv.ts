@@ -7,6 +7,7 @@ export interface FetchParams {
 interface FetchOptions extends Omit<RequestInit, 'body'> {
     params?: URLSearchParams | FetchParams;
     contentType?: string;
+    // eslint-disable-next-line
     body?: BodyInit | Record<string, any>;
 }
 
@@ -103,8 +104,10 @@ export class FetchAdv {
         this.base<T>(url, { method: 'OPTION', ...options });
 }
 
+// const baseUrl =
+
 export const fetchAdv = new FetchAdv({
-    url: '/api',
+    url: `${typeof window !== 'undefined' ? process.env.NEXT_PUBLIC_URL_PUBLICEP : process.env.NEXT_PUBLIC_URL_ENDPOINT}/api`,
 });
 
 // const getCookieForFetch = async () => {
