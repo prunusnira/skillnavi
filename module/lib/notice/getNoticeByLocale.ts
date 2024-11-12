@@ -1,4 +1,5 @@
 import { Notice, NoticeDisplay } from '@/data/notice/Notice';
+import { Language } from '@/data/env/Language';
 
 export const getNoticeByLocale = (
     locale: string,
@@ -6,7 +7,7 @@ export const getNoticeByLocale = (
 ): NoticeDisplay[] => {
     if (!notice) return [];
 
-    if (locale === 'ko') {
+    if (locale === Language.ko) {
         return notice.map((n) => ({
             id: n.id,
             title: n.titleK,
@@ -14,7 +15,7 @@ export const getNoticeByLocale = (
             time: n.time,
         }));
     }
-    if (locale === 'ja') {
+    if (locale === Language.ja) {
         return notice.map((n) => ({
             id: n.id,
             title: n.titleJ,

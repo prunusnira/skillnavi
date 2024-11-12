@@ -1,5 +1,5 @@
 import { cn } from '@/module/util/cn';
-import Card from '@/component/common/card/card';
+import Card from '@/component/common/card/Card';
 import { getLocale, getTranslations } from 'next-intl/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/module/api/auth/authOptions';
@@ -9,7 +9,7 @@ import { IMG, LINK } from '@/data/url';
 import { getNoticeByLocale } from '@/module/lib/notice/getNoticeByLocale';
 import dayjs from 'dayjs';
 import style from './page.module.scss';
-import { Link } from '@/i18n/routing';
+import Link from 'next/link';
 
 /**
  * @abou 메인 페이지
@@ -26,7 +26,7 @@ const PageIndex = async () => {
     return (
         <article className={cn('flex-col-center w-full')}>
             {/* 사용자 로그인 정보 & 스크립트 / 공지사항 목록 */}
-            <section className={cn('flex w-full')}>
+            <section className={cn('flex flex-col md:flex-row w-full')}>
                 {/* 로그인/사용자 정보 */}
                 <Card title={t('self.title')}>
                     {session ? (
@@ -100,7 +100,7 @@ const PageIndex = async () => {
             </section>
 
             {/* 소개 및 사용방법 */}
-            <section className={cn('flex w-full')}>
+            <section className={cn('flex flex-col md:flex-row w-full')}>
                 {/* 카드 1 */}
                 <Card title={`${t('howto.title')} (Step 1)`}>
                     <section className={cn('px-2 py-1')}>
