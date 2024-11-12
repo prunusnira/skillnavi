@@ -23,12 +23,16 @@ export default async function RootLayout({
 
     return (
         <html lang={locale}>
-            <body className={cn('w-full flex flex-col items-center')}>
+            <body className={cn('w-full flex-col-center')}>
                 <NextIntlClientProvider messages={messages}>
                     <Wrappers>
                         <Suspense>
                             <Header />
-                            <main className={cn('max-w-screen-xl w-full')}>
+                            <main
+                                className={cn(
+                                    'max-w-screen-xl w-full min-h-full flex-col-center pt-[60px]',
+                                )}
+                            >
                                 {children}
                             </main>
                             <Footer />
