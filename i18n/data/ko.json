@@ -254,6 +254,10 @@
     },
     "user": {
         "login": {
+            "placeholder": {
+                "id": "아이디",
+                "pw": "비밀번호"
+            },
             "title": "로그인",
             "google": "본 서비스는 구글 계정을 사용한 로그인만을 지원합니다.",
             "titleAppFail": "로그인 실패",

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import RouteWrapper from '@/module/api/routeWrapper';
-import { NoticeModel } from '@/data/model/notice/NoticeModel';
+import { NoticeModel } from '@/data/notice/NoticeModel';
 
 export const GET = async (req: NextRequest) => {
     return RouteWrapper({

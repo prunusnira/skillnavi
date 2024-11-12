@@ -1,6 +1,6 @@
 import { useAtomValue } from 'jotai';
 import { atomEnv } from '@/jotai/atomEnv';
-import { useMemo } from 'react';
+import { Fragment, useMemo } from 'react';
 import { SidebarMenuItems, SidebarSubMenu } from '@/data/menu/SidebarMenu';
 import { cn } from '@/module/util/cn';
 import { useTranslations } from 'next-intl';
@@ -30,9 +30,8 @@ const useSidebar = () => {
     const menu = useMemo(
         () =>
             SidebarMenuItems.map((m) => (
-                <>
+                <Fragment key={m.id}>
                     <section
-                        key={m.id}
                         className={cn(
                             'w-full md:w-[768px] flex items-center gap-[8px]',
                         )}
@@ -54,7 +53,7 @@ const useSidebar = () => {
                         </div>
                     </section>
                     {m.subMenu && renderSubMenu(m.subMenu)}
-                </>
+                </Fragment>
             )),
         [],
     );

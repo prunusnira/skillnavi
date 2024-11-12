@@ -1,18 +1,22 @@
 'use client';
 
 import { cn } from '@/module/util/cn';
-import { IMG } from '@/data/url';
+import { IMG, LINK } from '@/data/url';
 import NavItem from '@/component/header/navItem';
 import Toggle from '@/component/common/toggle/toggle';
 import useNavbar from '@/component/header/navbar/useNavbar';
 import { useTranslations } from 'next-intl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { signOut, useSession } from 'next-auth/react';
+import { useRouter } from '@/i18n/routing';
 
 const Navbar = () => {
     const { isMenuOpen, theme, setTheme, handleLinkMain, controlMenu } =
         useNavbar();
     const t = useTranslations('header');
+    const { data: session } = useSession();
+    const router = useRouter();
 
     return (
         <nav
@@ -50,8 +54,18 @@ const Navbar = () => {
 
                 {/* 사용자 로그인/로그아웃 */}
                 <NavItem>
-                    <div className={cn('btn-transparent text-[14px]')}>
-                        {t('login')}
+                    <div
+                        className={cn(
+                            'btn-transparent text-[14px] cursor-pointer',
+                        )}
+                    >
+                        {session ? (
+                            <div onClick={() => signOut()}>{t('logout')}</div>
+                        ) : (
+                            <div onClick={() => router.push(LINK.AUTH.login)}>
+                                {t('login')}
+                            </div>
+                        )}
                     </div>
                 </NavItem>
 
