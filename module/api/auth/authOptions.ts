@@ -1,20 +1,34 @@
 import { NextAuthOptions } from 'next-auth';
+import Google from 'next-auth/providers/google';
+import { authPages } from '@/module/api/auth/authPages';
+import Twitter from 'next-auth/providers/twitter';
 
 export const authOptions: NextAuthOptions = {
     providers: [
-        // Credentials({
-        //     name: 'credentials',
-        //     credentials: {
-        //         username: { label: 'ID', type: 'text', placeholder: 'ID' },
-        //         password: { label: 'Password', type: 'password' },
-        //     },
-        //     async authorize(credentials, req) {
-        //         return null;
-        //     },
-        // }),
-        // Google({
-        //     clientID: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
-        //     clientSecret: process.env.NEXT_PUBLIC_GOOGLE_SECRET,
-        // }),
+        Google({
+            clientId: process.env.GOOGLE_CLIENT_ID || '',
+            clientSecret: process.env.GOOGLE_SECRET || '',
+        }),
     ],
+    cookies: {
+        pkceCodeVerifier: {
+            name: 'next-auth.pkce.code_verifier',
+            options: {
+                httpOnly: true,
+                sameSite: 'none',
+                path: '/',
+                secure: true,
+            },
+        },
+    },
+    secret: process.env.NEXTAUTH_SECRET,
+    callbacks: {
+        jwt: async ({ token, user }) => {
+            return { ...token, ...user };
+        },
+        session: async ({ session, token }) => {
+            return session;
+        },
+    },
+    pages: authPages,
 };

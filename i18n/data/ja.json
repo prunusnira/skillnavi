@@ -254,6 +254,10 @@
     },
     "user": {
         "login": {
+            "placeholder": {
+                "id": "ID",
+                "pw": "パスワード"
+            },
             "title": "ログイン",
             "google": "本サービスはGoogleアカウントからログインができます",
             "titleAppFail": "ログイン失敗",

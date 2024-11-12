@@ -254,6 +254,10 @@
   },
   "user": {
     "login": {
+      "placeholder": {
+        "id": "User ID",
+        "pw": "Password"
+      },
       "title": "Sign in",
       "google": "This service only supports Google account login",
       "titleAppFail": "Sign in failure",
