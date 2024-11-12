@@ -5,7 +5,7 @@ import { Theme } from '@/data/env/Theme';
 
 export const atomEnvData = atom<AtomEnv>({
     theme: 'light',
-    language: 'EN',
+    language: Language.en,
     transparency: false,
     menu: false,
 });
@@ -15,7 +15,10 @@ export const atomEnv = atom(
     (
         get,
         set,
-        params: { type: keyof AtomEnv; data: Language | Theme | boolean },
+        params: {
+            type: keyof AtomEnv;
+            data: keyof typeof Language | Theme | boolean;
+        },
     ) => {
         const prev = get(atomEnvData);
         const next = { ...prev };

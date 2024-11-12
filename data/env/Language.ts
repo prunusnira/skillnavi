@@ -1,1 +1,5 @@
-export type Language = 'KO' | 'JA' | 'EN';
+export const Language = {
+    ko: 'ko',
+    ja: 'ja',
+    en: 'en',
+} as const;
