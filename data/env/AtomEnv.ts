@@ -3,7 +3,7 @@ import { Theme } from '@/data/env/Theme';
 
 export interface AtomEnv {
     theme: Theme;
-    language: Language;
+    language: keyof typeof Language;
     transparency: boolean;
     menu: boolean;
 }
