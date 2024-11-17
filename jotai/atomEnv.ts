@@ -8,6 +8,7 @@ export const atomEnvData = atom<AtomEnv>({
     language: Language.en,
     transparency: false,
     menu: false,
+    currentVersion: undefined,
 });
 
 export const atomEnv = atom(
@@ -17,7 +18,7 @@ export const atomEnv = atom(
         set,
         params: {
             type: keyof AtomEnv;
-            data: keyof typeof Language | Theme | boolean;
+            data: keyof typeof Language | Theme | boolean | number | undefined;
         },
     ) => {
         const prev = get(atomEnvData);

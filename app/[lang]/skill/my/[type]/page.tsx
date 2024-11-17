@@ -1,6 +1,6 @@
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/module/api/auth/authOptions';
-import { getProfileBasic } from '@/module/api/profile/getProfileBasic';
+import { getProfileSession } from '@/module/api/profile/getProfileSession';
 import { getLocale } from 'next-intl/server';
 import { redirect } from '@/i18n/routing';
 import { LINK } from '@/data/url';
@@ -14,7 +14,7 @@ const PageMySkikll = async ({
     };
 }) => {
     const session = await getServerSession(authOptions);
-    const profile = await getProfileBasic(session);
+    const profile = await getProfileSession(session);
     const locale = await getLocale();
 
     const { type } = params;

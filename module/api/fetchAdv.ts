@@ -9,6 +9,7 @@ interface FetchOptions extends Omit<RequestInit, 'body'> {
     contentType?: string;
     // eslint-disable-next-line
     body?: BodyInit | Record<string, any>;
+    customUrl?: boolean;
 }
 
 /**
@@ -24,7 +25,14 @@ export class FetchAdv {
 
     private base = async <T>(
         url: string,
-        { method, params, body, contentType, ...options }: FetchOptions,
+        {
+            method,
+            params,
+            body,
+            contentType,
+            customUrl,
+            ...options
+        }: FetchOptions,
     ) => {
         let query = '';
         if (params) {
@@ -62,27 +70,25 @@ export class FetchAdv {
             };
         }
 
-        const res = await fetch(`${this.baseUrl}${url}${query}`, {
-            ...options,
-            method,
-            body: data,
-            credentials: 'include',
-            headers: {
-                ...headers,
-                // Cookie: await getCookieForFetch(),
+        const res = await fetch(
+            customUrl ? `${url}${query}` : `${this.baseUrl}${url}${query}`,
+            {
+                ...options,
+                method,
+                body: data,
+                credentials: 'include',
+                headers: {
+                    ...headers,
+                    // Cookie: await getCookieForFetch(),
+                },
             },
-        });
+        );
 
         if (!res.ok) {
             throw new FetchError({ status: res.status, response: res });
         }
 
-        const result = await res.json();
-
-        if (result satisfies T) {
-            return result as T;
-        }
-        return undefined;
+        return (await res.json()) as T;
     };
 
     public get = async <T>(url: string, options?: FetchOptions) =>
@@ -119,3 +125,17 @@ export const fetchAdv = new FetchAdv({
 //     }
 //     return '';
 // };
+
+export const fetchFile = async (url: string) => {
+    const res = await fetch(url, {
+        headers: {
+            contentType: 'multipart/form-data',
+        },
+    });
+
+    if (!res.ok) {
+        throw new FetchError({ status: res.status, response: res });
+    }
+
+    return await res.text();
+};

@@ -1,9 +1,9 @@
 import { InferAttributes, InferCreationAttributes, Model } from 'sequelize';
 
-export interface ProfileBasic
+export interface ProfileOldBasic
     extends Model<
-        InferAttributes<ProfileBasic>,
-        InferCreationAttributes<ProfileBasic>
+        InferAttributes<ProfileOldBasic>,
+        InferCreationAttributes<ProfileOldBasic>
     > {
     id: number;
     titletower: string;
