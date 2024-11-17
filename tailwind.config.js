@@ -19,13 +19,38 @@ module.exports = {
                     from: { transform: 'translate(100%, -50%)' },
                     to: { transform: 'translate(0%, -50%)' },
                 },
+                posX: {
+                    from: {
+                        'background-position-x': '0',
+                    },
+                    to: {
+                        'background-position-x': '100%',
+                    },
+                },
             },
             animation: {
                 toggleOn: 'toggleOn 0.5s forwards',
                 toggleOff: 'toggleOff 0.5s forwards',
+                posX: 'posX 5s forwards linear infinite alternate',
             },
             transitionProperty: {
                 right: 'right',
+            },
+            backgroundImage: {
+                skill8500: `linear-gradient(
+                                to right,
+                                #ff5a5a,
+                                #ff8a5a,
+                                #ffff00,
+                                #00ff00,
+                                #5acbff,
+                                #a500ff,
+                                #ff5a5a,
+                                #ff8a5a,
+                                #ffff00,
+                                #00ff00,
+                                #5acbff
+                            )`,
             },
         },
     },
