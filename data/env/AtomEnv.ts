@@ -6,4 +6,5 @@ export interface AtomEnv {
     language: keyof typeof Language;
     transparency: boolean;
     menu: boolean;
+    currentVersion?: number;
 }
