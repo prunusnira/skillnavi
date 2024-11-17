@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import RouteWrapper from '@/module/api/routeWrapper';
-import { ProfileBasicModel } from '@/data/profile/ProfileBasicModel';
+import { ProfileOldBasicModel } from '@/data/profile/ProfileOldBasicModel';
 import { Op } from 'sequelize';
 import { FetchError } from '@/data/fetch/FetchError';
 
@@ -18,7 +18,7 @@ export const GET = async (req: NextRequest) => {
                 });
             }
 
-            const profile = await ProfileBasicModel.findOne({
+            const profile = await ProfileOldBasicModel.findOne({
                 where: {
                     token: {
                         [Op.eq]: token,
