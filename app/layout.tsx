@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.scss';
 import Header from '@/component/header/Header';
 import Footer from '@/component/footer/footer';
-import Wrappers from '@/module/wrapper/wrappers';
+import Wrappers from '@/module/wrapper/Wrappers';
 import { getLocale, getMessages } from 'next-intl/server';
 import { Suspense } from 'react';
 import { NextIntlClientProvider } from 'next-intl';

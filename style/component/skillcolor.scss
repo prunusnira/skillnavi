@@ -1,0 +1,80 @@
+.skill-text {
+  @apply bg-clip-text font-extrabold;
+  -webkit-text-fill-color: transparent;
+}
+
+.skill-0 {
+  @apply bg-[linear-gradient(#eee,#eee)];
+}
+
+.skill-1000 {
+  @apply bg-[linear-gradient(#facc2e,#facc2e)];
+}
+
+.skill-1500 {
+  @apply bg-[linear-gradient(#facc2e,#eee)];
+}
+
+.skill-2000 {
+  @apply bg-[linear-gradient(#ffff5c,#ffff5c)];
+}
+
+.skill-2500 {
+  @apply bg-[linear-gradient(#ffff5c,#eee)];
+}
+
+.skill-3000 {
+  @apply bg-[linear-gradient(#33ff00,#33ff00)];
+}
+
+.skill-3500 {
+  @apply bg-[linear-gradient(#33ff00,#eee)];
+}
+
+.skill-4000 {
+  @apply bg-[linear-gradient(#7598ff,#7598ff)];
+}
+
+.skill-4500 {
+  @apply bg-[linear-gradient(#7598ff,#eee)];
+}
+
+.skill-5000 {
+  @apply bg-[linear-gradient(#ff7dff,#ff7dff)];
+}
+
+.skill-5500 {
+  @apply bg-[linear-gradient(#ff7dff,#eee)];
+}
+
+.skill-6000 {
+  @apply bg-[linear-gradient(#ff5a5a,#ff5a5a)];
+}
+
+.skill-6500 {
+  @apply bg-[linear-gradient(#ff5a5a,#eee)];
+}
+
+.skill-7000 {
+  @apply bg-[linear-gradient(#dd8844,#eee)];
+}
+
+.skill-7500 {
+  @apply bg-[linear-gradient(#888,#eee)];
+}
+
+.skill-8000 {
+  @apply bg-[linear-gradient(#c3c300,#ffffb7,#ffffb7)];
+}
+
+.skill-8500 {
+  @apply bg-skill8500 bg-clip-text animate-posX bg-[length:200%_100%];
+}
+
+.skill-9000 {
+  @apply bg-skill8500 bg-clip-text animate-posX bg-[length:200%_100%];
+}
+
+.skill-9500 {
+  @apply bg-skill8500 bg-clip-text animate-posX bg-[length:200%_100%];
+}

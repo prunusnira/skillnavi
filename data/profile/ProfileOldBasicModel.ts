@@ -1,9 +1,9 @@
-import { ProfileBasic } from '@/data/profile/ProfileBasic';
+import { ProfileOldBasic } from '@/data/profile/ProfileOldBasic';
 import { sequelize } from '@/module/lib/db/dbconn';
 import { DataTypes } from 'sequelize';
 
-export const ProfileBasicModel = sequelize.define<ProfileBasic>(
-    'ProfileBasic',
+export const ProfileOldBasicModel = sequelize.define<ProfileOldBasic>(
+    'ProfileOldBasic',
     {
         id: {
             type: DataTypes.INTEGER,
