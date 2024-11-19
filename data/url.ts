@@ -1,5 +1,4 @@
 import { GameType } from '@/data/game/GameType';
-import { GameVersion } from '@/data/game/GameVersion';
 import { Order } from '@/data/filter/Order';
 import { SkillPageParams } from '@/data/skill/SkillPageParams';
 
@@ -38,12 +37,8 @@ export const LINK = {
         },
     },
     PATTERN: {
-        list: (
-            version: GameVersion,
-            order: Order,
-            page: number,
-            hot: boolean,
-        ) => `/pattern/${version}/${order}/${page}?hot=${hot ? 'h' : 'o'}`,
+        list: (version: number, order: Order, page: number, hot: boolean) =>
+            `/pattern/${version}/${order}/${page}?hot=${hot ? 'h' : 'o'}`,
         noplay: '/pattern/noplay',
         table: '/pattern/table',
     },
