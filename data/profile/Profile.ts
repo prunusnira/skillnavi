@@ -13,4 +13,5 @@ export interface Profile
     updatetime: string;
     pause: string;
     pausereason: string;
+    dataopen: 'Y' | 'N';
 }
