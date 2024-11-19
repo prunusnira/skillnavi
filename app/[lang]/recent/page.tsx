@@ -2,8 +2,8 @@ import Card from '@/component/common/card/Card';
 import { getTranslations } from 'next-intl/server';
 import { getRecent } from '@/module/api/recent/getRecent';
 import { cn } from '@/module/util/cn';
-import { IMG } from '@/data/url';
 import SkillColor from '@/component/common/skillColor/SkillColor';
+import UserLinkIcon from '@/component/common/table/user/UserLinkIcon';
 
 const PageRecent = async () => {
     const t = await getTranslations('recent');
@@ -24,17 +24,8 @@ const PageRecent = async () => {
                         )}
                     >
                         {/* 아이콘/이름 */}
-                        <div
-                            className={cn('flex-grow flex items-center gap-2')}
-                        >
-                            {r.titletower && (
-                                <img
-                                    alt="icon"
-                                    src={`${IMG}/title/${r.titletower}.png`}
-                                    className={cn('w-8 h-8')}
-                                />
-                            )}
-                            <div>{r.opencount ? r.name : '(NO NAME)'}</div>
+                        <div className={cn('flex-grow w-full')}>
+                            <UserLinkIcon user={r} />
                         </div>
 
                         {/* 스킬 정보 */}

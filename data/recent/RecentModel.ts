@@ -4,6 +4,10 @@ import { DataTypes } from 'sequelize';
 export const RecentModel = sequelize.define(
     'RecentModel',
     {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+        },
         titletower: {
             type: DataTypes.STRING,
         },
