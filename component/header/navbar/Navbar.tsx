@@ -2,18 +2,17 @@
 
 import { cn } from '@/module/util/cn';
 import { IMG, LINK } from '@/data/url';
-import NavItem from '@/component/header/navItem';
-import Toggle from '@/component/common/toggle/toggle';
+import NavItem from '@/component/header/NavItem';
 import useNavbar from '@/component/header/navbar/useNavbar';
 import { useTranslations } from 'next-intl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { signOut, useSession } from 'next-auth/react';
 import { useRouter } from '@/i18n/routing';
+import { faDiscord, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 
 const Navbar = () => {
-    const { isMenuOpen, theme, setTheme, handleLinkMain, controlMenu } =
-        useNavbar();
+    const { isMenuOpen, handleLinkMain, controlMenu } = useNavbar();
     const t = useTranslations('header');
     const { data: session } = useSession();
     const router = useRouter();
@@ -38,18 +37,32 @@ const Navbar = () => {
 
             {/* right side */}
             <div className={cn('flex-center')}>
-                {/* 테마 변경 토글 */}
+                {/* 디스코드 링크 */}
                 <NavItem>
-                    <div className={cn(['font-bold text-[14px]'])}>
-                        {t('theme')}
+                    <div
+                        className={'cursor-pointer'}
+                        onClick={() =>
+                            router.push(
+                                process.env.NEXT_PUBLIC_URL_DISCORD || '',
+                            )
+                        }
+                    >
+                        <FontAwesomeIcon icon={faDiscord} />
                     </div>
-                    <Toggle
-                        id="darkmode"
-                        value={theme === 'dark'}
-                        callback={(mode) => {
-                            setTheme(mode);
-                        }}
-                    />
+                </NavItem>
+
+                {/* 트위터 링크 */}
+                <NavItem>
+                    <div
+                        className={'cursor-pointer'}
+                        onClick={() =>
+                            router.push(
+                                process.env.NEXT_PUBLIC_URL_TWITTER || '',
+                            )
+                        }
+                    >
+                        <FontAwesomeIcon icon={faXTwitter} />
+                    </div>
                 </NavItem>
 
                 {/* 사용자 로그인/로그아웃 */}
