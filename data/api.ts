@@ -14,4 +14,7 @@ export const API = {
         graph: (id: string) => `/profile/${id}/graph`,
     },
     RECENT: '/recent',
+    SKILL: {
+        table: '/skill',
+    },
 };
