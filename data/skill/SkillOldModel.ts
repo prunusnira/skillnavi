@@ -2,22 +2,19 @@ import { sequelize } from '@/module/lib/db/dbconn';
 import { DataTypes } from 'sequelize';
 
 export const SkillOldModel = sequelize.define('SkillOldModel', {
-    userid: {
-        type: DataTypes.INTEGER,
-    },
     musicid: {
         type: DataTypes.INTEGER,
     },
-    version: {
-        type: DataTypes.INTEGER,
+    mname: {
+        type: DataTypes.STRING,
+    },
+    hurigana: {
+        type: DataTypes.STRING,
+    },
+    ishot: {
+        type: DataTypes.STRING,
     },
     patterncode: {
-        type: DataTypes.INTEGER,
-    },
-    playtime: {
-        type: DataTypes.INTEGER,
-    },
-    cleartime: {
         type: DataTypes.INTEGER,
     },
     rank: {
@@ -47,17 +44,23 @@ export const SkillOldModel = sequelize.define('SkillOldModel', {
     ratetb: {
         type: DataTypes.INTEGER,
     },
-    score: {
+    version: {
         type: DataTypes.INTEGER,
     },
     combo: {
         type: DataTypes.INTEGER,
     },
-    skill: {
+    playtime: {
+        type: DataTypes.INTEGER,
+    },
+    level: {
         type: DataTypes.INTEGER,
     },
     checkfc: {
         type: DataTypes.STRING,
+    },
+    skill: {
+        type: DataTypes.INTEGER,
     },
     meter: {
         type: DataTypes.STRING,

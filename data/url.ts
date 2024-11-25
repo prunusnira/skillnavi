@@ -3,6 +3,9 @@ import { Order } from '@/data/filter/Order';
 import { SkillPageParams } from '@/data/skill/SkillPageParams';
 
 export const IMG = process.env.NEXT_PUBLIC_URL_IMG || '';
+export const ALBUM = process.env.NEXT_PUBLIC_URL_ALBUM || '';
+
+export const PUBLICEP = process.env.NEXT_PUBLIC_URL_PUBLICEP || '';
 
 export const LINK = {
     MAIN: '/',
@@ -21,17 +24,17 @@ export const LINK = {
         self: (type: GameType) => `/skill/my/${type}`,
         skill: ({
             version,
-            type,
+            game,
             id,
             pageType,
             page = 1,
             order,
         }: SkillPageParams) => {
             const params = new URLSearchParams();
-            params.set('type', type);
+            params.set('game', game);
             params.set('pageType', pageType);
             params.set('page', String(page));
-            if (version) params.set('version', String(version));
+            params.set('version', String(version.id));
             if (order) params.set('order', order);
             return `/skill/${id}${params.size && `?${params.toString()}`}`;
         },

@@ -5,6 +5,7 @@ import { getLocale } from 'next-intl/server';
 import { redirect } from '@/i18n/routing';
 import { LINK } from '@/data/url';
 import { GameType } from '@/data/game/GameType';
+import { getRecentVersion } from '@/module/api/env/getRecentVersion';
 
 const PageMySkikll = async ({
     params,
@@ -15,6 +16,7 @@ const PageMySkikll = async ({
 }) => {
     const session = await getServerSession(authOptions);
     const profile = await getProfileSession(session);
+    const recent = await getRecentVersion();
     const locale = await getLocale();
 
     const { type } = params;
@@ -26,8 +28,9 @@ const PageMySkikll = async ({
     redirect({
         href: LINK.SKILL.skill({
             id: profile.id,
-            type,
+            game: type,
             pageType: 'target',
+            version: recent,
         }),
         locale,
     });

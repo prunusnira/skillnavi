@@ -1,9 +1,10 @@
 import { cn } from '@/module/util/cn';
 import Card from '@/component/common/card/Card';
 import { getSkillTable } from '@/module/api/skill/getSkillTable';
-import SkillItem from './SkillItem';
+import SkillItemOld from './SkillItemOld';
 import SkillColor from '@/component/common/skillColor/SkillColor';
 import { getProfile } from '@/module/api/profile/getProfile';
+import { getRecentVersion } from '@/module/api/env/getRecentVersion';
 
 const SkillTable = async ({
     params,
@@ -20,17 +21,18 @@ const SkillTable = async ({
 }) => {
     const { id } = params;
     const { page, game, version, order, pageType } = searchParams;
+    const recent = await getRecentVersion();
     const skill = await getSkillTable({
         id,
-        page,
-        game,
-        version,
+        page: page || 1,
+        game: game || 'gf',
+        version: version || recent.id,
         order,
-        pageType,
+        pageType: pageType || 'target',
     });
     const { profile } = await getProfile(id);
 
-    if (!skill?.data) {
+    if (!skill?.length) {
         return <>No skill data</>;
     }
 
@@ -60,9 +62,9 @@ const SkillTable = async ({
             </section>
             {/* 테이블 */}
             <section>
-                {skill.data.map((item) => (
-                    <SkillItem
-                        key={item.id}
+                {skill.map((item) => (
+                    <SkillItemOld
+                        key={item.musicid}
                         skill={item}
                     />
                 ))}

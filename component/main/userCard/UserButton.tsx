@@ -10,7 +10,7 @@ const UserButton = () => {
     return (
         <div className={cn('flex-center gap-2')}>
             <ButtonStandard
-                text="ProfileOld"
+                text="Profile"
                 onClick={() => router.push(LINK.PROFILE.self)}
             />
             <ButtonStandard

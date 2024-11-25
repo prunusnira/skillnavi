@@ -1,6 +1,3 @@
-import Card from '@/component/common/card/Card';
-import { getTranslations } from 'next-intl/server';
-import { cn } from '@/module/util/cn';
 import SkillTable from '@/component/skill/table/SkillTable';
 import SkillMenu from '@/component/skill/menu/SkillMenu';
 
@@ -18,13 +15,11 @@ const PageSkill = async ({
         game: string;
         version: number;
         order: string;
-        type: string;
+        pageType: string;
+        isHot?: boolean;
+        isOthers?: boolean;
     };
 }) => {
-    const t = await getTranslations('skill.table');
-    const { id } = params;
-    const { page, game, version, order, type } = searchParams;
-
     return (
         <article>
             {/* 메뉴 */}
