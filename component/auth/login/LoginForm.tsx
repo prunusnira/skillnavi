@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import { useTranslations } from 'next-intl';
 import { signIn } from 'next-auth/react';
-import { LINK } from '@/data/url';
+import { LINK, PUBLICEP } from '@/data/url';
 
 const LoginForm = () => {
     const t = useTranslations('user.login');
@@ -49,7 +49,7 @@ const LoginForm = () => {
                     fixedWidth={200}
                     onClick={() => {
                         signIn('google', {
-                            callbackUrl: LINK.MAIN,
+                            callbackUrl: `${PUBLICEP}${LINK.MAIN}`,
                         });
                     }}
                 />

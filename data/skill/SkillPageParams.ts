@@ -5,9 +5,9 @@ import { SkillOrder } from '@/data/skill/SkillOrder';
 
 export interface SkillPageParams {
     id: number;
-    type: GameType;
+    game: GameType;
     pageType: SkillPageType;
-    version?: GameVersion;
+    version: GameVersion;
     page?: number;
     order?: SkillOrder;
 }

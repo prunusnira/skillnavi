@@ -1,6 +1,6 @@
-import { Skill } from '@/data/skill/Skill';
 import { fetchAdv } from '@/module/api/fetchAdv';
 import { API } from '@/data/api';
+import { SkillOld } from '@/data/skill/SkillOld';
 
 interface Props {
     id: string;
@@ -19,9 +19,9 @@ export const getSkillTable = async ({
     order,
     pageType,
 }: Props) => {
-    return await fetchAdv.get<Skill>(API.SKILL.table, {
+    return await fetchAdv.get<SkillOld[]>(API.SKILL.table, {
         params: {
-            id,
+            userid: id,
             page,
             game,
             version,

@@ -5,12 +5,11 @@ export interface SkillOld
         InferAttributes<SkillOld>,
         InferCreationAttributes<SkillOld>
     > {
-    userid: number;
     musicid: number;
-    version: number;
+    mname: string;
+    hurigana: string;
+    ishot: 'Y' | 'N';
     patterncode: number;
-    playtime: number;
-    cleartime: number;
     rank: string;
     rate: number;
     ratefu: number;
@@ -20,9 +19,11 @@ export interface SkillOld
     ratemx: number;
     ratetbre: number;
     ratetb: number;
-    score: number;
+    version: number;
     combo: number;
-    skill: number;
+    playtime: number;
+    level: number;
     checkfc: 'Y' | 'N';
+    skill: number;
     meter: string;
 }
