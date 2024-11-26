@@ -6,6 +6,8 @@ import { redirect } from '@/i18n/routing';
 import { LINK } from '@/data/url';
 import { getLocale } from 'next-intl/server';
 
+export const dynamic = 'force-dynamic';
+
 const PageProfileSelf = async () => {
     const session = await getServerSession(authOptions);
     const profile = await getProfileSession(session);

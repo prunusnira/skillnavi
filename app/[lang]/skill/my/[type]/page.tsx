@@ -7,6 +7,8 @@ import { LINK } from '@/data/url';
 import { GameType } from '@/data/game/GameType';
 import { getRecentVersion } from '@/module/api/env/getRecentVersion';
 
+export const dynamic = 'force-dynamic';
+
 const PageMySkikll = async ({
     params,
 }: {

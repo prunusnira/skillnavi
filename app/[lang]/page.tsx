@@ -11,6 +11,8 @@ import dayjs from 'dayjs';
 import style from './page.module.scss';
 import Link from 'next/link';
 
+export const dynamic = 'force-dynamic';
+
 /**
  * @abou 메인 페이지
  * @componentType nextjs page

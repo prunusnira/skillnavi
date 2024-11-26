@@ -1,6 +1,8 @@
 import SkillTable from '@/component/skill/table/SkillTable';
 import SkillMenu from '@/component/skill/menu/SkillMenu';
 
+export const dynamic = 'force-dynamic';
+
 /**
  * @about 스킬 페이지
  * @componentType nextjs page
