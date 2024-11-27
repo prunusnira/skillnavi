@@ -32,7 +32,7 @@
     "no-lonely-if": "off",
     "no-nested-ternary": "off",
     "no-console": [
-      "error",
+      "warn",
       {
         "allow": [
           "warn",
