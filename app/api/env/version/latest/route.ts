@@ -2,6 +2,8 @@ import RouteWrapper from '@/module/api/routeWrapper';
 import { GameVersionModel } from '@/data/game/GameVersionModel';
 import { NextRequest, NextResponse } from 'next/server';
 
+export const dynamic = 'force-dynamic';
+
 export const GET = async (req: NextRequest) => {
     return RouteWrapper({
         req,

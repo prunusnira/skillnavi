@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "env-cmd -f .env.dev next dev",
-    "build": "env-cmd -f .env.prd next build",
+    "build:dev": "env-cmd -f .env.dev next build",
+    "build": "env-cmd -f .env next build",
+    "build:prd": "env-cmd -f .env.prd next build",
+    "start:dev": "env-cmd -f .env.dev next start",
     "start": "env-cmd -f .env.prd next start",
     "lint": "next lint"
   },
@@ -24,7 +27,6 @@
     "next": "14.2.16",
     "next-auth": "^4.24.8",
     "next-intl": "^3.23.5",
-    "pm2": "^5.4.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "recharts": "^2.13.3",
