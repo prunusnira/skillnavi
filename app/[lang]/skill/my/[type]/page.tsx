@@ -1,5 +1,4 @@
 import { getServerSession } from 'next-auth';
-import { authOptions } from '@/module/api/auth/authOptions';
 import { getProfileSession } from '@/module/api/profile/getProfileSession';
 import { getLocale } from 'next-intl/server';
 import { redirect } from '@/i18n/routing';
@@ -16,7 +15,7 @@ const PageMySkikll = async ({
         type: GameType;
     };
 }) => {
-    const session = await getServerSession(authOptions);
+    const session = await getServerSession();
     const profile = await getProfileSession(session);
     const recent = await getRecentVersion();
     const locale = await getLocale();
