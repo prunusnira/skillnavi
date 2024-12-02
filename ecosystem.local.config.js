@@ -8,7 +8,7 @@ module.exports = {
             instances: 2,
             autorestart: true,
             cwd: '/Users/nira/project/skillnavi-nextjs',
-            env_file: '/Users/nira/project/skillnavi-nextjs/.env.dev',
+            env_file: '/Users/nira/project/skillnavi-nextjs/.env',
             log_date_format: 'YYYY-MM-DD HH:mm:ss',
             out_file: '/Users/nira/project/navilog/out.log',
             error_file: '/Users/nira/project/navilog/error.log',

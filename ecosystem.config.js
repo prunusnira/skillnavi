@@ -8,7 +8,7 @@ module.exports = {
             instances: 2,
             autorestart: true,
             cwd: '/app',
-            env_file: '/app/.env.prd',
+            env_file: '/app/.env',
             log_date_format: 'YYYY-MM-DD HH:mm:ss',
             out_file: '/data/log/out.log',
             error_file: '/data/log/error.log',
