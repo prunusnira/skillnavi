@@ -29,12 +29,14 @@ export const LINK = {
             pageType,
             page = 1,
             order,
+            display,
         }: SkillPageParams) => {
             const params = new URLSearchParams();
             params.set('game', game);
             params.set('pageType', pageType);
             params.set('page', String(page));
             params.set('version', String(version.id));
+            params.set('display', display);
             if (order) params.set('order', order);
             return `/skill/${id}${params.size && `?${params.toString()}`}`;
         },
