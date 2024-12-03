@@ -10,4 +10,5 @@ export interface SkillPageParams {
     version: GameVersion;
     page?: number;
     order?: SkillOrder;
+    display: 'list' | 'grid';
 }

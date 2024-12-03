@@ -1,7 +1,6 @@
 export const API = {
     ENV: {
         version: `/env/version`,
-        recent: `/env/version/latest`,
     },
     NOTICE: `/notice`,
     PROFILE: {

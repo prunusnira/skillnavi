@@ -4,10 +4,11 @@ import { getSkillCN } from '@/module/api/skill/getSkillCN';
 
 interface Props {
     value: number;
+    multiplier?: number;
 }
 
-const SkillColor = ({ value }: Props) => {
-    const className = useMemo(() => getSkillCN(value), [value]);
+const SkillColor = ({ value, multiplier = 1 }: Props) => {
+    const className = useMemo(() => getSkillCN(value * multiplier), [value]);
     return <div className={cn(className, 'skill-text')}>{value}</div>;
 };
 
