@@ -52,7 +52,7 @@ const SkillGridTypeOld = ({ skill, index }: Props) => {
                         src={`${ALBUM}/${skill.musicid}.jpg`}
                     />
                     <SkillItemVersion
-                        version={skill.version}
+                        versionId={skill.version}
                         type={'short'}
                     />
                 </div>
