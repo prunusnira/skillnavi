@@ -2,7 +2,7 @@ import { ProfileOld } from '@/data/profile/ProfileOld';
 import { useAtomValue } from 'jotai';
 import { atomEnv } from '@/jotai/atomEnv';
 import { TB } from '@/data/env/constant';
-import { SkillTable } from '@/data/skill/SkillTable';
+import { SkillTableBox } from '@/data/skill/SkillTableBox';
 import { useMemo } from 'react';
 
 interface Props {
@@ -13,7 +13,7 @@ const useSkillBox = ({ profile }: Props) => {
     const env = useAtomValue(atomEnv);
     const skillBoxOld = useMemo(() => {
         const ver = env.currentVersion || 31;
-        const list: SkillTable[] = [];
+        const list: SkillTableBox[] = [];
 
         if (!ver) return list;
 
