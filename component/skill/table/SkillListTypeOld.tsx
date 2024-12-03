@@ -71,7 +71,7 @@ const SkillListTypeOld = ({ skill, index }: Props) => {
                         })}
                     </div>
                     <SkillItemVersion
-                        version={skill.version}
+                        versionId={skill.version}
                         type={'short'}
                     />
                 </div>
