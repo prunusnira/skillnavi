@@ -1,5 +1,4 @@
 import SkillTable from '@/component/skill/table/SkillTable';
-import SkillMenu from '@/component/skill/menu/SkillMenu';
 import { cn } from '@/module/util/cn';
 import { TableType } from '@/data/skill/TableType';
 
