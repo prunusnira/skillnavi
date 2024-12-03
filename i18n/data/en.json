@@ -210,6 +210,24 @@
           "version": "Version"
         }
       }
+    },
+    "menu": {
+      "version": {
+        "title": "Version"
+      },
+      "data": {
+        "title": "Data Type",
+        "target": "Skill Target",
+        "all": "All"
+      },
+      "table": {
+        "title": "Table Type",
+        "grid": "Grid",
+        "list": "List"
+      },
+      "button": {
+        "close": "Close"
+      }
     }
   },
   "tower": {

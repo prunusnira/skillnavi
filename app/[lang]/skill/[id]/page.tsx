@@ -1,6 +1,7 @@
 import SkillTable from '@/component/skill/table/SkillTable';
 import SkillMenu from '@/component/skill/menu/SkillMenu';
 import { cn } from '@/module/util/cn';
+import { TableType } from '@/data/skill/TableType';
 
 export const dynamic = 'force-dynamic';
 
@@ -21,14 +22,11 @@ const PageSkill = async ({
         pageType: string;
         isHot?: boolean;
         isOthers?: boolean;
-        display: 'grid' | 'list';
+        display: TableType;
     };
 }) => {
     return (
         <article className={cn('w-full')}>
-            {/* 메뉴 */}
-            <SkillMenu />
-
             {/* 테이블 */}
             <SkillTable
                 params={params}

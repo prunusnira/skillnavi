@@ -210,6 +210,24 @@
                     "version": "버전"
                 }
             }
+        },
+        "menu": {
+            "version": {
+                "title": "버전 선택"
+            },
+            "data": {
+                "title": "데이터 선택",
+                "target": "스킬대상곡",
+                "all": "전체스킬"
+            },
+            "table": {
+                "title": "테이블 타입",
+                "grid": "그리드형",
+                "list": "리스트형"
+            },
+            "button": {
+                "close": "닫기"
+            }
         }
     },
     "tower": {

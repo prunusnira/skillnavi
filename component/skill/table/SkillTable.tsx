@@ -8,6 +8,7 @@ import SkillGridTypeOld from '@/component/skill/table/SkillGridTypeOld';
 import { IMG } from '@/data/url';
 import SkillMenu from '@/component/skill/menu/SkillMenu';
 import SkillTableTitleVersion from '@/component/skill/table/SkillTableTitleVersion';
+import { TableType } from '@/data/skill/TableType';
 
 const SkillTable = async ({
     params,
@@ -20,7 +21,7 @@ const SkillTable = async ({
         version: number;
         order: string;
         pageType: string;
-        display: 'grid' | 'list';
+        display: TableType;
     };
 }) => {
     const { id } = params;
@@ -94,7 +95,7 @@ const SkillTable = async ({
 
             {/* 테이블 */}
             {display === 'list' && (
-                <section className={cn('w-full')}>
+                <section className={cn('w-full max-w-screen-lg')}>
                     {skill.map((item, index) => (
                         <SkillListTypeOld
                             key={item.musicid}
@@ -109,7 +110,7 @@ const SkillTable = async ({
             {display === 'grid' && (
                 <section
                     className={cn(
-                        'w-full grid grid-cols-2 xs:grid-cols-3 md:grid-cols-4',
+                        'w-full grid grid-cols-2 xs:grid-cols-3 md:grid-cols-4 max-w-screen-lg',
                     )}
                 >
                     {skill.map((item, index) => (

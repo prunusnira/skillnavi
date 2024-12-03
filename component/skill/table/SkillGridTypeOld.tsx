@@ -68,7 +68,9 @@ const SkillGridTypeOld = ({ skill, index }: Props) => {
                                 src={`${IMG}/diff/${convertPatternCode(skill.patterncode, 'image300')}`}
                             />
                         </div>
-                        <div>{convertLevel(skill.level)}</div>
+                        <div className={cn('flex-center')}>
+                            {convertLevel(skill.level)}
+                        </div>
                     </div>
                     <div className={cn('flex justify-around')}>
                         <img
@@ -76,7 +78,7 @@ const SkillGridTypeOld = ({ skill, index }: Props) => {
                             alt={'rank'}
                             src={`${IMG}/rank/${convertRank(skill.rank)}`}
                         />
-                        <div className={cn('font-bold')}>
+                        <div className={cn('font-bold flex-center')}>
                             {getClearState({
                                 rate: skill.rate,
                                 fc: skill.checkfc === 'Y',
@@ -89,8 +91,20 @@ const SkillGridTypeOld = ({ skill, index }: Props) => {
 
             {/* 스킬 / 달성률 */}
             <section className={cn('flex justify-around items-center w-full')}>
-                <div>{(skill.skill / 1000000).toFixed(2)}</div>
-                <div>{(skill.rate / 100).toFixed(2)}%</div>
+                <div
+                    className={cn(
+                        'bg-lime-300 w-full text-black font-bold flex-center',
+                    )}
+                >
+                    {(skill.skill / 1000000).toFixed(2)}
+                </div>
+                <div
+                    className={cn(
+                        'bg-blue-300 w-full text-black font-bold flex-center',
+                    )}
+                >
+                    {(skill.rate / 100).toFixed(2)}%
+                </div>
             </section>
         </section>
     );

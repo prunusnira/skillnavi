@@ -1,10 +1,11 @@
 'use client';
 
 import { cn } from '@/module/util/cn';
+import { ReactNode } from 'react';
 
 interface Props {
     title?: string;
-    children: React.ReactNode;
+    children: ReactNode;
 }
 
 const Card = ({ title, children }: Props) => {
@@ -12,7 +13,7 @@ const Card = ({ title, children }: Props) => {
         // 공통 카드 ui
         <section
             className={cn(
-                'flex-col-center max-w-screen-lg p-1.5 w-full flex-grow min-h-[300px]',
+                'flex-col-center p-1.5 w-full flex-grow min-h-[300px]',
             )}
         >
             {title && (
