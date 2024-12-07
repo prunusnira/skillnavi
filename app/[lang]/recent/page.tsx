@@ -5,6 +5,8 @@ import { cn } from '@/module/util/cn';
 import SkillColor from '@/component/common/skillColor/SkillColor';
 import UserLinkIcon from '@/component/common/table/user/UserLinkIcon';
 
+export const dynamic = 'force-dynamic';
+
 const PageRecent = async () => {
     const t = await getTranslations('recent');
     const recent = await getRecent();
