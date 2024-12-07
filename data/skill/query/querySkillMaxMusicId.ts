@@ -13,25 +13,25 @@ export const querySkillMaxMusicId = (params: Params) => {
 
     let maxSkill = '';
     switch (version) {
-        case 1:
+        case 24:
             maxSkill = 'MAX(sall.level*sall.ratetb*20) AS skill';
             break;
-        case 2:
+        case 25:
             maxSkill = 'MAX(sall.level*sall.ratetbre*20) AS skill';
             break;
-        case 3:
+        case 26:
             maxSkill = 'MAX(sall.level*sall.ratemx*20) AS skill';
             break;
-        case 4:
+        case 27:
             maxSkill = 'MAX(sall.level*sall.rateex*20) AS skill';
             break;
-        case 5:
+        case 28:
             maxSkill = 'MAX(sall.level*sall.ratenx*20) AS skill';
             break;
-        case 6:
+        case 29:
             maxSkill = 'MAX(sall.level*sall.ratehv*20) AS skill';
             break;
-        case 7:
+        case 30:
             maxSkill = 'MAX(sall.level*sall.ratefu*20) AS skill';
             break;
         case 0:

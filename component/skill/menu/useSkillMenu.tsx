@@ -1,17 +1,18 @@
-import { ChangeEvent, useEffect, useMemo, useState } from 'react';
-import { useAtom, useAtomValue, useSetAtom } from 'jotai';
+import { ChangeEvent, useMemo, useState } from 'react';
+import { useAtom, useAtomValue } from 'jotai';
 import { atomGameVersionList } from '@/jotai/atomGameVersion';
-import { useSearchParams } from 'next/navigation';
-import {
-    atomSkillTableOptions,
-    atomSkillTableOptionsInit,
-} from '@/jotai/atomSkillTableOptions';
+import { atomSkillTableOptions } from '@/jotai/atomSkillTableOptions';
 import { TableDataType } from '@/data/skill/TableDataType';
 import { TableType } from '@/data/skill/TableType';
+import { GameType } from '@/data/game/GameType';
+import { useSearchParams } from 'next/navigation';
+import { usePathname, useRouter } from '@/i18n/routing';
 
 const useSkillMenu = () => {
     const versionList = useAtomValue(atomGameVersionList);
     const searchParams = useSearchParams();
+    const router = useRouter();
+    const pathname = usePathname();
 
     const [
         active,
@@ -22,7 +23,6 @@ const useSkillMenu = () => {
         tableOptions,
         setTableOptions,
     ] = useAtom(atomSkillTableOptions);
-    const setInit = useSetAtom(atomSkillTableOptionsInit);
 
     const toggleMenu = () => {
         setActive(!active);
@@ -39,11 +39,24 @@ const useSkillMenu = () => {
         ));
     }, [versionList]);
 
+    const updateSearchParams = (targetKey: string, targetValue: string) => {
+        const newSearchParams = new URLSearchParams();
+        const keys = Array.from(searchParams.keys());
+        keys.forEach((key) => {
+            if (searchParams.has(key)) {
+                newSearchParams.set(key, searchParams.get(key) || '');
+            }
+        });
+        newSearchParams.set(targetKey, targetValue);
+        router.replace(`${pathname}?${newSearchParams.toString()}`);
+    };
+
     const onChangeVersion = (e: ChangeEvent<HTMLSelectElement>) => {
         setTableOptions({
             type: 'versionId',
             data: Number(e.currentTarget.value),
         });
+        updateSearchParams('version', e.currentTarget.value);
     };
 
     const onChangeTable = (table: TableType) => {
@@ -51,6 +64,7 @@ const useSkillMenu = () => {
             type: 'table',
             data: table,
         });
+        updateSearchParams('display', table);
     };
 
     const onChangeData = (data: TableDataType) => {
@@ -58,15 +72,16 @@ const useSkillMenu = () => {
             type: 'data',
             data,
         });
+        updateSearchParams('pageType', data);
     };
 
-    useEffect(() => {
-        setInit({
-            versionId: Number(searchParams.get('version') || 0),
-            table: (searchParams.get('display') as TableType) || 'grid',
-            data: (searchParams.get('pageType') as TableDataType) || 'target',
+    const onChangeGame = (data: GameType) => {
+        setTableOptions({
+            type: 'game',
+            data,
         });
-    }, [searchParams]);
+        updateSearchParams('game', data);
+    };
 
     return {
         active,
@@ -75,6 +90,7 @@ const useSkillMenu = () => {
         onChangeVersion,
         onChangeTable,
         onChangeData,
+        onChangeGame,
         tableOptions,
     };
 };
