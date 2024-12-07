@@ -210,6 +210,29 @@
                     "version": "バージョン"
                 }
             }
+        },
+        "menu": {
+            "version": {
+                "title": "バージョン"
+            },
+            "data": {
+                "title": "データ選択",
+                "target": "スキル対象",
+                "all": "全て"
+            },
+            "table": {
+                "title": "テーブル選択",
+                "grid": "グリッド",
+                "list": "リスト"
+            },
+            "game": {
+                "title": "ゲーム選択",
+                "gf": "GuitarFreaks",
+                "dm": "DrumMania"
+            },
+            "button": {
+                "close": "閉じる"
+            }
         }
     },
     "tower": {
