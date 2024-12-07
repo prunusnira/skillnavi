@@ -1,13 +1,16 @@
 import { atom } from 'jotai';
 import { SkillTableOptions } from '@/data/skill/SkillTableOptions';
-import { useAtom } from 'jotai/index';
 import { TableDataType } from '@/data/skill/TableDataType';
 import { TableType } from '@/data/skill/TableType';
+import { GameType } from '@/data/game/GameType';
 
 export const atomSkillTableOptionsData = atom<SkillTableOptions>({
     versionId: 0,
     data: 'target',
     table: 'grid',
+    page: 1,
+    game: 'gf',
+    order: undefined,
 });
 
 export const atomSkillTableOptions = atom(
@@ -17,7 +20,7 @@ export const atomSkillTableOptions = atom(
         set,
         param: {
             type: keyof SkillTableOptions;
-            data: number | TableDataType | TableType;
+            data: number | TableDataType | TableType | GameType;
         },
     ) => {
         const prev = get(atomSkillTableOptionsData);

@@ -16,6 +16,7 @@ const SkillMenu = () => {
         onChangeVersion,
         onChangeTable,
         onChangeData,
+        onChangeGame,
         tableOptions,
     } = useSkillMenu();
     const t = useTranslations('skill.menu');
@@ -72,6 +73,19 @@ const SkillMenu = () => {
                     <ButtonRounded
                         onClick={() => onChangeTable('list')}
                         text={t('table.list')}
+                    />
+                </div>
+
+                {/* 게임 설정 */}
+                <div className={cn('mt-5')}>{t('game.title')}</div>
+                <div className={cn('flex-center')}>
+                    <ButtonRounded
+                        onClick={() => onChangeGame('gf')}
+                        text={t('game.gf')}
+                    />
+                    <ButtonRounded
+                        onClick={() => onChangeGame('dm')}
+                        text={t('game.dm')}
                     />
                 </div>
 

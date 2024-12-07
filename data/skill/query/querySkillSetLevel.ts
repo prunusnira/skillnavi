@@ -12,25 +12,25 @@ export const querySkillSetLevel = (params: Params) => {
     const { version } = params;
     let skill = '';
     switch (version) {
-        case 1:
+        case 24:
             skill = 'sall.level*sall.ratetb*20 AS skill';
             break;
-        case 2:
+        case 25:
             skill = 'sall.level*sall.ratetbre*20 AS skill';
             break;
-        case 3:
+        case 26:
             skill = 'sall.level*sall.ratemx*20 AS skill';
             break;
-        case 4:
+        case 27:
             skill = 'sall.level*sall.rateex*20 AS skill';
             break;
-        case 5:
+        case 28:
             skill = 'sall.level*sall.ratens*20 AS skill';
             break;
-        case 6:
+        case 29:
             skill = 'sall.level*sall.ratehv*20 AS skill';
             break;
-        case 7:
+        case 30:
             skill = 'sall.level*sall.ratefu*20 AS skill';
             break;
         case 0:

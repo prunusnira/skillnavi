@@ -79,7 +79,7 @@ const SkillListTypeOld = ({ skill, index }: Props) => {
 
             {/* 스킬 / 달성률 */}
             <section className={cn('flex-col-center')}>
-                <div>{(skill.skill / 1000000).toFixed(2)}</div>
+                <div>{(Math.floor(skill.skill / 10000) / 100).toFixed(2)}</div>
                 <div>({(skill.rate / 100).toFixed(2)}%)</div>
             </section>
         </section>

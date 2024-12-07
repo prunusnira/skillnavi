@@ -225,6 +225,11 @@
                 "grid": "グリッド",
                 "list": "リスト"
             },
+            "game": {
+                "title": "ゲーム選択",
+                "gf": "GuitarFreaks",
+                "dm": "DrumMania"
+            },
             "button": {
                 "close": "閉じる"
             }

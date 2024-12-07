@@ -7,8 +7,10 @@ interface Props {
     page: number;
     game: string;
     version: number;
-    order: string;
+    order?: string;
     pageType: string;
+    isHot?: boolean;
+    isOthers?: boolean;
 }
 
 export const getSkillTable = async ({
@@ -18,6 +20,8 @@ export const getSkillTable = async ({
     version,
     order,
     pageType,
+    isHot,
+    isOthers,
 }: Props) => {
     return await fetchAdv.get<SkillOld[]>(API.SKILL.table, {
         params: {
@@ -27,6 +31,8 @@ export const getSkillTable = async ({
             version,
             order,
             pageType,
+            isHot,
+            isOthers,
         },
     });
 };

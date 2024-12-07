@@ -1,17 +1,63 @@
+import { OrderType } from '@/data/skill/OrderType';
+
 interface Params {
     userid: number;
     version: number;
     game: string;
     isHot?: boolean;
     isOthers?: boolean;
+    page: number;
+    order: OrderType;
 }
 
-export const querySkillAll = ({
+const getOrder = (order: OrderType) => {
+    switch (order) {
+        case 'titleasc':
+            return 'mname asc';
+        case 'titledesc':
+            return 'mname desc';
+        case 'skillasc':
+            return 'skill asc';
+        case 'rateasc':
+            return 'rate asc';
+        case 'ratedesc':
+            return 'rate desc';
+        case 'skilldesc':
+        default:
+            return 'skill desc';
+    }
+};
+
+const getQueryRateByVersion = (version: number) => {
+    switch (version) {
+        case 24:
+            return 's.ratetb';
+        case 25:
+            return 's.ratetbre';
+        case 26:
+            return 's.ratemx';
+        case 27:
+            return 's.rateex';
+        case 28:
+            return 's.ratenx';
+        case 29:
+            return 's.ratehv';
+        case 30:
+            return 's.ratefu';
+        case 0:
+        default:
+            return 's.rate';
+    }
+};
+
+export const querySkillAllPage = ({
     userid,
     version,
     game,
     isHot,
     isOthers,
+    page,
+    order,
 }: Params) => {
     let music = '';
     let rate = '';
@@ -74,6 +120,7 @@ export const querySkillAll = ({
     }
 
     return `
+SELECT *, data.rate * data.level * 20 as skill FROM (
         SELECT
             m.name        as mname,
             m.hurigana    as hurigana,
@@ -81,14 +128,7 @@ export const querySkillAll = ({
             m.hot         as ishot,
             s.patterncode as patterncode,
             s.rank        as rank,
-            s.rate        as rate,
-            s.ratefu      as ratefu,
-            s.ratehv      as ratehv,
-            s.ratenx      as ratenx,
-            s.rateex      as rateex,
-            s.ratemx      as ratemx,
-            s.ratetbre    as ratetbre,
-            s.ratetb      as ratetb,
+            ${getQueryRateByVersion(version)}        as rate,
             m.version     as version,
             s.playtime    as playtime,
             s.cleartime   as cleartime,
@@ -117,5 +157,8 @@ export const querySkillAll = ({
             ${hot}
             ${ptcode}
             ${rate}
+    ) as data
+    ORDER BY ${getOrder(order)}
+    LIMIT 50 OFFSET ${(page - 1) * 50}
     `;
 };

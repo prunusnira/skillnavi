@@ -34,7 +34,7 @@ const Version = () => {
         if (data?.length) {
             setVersion(data);
 
-            const latest = data.sort((a, b) => a.id - b.id);
+            const latest = data.sort((a, b) => b.id - a.id);
             setLatest(latest[0]);
         }
     }, [data]);

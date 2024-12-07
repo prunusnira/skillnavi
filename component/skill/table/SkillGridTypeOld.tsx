@@ -37,7 +37,7 @@ const SkillGridTypeOld = ({ skill, index }: Props) => {
             <div
                 className={cn(
                     'w-full text-center text-ellipsis break-all overflow-hidden whitespace-nowrap',
-                    'px-2',
+                    'px-2 link',
                 )}
             >
                 {skill.mname}
@@ -96,7 +96,7 @@ const SkillGridTypeOld = ({ skill, index }: Props) => {
                         'bg-lime-300 w-full text-black font-bold flex-center',
                     )}
                 >
-                    {(skill.skill / 1000000).toFixed(2)}
+                    {(Math.floor(skill.skill / 10000) / 100).toFixed(2)}
                 </div>
                 <div
                     className={cn(
