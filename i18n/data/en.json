@@ -210,6 +210,29 @@
           "version": "Version"
         }
       }
+    },
+    "menu": {
+      "version": {
+        "title": "Version"
+      },
+      "data": {
+        "title": "Data Type",
+        "target": "Skill Target",
+        "all": "All"
+      },
+      "table": {
+        "title": "Table Type",
+        "grid": "Grid",
+        "list": "List"
+      },
+      "game": {
+        "title": "Game Type",
+        "gf": "GuitarFreaks",
+        "dm": "DrumMania"
+      },
+      "button": {
+        "close": "Close"
+      }
     }
   },
   "tower": {

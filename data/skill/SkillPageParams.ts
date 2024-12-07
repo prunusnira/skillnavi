@@ -1,13 +1,15 @@
 import { GameVersion } from '@/data/game/GameVersion';
 import { GameType } from '@/data/game/GameType';
-import { SkillPageType } from '@/data/skill/SkillPageType';
 import { SkillOrder } from '@/data/skill/SkillOrder';
+import { TableType } from '@/data/skill/TableType';
+import { TableDataType } from '@/data/skill/TableDataType';
 
 export interface SkillPageParams {
     id: number;
-    type: GameType;
-    pageType: SkillPageType;
-    version?: GameVersion;
+    game: GameType;
+    pageType: TableDataType;
+    version: GameVersion;
     page?: number;
     order?: SkillOrder;
+    display: TableType;
 }

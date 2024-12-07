@@ -7,6 +7,9 @@ module.exports = {
     ],
     theme: {
         extend: {
+            screens: {
+                xs: '480px',
+            },
             boxShadow: {
                 toggle: '0 3px 1px 0 rgba(0, 0, 0, 0,15)',
             },
@@ -34,6 +37,7 @@ module.exports = {
                 posX: 'posX 5s forwards linear infinite alternate',
             },
             transitionProperty: {
+                left: 'left',
                 right: 'right',
             },
             backgroundImage: {

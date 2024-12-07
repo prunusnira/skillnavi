@@ -7,6 +7,7 @@ import { getLocale, getMessages } from 'next-intl/server';
 import { Suspense } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
 import { cn } from '@/module/util/cn';
+import Version from '@/component/version/Version';
 
 export const metadata: Metadata = {
     title: 'Skill Navigator',
@@ -36,6 +37,7 @@ export default async function RootLayout({
                                 {children}
                             </main>
                             <Footer />
+                            <Version />
                         </Suspense>
                     </Wrappers>
                 </NextIntlClientProvider>

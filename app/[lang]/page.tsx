@@ -2,7 +2,6 @@ import { cn } from '@/module/util/cn';
 import Card from '@/component/common/card/Card';
 import { getLocale, getTranslations } from 'next-intl/server';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '@/module/api/auth/authOptions';
 import UserInfo from '@/component/main/userCard/UserInfo';
 import { getNotice } from '@/module/api/notice/getNotice';
 import { IMG, LINK } from '@/data/url';
@@ -11,12 +10,14 @@ import dayjs from 'dayjs';
 import style from './page.module.scss';
 import Link from 'next/link';
 
+export const dynamic = 'force-dynamic';
+
 /**
  * @abou 메인 페이지
  * @componentType nextjs page
  */
 const PageIndex = async () => {
-    const session = await getServerSession(authOptions);
+    const session = await getServerSession();
     const t = await getTranslations('index');
     const locale = await getLocale();
 
