@@ -10,6 +10,8 @@ import style from './page.module.scss';
 import ButtonRounded from '@/component/common/button/ButtonRounded';
 import ProfileButton from '@/component/profile/button/ProfileButton';
 
+export const dynamic = 'force-dynamic';
+
 const PageProfile = async ({ params }: { params: { id: string } }) => {
     const t = await getTranslations('user.profile');
     const { id } = params;
