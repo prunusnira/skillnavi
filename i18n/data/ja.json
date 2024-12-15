@@ -104,6 +104,20 @@
         "noti": "タイトル",
         "date": "時間"
     },
+    "music": {
+        "list": {
+            "title": "曲リスト"
+        },
+        "record": {
+            "rank": "ランク",
+            "rate": "達成率",
+            "combo": "コンボ",
+            "skill": "スキル"
+        },
+        "detail": {
+            "title": "曲データ"
+        }
+    },
     "pattern": {
         "music": {
             "count": "クリア回数",

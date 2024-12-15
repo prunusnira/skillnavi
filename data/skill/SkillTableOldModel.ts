@@ -1,7 +1,7 @@
 import { sequelize } from '@/module/lib/db/dbconn';
 import { DataTypes } from 'sequelize';
 
-export const SkillOldModel = sequelize.define('SkillOldModel', {
+export const SkillTableOldModel = sequelize.define('SkillOldModel', {
     musicid: {
         type: DataTypes.INTEGER,
     },

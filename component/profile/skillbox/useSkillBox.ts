@@ -1,7 +1,7 @@
 import { ProfileOld } from '@/data/profile/ProfileOld';
 import { useAtomValue } from 'jotai';
 import { atomEnv } from '@/jotai/atomEnv';
-import { TB } from '@/data/env/constant';
+import { VER_TB } from '@/data/env/constant';
 import { SkillTableBox } from '@/data/skill/SkillTableBox';
 import { useMemo } from 'react';
 
@@ -17,7 +17,7 @@ const useSkillBox = ({ profile }: Props) => {
 
         if (!ver) return list;
 
-        for (let v = ver; v > TB; v--) {
+        for (let v = ver; v > VER_TB; v--) {
             if (v === 31) {
                 list.push({
                     version: v,

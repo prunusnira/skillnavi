@@ -1,0 +1,15 @@
+.musicBox {
+  @apply flex flex-col justify-center items-center w-full max-w-[500px];
+
+  .musicRow {
+    @apply flex w-full flex-grow;
+
+    .musicCell {
+      @apply w-1/4 text-center;
+    }
+
+    .titleCell {
+      @apply text-black bg-yellow-500 font-bold;
+    }
+  }
+}

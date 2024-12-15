@@ -1,9 +1,9 @@
 import { InferAttributes, InferCreationAttributes, Model } from 'sequelize';
 
-export interface SkillOld
+export interface SkillTableOld
     extends Model<
-        InferAttributes<SkillOld>,
-        InferCreationAttributes<SkillOld>
+        InferAttributes<SkillTableOld>,
+        InferCreationAttributes<SkillTableOld>
     > {
     musicid: number;
     mname: string;

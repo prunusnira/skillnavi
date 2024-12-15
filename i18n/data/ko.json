@@ -104,6 +104,20 @@
         "noti": "제목",
         "date": "게시시간"
     },
+    "music": {
+        "list": {
+            "title": "곡 목록"
+        },
+        "record": {
+            "rank": "랭크",
+            "rate": "달성률",
+            "combo": "콤보",
+            "skill": "스킬"
+        },
+        "detail": {
+            "title": "곡별 상세 데이터"
+        }
+    },
     "pattern": {
         "music": {
             "count": "클리어 횟수",
