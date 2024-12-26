@@ -41,6 +41,18 @@ export const LINK = {
             return `/skill/${id}${params.size && `?${params.toString()}`}`;
         },
     },
+    MUSIC: {
+        list: ``,
+        info: ({
+            version,
+            mid,
+            uid,
+        }: {
+            version: number;
+            mid: number;
+            uid: number;
+        }) => `/music/info?mid=${mid}&uid=${uid}&version=${version}`,
+    },
     PATTERN: {
         list: (version: number, order: Order, page: number, hot: boolean) =>
             `/pattern/${version}/${order}/${page}?hot=${hot ? 'h' : 'o'}`,

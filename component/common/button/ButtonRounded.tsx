@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useMemo } from 'react';
 import { cn } from '@/module/util/cn';
 
 interface Props {
@@ -6,12 +6,26 @@ interface Props {
     text: string;
     onClick?: () => void;
     fixedWidth?: number;
+    isSelected?: boolean;
 }
 
-const ButtonRounded = ({ icon, text, onClick, fixedWidth }: Props) => {
+const ButtonRounded = ({
+    icon,
+    text,
+    onClick,
+    fixedWidth,
+    isSelected,
+}: Props) => {
+    const color = useMemo(() => {
+        if (isSelected) {
+            return 'bg-white text-black';
+        }
+        return '';
+    }, [isSelected]);
+
     return (
         <button
-            className={cn('flex-center border rounded-2xl px-2 py-1')}
+            className={cn('flex-center border rounded-2xl px-2 py-1', color)}
             onClick={onClick}
             style={{
                 width: fixedWidth,
