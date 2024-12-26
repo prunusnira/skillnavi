@@ -1,34 +1,34 @@
 import { sequelize } from '@/module/lib/db/dbconn';
 import { DataTypes } from 'sequelize';
 
-export const RecentModel = sequelize.define(
-    'RecentModel',
+export const MusicModel = sequelize.define(
+    'MusicListModel',
     {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
         },
-        titletower: {
-            type: DataTypes.STRING,
-        },
         name: {
             type: DataTypes.STRING,
         },
-        gskill: {
+        furigana: {
             type: DataTypes.STRING,
         },
-        dskill: {
+        composer: {
             type: DataTypes.STRING,
         },
-        updatetime: {
-            type: DataTypes.STRING,
+        version: {
+            type: DataTypes.INTEGER,
         },
-        opencount: {
-            type: DataTypes.STRING,
+        hot: {
+            type: DataTypes.INTEGER,
+        },
+        remove: {
+            type: DataTypes.INTEGER,
         },
     },
     {
-        tableName: 'profile',
         timestamps: false,
+        tableName: 'MusicList',
     },
 );

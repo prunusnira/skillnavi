@@ -1,19 +1,26 @@
-import { SkillOld } from '@/data/skill/SkillOld';
+'use client';
+
+import { SkillTableOld } from '@/data/skill/SkillTableOld';
 import { cn } from '@/module/util/cn';
 import { getSkillCN } from '@/module/api/skill/getSkillCN';
-import { ALBUM, IMG } from '@/data/url';
+import { IMG, LINK } from '@/data/url';
 import { convertPatternCode } from '@/module/util/convertPatternCode';
 import { convertLevel } from '@/module/util/convertLevel';
 import { convertRank } from '@/module/util/convertRank';
 import { getClearState } from '@/module/util/getClearState';
 import SkillItemVersion from '@/component/skill/table/SkillItemVersion';
+import AlbumArt from '@/component/common/albumart/AlbumArt';
+import AnchorText from '@/component/common/AnchorText';
+import { useParams, useSearchParams } from 'next/navigation';
 
 interface Props {
-    skill: SkillOld;
+    skill: SkillTableOld;
     index: number;
 }
 
 const SkillListTypeOld = ({ skill, index }: Props) => {
+    const { id } = useParams<{ id: string }>();
+    const searchParams = useSearchParams();
     const skillColor = getSkillCN((skill.skill * 50) / 1000000);
 
     return (
@@ -35,17 +42,27 @@ const SkillListTypeOld = ({ skill, index }: Props) => {
 
             {/* 자켓 */}
             <div className={cn('w-12 flex-center')}>
-                <img
+                <AlbumArt
+                    mid={skill.musicid}
                     className={cn('w-12 h-12 rounded-full')}
-                    alt="jacket"
-                    src={`${ALBUM}/${skill.musicid}.jpg`}
                 />
             </div>
 
             {/* 곡 정보 */}
             <section className={cn('flex flex-col flex-grow py-2.5')}>
                 {/* 제목 */}
-                <div>{skill.mname}</div>
+                <AnchorText
+                    className={cn(
+                        'w-full text-ellipsis break-all overflow-hidden whitespace-nowrap',
+                        'px-2 link',
+                    )}
+                    text={skill.mname}
+                    path={LINK.MUSIC.info({
+                        version: Number(searchParams.get('version') || 0),
+                        uid: Number(id),
+                        mid: skill.musicid,
+                    })}
+                />
 
                 {/* 기타 */}
                 <div className={cn('flex')}>

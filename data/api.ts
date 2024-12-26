@@ -14,7 +14,14 @@ export const API = {
         graph: (id: string) => `/profile/${id}/graph`,
     },
     RECENT: '/recent',
+    RECENTOLD: '/recent/old',
     SKILL: {
         table: '/skill',
+    },
+    MUSIC: {
+        list: '/music/list',
+        info: '/music/info',
+        record: (mid: number) => `/music/${mid}/record`,
+        pattern: (mid: number) => `/music/${mid}/pattern`,
     },
 };

@@ -104,6 +104,21 @@
     "noti": "Title",
     "date": "Time"
   },
+  "music": {
+    "list": {
+      "title": "Music List"
+    },
+    "record": {
+      "norecord": "No play data found",
+      "rank": "Rank",
+      "rate": "Rate",
+      "combo": "Combo",
+      "skill": "Skill"
+    },
+    "detail": {
+      "title": "Music Detail"
+    }
+  },
   "pattern": {
     "music": {
       "count": "Clear",
