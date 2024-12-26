@@ -2,71 +2,79 @@
 
 import useMusicRecord from '@/component/music/useMusicRecord';
 import { cn } from '@/module/util/cn';
-import ButtonStandard from '@/component/common/button/ButtonStandard';
 import ButtonRounded from '@/component/common/button/ButtonRounded';
 import MusicRecordItem from '@/component/music/MusicRecordItem';
 
 const MusicRecord = () => {
-    const { music, skill, changeGameType, changeVersion } = useMusicRecord();
+    const {
+        gameMode,
+        music,
+        skill,
+        changeGameType,
+        changeVersion,
+        ptcodeList,
+        availableVersion,
+        version,
+    } = useMusicRecord();
 
     return (
         <section className={cn('w-full')}>
             {/* 메뉴 공간 */}
             <section className={'flex-col-center'}>
                 {/* 버전 */}
-                <div className={cn('flex w-full')}>
-                    <div>Version</div>
+                <div className={cn('flex items-center w-full py-2.5')}>
+                    <div className={cn('w-[100px]')}>Version</div>
                     <div className={cn('flex')}>
-                        <ButtonRounded
-                            onClick={() => changeVersion(27)}
-                            text={'EX'}
-                        />
-                        <ButtonRounded
-                            onClick={() => changeVersion(28)}
-                            text={'NX'}
-                        />
+                        {availableVersion?.map((ver) => (
+                            <ButtonRounded
+                                key={ver.id}
+                                onClick={() => changeVersion(ver.id)}
+                                text={ver.short}
+                                isSelected={Number(version) === ver.id}
+                            />
+                        ))}
                     </div>
                 </div>
 
                 {/* 타입 */}
-                <div className={cn('flex w-full')}>
-                    <div>Mode</div>
+                <div className={cn('flex items-center w-full py-2.5')}>
+                    <div className={cn('w-[100px]')}>Mode</div>
                     <div className={cn('flex w-full')}>
-                        <ButtonStandard
+                        <ButtonRounded
                             onClick={() => changeGameType('g')}
                             text={'Guitar'}
+                            isSelected={gameMode === 'g'}
                         />
-                        <ButtonStandard
+                        <ButtonRounded
                             onClick={() => changeGameType('b')}
                             text={'Bass'}
+                            isSelected={gameMode === 'b'}
                         />
-                        <ButtonStandard
+                        <ButtonRounded
                             onClick={() => changeGameType('d')}
                             text={'Drum'}
+                            isSelected={gameMode === 'd'}
                         />
                     </div>
                 </div>
             </section>
 
             {/* 데이터 영역 */}
-            {skill.length === 0 && (
-                <section className={cn('flex-col-center')}>
-                    TODO: No Data Text
-                </section>
-            )}
-            {skill.map((s) => {
+            {ptcodeList.map((ptcode) => {
+                const result = skill.find((s) => s.patterncode === ptcode);
+
                 const pattern = music?.pattern.find(
-                    (m) => m.patterncode === s.patterncode,
+                    (m) => m.patterncode === ptcode,
                 );
 
-                if (!pattern) return null;
+                if (!pattern || pattern.level === 0) return null;
 
                 return (
                     <MusicRecordItem
-                        key={s.patterncode}
-                        skill={s}
+                        key={ptcode}
+                        skill={result}
                         level={pattern.level}
-                        patterncode={s.patterncode}
+                        patterncode={ptcode}
                     />
                 );
             })}

@@ -2,7 +2,7 @@ import { Skill } from '@/data/skill/Skill';
 import { useMemo } from 'react';
 
 interface Props {
-    skill: Skill;
+    skill?: Skill;
     level: number;
     patterncode: number;
 }

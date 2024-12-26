@@ -109,6 +109,7 @@
       "title": "Music List"
     },
     "record": {
+      "norecord": "No play data found",
       "rank": "Rank",
       "rate": "Rate",
       "combo": "Combo",

@@ -109,6 +109,7 @@
             "title": "곡 목록"
         },
         "record": {
+            "norecord": "데이터가 없습니다",
             "rank": "랭크",
             "rate": "달성률",
             "combo": "콤보",
