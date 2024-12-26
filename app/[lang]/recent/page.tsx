@@ -1,9 +1,9 @@
 import Card from '@/component/common/card/Card';
 import { getTranslations } from 'next-intl/server';
-import { getRecent } from '@/module/api/recent/getRecent';
 import { cn } from '@/module/util/cn';
 import SkillColor from '@/component/common/skillColor/SkillColor';
 import UserLinkIcon from '@/component/common/table/user/UserLinkIcon';
+import { getRecent } from '@/module/api/recent/getRecent';
 
 export const dynamic = 'force-dynamic';
 
@@ -27,7 +27,14 @@ const PageRecent = async () => {
                     >
                         {/* 아이콘/이름 */}
                         <div className={cn('flex-grow w-full')}>
-                            <UserLinkIcon user={r} />
+                            <UserLinkIcon
+                                user={{
+                                    id: r.id,
+                                    name: r.name,
+                                    titletower: r.titletower,
+                                    openinfo: r.openinfo,
+                                }}
+                            />
                         </div>
 
                         {/* 스킬 정보 */}
@@ -35,13 +42,13 @@ const PageRecent = async () => {
                             <div className={cn('flex-center gap-2')}>
                                 <div className={cn('w-8 text-center')}>GF</div>
                                 <div className={cn('w-20 text-center')}>
-                                    <SkillColor value={Number(r.gskill)} />
+                                    <SkillColor value={r.gskill / 100} />
                                 </div>
                             </div>
                             <div className={cn('flex-center gap-2')}>
                                 <div className={cn('w-8 text-center')}>DM</div>
                                 <div className={cn('w-20 text-center')}>
-                                    <SkillColor value={Number(r.dskill)} />
+                                    <SkillColor value={r.dskill / 100} />
                                 </div>
                             </div>
                         </div>
