@@ -113,7 +113,8 @@
             "rank": "랭크",
             "rate": "달성률",
             "combo": "콤보",
-            "skill": "스킬"
+            "skill": "스킬",
+            "link": "패턴 랭킹 보기"
         },
         "detail": {
             "title": "곡별 상세 데이터"
@@ -151,7 +152,8 @@
                     "title": "이름순",
                     "version": "버전"
                 }
-            }
+            },
+            "notexist": "패턴 정보가 없습니다"
         },
         "rankeach": {
             "title": "패턴별 랭킹",

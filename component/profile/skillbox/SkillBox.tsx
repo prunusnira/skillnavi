@@ -4,15 +4,19 @@ import { cn } from '@/module/util/cn';
 import SkillBoxRow from '@/component/profile/skillbox/SkillBoxRow';
 import SkillBoxCell from '@/component/profile/skillbox/SkillBoxCell';
 import SkillColor from '@/component/common/skillColor/SkillColor';
-import { ProfileOld } from '@/data/profile/ProfileOld';
 import useSkillBox from '@/component/profile/skillbox/useSkillBox';
+import { ProfileSkill } from '@/data/profile/ProfileSkill';
+import { useAtomValue } from 'jotai';
+import { atomGameVersionList } from '@/jotai/atomGameVersion';
 
 interface Props {
-    profile: ProfileOld;
+    skill: ProfileSkill[];
 }
 
-const SkillBox = ({ profile }: Props) => {
-    const { skillBox } = useSkillBox({ profile });
+const SkillBox = ({ skill }: Props) => {
+    const { skillBox } = useSkillBox({ skill });
+    const versionList = useAtomValue(atomGameVersionList);
+
     return (
         <section className={cn('flex-col-center')}>
             <SkillBoxRow>
@@ -22,7 +26,13 @@ const SkillBox = ({ profile }: Props) => {
             </SkillBoxRow>
             {skillBox.map((skill) => (
                 <SkillBoxRow key={`skill${skill.version}`}>
-                    <SkillBoxCell>{skill.version}</SkillBoxCell>
+                    <SkillBoxCell>
+                        {
+                            versionList?.find(
+                                (version) => version.id === skill.version,
+                            )?.short
+                        }
+                    </SkillBoxCell>
                     <SkillBoxCell>
                         <SkillColor value={skill.gf} />
                     </SkillBoxCell>

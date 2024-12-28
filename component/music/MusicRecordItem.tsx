@@ -2,13 +2,17 @@
 
 import { cn } from '@/module/util/cn';
 import { Skill } from '@/data/skill/Skill';
-import useMusicRecordItem from '@/component/music/useMusicRecordItem';
 import { useTranslations } from 'next-intl';
+import { useRouter } from '@/i18n/routing';
+import { LINK } from '@/data/url';
+import { getPatternTypeFromCode } from '@/module/util/pattern/getPatternTypeFromCode';
 
 interface Props {
     skill?: Skill;
     level: number;
     patterncode: number;
+    mid: string | null;
+    version: string | null;
 }
 
 interface DataProps {
@@ -27,9 +31,17 @@ const ColumnData = ({ title, content }: DataProps) => {
     );
 };
 
-const MusicRecordItem = ({ skill, level, patterncode }: Props) => {
+// CSR 개별 기록 정보
+const MusicRecordItem = ({
+    skill,
+    level,
+    patterncode,
+    mid,
+    version,
+}: Props) => {
     const t = useTranslations('music.record');
-    const { difficulty } = useMusicRecordItem({ skill, level, patterncode });
+    const difficulty = getPatternTypeFromCode(patterncode);
+    const router = useRouter();
 
     return (
         <section className={cn('flex-col-center px-2.5 py-5')}>
@@ -38,7 +50,21 @@ const MusicRecordItem = ({ skill, level, patterncode }: Props) => {
                 <div className={cn('w-full font-bold text-xl')}>
                     {difficulty} {(level / 100).toFixed(2)}
                 </div>
-                <div>TODO: Pattern Ranking Link</div>
+                <div
+                    className={cn('link no-line-wrap')}
+                    onClick={() =>
+                        router.push(
+                            LINK.PATTERN.rank(
+                                String(version),
+                                1,
+                                String(mid),
+                                patterncode,
+                            ),
+                        )
+                    }
+                >
+                    {t('link')}
+                </div>
             </div>
 
             {/* 데이터 */}

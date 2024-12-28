@@ -1,7 +1,8 @@
 import { sequelize } from '@/module/lib/db/dbconn';
 import { DataTypes } from 'sequelize';
+import { Pattern } from '@/data/pattern/Pattern';
 
-export const PatternModel = sequelize.define(
+export const PatternModel = sequelize.define<Pattern>(
     'PatternList',
     {
         mid: {
