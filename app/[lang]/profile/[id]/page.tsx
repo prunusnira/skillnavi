@@ -9,20 +9,34 @@ import SkillBox from '@/component/profile/skillbox/SkillBox';
 import style from './page.module.scss';
 import ButtonRounded from '@/component/common/button/ButtonRounded';
 import ProfileButton from '@/component/profile/button/ProfileButton';
+import { getProfileSkill } from '@/module/api/profile/getProfileSkill';
+import { getGameVersions } from '@/module/api/env/getGameVersions';
 
 export const dynamic = 'force-dynamic';
 
 const PageProfile = async ({ params }: { params: { id: string } }) => {
     const t = await getTranslations('user.profile');
     const { id } = params;
-    const mydata = await getProfile(id);
+    const mydata = await getProfile([Number(id)]);
+    const myskill = await getProfileSkill([Number(id)]);
     const graph = await getProfileGraph(id);
+    const game = await getGameVersions();
 
-    if (!mydata) {
+    if (!mydata.length || !myskill) {
+        // TODO: 데이터가 없음
         return null;
     }
 
-    const { profile } = mydata;
+    // 프로필 정보 가져오기
+    const profile = mydata[0];
+
+    // 버전정보 가져오기
+    const codeSorted = game.map((data) => data.id).sort((a, b) => b - a);
+
+    // 최신작 스킬
+    const latestSkill = myskill.find(
+        (skill) => skill.version === codeSorted[0],
+    );
 
     return (
         <article className={cn('flex-col-center w-full')}>
@@ -42,7 +56,7 @@ const PageProfile = async ({ params }: { params: { id: string } }) => {
                 </div>
 
                 {/* 스킬 기록 */}
-                <SkillBox profile={profile} />
+                <SkillBox skill={myskill} />
             </Card>
 
             {/* 스킬 그래프 */}
@@ -51,66 +65,72 @@ const PageProfile = async ({ params }: { params: { id: string } }) => {
             </Card>
 
             {/* 상세 정보 테이블 */}
-            <Card title={t('detail')}>
-                <section className={cn('flex-col-center w-full')}>
-                    <div className={style.detailRow}>
-                        <div className={style.detailCell}>#</div>
-                        <div className={style.detailCell}>GuitarFreaks</div>
-                        <div className={style.detailCell}>DrumMania</div>
-                    </div>
-                    <div className={style.detailRow}>
-                        <div className={style.detailCell}>
-                            {t('detailed.s')}
+            {latestSkill && (
+                <Card title={t('detail')}>
+                    <section className={cn('flex-col-center w-full')}>
+                        <div className={style.detailRow}>
+                            <div className={style.detailCell}>#</div>
+                            <div className={style.detailCell}>GuitarFreaks</div>
+                            <div className={style.detailCell}>DrumMania</div>
                         </div>
-                        <div className={style.detailCell}>{profile.gskill}</div>
-                        <div className={style.detailCell}>{profile.dskill}</div>
-                    </div>
-                    <div className={style.detailRow}>
-                        <div className={style.detailCell}>
-                            {t('detailed.clv')}
+                        <div className={style.detailRow}>
+                            <div className={style.detailCell}>
+                                {t('detailed.s')}
+                            </div>
+                            <div className={style.detailCell}>
+                                {latestSkill.gskill}
+                            </div>
+                            <div className={style.detailCell}>
+                                {latestSkill.dskill}
+                            </div>
                         </div>
-                        <div className={style.detailCell}>
-                            {profile.gclearlv} ({profile.gclearnum})
+                        <div className={style.detailRow}>
+                            <div className={style.detailCell}>
+                                {t('detailed.clv')}
+                            </div>
+                            <div className={style.detailCell}>
+                                {latestSkill.gclearlv} ({latestSkill.gclearnum})
+                            </div>
+                            <div className={style.detailCell}>
+                                {latestSkill.dclearlv} ({latestSkill.dclearnum})
+                            </div>
                         </div>
-                        <div className={style.detailCell}>
-                            {profile.dclearlv} ({profile.dclearnum})
+                        <div className={style.detailRow}>
+                            <div className={style.detailCell}>
+                                {t('detailed.flv')}
+                            </div>
+                            <div className={style.detailCell}>
+                                {latestSkill.gfclv} ({latestSkill.gfcnum})
+                            </div>
+                            <div className={style.detailCell}>
+                                {latestSkill.dfclv} ({latestSkill.dfcnum})
+                            </div>
                         </div>
-                    </div>
-                    <div className={style.detailRow}>
-                        <div className={style.detailCell}>
-                            {t('detailed.flv')}
+                        <div className={style.detailRow}>
+                            <div className={style.detailCell}>
+                                {t('detailed.elv')}
+                            </div>
+                            <div className={style.detailCell}>
+                                {latestSkill.gexclv} ({latestSkill.gexcnum})
+                            </div>
+                            <div className={style.detailCell}>
+                                {latestSkill.dexclv} ({latestSkill.dexcnum})
+                            </div>
                         </div>
-                        <div className={style.detailCell}>
-                            {profile.gfclv} ({profile.gfcnum})
+                        <div className={style.detailRow}>
+                            <div className={style.detailCell}>
+                                {t('detailed.count')}
+                            </div>
+                            <div className={style.detailCell}>
+                                {latestSkill.gcount}
+                            </div>
+                            <div className={style.detailCell}>
+                                {latestSkill.dcount}
+                            </div>
                         </div>
-                        <div className={style.detailCell}>
-                            {profile.dfclv} ({profile.dfcnum})
-                        </div>
-                    </div>
-                    <div className={style.detailRow}>
-                        <div className={style.detailCell}>
-                            {t('detailed.elv')}
-                        </div>
-                        <div className={style.detailCell}>
-                            {profile.gexclv} ({profile.gexcnum})
-                        </div>
-                        <div className={style.detailCell}>
-                            {profile.dexclv} ({profile.dexcnum})
-                        </div>
-                    </div>
-                    <div className={style.detailRow}>
-                        <div className={style.detailCell}>
-                            {t('detailed.count')}
-                        </div>
-                        <div className={style.detailCell}>
-                            {profile.countgf}
-                        </div>
-                        <div className={style.detailCell}>
-                            {profile.countdm}
-                        </div>
-                    </div>
-                </section>
-            </Card>
+                    </section>
+                </Card>
+            )}
 
             {/* 플레이어 보드: 사이즈 조정으로 제공, 클릭 시 새 탭으로 열기 */}
             <Card title={t('board.title')}>

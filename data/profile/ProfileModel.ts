@@ -1,7 +1,8 @@
 import { sequelize } from '@/module/lib/db/dbconn';
 import { DataTypes } from 'sequelize';
+import { Profile } from '@/data/profile/Profile';
 
-export const ProfileModel = sequelize.define(
+export const ProfileModel = sequelize.define<Profile>(
     'ProfileModel',
     {
         id: {

@@ -113,7 +113,8 @@
       "rank": "Rank",
       "rate": "Rate",
       "combo": "Combo",
-      "skill": "Skill"
+      "skill": "Skill",
+      "link": "Pattern Ranking"
     },
     "detail": {
       "title": "Music Detail"
@@ -151,7 +152,8 @@
           "title": "Title",
           "version": "Version"
         }
-      }
+      },
+      "notexist": "Pattern does not exist"
     },
     "rankeach": {
       "title": "Pattern ranking",

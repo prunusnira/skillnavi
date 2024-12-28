@@ -7,6 +7,7 @@ interface Props {
     pattern: Pattern[];
 }
 
+// CSR 난이도 테이블
 const MusicDiffTable = ({ pattern }: Props) => {
     const getLevel = useCallback(
         (ptcode: number) => {

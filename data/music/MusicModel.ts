@@ -1,7 +1,8 @@
 import { sequelize } from '@/module/lib/db/dbconn';
 import { DataTypes } from 'sequelize';
+import { Music } from '@/data/music/Music';
 
-export const MusicModel = sequelize.define(
+export const MusicModel = sequelize.define<Music>(
     'MusicListModel',
     {
         id: {
