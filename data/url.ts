@@ -58,6 +58,8 @@ export const LINK = {
             `/pattern/${version}/${order}/${page}?hot=${hot ? 'h' : 'o'}`,
         noplay: '/pattern/noplay',
         table: '/pattern/table',
+        rank: (version: string, page: number, mid: string, ptcode: number) =>
+            `/pattern/rank?mid=${mid}&page=${page}&version=${version}&ptcode=${ptcode}`,
     },
     TOWER: {
         main: '/tower',

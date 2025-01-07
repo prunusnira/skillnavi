@@ -163,6 +163,7 @@ const useMusicRecord = () => {
         ptcodeList,
         availableVersion,
         version,
+        mid,
     };
 };
 

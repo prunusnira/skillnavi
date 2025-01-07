@@ -5,6 +5,7 @@ import { cn } from '@/module/util/cn';
 import ButtonRounded from '@/component/common/button/ButtonRounded';
 import MusicRecordItem from '@/component/music/MusicRecordItem';
 
+// CSR 기록 정보
 const MusicRecord = () => {
     const {
         gameMode,
@@ -15,6 +16,7 @@ const MusicRecord = () => {
         ptcodeList,
         availableVersion,
         version,
+        mid,
     } = useMusicRecord();
 
     return (
@@ -75,6 +77,8 @@ const MusicRecord = () => {
                         skill={result}
                         level={pattern.level}
                         patterncode={ptcode}
+                        mid={mid}
+                        version={version}
                     />
                 );
             })}

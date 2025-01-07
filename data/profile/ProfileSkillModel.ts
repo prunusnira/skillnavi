@@ -1,7 +1,8 @@
 import { sequelize } from '@/module/lib/db/dbconn';
 import { DataTypes } from 'sequelize';
+import { ProfileSkill } from '@/data/profile/ProfileSkill';
 
-export const ProfileSkillModel = sequelize.define(
+export const ProfileSkillModel = sequelize.define<ProfileSkill>(
     'ProfileSkillModel',
     {
         uid: {

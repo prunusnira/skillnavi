@@ -1,10 +1,9 @@
 import { cn } from '@/module/util/cn';
 import { IMG } from '@/data/url';
-import { ProfileOldBasic } from '@/data/profile/ProfileOldBasic';
-import { ProfileOld } from '@/data/profile/ProfileOld';
+import { Profile } from '@/data/profile/Profile';
 
 interface Props {
-    mydata: ProfileOldBasic | ProfileOld;
+    mydata: Profile;
 }
 
 const UserBox = ({ mydata }: Props) => {

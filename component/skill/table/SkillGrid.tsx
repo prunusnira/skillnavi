@@ -1,4 +1,5 @@
-import { SkillTableOld } from '@/data/skill/SkillTableOld';
+'use client';
+
 import { cn } from '@/module/util/cn';
 import { getSkillCN } from '@/module/api/skill/getSkillCN';
 import { IMG, LINK } from '@/data/url';
@@ -10,16 +11,28 @@ import SkillItemVersion from '@/component/skill/table/SkillItemVersion';
 import AlbumArt from '@/component/common/albumart/AlbumArt';
 import AnchorText from '@/component/common/AnchorText';
 import { useParams, useSearchParams } from 'next/navigation';
+import { Skill } from '@/data/skill/Skill';
+import { Music } from '@/data/music/Music';
+import { useMemo } from 'react';
 
 interface Props {
-    skill: SkillTableOld;
+    music: Music;
+    skill: Skill;
     index: number;
+    level: number;
 }
 
-const SkillGridTypeOld = ({ skill, index }: Props) => {
+const SkillGrid = ({ music, skill, level, index }: Props) => {
     const { id } = useParams<{ id: string }>();
     const searchParams = useSearchParams();
-    const skillColor = getSkillCN((skill.skill * 50) / 1000000);
+    const skillValue = useMemo(
+        () => skill.rate * level * 50,
+        [
+            skill,
+            level,
+        ],
+    );
+    const skillColor = getSkillCN(skillValue / 1000000);
 
     return (
         <section
@@ -44,11 +57,11 @@ const SkillGridTypeOld = ({ skill, index }: Props) => {
                     'w-full text-center text-ellipsis break-all overflow-hidden whitespace-nowrap',
                     'px-2 link',
                 )}
-                text={skill.mname}
+                text={music.name}
                 path={LINK.MUSIC.info({
                     version: Number(searchParams.get('version') || 0),
                     uid: Number(id),
-                    mid: skill.musicid,
+                    mid: skill.mid,
                 })}
             />
 
@@ -56,11 +69,11 @@ const SkillGridTypeOld = ({ skill, index }: Props) => {
                 {/* 자켓 */}
                 <div className={cn('w-12 flex-col-center')}>
                     <AlbumArt
-                        mid={skill.musicid}
+                        mid={skill.mid}
                         className={cn('w-12 h-12 rounded-full')}
                     />
                     <SkillItemVersion
-                        versionId={skill.version}
+                        versionId={skill.playver}
                         type={'short'}
                     />
                 </div>
@@ -77,19 +90,19 @@ const SkillGridTypeOld = ({ skill, index }: Props) => {
                             />
                         </div>
                         <div className={cn('flex-center')}>
-                            {convertLevel(skill.level)}
+                            {convertLevel(level)}
                         </div>
                     </div>
                     <div className={cn('flex justify-around')}>
                         <img
                             className={cn('w-5')}
                             alt={'rank'}
-                            src={`${IMG}/rank/${convertRank(skill.rank)}`}
+                            src={`${IMG}/rank/${convertRank(skill.maxrank)}`}
                         />
                         <div className={cn('font-bold flex-center')}>
                             {getClearState({
                                 rate: skill.rate,
-                                fc: skill.checkfc === 'Y',
+                                fc: skill.fc === 1,
                                 short: true,
                             })}
                         </div>
@@ -104,7 +117,7 @@ const SkillGridTypeOld = ({ skill, index }: Props) => {
                         'bg-lime-300 w-full text-black font-bold flex-center',
                     )}
                 >
-                    {(Math.floor(skill.skill / 10000) / 100).toFixed(2)}
+                    {(Math.floor(skillValue / 10000) / 100).toFixed(2)}
                 </div>
                 <div
                     className={cn(
@@ -118,4 +131,4 @@ const SkillGridTypeOld = ({ skill, index }: Props) => {
     );
 };
 
-export default SkillGridTypeOld;
+export default SkillGrid;

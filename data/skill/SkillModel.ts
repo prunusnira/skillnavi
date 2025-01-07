@@ -1,7 +1,8 @@
 import { sequelize } from '@/module/lib/db/dbconn';
 import { DataTypes } from 'sequelize';
+import { Skill } from '@/data/skill/Skill';
 
-export const SkillModel = sequelize.define(
+export const SkillModel = sequelize.define<Skill>(
     'SkillModel',
     {
         uid: {

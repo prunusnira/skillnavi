@@ -1,7 +1,8 @@
 import { sequelize } from '@/module/lib/db/dbconn';
 import { DataTypes } from 'sequelize';
+import { GameVersion } from '@/data/game/GameVersion';
 
-export const GameVersionModel = sequelize.define(
+export const GameVersionModel = sequelize.define<GameVersion>(
     'GameVersionModel',
     {
         id: {

@@ -1,11 +1,9 @@
 import { fetchAdv } from '@/module/api/fetchAdv';
 import { API } from '@/data/api';
-import { ProfileOld } from '@/data/profile/ProfileOld';
+import { Profile } from '@/data/profile/Profile';
 
-interface Profile {
-    profile: ProfileOld;
-}
-
-export const getProfile = async (id: string) => {
-    return await fetchAdv.get<Profile>(API.PROFILE.old.id(id));
+export const getProfile = async (id: number[]) => {
+    return await fetchAdv.post<Profile[]>(API.PROFILE.id, {
+        body: { id },
+    });
 };

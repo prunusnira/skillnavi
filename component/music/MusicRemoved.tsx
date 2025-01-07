@@ -2,6 +2,7 @@ interface Props {
     version: number;
 }
 
+// ALL 곡 삭제 정보
 const MusicRemoved = ({ version }: Props) => {
     const removeText = (version: number) => {
         switch (version) {
