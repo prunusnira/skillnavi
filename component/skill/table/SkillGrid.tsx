@@ -11,28 +11,25 @@ import SkillItemVersion from '@/component/skill/table/SkillItemVersion';
 import AlbumArt from '@/component/common/albumart/AlbumArt';
 import AnchorText from '@/component/common/AnchorText';
 import { useParams, useSearchParams } from 'next/navigation';
-import { Skill } from '@/data/skill/Skill';
-import { Music } from '@/data/music/Music';
 import { useMemo } from 'react';
+import { SkillTableData } from '@/data/skill/SkillTableData';
 
 interface Props {
-    music: Music;
-    skill: Skill;
+    skill: SkillTableData;
     index: number;
-    level: number;
 }
 
-const SkillGrid = ({ music, skill, level, index }: Props) => {
+const SkillGrid = ({ skill, index }: Props) => {
     const { id } = useParams<{ id: string }>();
+    const { music } = skill;
     const searchParams = useSearchParams();
     const skillValue = useMemo(
-        () => skill.rate * level * 50,
+        () => skill.rate * skill.level * 20,
         [
             skill,
-            level,
         ],
     );
-    const skillColor = getSkillCN(skillValue / 1000000);
+    const skillColor = getSkillCN((skillValue * 5) / 100000);
 
     return (
         <section
@@ -90,7 +87,7 @@ const SkillGrid = ({ music, skill, level, index }: Props) => {
                             />
                         </div>
                         <div className={cn('flex-center')}>
-                            {convertLevel(level)}
+                            {convertLevel(skill.level)}
                         </div>
                     </div>
                     <div className={cn('flex justify-around')}>

@@ -1,11 +1,11 @@
 import { InferAttributes, InferCreationAttributes, Model } from 'sequelize';
 
-export interface Skill
-    extends Model<InferAttributes<Skill>, InferCreationAttributes<Skill>> {
+export interface SkillData {
     uid: number;
     mid: number;
     playver: number;
     patterncode: number;
+    level: number;
     playcount: number;
     clearcount: number;
     maxrank: string;
@@ -13,4 +13,9 @@ export interface Skill
     combo: number;
     fc: number;
     meter: string | null;
+    hot: number;
 }
+
+export interface Skill
+    extends SkillData,
+        Model<InferAttributes<Skill>, InferCreationAttributes<Skill>> {}

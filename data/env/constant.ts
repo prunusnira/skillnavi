@@ -5,3 +5,4 @@ export const VER_TB = 24;
 export const VER_NX = 28;
 
 export const MUSICLIST_SIZE = 10;
+export const SKILL_SIZE = 32;

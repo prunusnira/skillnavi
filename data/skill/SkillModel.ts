@@ -17,6 +17,9 @@ export const SkillModel = sequelize.define<Skill>(
         patterncode: {
             type: DataTypes.INTEGER,
         },
+        level: {
+            type: DataTypes.INTEGER,
+        },
         playcount: {
             type: DataTypes.INTEGER,
         },
@@ -37,6 +40,9 @@ export const SkillModel = sequelize.define<Skill>(
         },
         meter: {
             type: DataTypes.STRING,
+        },
+        hot: {
+            type: DataTypes.INTEGER,
         },
     },
     {

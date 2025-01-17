@@ -28,11 +28,11 @@ export const SidebarMenuItems: SidebarMenu[] = [
             },
             {
                 id: 'mydata.mygf',
-                href: LINK.PROFILE.myskill('gf'),
+                href: LINK.SKILL.self('gf'),
             },
             {
                 id: 'mydata.mydm',
-                href: LINK.PROFILE.myskill('dm'),
+                href: LINK.SKILL.self('dm'),
             },
             {
                 id: 'mydata.count',

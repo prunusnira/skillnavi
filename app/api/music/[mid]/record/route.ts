@@ -12,8 +12,8 @@ export const GET = async (
         work: async () => {
             const searchParams = req.nextUrl.searchParams;
             const { mid } = params;
-            const uid = searchParams.get('uid');
-            const version = searchParams.get('version');
+            const uid = Number(searchParams.get('uid'));
+            const version = Number(searchParams.get('version'));
 
             const recordInfo = await SkillModel.findAll({
                 attributes: {

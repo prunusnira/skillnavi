@@ -8,7 +8,6 @@ export const API = {
         basic: '/profile/basic',
         id: `/profile/id`,
         old: {
-            basic: '/profile/old/basic',
             id: (id: string) => `/profile/old/${id}`,
         },
         graph: (id: string) => `/profile/${id}/graph`,

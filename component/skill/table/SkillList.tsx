@@ -11,28 +11,25 @@ import SkillItemVersion from '@/component/skill/table/SkillItemVersion';
 import AlbumArt from '@/component/common/albumart/AlbumArt';
 import AnchorText from '@/component/common/AnchorText';
 import { useParams, useSearchParams } from 'next/navigation';
-import { Music } from '@/data/music/Music';
-import { Skill } from '@/data/skill/Skill';
 import { useMemo } from 'react';
+import { SkillTableData } from '@/data/skill/SkillTableData';
 
 interface Props {
-    music: Music;
-    skill: Skill;
+    skill: SkillTableData;
     index: number;
-    level: number;
 }
 
-const SkillListTypeOld = ({ music, skill, level, index }: Props) => {
+const SkillList = ({ skill, index }: Props) => {
     const { id } = useParams<{ id: string }>();
+    const { music } = skill;
     const searchParams = useSearchParams();
     const skillValue = useMemo(
-        () => skill.rate * level * 50,
+        () => skill.rate * skill.level * 20,
         [
             skill,
-            level,
         ],
     );
-    const skillColor = getSkillCN(skillValue / 1000000);
+    const skillColor = getSkillCN((skillValue * 5) / 100000);
 
     return (
         <section
@@ -84,7 +81,7 @@ const SkillListTypeOld = ({ music, skill, level, index }: Props) => {
                             src={`${IMG}/diff/${convertPatternCode(skill.patterncode, 'image')}`}
                         />
                     </div>
-                    <div>{convertLevel(level)}</div>
+                    <div>{convertLevel(skill.level)}</div>
                     <div>
                         <img
                             className={cn('w-5')}
@@ -114,4 +111,4 @@ const SkillListTypeOld = ({ music, skill, level, index }: Props) => {
     );
 };
 
-export default SkillListTypeOld;
+export default SkillList;

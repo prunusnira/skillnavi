@@ -12,7 +12,7 @@ export const GET = async (
         work: async () => {
             const searchParams = req.nextUrl.searchParams;
             const { mid } = params;
-            const version = searchParams.get('version');
+            const version = Number(searchParams.get('version'));
 
             const patternList = await PatternModel.findAll({
                 attributes: {

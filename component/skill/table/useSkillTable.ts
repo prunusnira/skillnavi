@@ -12,6 +12,7 @@ import {
     atomSkillTableOptionsInit,
 } from '@/jotai/atomSkillTableOptions';
 import { OrderType } from '@/data/skill/OrderType';
+import { getProfileSkill } from '@/module/api/profile/getProfileSkill';
 
 const useSkillTable = () => {
     const searchParams = useSearchParams();
@@ -30,13 +31,7 @@ const useSkillTable = () => {
         });
     }, [searchParams]);
 
-    const getSkill = async ({
-        isHot = false,
-        isOthers = false,
-    }: {
-        isHot?: boolean;
-        isOthers?: boolean;
-    }) => {
+    const getSkill = async () => {
         return await getSkillTable({
             id: params.id,
             page: option.page,
@@ -44,135 +39,70 @@ const useSkillTable = () => {
             version: option.versionId,
             order: option.order,
             pageType: option.data,
-            isHot,
-            isOthers,
         });
     };
 
     // 전체 목록 스킬 데이터
-    const { data: skillall, isLoading: isLoadingAll } = useQuery({
+    const { data: result, isLoading } = useQuery({
         queryKey: [
-            'skillall',
             option,
         ],
-        queryFn: () => getSkill({}),
+        queryFn: getSkill,
     });
 
-    // 스킬대상곡 (HOT)
-    const { data: skillhot, isLoading: isLoadingHot } = useQuery({
-        queryKey: [
-            'skillhot',
-            option,
-        ],
-        queryFn: () => getSkill({ isHot: true }),
-    });
+    const pages = useMemo(() => result?.pages, [result]);
+    const skill = useMemo(() => result?.data, [result]);
 
-    // 스킬대상곡 (OTHER)
-    const { data: skillother, isLoading: isLoadingOther } = useQuery({
-        queryKey: [
-            'skillother',
-            option,
-        ],
-        queryFn: () => getSkill({ isOthers: true }),
-    });
-
-    const hotvalue = useMemo(() => {
-        if (!skillhot?.length) return 0;
-
-        let sum = 0;
-        skillhot.forEach((skill) => {
-            sum += Math.floor(skill.skill / 10000);
+    const skillSum = useMemo(() => {
+        const sum: number[] = [];
+        skill?.forEach((table) => {
+            const skillSum = table.reduce(
+                (acc, cur) =>
+                    Math.floor((cur.rate * cur.level * 20) / 10000) + acc,
+                0,
+            );
+            sum.push(skillSum);
         });
         return sum;
-    }, [skillhot]);
-
-    const othervalue = useMemo(() => {
-        if (!skillother?.length) return 0;
-
-        let sum = 0;
-        skillother.forEach((skill) => {
-            sum += Math.floor(skill.skill / 10000);
-        });
-        return sum;
-    }, [skillother]);
+    }, [skill]);
 
     // 프로필 정보
     const { data: profile } = useQuery({
         queryKey: ['profile'],
-        queryFn: () => getProfile(params.id),
+        queryFn: () => getProfile([Number(params.id)]),
     });
 
-    const skill = useMemo(() => {
-        if (!profile?.profile) return undefined;
+    const { data: profileSkill } = useQuery({
+        queryKey: ['profileSkill'],
+        queryFn: () => getProfileSkill([Number(params.id)]),
+    });
+
+    const userSkill = useMemo(() => {
+        if (!profile?.length) return undefined;
+        if (!profileSkill?.length) return undefined;
         const version = Number(searchParams.get('version') || 0);
-        switch (version) {
-            case 24:
-                return {
-                    all: profile.profile.gskilltb + profile.profile.dskilltb,
-                    gf: profile.profile.gskilltb,
-                    dm: profile.profile.dskilltb,
-                };
-            case 25:
-                return {
-                    all:
-                        profile.profile.gskilltbre + profile.profile.dskilltbre,
-                    gf: profile.profile.gskilltbre,
-                    dm: profile.profile.dskilltbre,
-                };
-            case 26:
-                return {
-                    all: profile.profile.gskillmx + profile.profile.dskillmx,
-                    gf: profile.profile.gskillmx,
-                    dm: profile.profile.dskillmx,
-                };
-            case 27:
-                return {
-                    all: profile.profile.gskillex + profile.profile.dskillex,
-                    gf: profile.profile.gskillex,
-                    dm: profile.profile.dskillex,
-                };
-            case 28:
-                return {
-                    all: profile.profile.gskillnx + profile.profile.dskillnx,
-                    gf: profile.profile.gskillnx,
-                    dm: profile.profile.dskillnx,
-                };
-            case 29:
-                return {
-                    all: profile.profile.gskillhv + profile.profile.dskillhv,
-                    gf: profile.profile.gskillhv,
-                    dm: profile.profile.dskillhv,
-                };
-            case 30:
-                return {
-                    all: profile.profile.gskillfu + profile.profile.dskillfu,
-                    gf: profile.profile.gskillfu,
-                    dm: profile.profile.dskillfu,
-                };
-            case 31:
-            default:
-                return {
-                    all: profile.profile.gskill + profile.profile.dskill,
-                    gf: profile.profile.gskill,
-                    dm: profile.profile.dskill,
-                };
-        }
+        const skill = profileSkill.find((ps) => ps.version === version);
+
+        if (!skill) return undefined;
+
+        return {
+            all: skill.dskill + skill.gskill,
+            gf: skill.gskill,
+            dm: skill.dskill,
+        };
     }, [
         profile,
+        profileSkill,
         searchParams,
     ]);
 
     return {
-        skillall,
-        skillhot,
-        skillother,
-        profile: profile?.profile,
-        hotvalue,
-        othervalue,
-        isLoadingAll,
-        isLoadingHot,
-        isLoadingOther,
+        userSkill,
+        skillSum,
+        profile: profile?.[0],
         skill,
+        isLoading,
+        pages,
     };
 };
 

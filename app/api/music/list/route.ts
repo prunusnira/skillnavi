@@ -17,8 +17,8 @@ export const GET = async (req: NextRequest) => {
         work: async () => {
             const searchParams = req.nextUrl.searchParams;
 
-            const version = searchParams.get('version');
-            const order = searchParams.get('order');
+            const version = Number(searchParams.get('version'));
+            const order = searchParams.get('order') || 'titleasc';
             const page = Number(searchParams.get('page'));
 
             const musicCount = await MusicModel.count({

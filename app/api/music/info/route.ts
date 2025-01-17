@@ -8,7 +8,7 @@ export const GET = async (req: NextRequest) => {
         req,
         work: async () => {
             const searchParams = req.nextUrl.searchParams;
-            const mid = searchParams.get('mid');
+            const mid = Number(searchParams.get('mid'));
 
             const musicInfo = await MusicModel.findOne({
                 where: {

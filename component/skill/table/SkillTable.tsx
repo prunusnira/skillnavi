@@ -2,17 +2,18 @@
 
 import { cn } from '@/module/util/cn';
 import Card from '@/component/common/card/Card';
-import SkillListTypeOld from './SkillListTypeOld';
 import SkillColor from '@/component/common/skillColor/SkillColor';
-import SkillGridTypeOld from '@/component/skill/table/SkillGridTypeOld';
 import { IMG } from '@/data/url';
 import SkillMenu from '@/component/skill/menu/SkillMenu';
 import SkillTableTitleVersion from '@/component/skill/table/SkillTableTitleVersion';
 import { TableType } from '@/data/skill/TableType';
 import useSkillTable from '@/component/skill/table/useSkillTable';
 import { TableDataType } from '@/data/skill/TableDataType';
+import SkillList from '@/component/skill/table/SkillList';
+import SkillGrid from '@/component/skill/table/SkillGrid';
+import Pager from '@/component/common/pager/Pager';
 
-const SkillTable = async ({
+const SkillTable = ({
     searchParams,
 }: {
     searchParams: {
@@ -24,21 +25,11 @@ const SkillTable = async ({
         display: TableType;
     };
 }) => {
-    const { game, version, display, pageType } = searchParams;
-    const {
-        skillall,
-        skillhot,
-        skillother,
-        profile,
-        hotvalue,
-        othervalue,
-        isLoadingAll,
-        isLoadingHot,
-        isLoadingOther,
-        skill,
-    } = useSkillTable();
+    const { page, game, version, display, pageType } = searchParams;
+    const { userSkill, skillSum, profile, skill, isLoading, pages } =
+        useSkillTable();
 
-    if (isLoadingAll || isLoadingHot || isLoadingOther) {
+    if (isLoading) {
         return <>Loading</>;
     }
 
@@ -86,17 +77,17 @@ const SkillTable = async ({
                     <div className={cn('flex-col-center')}>
                         <div>ALL</div>
                         <SkillColor
-                            value={skill?.all || 0}
+                            value={userSkill?.all || 0}
                             multiplier={1 / 2}
                         />
                     </div>
                     <div className={cn('flex-col-center')}>
                         <div>GF</div>
-                        <SkillColor value={skill?.gf || 0} />
+                        <SkillColor value={userSkill?.gf || 0} />
                     </div>
                     <div className={cn('flex-col-center')}>
                         <div>DM</div>
-                        <SkillColor value={skill?.dm || 0} />
+                        <SkillColor value={userSkill?.dm || 0} />
                     </div>
                 </section>
 
@@ -106,19 +97,26 @@ const SkillTable = async ({
                     >
                         <div className={cn('flex-col-center')}>
                             <div>SKILL</div>
-                            <SkillColor value={(hotvalue + othervalue) / 100} />
+                            <SkillColor
+                                value={
+                                    skillSum.reduce(
+                                        (acc, cur) => acc + cur,
+                                        0,
+                                    ) / 100
+                                }
+                            />
                         </div>
                         <div className={cn('flex-col-center')}>
                             <div>HOT</div>
                             <SkillColor
-                                value={hotvalue / 100}
+                                value={skillSum[0] / 100}
                                 multiplier={2}
                             />
                         </div>
                         <div className={cn('flex-col-center')}>
                             <div>OTHER</div>
                             <SkillColor
-                                value={othervalue / 100}
+                                value={skillSum[1] / 100}
                                 multiplier={2}
                             />
                         </div>
@@ -127,110 +125,48 @@ const SkillTable = async ({
             </section>
 
             {/* 테이블 */}
-            {pageType === 'all' && display === 'list' && skillall?.length && (
-                <section className={cn('w-full max-w-screen-lg')}>
-                    {skillall?.map((item, index) => (
-                        <SkillListTypeOld
-                            key={item.musicid}
-                            skill={item}
-                            index={index}
-                        />
-                    ))}
-                </section>
-            )}
-            {pageType === 'target' &&
-                display === 'list' &&
-                skillhot?.length && (
-                    <>
-                        <div className={cn('font-bold text-xl')}>HOT</div>
-                        <section className={cn('w-full max-w-screen-lg')}>
-                            {skillhot?.map((item, index) => (
-                                <SkillListTypeOld
-                                    key={item.musicid}
-                                    skill={item}
-                                    index={index}
-                                />
-                            ))}
-                        </section>
-                    </>
-                )}
-            {pageType === 'target' &&
-                display === 'list' &&
-                skillother?.length && (
-                    <>
-                        <div className={cn('font-bold text-xl mt-5')}>
-                            OTHERS
-                        </div>
-                        <section className={cn('w-full max-w-screen-lg')}>
-                            {skillother?.map((item, index) => (
-                                <SkillListTypeOld
-                                    key={item.musicid}
-                                    skill={item}
-                                    index={index}
-                                />
-                            ))}
-                        </section>
-                    </>
-                )}
+            {display === 'list' &&
+                skill?.map((table, tidx) => (
+                    <section
+                        key={`list_${tidx}`}
+                        className={cn('w-full max-w-screen-lg')}
+                    >
+                        {table.map((skill, index) => (
+                            <SkillList
+                                key={skill.mid}
+                                skill={skill}
+                                index={index}
+                            />
+                        ))}
+                    </section>
+                ))}
 
             {/* 그리드 */}
-            {pageType === 'all' && display === 'grid' && skillall?.length && (
-                <section
-                    className={cn(
-                        'w-full grid grid-cols-2 xs:grid-cols-3 md:grid-cols-4 max-w-screen-lg',
-                    )}
-                >
-                    {skillall?.map((item, index) => (
-                        <SkillGridTypeOld
-                            key={item.musicid}
-                            skill={item}
-                            index={index}
-                        />
-                    ))}
-                </section>
+            {display === 'grid' &&
+                skill?.map((table, tidx) => (
+                    <section
+                        key={`grid_${tidx}`}
+                        className={cn(
+                            'w-full grid grid-cols-2 xs:grid-cols-3 md:grid-cols-4 max-w-screen-lg',
+                        )}
+                    >
+                        {table.map((skill, index) => (
+                            <SkillGrid
+                                key={skill.mid}
+                                skill={skill}
+                                index={index}
+                            />
+                        ))}
+                    </section>
+                ))}
+
+            {/* pager */}
+            {pageType === 'all' && !!pages && pages > 0 && (
+                <Pager
+                    page={page}
+                    allpage={pages}
+                />
             )}
-            {pageType === 'target' &&
-                display === 'grid' &&
-                skillhot?.length && (
-                    <>
-                        <div className={cn('font-bold text-xl')}>HOT</div>
-                        <section
-                            className={cn(
-                                'w-full grid grid-cols-2 xs:grid-cols-3 md:grid-cols-4 max-w-screen-lg',
-                            )}
-                        >
-                            {skillhot?.map((item, index) => (
-                                <SkillGridTypeOld
-                                    key={item.musicid}
-                                    skill={item}
-                                    index={index}
-                                />
-                            ))}
-                        </section>
-                    </>
-                )}
-            {pageType === 'target' &&
-                display === 'grid' &&
-                skillother?.length && (
-                    <>
-                        <div className={cn('font-bold text-xl mt-5')}>
-                            OTHERS
-                        </div>
-                        <section
-                            className={cn(
-                                'w-full grid grid-cols-2 xs:grid-cols-3 md:grid-cols-4 max-w-screen-lg',
-                            )}
-                        >
-                            {skillother?.map((item, index) => (
-                                <SkillGridTypeOld
-                                    key={item.musicid}
-                                    skill={item}
-                                    index={index}
-                                />
-                            ))}
-                        </section>
-                    </>
-                )}
         </Card>
     );
 };

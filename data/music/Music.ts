@@ -1,7 +1,6 @@
 import { InferAttributes, InferCreationAttributes, Model } from 'sequelize';
 
-export interface Music
-    extends Model<InferAttributes<Music>, InferCreationAttributes<Music>> {
+export interface MusicData {
     id: number;
     name: string;
     furigana: string;
@@ -10,3 +9,7 @@ export interface Music
     hot: number;
     remove: number;
 }
+
+export interface Music
+    extends MusicData,
+        Model<InferAttributes<Music>, InferCreationAttributes<Music>> {}
