@@ -22,7 +22,7 @@ export const GET = async (req: NextRequest) => {
             const version = Number(searchParams.get('version'));
             const game = searchParams.get('game') || '';
             const page = Number(searchParams.get('page'));
-            const order = searchParams.get('order') || 'skilldesc';
+            // TODO: const order = searchParams.get('order') || 'skilldesc';
 
             if (!pageType) {
                 throw new FetchError({
