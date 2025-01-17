@@ -7,6 +7,7 @@ interface Props {
     onClick?: () => void;
     fixedWidth?: number;
     isSelected?: boolean;
+    disabled?: boolean;
 }
 
 const ButtonRounded = ({
@@ -15,6 +16,7 @@ const ButtonRounded = ({
     onClick,
     fixedWidth,
     isSelected,
+    disabled,
 }: Props) => {
     const color = useMemo(() => {
         if (isSelected) {
@@ -30,6 +32,7 @@ const ButtonRounded = ({
             style={{
                 width: fixedWidth,
             }}
+            disabled={disabled}
         >
             {icon}
             <div className={cn('text-sm')}>{text}</div>

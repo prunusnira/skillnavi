@@ -17,7 +17,7 @@ export const GET = async (req: NextRequest) => {
                     ],
                 ],
             });
-            return NextResponse.json(result);
+            return NextResponse.json(result?.id);
         },
     });
 };

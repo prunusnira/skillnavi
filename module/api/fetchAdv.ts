@@ -113,7 +113,7 @@ export class FetchAdv {
 // const baseUrl =
 
 export const fetchAdv = new FetchAdv({
-    url: `${typeof window !== 'undefined' ? process.env.NEXT_PUBLIC_URL_PUBLICEP : process.env.NEXT_PUBLIC_URL_ENDPOINT}/api`,
+    url: `${typeof window !== 'undefined' ? `${process.env.NEXT_PUBLIC_URL_PUBLICEP}/api` : process.env.NEXT_PUBLIC_URL_ENDPOINT}/api`,
 });
 
 // const getCookieForFetch = async () => {

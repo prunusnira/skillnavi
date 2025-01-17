@@ -29,7 +29,7 @@ yarn-error.log*
 .env
 .env.dev
 .env.prd
-/prisma/schema.prisma
+schema.prisma
 
 # vercel
 .vercel

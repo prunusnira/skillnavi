@@ -1,13 +1,10 @@
 import type { Metadata } from 'next';
 import './globals.scss';
-import Header from '@/component/header/Header';
-import Footer from '@/component/footer/Footer';
 import Wrappers from '@/module/wrapper/Wrappers';
 import { getLocale, getMessages } from 'next-intl/server';
 import { Suspense } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
 import { cn } from '@/module/util/cn';
-import Version from '@/component/version/Version';
 
 export const metadata: Metadata = {
     title: 'Skill Navigator',
@@ -27,18 +24,7 @@ export default async function RootLayout({
             <body className={cn('w-full flex-col-center')}>
                 <NextIntlClientProvider messages={messages}>
                     <Wrappers>
-                        <Suspense>
-                            <Header />
-                            <main
-                                className={cn(
-                                    'max-w-screen-xl w-full min-h-full flex-col-center pt-[60px]',
-                                )}
-                            >
-                                {children}
-                            </main>
-                            <Footer />
-                            <Version />
-                        </Suspense>
+                        <Suspense>{children}</Suspense>
                     </Wrappers>
                 </NextIntlClientProvider>
             </body>

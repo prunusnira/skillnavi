@@ -4,9 +4,18 @@ import { withAuth } from 'next-auth/middleware';
 import { NextRequest } from 'next/server';
 import { authPages } from '@/module/api/auth/authPages';
 
-const publicPages = [
+const publicPagesExact = [
     '/',
+    '/recent',
     '/auth/signin',
+    '/crawler',
+];
+
+const publicPages = [
+    '/profile',
+    '/music',
+    '/pattern',
+    '/rank',
 ];
 
 const handleI18nRouting = createMiddleware(routing);
@@ -26,7 +35,7 @@ const authMiddleware = withAuth(
 
 export const middleware = (req: NextRequest) => {
     const publicPathnameRegex = RegExp(
-        `^(/(${locales.join('|')}))?(${publicPages
+        `^(/(${locales.join('|')}))?(((${publicPagesExact
             .flatMap((p) =>
                 p === '/'
                     ? [
@@ -35,7 +44,16 @@ export const middleware = (req: NextRequest) => {
                       ]
                     : p,
             )
-            .join('|')})/?$`,
+            .join('|')})/?$)|((${publicPages
+            .flatMap((p) =>
+                p === '/'
+                    ? [
+                          '',
+                          '/',
+                      ]
+                    : p,
+            )
+            .join('|')})/?.*))`,
         'i',
     );
     const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname);

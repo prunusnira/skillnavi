@@ -10,6 +10,7 @@ const RouteWrapper = async ({ req, work }: Params) => {
     try {
         return work();
     } catch (e: unknown) {
+        console.log(e);
         if (isFetchError(e)) {
             console.error(e.toString());
         } else {
