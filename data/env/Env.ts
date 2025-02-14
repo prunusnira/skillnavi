@@ -1,7 +1,4 @@
-import { InferAttributes, InferCreationAttributes, Model } from 'sequelize';
-
-export interface Env
-    extends Model<InferAttributes<Env>, InferCreationAttributes<Env>> {
+export interface Env {
     key: string;
     value: string;
 }

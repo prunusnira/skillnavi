@@ -12,10 +12,10 @@ if [ "$ENV" != "dev" ] && [ "$ENV" != "prd" ]; then
 fi
 
 if [ "$ENV" == "dev" ]; then
-  cp ./.env.dev ./.env
+#  cp ./.env.dev.dev ./.env.dev
   yarn build
 fi
 if [ "$ENV" == "prd" ]; then
-  cp ./.env.prd ./.env
+#  cp ./.env.dev.prd ./.env.dev
   yarn build
 fi

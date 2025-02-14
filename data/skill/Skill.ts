@@ -1,6 +1,4 @@
-import { InferAttributes, InferCreationAttributes, Model } from 'sequelize';
-
-export interface SkillData {
+export interface Skill {
     uid: number;
     mid: number;
     playver: number;
@@ -11,11 +9,8 @@ export interface SkillData {
     maxrank: string;
     rate: number;
     combo: number;
-    fc: number;
+    fc: boolean;
     meter: string | null;
     hot: number;
+    skill: number;
 }
-
-export interface Skill
-    extends SkillData,
-        Model<InferAttributes<Skill>, InferCreationAttributes<Skill>> {}

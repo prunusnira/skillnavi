@@ -1,8 +1,8 @@
 import RouteWrapper from '@/module/api/routeWrapper';
 import { NextRequest, NextResponse } from 'next/server';
 import { FetchError } from '@/data/fetch/FetchError';
-import { ProfileModel } from '@/data/profile/ProfileModel';
-import { Op } from 'sequelize';
+import prisma from '@/module/lib/db/prisma';
+import { Profile } from '@/data/profile/Profile';
 
 export const GET = async (req: NextRequest) => {
     return RouteWrapper({
@@ -18,13 +18,11 @@ export const GET = async (req: NextRequest) => {
                 });
             }
 
-            const profile = await ProfileModel.findOne({
+            const profile = (await prisma.profileList.findFirst({
                 where: {
-                    unique_id: {
-                        [Op.eq]: token,
-                    },
+                    unique_id: token,
                 },
-            });
+            })) as Profile;
 
             return NextResponse.json(profile);
         },

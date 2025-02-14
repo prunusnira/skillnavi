@@ -1,26 +1,18 @@
 import RouteWrapper from '@/module/api/routeWrapper';
 import { NextRequest, NextResponse } from 'next/server';
-import { ProfileSkillModel } from '@/data/profile/ProfileSkillModel';
-import { Op } from 'sequelize';
+import prisma from '@/module/lib/db/prisma';
 
 export const POST = async (req: NextRequest) => {
     return RouteWrapper({
         req,
         work: async () => {
-            const ids = await req.json();
+            const ids = (await req.json()) as { id: number[] };
 
-            const result = await ProfileSkillModel.findAll({
+            const result = await prisma.profileSkill.findMany({
                 where: {
-                    uid: {
-                        [Op.or]: ids.id,
-                    },
-                },
-                attributes: {
-                    exclude: ['id'],
+                    OR: ids.id.map((user) => ({ uid: user })),
                 },
             });
-
-            console.log(result);
 
             return NextResponse.json(result);
         },

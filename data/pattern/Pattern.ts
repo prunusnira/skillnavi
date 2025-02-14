@@ -1,12 +1,6 @@
-import { InferAttributes, InferCreationAttributes, Model } from 'sequelize';
-
-export interface PatternData {
+export interface Pattern {
     mid: number;
     patterncode: number;
     version: number;
     level: number;
 }
-
-export interface Pattern
-    extends PatternData,
-        Model<InferAttributes<Pattern>, InferCreationAttributes<Pattern>> {}

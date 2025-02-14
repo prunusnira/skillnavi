@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import RouteWrapper from '@/module/api/routeWrapper';
-import { NoticeModel } from '@/data/notice/NoticeModel';
+import prisma from '@/module/lib/db/prisma';
+import { Notice } from '@/data/notice/Notice';
 
 export const GET = async (req: NextRequest) => {
     return RouteWrapper({
@@ -10,17 +11,15 @@ export const GET = async (req: NextRequest) => {
             const page = Number(params.get('page'));
             const size = Number(params.get('size'));
 
-            const notice = await NoticeModel.findAll({
-                where: {},
-                order: [
-                    [
-                        'time',
-                        'DESC',
-                    ],
+            const notice = (await prisma.notice.findMany({
+                orderBy: [
+                    {
+                        time: 'desc',
+                    },
                 ],
-                offset: (page - 1) * size,
-                limit: size,
-            });
+                skip: (page - 1) * size,
+                take: size,
+            })) as Notice[];
             return NextResponse.json(notice);
         },
     });

@@ -27,6 +27,9 @@ yarn-error.log*
 
 # local env files
 .env
+.env.dev
+.env.prd
+/prisma/schema.prisma
 
 # vercel
 .vercel

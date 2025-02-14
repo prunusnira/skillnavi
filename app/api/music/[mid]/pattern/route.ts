@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import RouteWrapper from '@/module/api/routeWrapper';
-import { PatternModel } from '@/data/pattern/PatternModel';
 import { Pattern } from '@/data/pattern/Pattern';
+import prisma from '@/module/lib/db/prisma';
 
 export const GET = async (
     req: NextRequest,
@@ -14,17 +14,12 @@ export const GET = async (
             const { mid } = params;
             const version = Number(searchParams.get('version'));
 
-            const patternList = await PatternModel.findAll({
-                attributes: {
-                    exclude: ['id'],
-                },
+            const pattern = (await prisma.patternList.findMany({
                 where: {
                     mid,
                     version,
                 },
-            });
-
-            const pattern = patternList.map((p) => p.dataValues as Pattern);
+            })) satisfies Pattern[];
 
             return NextResponse.json(pattern);
         },

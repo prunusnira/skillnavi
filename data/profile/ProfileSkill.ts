@@ -1,10 +1,4 @@
-import { InferAttributes, InferCreationAttributes, Model } from 'sequelize';
-
-export interface ProfileSkill
-    extends Model<
-        InferAttributes<ProfileSkill>,
-        InferCreationAttributes<ProfileSkill>
-    > {
+export interface ProfileSkill {
     uid: number;
     version: number;
     gskill: number;
@@ -25,5 +19,5 @@ export interface ProfileSkill
     dexcnum: number;
     gcount: number;
     dcount: number;
-    lastupdate: string;
+    lastupdate: Date;
 }

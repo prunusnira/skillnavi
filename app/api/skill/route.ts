@@ -1,15 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import RouteWrapper from '@/module/api/routeWrapper';
-import { sequelize } from '@/module/lib/db/dbconn';
 import { FetchError } from '@/data/fetch/FetchError';
-import { Op } from 'sequelize';
 import { SkillTableData } from '@/data/skill/SkillTableData';
-import { SkillData } from '@/data/skill/Skill';
-import { MusicModel } from '@/data/music/MusicModel';
-import { PatternModel } from '@/data/pattern/PatternModel';
-import { SkillModel } from '@/data/skill/SkillModel';
+import { Skill } from '@/data/skill/Skill';
 import { Pattern } from '@/data/pattern/Pattern';
 import { SKILL_SIZE } from '@/data/env/constant';
+import prisma from '@/module/lib/db/prisma';
+import { Prisma } from '@prisma/client';
+import { Music } from '@/data/music/Music';
 
 export const GET = async (req: NextRequest) => {
     return RouteWrapper({
@@ -31,112 +29,56 @@ export const GET = async (req: NextRequest) => {
                 });
             }
 
-            const tableItems: SkillData[][] = [];
+            const tableItems: Skill[][] = [];
             let pages = 0;
 
             // 버전 전체 테이블 가져오기
             if (pageType === 'all') {
-                const skill = await SkillModel.findAll({
+                const skill = (await prisma.$queryRaw(Prisma.sql`
+                    select *
+                    from SkillList
+                    where uid = ${userid}
+                      and playver = ${version}
+                      and patterncode${game === 'gf' ? '<9' : '>8'}
+                    order by level * rate desc
+                    offset ${(page - 1) * SKILL_SIZE} limit ${SKILL_SIZE}
+                `)) as Skill[];
+
+                pages = await prisma.skillList.count({
                     where: {
                         uid: userid,
                         playver: version,
-                        patterncode:
-                            game === 'gf'
-                                ? {
-                                      [Op.lt]: 9,
-                                  }
-                                : {
-                                      [Op.gt]: 8,
-                                  },
-                    },
-                    order: [
-                        [
-                            sequelize.literal(`(level*rate)`),
-                            'desc',
-                        ],
-                    ],
-                    attributes: {
-                        exclude: ['id'],
-                    },
-                    limit: SKILL_SIZE,
-                    offset: (page - 1) * SKILL_SIZE,
-                });
-
-                pages = await SkillModel.count({
-                    where: {
-                        uid: userid,
-                        playver: version,
-                        patterncode:
-                            game === 'gf'
-                                ? {
-                                      [Op.lt]: 9,
-                                  }
-                                : {
-                                      [Op.gt]: 8,
-                                  },
+                        patterncode: game === 'gf' ? { lt: 9 } : { gt: 8 },
                     },
                 });
 
-                const data: SkillData[] = skill.map((s) => s.dataValues);
-                tableItems.push(data);
+                tableItems.push(skill);
             }
 
             // 스킬대상곡 가져오기
             if (pageType === 'target') {
-                const hot = await SkillModel.findAll({
-                    where: {
-                        uid: userid,
-                        playver: version,
-                        hot: 1,
-                        patterncode:
-                            game === 'gf'
-                                ? {
-                                      [Op.lt]: 9,
-                                  }
-                                : {
-                                      [Op.gt]: 8,
-                                  },
-                    },
-                    order: [
-                        [
-                            sequelize.literal(`(level*rate)`),
-                            'desc',
-                        ],
-                    ],
-                    limit: 25,
-                    attributes: {
-                        exclude: ['id'],
-                    },
-                });
+                const hot = (await prisma.$queryRaw(Prisma.sql`
+                    select *
+                    from SkillList
+                    where uid = ${userid}
+                      and playver = ${version}
+                      and patterncode${game === 'gf' ? '<9' : '>8'}
+                      and hot = 1
+                    order by level * rate desc limit 25
+                `)) as Skill[];
 
-                const other = await SkillModel.findAll({
-                    where: {
-                        uid: userid,
-                        playver: version,
-                        hot: 0,
-                        patterncode:
-                            game === 'gf'
-                                ? {
-                                      [Op.lt]: 9,
-                                  }
-                                : {
-                                      [Op.gt]: 8,
-                                  },
-                    },
-                    order: [
-                        [
-                            sequelize.literal(`(level*rate)`),
-                            'desc',
-                        ],
-                    ],
-                    limit: 25,
-                    attributes: {
-                        exclude: ['id'],
-                    },
-                });
+                const other = (await prisma.$queryRaw(Prisma.sql`
+                    select *
+                    from SkillList
+                    where uid = ${userid}
+                      and playver = ${version}
+                      and patterncode${game === 'gf' ? '<9' : '>8'}
+                      and hot = 0
+                    order by level * rate desc limit 25
+                `)) as Skill[];
 
-                tableItems.push(hot.map((s) => s.dataValues));
-                tableItems.push(other.map((s) => s.dataValues));
+                tableItems.push(hot);
+                tableItems.push(other);
             }
 
             if (!tableItems.length) {
@@ -153,30 +95,29 @@ export const GET = async (req: NextRequest) => {
                 }),
             );
 
-            const musiclist = await MusicModel.findAll({
+            const musiclist = (await prisma.musicList.findMany({
                 where: {
-                    id: midList,
+                    OR: midList.map((mid) => ({
+                        id: mid,
+                    })),
                 },
-            });
+            })) as Music[];
 
             const patternInfo: Promise<Pattern | null>[] = [];
 
-            tableItems.map(async (skillSet) =>
-                skillSet.map(async (skill) =>
-                    patternInfo.push(
-                        PatternModel.findOne({
-                            where: {
-                                mid: skill.mid,
-                                patterncode: skill.patterncode,
-                                version: skill.playver,
-                            },
-                            attributes: {
-                                exclude: ['id'],
-                            },
-                        }),
-                    ),
-                ),
-            );
+            // promise 객체를 처리하기 위해 map으로 사용
+            tableItems.map(async (skillSet) => {
+                skillSet.map(async (skill) => {
+                    const pattern = prisma.patternList.findFirst({
+                        where: {
+                            mid: skill.mid,
+                            patterncode: skill.patterncode,
+                            version: skill.playver,
+                        },
+                    }) as Promise<Pattern>;
+                    patternInfo.push(pattern);
+                });
+            });
 
             const patternlist = await Promise.all(patternInfo);
 
@@ -184,15 +125,13 @@ export const GET = async (req: NextRequest) => {
             tableItems.forEach((skillSet) => {
                 const list: SkillTableData[] = [];
                 skillSet.forEach((s) => {
-                    const music = musiclist.find(
-                        (m) => m.id === s.mid,
-                    )?.dataValues;
+                    const music = musiclist.find((m) => m.id === s.mid);
                     const pattern = patternlist.find(
                         (p) =>
                             p &&
                             p.mid === s.mid &&
                             p.patterncode === s.patterncode,
-                    )?.dataValues;
+                    );
 
                     if (music && pattern) {
                         list.push({

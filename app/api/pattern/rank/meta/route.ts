@@ -1,7 +1,7 @@
-import { SkillModel } from '@/data/skill/SkillModel';
 import RouteWrapper from '@/module/api/routeWrapper';
 import { NextRequest, NextResponse } from 'next/server';
 import { MUSICLIST_SIZE } from '@/data/env/constant';
+import prisma from '@/module/lib/db/prisma';
 
 export const GET = async (req: NextRequest) => {
     return RouteWrapper({
@@ -11,7 +11,8 @@ export const GET = async (req: NextRequest) => {
             const mid = Number(searchParams.get('mid'));
             const version = Number(searchParams.get('version'));
             const patterncode = Number(searchParams.get('patterncode'));
-            const result = await SkillModel.count({
+
+            const result = await prisma.skillList.count({
                 where: {
                     mid,
                     playver: version,

@@ -1,7 +1,7 @@
 import RouteWrapper from '@/module/api/routeWrapper';
 import { NextRequest, NextResponse } from 'next/server';
-import { SkillModel } from '@/data/skill/SkillModel';
 import { Skill } from '@/data/skill/Skill';
+import prisma from '@/module/lib/db/prisma';
 
 export const GET = async (
     req: NextRequest,
@@ -15,20 +15,15 @@ export const GET = async (
             const uid = Number(searchParams.get('uid'));
             const version = Number(searchParams.get('version'));
 
-            const recordInfo = await SkillModel.findAll({
-                attributes: {
-                    exclude: ['id'],
-                },
+            const recordInfo = (await prisma.skillList.findMany({
                 where: {
                     uid,
                     mid,
                     playver: version,
                 },
-            });
+            })) as Skill[];
 
-            return NextResponse.json(
-                recordInfo.map((r) => r.dataValues as Skill),
-            );
+            return NextResponse.json(recordInfo);
         },
     });
 };

@@ -1,21 +1,21 @@
 import RouteWrapper from '@/module/api/routeWrapper';
 import { NextRequest, NextResponse } from 'next/server';
-import { GameVersionModel } from '@/data/game/GameVersionModel';
+import prisma from '@/module/lib/db/prisma';
 
 export const GET = async (
     req: NextRequest,
-    { params }: { params: { id: string } },
+    { params }: { params: { id: number } },
 ) => {
     return RouteWrapper({
         req,
         work: async () => {
-            const versionInfo = await GameVersionModel.findOne({
+            const version = await prisma.gameVersion.findUnique({
                 where: {
                     id: params.id,
                 },
             });
 
-            return NextResponse.json(versionInfo);
+            return NextResponse.json(version);
         },
     });
 };

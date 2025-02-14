@@ -4,6 +4,6 @@ export interface Recent {
     name: string;
     gskill: number;
     dskill: number;
-    lastupdate: string;
-    openinfo: number;
+    lastupdate: Date;
+    openinfo: boolean;
 }

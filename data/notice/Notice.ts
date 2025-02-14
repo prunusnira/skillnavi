@@ -1,7 +1,4 @@
-import { InferAttributes, InferCreationAttributes, Model } from 'sequelize';
-
-export interface Notice
-    extends Model<InferAttributes<Notice>, InferCreationAttributes<Notice>> {
+export interface Notice {
     id: number;
     titleK: string;
     titleJ: string;
@@ -9,12 +6,12 @@ export interface Notice
     contentK: string;
     contentJ: string;
     contentE: string;
-    time: string;
+    time: Date;
 }
 
 export interface NoticeDisplay {
     id: number;
     title: string;
     content: string;
-    time: string;
+    time: Date;
 }
