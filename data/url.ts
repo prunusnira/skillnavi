@@ -20,7 +20,7 @@ export const LINK = {
         recent: '/recent',
         ranking: (type: GameType, page: number) =>
             `/skill/rank?type=${type}&page=${page}`,
-        exc: (type: GameType) => `/esc/${type}`,
+        exc: (type: GameType) => `/skill/exc/${type}`,
         countrank: (page: number) => `/cntrank/${page}`,
         self: (type: GameType) => `/skill/my/${type}`,
         skill: ({
@@ -55,8 +55,28 @@ export const LINK = {
         }) => `/music/info?mid=${mid}&uid=${uid}&version=${version}`,
     },
     PATTERN: {
-        list: (version: number, order: Order, page: number, hot: boolean) =>
-            `/pattern/${version}/${order}/${page}?hot=${hot ? 'h' : 'o'}`,
+        list: ({
+            version,
+            order,
+            page,
+        }: {
+            version?: number;
+            order?: Order;
+            page?: number;
+        }) => {
+            const searchParams = new URLSearchParams();
+            if (version) {
+                searchParams.set('version', String(version));
+            }
+            if (order) {
+                searchParams.set('order', order);
+            }
+            if (page) {
+                searchParams.set('page', String(page));
+            }
+            const query = searchParams.toString();
+            return `/music/list${query.length > 0 ? `?${query}` : ''}`;
+        },
         noplay: '/pattern/noplay',
         table: '/pattern/table',
         rank: (version: string, page: number, mid: string, ptcode: number) =>

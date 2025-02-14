@@ -72,7 +72,7 @@ export const SidebarMenuItems: SidebarMenu[] = [
         subMenu: [
             {
                 id: 'pattern.list',
-                href: LINK.PATTERN.list(0, 'titleasc', 1, true),
+                href: LINK.PATTERN.list({}),
             },
             {
                 id: 'pattern.noplay',

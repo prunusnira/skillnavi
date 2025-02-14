@@ -5,6 +5,7 @@ import prisma from '@/module/lib/db/prisma';
 import { SKILLRANK_SIZE } from '@/data/env/constant';
 import { SkillRank } from '@/data/skill/SkillRank';
 import { ProfileSkill } from '@/data/profile/ProfileSkill';
+import { Profile } from '@/data/profile/Profile';
 // import { getLatestVersion } from '@/module/api/env/getGameVersions';
 
 export const GET = async (req: NextRequest) => {
@@ -72,7 +73,7 @@ export const GET = async (req: NextRequest) => {
             }
 
             const userIds = skillData.map((data) => data.uid);
-            const profileList = await prisma.profileList.findMany({
+            const profileList = (await prisma.profileList.findMany({
                 select: {
                     id: true,
                     name: true,
@@ -83,7 +84,7 @@ export const GET = async (req: NextRequest) => {
                         id,
                     })),
                 },
-            });
+            })) as Profile[];
 
             const rank: SkillRank[] = [];
 

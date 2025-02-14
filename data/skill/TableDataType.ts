@@ -1,1 +1,1 @@
-export type TableDataType = 'target' | 'all';
+export type TableDataType = 'target' | 'all' | 'exc';

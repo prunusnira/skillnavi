@@ -3,7 +3,6 @@
 import { cn } from '@/module/util/cn';
 import Card from '@/component/common/card/Card';
 import SkillColor from '@/component/common/skillColor/SkillColor';
-import { IMG } from '@/data/url';
 import SkillMenu from '@/component/skill/menu/SkillMenu';
 import SkillTableTitleVersion from '@/component/skill/table/SkillTableTitleVersion';
 import { TableType } from '@/data/skill/TableType';
@@ -12,7 +11,7 @@ import { TableDataType } from '@/data/skill/TableDataType';
 import SkillList from '@/component/skill/table/SkillList';
 import SkillGrid from '@/component/skill/table/SkillGrid';
 import Pager from '@/component/common/pager/Pager';
-import Image from 'next/image';
+import SkillTableTextProfile from '@/component/skill/table/SkillTableTextProfile';
 
 const SkillTable = ({
     searchParams,
@@ -34,7 +33,7 @@ const SkillTable = ({
         return <>Loading</>;
     }
 
-    if (!profile) {
+    if (pageType !== 'exc' && !profile) {
         return <>No user data</>;
     }
 
@@ -55,18 +54,10 @@ const SkillTable = ({
                         {game === 'dm' && 'DrumMania'}
                     </div>
                     <div>&nbsp;by&nbsp;</div>
-                    <div className={cn('flex-center gap-1')}>
-                        {profile.titletower && (
-                            <Image
-                                unoptimized={true}
-                                alt={'tower'}
-                                src={`${IMG}/title/${profile.titletower}.png`}
-                                width={20}
-                                height={20}
-                            />
-                        )}
-                        {profile.name}
-                    </div>
+                    {pageType === 'exc' && <div>EXCELLENT MASTER</div>}
+                    {pageType !== 'exc' && profile && (
+                        <SkillTableTextProfile profile={profile} />
+                    )}
                 </section>
             </section>
 
