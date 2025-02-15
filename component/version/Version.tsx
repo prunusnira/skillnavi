@@ -22,6 +22,7 @@ const Version = () => {
     const { data, refetch } = useQuery({
         queryKey: ['version'],
         queryFn: getGameVersions,
+        enabled: false,
     });
 
     useEffect(() => {

@@ -16,7 +16,8 @@ const MusicData = async ({ mid }: Props) => {
             {/* 곡 정보 */}
             <AlbumArt
                 mid={mid}
-                className={cn('w-24 h-24 rounded-2xl')}
+                className={'rounded-2xl'}
+                size={96}
             />
             <div className={cn('flex flex-col justify-center pl-2.5')}>
                 <div className={cn('font-bold text-xl md:text-2xl')}>

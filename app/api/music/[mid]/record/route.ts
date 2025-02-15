@@ -5,7 +5,7 @@ import prisma from '@/module/lib/db/prisma';
 
 export const GET = async (
     req: NextRequest,
-    { params }: { params: { mid: string } },
+    { params }: { params: { mid: number } },
 ) => {
     return await RouteWrapper({
         req,

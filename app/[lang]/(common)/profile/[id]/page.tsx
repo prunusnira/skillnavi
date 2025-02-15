@@ -11,6 +11,7 @@ import ButtonRounded from '@/component/common/button/ButtonRounded';
 import ProfileButton from '@/component/profile/button/ProfileButton';
 import { getProfileSkill } from '@/module/api/profile/getProfileSkill';
 import { getGameVersions } from '@/module/api/env/getGameVersions';
+import Image from 'next/image';
 
 export const dynamic = 'force-dynamic';
 
@@ -134,7 +135,8 @@ const PageProfile = async ({ params }: { params: { id: string } }) => {
 
             {/* 플레이어 보드: 사이즈 조정으로 제공, 클릭 시 새 탭으로 열기 */}
             <Card title={t('board.title')}>
-                <img
+                <Image
+                    unoptimized={true}
                     alt="playerboard"
                     src={`${process.env.NEXT_PUBLIC_URL_DATA}/board/${id}.png`}
                 />

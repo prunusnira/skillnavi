@@ -6,6 +6,7 @@ import { getSkillCN } from '@/module/api/skill/getSkillCN';
 import { IMG } from '@/data/url';
 import { MUSICLIST_SIZE } from '@/data/env/constant';
 import Pager from '@/component/common/pager/Pager';
+import Image from 'next/image';
 
 interface Props {
     page: number;
@@ -53,10 +54,12 @@ const PatternRankTable = ({ level, page }: Props) => {
                                     ['hidden']: !row.icon,
                                 })}
                             >
-                                <img
+                                <Image
+                                    unoptimized={true}
                                     alt={'usericon'}
-                                    className={cn('w-12 h-12')}
                                     src={`${IMG}/title/${row.icon}.png`}
+                                    width={48}
+                                    height={48}
                                 />
                             </div>
                             <div className={cn('text-xl font-semibold link')}>

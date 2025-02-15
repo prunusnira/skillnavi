@@ -13,6 +13,7 @@ import AnchorText from '@/component/common/AnchorText';
 import { useParams, useSearchParams } from 'next/navigation';
 import { useMemo } from 'react';
 import { SkillTableData } from '@/data/skill/SkillTableData';
+import Image from 'next/image';
 
 interface Props {
     skill: SkillTableData;
@@ -52,7 +53,7 @@ const SkillList = ({ skill, index }: Props) => {
             <div className={cn('w-12 flex-center')}>
                 <AlbumArt
                     mid={skill.mid}
-                    className={cn('w-12 h-12 rounded-full')}
+                    className={'rounded-full'}
                 />
             </div>
 
@@ -75,24 +76,26 @@ const SkillList = ({ skill, index }: Props) => {
                 {/* 기타 */}
                 <div className={cn('flex')}>
                     <div className={cn('flex-center')}>
-                        <img
-                            className={cn('w-20')}
+                        <Image
+                            unoptimized={true}
                             alt={'difficulty'}
                             src={`${IMG}/diff/${convertPatternCode(skill.patterncode, 'image')}`}
+                            width={80}
                         />
                     </div>
                     <div>{convertLevel(skill.level)}</div>
                     <div>
-                        <img
-                            className={cn('w-5')}
+                        <Image
+                            unoptimized={true}
                             alt={'rank'}
                             src={`${IMG}/rank/${convertRank(skill.maxrank)}`}
+                            width={20}
                         />
                     </div>
                     <div className={cn('font-bold')}>
                         {getClearState({
                             rate: skill.rate,
-                            fc: skill.fc === 1,
+                            fc: skill.fc,
                         })}
                     </div>
                     <SkillItemVersion

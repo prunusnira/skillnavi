@@ -5,6 +5,7 @@ import MusicRecord from '@/component/music/MusicRecord';
 import { getProfile } from '@/module/api/profile/getProfile';
 import { IMG } from '@/data/url';
 import MusicData from '@/component/music/MusicData';
+import Image from 'next/image';
 
 const PageMusic = async ({
     searchParams,
@@ -32,10 +33,12 @@ const PageMusic = async ({
                 <section className={cn('flex-center w-full gap-2.5 py-2.5')}>
                     <div>Player</div>
                     {profile.titletower && (
-                        <img
+                        <Image
+                            unoptimized={true}
                             alt={'towericon'}
-                            className={cn('w-12 h-12')}
                             src={`${IMG}/title/${profile.titletower}.png`}
+                            width={48}
+                            height={48}
                         />
                     )}
                     <div>{profile.name}</div>

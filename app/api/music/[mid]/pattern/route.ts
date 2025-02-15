@@ -19,7 +19,7 @@ export const GET = async (
                     mid,
                     version,
                 },
-            })) satisfies Pattern[];
+            })) as Pattern[];
 
             return NextResponse.json(pattern);
         },

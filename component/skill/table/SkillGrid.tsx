@@ -13,6 +13,7 @@ import AnchorText from '@/component/common/AnchorText';
 import { useParams, useSearchParams } from 'next/navigation';
 import { useMemo } from 'react';
 import { SkillTableData } from '@/data/skill/SkillTableData';
+import Image from 'next/image';
 
 interface Props {
     skill: SkillTableData;
@@ -67,7 +68,7 @@ const SkillGrid = ({ skill, index }: Props) => {
                 <div className={cn('w-12 flex-col-center')}>
                     <AlbumArt
                         mid={skill.mid}
-                        className={cn('w-12 h-12 rounded-full')}
+                        className={'rounded-full'}
                     />
                     <SkillItemVersion
                         versionId={skill.playver}
@@ -80,7 +81,8 @@ const SkillGrid = ({ skill, index }: Props) => {
                     {/* 기타 */}
                     <div className={cn('flex justify-around')}>
                         <div className={cn('flex-center')}>
-                            <img
+                            <Image
+                                unoptimized={true}
                                 className={cn('w-10')}
                                 alt={'difficulty'}
                                 src={`${IMG}/diff/${convertPatternCode(skill.patterncode, 'image300')}`}
@@ -91,7 +93,8 @@ const SkillGrid = ({ skill, index }: Props) => {
                         </div>
                     </div>
                     <div className={cn('flex justify-around')}>
-                        <img
+                        <Image
+                            unoptimized={true}
                             className={cn('w-5')}
                             alt={'rank'}
                             src={`${IMG}/rank/${convertRank(skill.maxrank)}`}
@@ -99,7 +102,7 @@ const SkillGrid = ({ skill, index }: Props) => {
                         <div className={cn('font-bold flex-center')}>
                             {getClearState({
                                 rate: skill.rate,
-                                fc: skill.fc === 1,
+                                fc: skill.fc,
                                 short: true,
                             })}
                         </div>

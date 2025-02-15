@@ -15,7 +15,7 @@ const publicPages = [
     '/profile',
     '/music',
     '/pattern',
-    '/rank',
+    '/skill/rank',
 ];
 
 const handleI18nRouting = createMiddleware(routing);

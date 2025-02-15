@@ -6,3 +6,4 @@ export const VER_NX = 28;
 
 export const MUSICLIST_SIZE = 10;
 export const SKILL_SIZE = 32;
+export const SKILLRANK_SIZE = 20;

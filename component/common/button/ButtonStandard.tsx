@@ -1,13 +1,15 @@
 import { cn } from '@/module/util/cn';
+import Image from 'next/image';
 
 interface Props {
     iconUrl?: string;
     text: string;
     bgColor?: string;
     onClick?: () => void;
+    size?: number;
 }
 
-const ButtonStandard = ({ iconUrl, text, bgColor, onClick }: Props) => {
+const ButtonStandard = ({ iconUrl, text, bgColor, onClick, size }: Props) => {
     return (
         <section
             className={cn(
@@ -17,9 +19,12 @@ const ButtonStandard = ({ iconUrl, text, bgColor, onClick }: Props) => {
             onClick={onClick}
         >
             {iconUrl && (
-                <img
+                <Image
+                    unoptimized={true}
                     alt="btn icon"
                     src={iconUrl}
+                    width={size || 32}
+                    height={size || 32}
                 />
             )}
             <div>{text}</div>

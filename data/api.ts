@@ -1,35 +1,38 @@
+const PREFIX = '/api';
+
 export const API = {
     ENV: {
-        version: `/env/version`,
-        latest: `/env/latest`,
+        version: `${PREFIX}/env/version`,
+        latest: `${PREFIX}/env/latest`,
     },
     USER: {
-        token: '/user/token',
+        token: '${PREFIX}/user/token',
     },
-    NOTICE: `/notice`,
+    NOTICE: `${PREFIX}/notice`,
     PROFILE: {
-        mine: '/profile',
-        basic: '/profile/basic',
-        id: `/profile/id`,
+        mine: `${PREFIX}/profile`,
+        basic: `${PREFIX}/profile/basic`,
+        id: `${PREFIX}/profile/id`,
         old: {
-            id: (id: string) => `/profile/old/${id}`,
+            id: (id: string) => `${PREFIX}/profile/old/${id}`,
         },
-        graph: (id: string) => `/profile/${id}/graph`,
-        skill: `/profile/skill`,
+        graph: (id: string) => `${PREFIX}/profile/${id}/graph`,
+        skill: `${PREFIX}/profile/skill`,
     },
-    RECENT: '/recent',
-    RECENTOLD: '/recent/old',
+    RECENT: `${PREFIX}/recent`,
+    RECENTOLD: `${PREFIX}/recent/old`,
     SKILL: {
-        table: '/skill',
+        table: `${PREFIX}/skill/table`,
+        rank: `${PREFIX}/skill/rank`,
     },
     MUSIC: {
-        list: '/music/list',
-        info: '/music/info',
-        record: (mid: number) => `/music/${mid}/record`,
-        pattern: (mid: number) => `/music/${mid}/pattern`,
+        list: `${PREFIX}/music/list`,
+        info: `${PREFIX}/music/info`,
+        record: (mid: number) => `${PREFIX}/music/${mid}/record`,
+        pattern: (mid: number) => `${PREFIX}/music/${mid}/pattern`,
     },
     PATTERN: {
-        rank: '/pattern/rank',
-        rankPages: '/pattern/rank/meta',
+        rank: `${PREFIX}/pattern/rank`,
+        rankPages: `${PREFIX}/pattern/rank/meta`,
     },
 };

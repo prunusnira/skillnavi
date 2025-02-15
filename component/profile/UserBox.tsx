@@ -1,6 +1,7 @@
 import { cn } from '@/module/util/cn';
 import { IMG } from '@/data/url';
 import { Profile } from '@/data/profile/Profile';
+import Image from 'next/image';
 
 interface Props {
     mydata: Profile;
@@ -12,7 +13,8 @@ const UserBox = ({ mydata }: Props) => {
             <div className={cn('text-sm font-light')}>({mydata.title})</div>
             <div className={cn('flex-center gap-2 text-xl font-bold')}>
                 {mydata.titletower && (
-                    <img
+                    <Image
+                        unoptimized={true}
                         className={cn('w-8 h-8')}
                         alt="icon"
                         src={`${IMG}/title/${mydata.titletower}.png`}

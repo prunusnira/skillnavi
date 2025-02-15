@@ -12,6 +12,7 @@ import { TableDataType } from '@/data/skill/TableDataType';
 import SkillList from '@/component/skill/table/SkillList';
 import SkillGrid from '@/component/skill/table/SkillGrid';
 import Pager from '@/component/common/pager/Pager';
+import Image from 'next/image';
 
 const SkillTable = ({
     searchParams,
@@ -56,10 +57,12 @@ const SkillTable = ({
                     <div>&nbsp;by&nbsp;</div>
                     <div className={cn('flex-center gap-1')}>
                         {profile.titletower && (
-                            <img
-                                className={cn('w-5 h-5')}
+                            <Image
+                                unoptimized={true}
                                 alt={'tower'}
                                 src={`${IMG}/title/${profile.titletower}.png`}
+                                width={20}
+                                height={20}
                             />
                         )}
                         {profile.name}

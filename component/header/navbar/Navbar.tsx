@@ -1,6 +1,5 @@
 'use client';
 
-import { cn } from '@/module/util/cn';
 import { IMG, LINK } from '@/data/url';
 import NavItem from '@/component/header/NavItem';
 import useNavbar from '@/component/header/navbar/useNavbar';
@@ -10,6 +9,8 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { signOut, useSession } from 'next-auth/react';
 import { useRouter } from '@/i18n/routing';
 import { faDiscord, faXTwitter } from '@fortawesome/free-brands-svg-icons';
+import Image from 'next/image';
+import { clsx } from 'clsx';
 
 const Navbar = () => {
     const { isMenuOpen, handleLinkMain, controlMenu } = useNavbar();
@@ -18,25 +19,23 @@ const Navbar = () => {
     const router = useRouter();
 
     return (
-        <nav
-            className={cn([
-                'w-full h-full flex-between',
-            ])}
-        >
+        <nav className={'w-full h-full flex-between'}>
             {/* left side (logo) */}
             <div
-                className={cn(['w-[40px] h-[40px] cursor-pointer'])}
+                className={'w-[40px] h-[40px] cursor-pointer'}
                 onClick={handleLinkMain}
             >
-                <img
-                    className={cn(['w-full h-full'])}
+                <Image
+                    unoptimized={true}
                     alt={'icon'}
                     src={`${IMG}/header/logoidx.png`}
+                    width={40}
+                    height={40}
                 />
             </div>
 
             {/* right side */}
-            <div className={cn('flex-center')}>
+            <div className={'flex-center'}>
                 {/* 디스코드 링크 */}
                 <NavItem>
                     <div
@@ -68,9 +67,7 @@ const Navbar = () => {
                 {/* 사용자 로그인/로그아웃 */}
                 <NavItem>
                     <div
-                        className={cn(
-                            'btn-transparent text-[14px] cursor-pointer',
-                        )}
+                        className={'btn-transparent text-[14px] cursor-pointer'}
                     >
                         {session ? (
                             <div onClick={() => signOut()}>{t('logout')}</div>
@@ -85,11 +82,11 @@ const Navbar = () => {
                 {/* 메뉴 버튼 */}
                 <NavItem>
                     <div
-                        className={cn('btn-transparent z-10')}
+                        className={'btn-transparent z-10'}
                         onClick={() => controlMenu()}
                     >
                         <FontAwesomeIcon
-                            className={cn('cursor-pointer', {
+                            className={clsx('cursor-pointer', {
                                 ['text-black']: isMenuOpen,
                             })}
                             icon={faBars}

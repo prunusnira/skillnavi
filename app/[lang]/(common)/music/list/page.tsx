@@ -37,7 +37,8 @@ const PageMusicList = async ({
                         <div>
                             <AlbumArt
                                 mid={s.mid}
-                                className={cn('w-24 h-24 rounded-xl')}
+                                className={'rounded-xl'}
+                                size={96}
                             />
                         </div>
                         <div>{s.name}</div>

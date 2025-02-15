@@ -5,6 +5,7 @@ import { SidebarMenuItems, SidebarSubMenu } from '@/data/menu/SidebarMenu';
 import { cn } from '@/module/util/cn';
 import { useTranslations } from 'next-intl';
 import { useRouter } from '@/i18n/routing';
+import Image from 'next/image';
 
 const useSidebar = () => {
     const env = useAtomValue(atomEnv);
@@ -36,7 +37,8 @@ const useSidebar = () => {
                             'w-full md:w-[768px] flex items-center gap-[8px]',
                         )}
                     >
-                        <img
+                        <Image
+                            unoptimized={true}
                             src={m.iconSrc}
                             alt="sidebar menu icon"
                             width={36}
