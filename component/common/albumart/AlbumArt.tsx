@@ -25,6 +25,7 @@ const AlbumArt = ({ mid, className, size }: Props) => {
                 setSrc(`${ALBUM}/empty.jpg`);
             }}
             width={size || 48}
+            height={size || 48}
         />
     );
 };

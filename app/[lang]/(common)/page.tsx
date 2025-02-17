@@ -115,6 +115,7 @@ const PageIndex = async () => {
                             unoptimized={true}
                             alt={'how to image 1'}
                             src={`${IMG}/howto/howto2-browser.png`}
+                            fill
                         />
                     </section>
                 </Card>
@@ -128,6 +129,7 @@ const PageIndex = async () => {
                             unoptimized={true}
                             alt={'how to image 2'}
                             src={`${IMG}/howto/howto3.png`}
+                            fill
                         />
                     </section>
                 </Card>

@@ -83,9 +83,9 @@ const SkillGrid = ({ skill, index }: Props) => {
                         <div className={cn('flex-center')}>
                             <Image
                                 unoptimized={true}
-                                className={cn('w-10')}
                                 alt={'difficulty'}
                                 src={`${IMG}/diff/${convertPatternCode(skill.patterncode, 'image300')}`}
+                                width={40}
                             />
                         </div>
                         <div className={cn('flex-center')}>

@@ -139,6 +139,7 @@ const PageProfile = async ({ params }: { params: { id: string } }) => {
                     unoptimized={true}
                     alt="playerboard"
                     src={`${process.env.NEXT_PUBLIC_URL_DATA}/board/${id}.png`}
+                    width={400}
                 />
             </Card>
         </article>
