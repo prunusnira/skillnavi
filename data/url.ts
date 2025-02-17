@@ -18,7 +18,8 @@ export const LINK = {
     },
     SKILL: {
         recent: '/recent',
-        ranking: (type: GameType, page: number) => `/rank/${type}/${page}`,
+        ranking: (type: GameType, page: number) =>
+            `/skill/rank?type=${type}&page=${page}`,
         exc: (type: GameType) => `/esc/${type}`,
         countrank: (page: number) => `/cntrank/${page}`,
         self: (type: GameType) => `/skill/my/${type}`,

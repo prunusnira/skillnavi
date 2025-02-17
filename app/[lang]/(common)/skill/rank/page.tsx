@@ -25,7 +25,7 @@ const PageSkillRank = async ({
             <section className={'flex flex-col gap-[5px] w-full'}>
                 {rank.map((user, idx) => (
                     <SkillRankUser
-                        key={user.uid}
+                        key={`${type}_${user.value}`}
                         rank={(page - 1) * SKILLRANK_SIZE + idx + 1}
                         name={user.name}
                         value={user.value}

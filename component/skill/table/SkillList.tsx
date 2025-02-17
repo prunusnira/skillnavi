@@ -81,6 +81,7 @@ const SkillList = ({ skill, index }: Props) => {
                             alt={'difficulty'}
                             src={`${IMG}/diff/${convertPatternCode(skill.patterncode, 'image')}`}
                             width={80}
+                            height={20}
                         />
                     </div>
                     <div>{convertLevel(skill.level)}</div>
@@ -90,6 +91,7 @@ const SkillList = ({ skill, index }: Props) => {
                             alt={'rank'}
                             src={`${IMG}/rank/${convertRank(skill.maxrank)}`}
                             width={20}
+                            height={20}
                         />
                     </div>
                     <div className={cn('font-bold')}>

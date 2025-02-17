@@ -42,6 +42,7 @@ const useSidebar = () => {
                             src={m.iconSrc}
                             alt="sidebar menu icon"
                             width={36}
+                            height={36}
                         />
                         <div
                             className={cn('text-black text-md', {

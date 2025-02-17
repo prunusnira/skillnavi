@@ -76,6 +76,7 @@ export const GET = async (req: NextRequest) => {
                 select: {
                     id: true,
                     name: true,
+                    openinfo: true,
                 },
                 where: {
                     OR: userIds.map((id) => ({
@@ -84,13 +85,18 @@ export const GET = async (req: NextRequest) => {
                 },
             });
 
-            const rank = skillData.map<SkillRank>((data) => ({
-                uid: data.uid,
-                name:
-                    profileList.find((prof) => prof.id === data.uid)?.name ||
-                    '',
-                value: type === 'gf' ? data.gskill || 0 : data.dskill || 0,
-            }));
+            const rank: SkillRank[] = [];
+
+            skillData.forEach((data) => {
+                const prof = profileList.find((p) => p.id === data.uid);
+                const name = prof?.openinfo ? prof.name : '';
+
+                rank.push({
+                    uid: prof?.openinfo ? data.uid : 0,
+                    name: name || '',
+                    value: type === 'gf' ? data.gskill || 0 : data.dskill || 0,
+                });
+            });
 
             return NextResponse.json({
                 rank,

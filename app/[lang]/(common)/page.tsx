@@ -9,7 +9,6 @@ import { getNoticeByLocale } from '@/module/lib/notice/getNoticeByLocale';
 import dayjs from 'dayjs';
 import style from './page.module.scss';
 import Link from 'next/link';
-import Image from 'next/image';
 
 export const dynamic = 'force-dynamic';
 
@@ -111,11 +110,9 @@ const PageIndex = async () => {
                         <div>{t('howto.desc3')}</div>
                         <div>{t('howto.browser')}</div>
                         <div>Google Chrome, Safari</div>
-                        <Image
-                            unoptimized={true}
+                        <img
                             alt={'how to image 1'}
                             src={`${IMG}/howto/howto2-browser.png`}
-                            fill
                         />
                     </section>
                 </Card>
@@ -125,11 +122,9 @@ const PageIndex = async () => {
                     <section className={cn('px-2 py-1')}>
                         <div>{t('howto.desc4')}</div>
                         <div>{t('howto.lang')}: 한국어, 日本語, English</div>
-                        <Image
-                            unoptimized={true}
+                        <img
                             alt={'how to image 2'}
                             src={`${IMG}/howto/howto3.png`}
-                            fill
                         />
                     </section>
                 </Card>
