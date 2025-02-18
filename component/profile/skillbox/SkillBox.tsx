@@ -41,9 +41,6 @@ const SkillBox = ({ skill }: Props) => {
                     </SkillBoxCell>
                 </SkillBoxRow>
             ))}
-
-            {/* 하단 클릭 영역 */}
-            <div>클릭해서 전체 보기 (팝업으로 열기)</div>
         </section>
     );
 };

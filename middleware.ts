@@ -34,6 +34,7 @@ const authMiddleware = withAuth(
 );
 
 export const middleware = (req: NextRequest) => {
+    console.log('==============', req.nextUrl.pathname);
     const publicPathnameRegex = RegExp(
         `^(/(${locales.join('|')}))?(((${publicPagesExact
             .flatMap((p) =>
@@ -57,7 +58,7 @@ export const middleware = (req: NextRequest) => {
         'i',
     );
     const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname);
-    console.log('isPublicPage', req.nextUrl.pathname, isPublicPage);
+    console.log('isPublicPage', isPublicPage);
     if (isPublicPage) {
         return handleI18nRouting(req);
     } else {
