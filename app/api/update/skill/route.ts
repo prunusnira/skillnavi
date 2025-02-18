@@ -68,7 +68,7 @@ export const POST = async (req: NextRequest) => {
                 // 패턴 데이터 갱신처리
                 prisma.patternList.upsert({
                     where: {
-                        mid_version_patterncode: {
+                        mid_version_paterncode: {
                             mid: music.id,
                             version,
                             patterncode: pattern.ptcode,
