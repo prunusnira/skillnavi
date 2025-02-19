@@ -1,5 +1,4 @@
 import SkillTable from '@/component/skill/table/SkillTable';
-import { cn } from '@/module/util/cn';
 import { TableType } from '@/data/skill/TableType';
 import { TableDataType } from '@/data/skill/TableDataType';
 
@@ -22,7 +21,7 @@ const PageSkill = async ({
     };
 }) => {
     return (
-        <article className={cn('w-full')}>
+        <article className={'w-full'}>
             {/* 테이블 */}
             <SkillTable searchParams={searchParams} />
         </article>

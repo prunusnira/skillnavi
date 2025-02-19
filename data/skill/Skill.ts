@@ -14,3 +14,15 @@ export interface Skill {
     hot: number;
     skill: number;
 }
+
+export interface SkillForTable {
+    mid: number;
+    playver: number;
+    patterncode: number;
+    level: number;
+    maxrank: string;
+    rate: number;
+    fc: boolean;
+    hot: number;
+    skill: number;
+}
