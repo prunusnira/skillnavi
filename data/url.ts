@@ -18,10 +18,7 @@ export const LINK = {
     },
     SKILL: {
         recent: '/recent',
-        ranking: (type: GameType, page: number) =>
-            `/skill/rank?type=${type}&page=${page}`,
         exc: (type: GameType) => `/skill/exc/${type}`,
-        countrank: (page: number) => `/cntrank/${page}`,
         self: (type: GameType) => `/skill/my/${type}`,
         skill: ({
             version,
@@ -87,5 +84,10 @@ export const LINK = {
     },
     AUTH: {
         login: `/auth/signin`,
+    },
+    RANK: {
+        skill: (type: GameType, page: number) =>
+            `/skill/rank?type=${type}&page=${page}`,
+        playcount: (page: number) => `/rank/playcount?page=${page}`,
     },
 };

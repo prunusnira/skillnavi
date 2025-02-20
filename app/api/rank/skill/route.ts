@@ -6,7 +6,7 @@ import { SKILLRANK_SIZE } from '@/data/env/constant';
 import { SkillRank } from '@/data/skill/SkillRank';
 import { ProfileSkill } from '@/data/profile/ProfileSkill';
 import { Profile } from '@/data/profile/Profile';
-// import { getLatestVersion } from '@/module/api/env/getGameVersions';
+import { getLatestVersion } from '@/module/api/env/getGameVersions';
 
 export const GET = async (req: NextRequest) => {
     return RouteWrapper({
@@ -15,14 +15,14 @@ export const GET = async (req: NextRequest) => {
             const searchParams = req.nextUrl.searchParams;
             const page = Number(searchParams.get('page'));
             const type: GameType = searchParams.get('type') as GameType;
-            // const latest = await getLatestVersion();
+            const latest = await getLatestVersion();
 
             let skillData;
             let total;
             if (type === 'gf') {
                 skillData = (await prisma.profileSkill.findMany({
                     where: {
-                        version: 28,
+                        version: latest,
                         gskill: {
                             gt: 0,
                         },
@@ -35,7 +35,7 @@ export const GET = async (req: NextRequest) => {
                 })) as ProfileSkill[];
                 total = await prisma.profileSkill.count({
                     where: {
-                        version: 28,
+                        version: latest,
                         gskill: {
                             gt: 0,
                         },
@@ -44,7 +44,7 @@ export const GET = async (req: NextRequest) => {
             } else {
                 skillData = (await prisma.profileSkill.findMany({
                     where: {
-                        version: 28,
+                        version: latest,
                         dskill: {
                             gt: 0,
                         },
@@ -57,7 +57,7 @@ export const GET = async (req: NextRequest) => {
                 })) as ProfileSkill[];
                 total = await prisma.profileSkill.count({
                     where: {
-                        version: 28,
+                        version: latest,
                         dskill: {
                             gt: 0,
                         },
@@ -77,6 +77,7 @@ export const GET = async (req: NextRequest) => {
                 select: {
                     id: true,
                     name: true,
+                    titletower: true,
                     openinfo: true,
                 },
                 where: {
@@ -90,11 +91,12 @@ export const GET = async (req: NextRequest) => {
 
             skillData.forEach((data) => {
                 const prof = profileList.find((p) => p.id === data.uid);
-                const name = prof?.openinfo ? prof.name : '';
 
                 rank.push({
                     uid: prof?.openinfo ? data.uid : 0,
-                    name: name || '',
+                    name: prof?.name || '',
+                    titletower: prof?.titletower || '',
+                    openinfo: prof?.openinfo || false,
                     value: type === 'gf' ? data.gskill || 0 : data.dskill || 0,
                 });
             });

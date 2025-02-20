@@ -1,11 +1,11 @@
 import Pager from '@/component/common/pager/Pager';
 import { GameType } from '@/data/game/GameType';
-import { getSkillRank } from '@/module/api/skill/getSkillRank';
-import SkillRankUser from '@/component/skill/rank/SkillRankUser';
+import { getSkillRank } from '@/module/api/rank/getSkillRank';
+import SkillRankUser from '@/component/rank/skill/SkillRankUser';
 import { SKILLRANK_SIZE } from '@/data/env/constant';
 import Card from '@/component/common/card/Card';
 import { getTranslations } from 'next-intl/server';
-import SkillRankType from '@/component/skill/rank/SkillRankType';
+import SkillRankType from '@/component/rank/skill/SkillRankType';
 
 const PageSkillRank = async ({
     searchParams,
@@ -27,8 +27,7 @@ const PageSkillRank = async ({
                     <SkillRankUser
                         key={`${type}_${user.value}`}
                         rank={(page - 1) * SKILLRANK_SIZE + idx + 1}
-                        name={user.name}
-                        value={user.value}
+                        data={user}
                     />
                 ))}
             </section>

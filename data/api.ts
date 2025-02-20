@@ -23,7 +23,6 @@ export const API = {
     RECENTOLD: `${PREFIX}/recent/old`,
     SKILL: {
         table: `${PREFIX}/skill/table`,
-        rank: `${PREFIX}/skill/rank`,
     },
     MUSIC: {
         list: `${PREFIX}/music/list`,
@@ -34,5 +33,9 @@ export const API = {
     PATTERN: {
         rank: `${PREFIX}/pattern/rank`,
         rankPages: `${PREFIX}/pattern/rank/meta`,
+    },
+    RANK: {
+        skill: `${PREFIX}/rank/skill`,
+        playcount: `${PREFIX}/rank/playcount`,
     },
 };

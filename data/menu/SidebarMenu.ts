@@ -54,7 +54,7 @@ export const SidebarMenuItems: SidebarMenu[] = [
             },
             {
                 id: 'skill.rank',
-                href: LINK.SKILL.ranking('gf', 1),
+                href: LINK.RANK.skill('gf', 1),
             },
             {
                 id: 'skill.exc',
@@ -62,7 +62,7 @@ export const SidebarMenuItems: SidebarMenu[] = [
             },
             {
                 id: 'skill.countrank',
-                href: LINK.SKILL.countrank(1),
+                href: LINK.RANK.playcount(1),
             },
         ],
     },
