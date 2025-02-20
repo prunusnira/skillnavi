@@ -9,7 +9,7 @@ interface Params {
 }
 
 export const getSkillRank = async ({ type, page }: Params) => {
-    return await fetchAdv.get<SkillRankReturn>(API.SKILL.rank, {
+    return await fetchAdv.get<SkillRankReturn>(API.RANK.skill, {
         params: {
             page,
             type,

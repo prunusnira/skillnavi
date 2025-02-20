@@ -2,32 +2,35 @@
 
 import { useSearchParams } from 'next/navigation';
 import SkillColor from '@/component/common/skillColor/SkillColor';
-import { clsx } from 'clsx';
+import UserLinkIcon from '@/component/common/table/user/UserLinkIcon';
+import { SkillRank } from '@/data/skill/SkillRank';
 
 interface Props {
     rank: number;
-    name: string;
-    value: number;
+    data: SkillRank;
 }
 
-const SkillRankUser = ({ rank, name, value }: Props) => {
+const SkillRankUser = ({ rank, data }: Props) => {
     const searchParams = useSearchParams();
     const type = searchParams.get('type');
 
     return (
-        <section className={'flex w-full'}>
+        <section className={'flex w-full h-[40px]'}>
             {/* 랭크 */}
             <div className={'w-[50px] px-[10px] text-center shrink-0'}>
                 {rank}
             </div>
 
             {/* 이름 */}
-            <div
-                className={clsx('grow link line-clamp-1', {
-                    ['text-red-500']: name.length === 0,
-                })}
-            >
-                {name.length ? name : '(LIMITED DATA)'}
+            <div className={'flex-1'}>
+                <UserLinkIcon
+                    user={{
+                        id: data.uid,
+                        name: data.name,
+                        titletower: data.titletower,
+                        openinfo: data.openinfo,
+                    }}
+                />
             </div>
 
             {/* 기준 */}
@@ -37,7 +40,7 @@ const SkillRankUser = ({ rank, name, value }: Props) => {
 
             {/* 수치 */}
             <div className={'px-[10px] text-center w-[120px] shrink-0'}>
-                <SkillColor value={value / 100} />
+                <SkillColor value={data.value / 100} />
             </div>
         </section>
     );
