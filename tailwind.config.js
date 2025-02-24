@@ -2,8 +2,9 @@
 module.exports = {
     content: [
         './app/**/*.{js,jsx,ts,tsx}',
+        './common/**/*.{js,jsx,ts,tsx}',
         './feature/**/*.{js,jsx,ts,tsx}',
-        './module/**/*.{js,jsx,ts,tsx}',
+        './lib/**/*.{js,jsx,ts,tsx}',
     ],
     theme: {
         extend: {

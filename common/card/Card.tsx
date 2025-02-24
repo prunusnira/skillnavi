@@ -12,15 +12,13 @@ const Card = ({ title, children }: Props) => {
     return (
         // 공통 카드 ui
         <section
-            className={cn(
-                'flex-col-center p-1.5 w-full flex-grow min-h-[300px]',
-            )}
+            className={'flex-col-center p-[6px] w-full flex-grow min-h-[300px]'}
         >
             {title && (
                 <div
-                    className={cn(
-                        ' w-full bg-gray-800 text-white text-2xl font-extrabold rounded-t-2xl px-[20px] py-[10px]',
-                    )}
+                    className={
+                        'w-full bg-gray-800 text-white text-xl font-bold rounded-t-2xl px-[20px] py-[10px]'
+                    }
                 >
                     {title}
                 </div>

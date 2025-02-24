@@ -82,27 +82,27 @@ const ClearTableChart = ({ tableData }: Props) => {
                     <Bar
                         dataKey="SS"
                         stackId="PlayData"
-                        fill="#888800"
+                        fill="#aaaa55"
                     />
                     <Bar
                         dataKey="S"
                         stackId="PlayData"
-                        fill="#880000"
+                        fill="#aa5555"
                     />
                     <Bar
                         dataKey="A"
                         stackId="PlayData"
-                        fill="#880088"
+                        fill="#aa55aa"
                     />
                     <Bar
                         dataKey="B"
                         stackId="PlayData"
-                        fill="#008800"
+                        fill="#55aa55"
                     />
                     <Bar
                         dataKey="C"
                         stackId="PlayData"
-                        fill="#000088"
+                        fill="#5555aa"
                     />
                 </BarChart>
             </ResponsiveContainer>

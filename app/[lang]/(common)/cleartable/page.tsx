@@ -14,7 +14,7 @@ const PageClearTable = async ({
 }) => {
     const session = await getServerSession();
     const profile = await getProfileSession(session);
-    const { type } = searchParams;
+    const type = searchParams.type || 'gf';
 
     if (!profile) {
         return null;

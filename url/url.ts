@@ -78,6 +78,6 @@ export const LINK_PATTERN_RANK = (
 export const LINK_TOWER_MAIN = '/tower';
 export const LINK_AUTH_LOGIN = `/auth/signin`;
 export const LINK_RANK_SKILL = (type: GameType, page: number) =>
-    `/skill/rank?type=${type}&page=${page}`;
+    `/rank/skill?type=${type}&page=${page}`;
 export const LINK_RANK_PLAYCOUNT = (page: number) =>
     `/rank/playcount?page=${page}`;
