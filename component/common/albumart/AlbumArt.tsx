@@ -1,6 +1,6 @@
 'use client';
 
-import { ALBUM } from '@/data/url';
+import { ALBUM } from '@/url/url';
 import { useState } from 'react';
 import Image from 'next/image';
 

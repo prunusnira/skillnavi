@@ -1,4 +1,4 @@
-import { IMG } from '@/data/url';
+import { IMG } from '@/url/url';
 import { Profile } from '@/data/profile/Profile';
 import Image from 'next/image';
 

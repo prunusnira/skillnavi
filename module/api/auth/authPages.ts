@@ -1,6 +1,6 @@
 import { PagesOptions } from 'next-auth';
-import { LINK } from '@/data/url';
+import { LINK_AUTH_LOGIN } from '@/url/url';
 
 export const authPages: Partial<PagesOptions> = {
-    signIn: LINK.AUTH.login,
+    signIn: LINK_AUTH_LOGIN,
 };

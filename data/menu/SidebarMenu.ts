@@ -1,4 +1,19 @@
-import { IMG, LINK } from '@/data/url';
+import {
+    IMG,
+    LINK_MAIN,
+    LINK_PATTERN_LIST,
+    LINK_PATTERN_NOPLAY,
+    LINK_PATTERN_TABLE,
+    LINK_PLAYCOUNT,
+    LINK_PROFILE_SELF,
+    LINK_RANK_PLAYCOUNT,
+    LINK_RANK_SKILL,
+    LINK_SKILL_EXC,
+    LINK_SKILL_RECENT,
+    LINK_SKILL_SELF,
+    LINK_SNAPSHOT,
+    LINK_TOWER_MAIN,
+} from '@/url/url';
 
 export interface SidebarSubMenu {
     id: string;
@@ -16,7 +31,7 @@ export const SidebarMenuItems: SidebarMenu[] = [
     {
         id: 'index',
         iconSrc: `${IMG}/header/logo.png`,
-        href: LINK.MAIN,
+        href: LINK_MAIN,
     },
     {
         id: 'mydata',
@@ -24,23 +39,23 @@ export const SidebarMenuItems: SidebarMenu[] = [
         subMenu: [
             {
                 id: 'mydata.profile',
-                href: LINK.PROFILE.self,
+                href: LINK_PROFILE_SELF,
             },
             {
                 id: 'mydata.mygf',
-                href: LINK.SKILL.self('gf'),
+                href: LINK_SKILL_SELF('gf'),
             },
             {
                 id: 'mydata.mydm',
-                href: LINK.SKILL.self('dm'),
+                href: LINK_SKILL_SELF('dm'),
             },
             {
                 id: 'mydata.count',
-                href: LINK.PROFILE.playcount,
+                href: LINK_PLAYCOUNT,
             },
             {
                 id: 'mydata.snapshot',
-                href: LINK.PROFILE.snapshot,
+                href: LINK_SNAPSHOT,
             },
         ],
     },
@@ -50,19 +65,19 @@ export const SidebarMenuItems: SidebarMenu[] = [
         subMenu: [
             {
                 id: 'skill.recent',
-                href: LINK.SKILL.recent,
+                href: LINK_SKILL_RECENT,
             },
             {
                 id: 'skill.rank',
-                href: LINK.RANK.skill('gf', 1),
+                href: LINK_RANK_SKILL('gf', 1),
             },
             {
                 id: 'skill.exc',
-                href: LINK.SKILL.exc('gf'),
+                href: LINK_SKILL_EXC('gf'),
             },
             {
                 id: 'skill.countrank',
-                href: LINK.RANK.playcount(1),
+                href: LINK_RANK_PLAYCOUNT(1),
             },
         ],
     },
@@ -72,21 +87,21 @@ export const SidebarMenuItems: SidebarMenu[] = [
         subMenu: [
             {
                 id: 'pattern.list',
-                href: LINK.PATTERN.list({}),
+                href: LINK_PATTERN_LIST({}),
             },
             {
                 id: 'pattern.noplay',
-                href: LINK.PATTERN.noplay,
+                href: LINK_PATTERN_NOPLAY,
             },
             {
                 id: 'pattern.table',
-                href: LINK.PATTERN.table,
+                href: LINK_PATTERN_TABLE,
             },
         ],
     },
     {
         id: 'tower',
         iconSrc: `${IMG}/header/tower.png`,
-        href: LINK.TOWER.main,
+        href: LINK_TOWER_MAIN,
     },
 ];

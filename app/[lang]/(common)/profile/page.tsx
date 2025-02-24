@@ -2,7 +2,7 @@
 import { getServerSession } from 'next-auth';
 import { getProfileSession } from '@/module/api/profile/getProfileSession';
 import { redirect } from '@/i18n/routing';
-import { LINK } from '@/data/url';
+import { LINK_PROFILE_MAIN } from '@/url/url';
 import { getLocale } from 'next-intl/server';
 
 export const dynamic = 'force-dynamic';
@@ -16,7 +16,7 @@ const PageProfileSelf = async () => {
         return null;
     }
 
-    redirect({ href: LINK.PROFILE.main(profile.id), locale });
+    redirect({ href: LINK_PROFILE_MAIN(profile.id), locale });
 };
 
 export default PageProfileSelf;

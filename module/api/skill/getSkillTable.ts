@@ -1,6 +1,6 @@
 import { fetchAdv } from '@/module/api/fetchAdv';
-import { API } from '@/data/api';
 import { SkillReturn } from '@/data/skill/SkillReturn';
+import { API_SKILL_TABLE } from '@/url/api';
 
 interface Props {
     id: string;
@@ -19,7 +19,7 @@ export const getSkillTable = async ({
     order,
     pageType,
 }: Props) => {
-    return await fetchAdv.get<SkillReturn>(API.SKILL.table, {
+    return await fetchAdv.get<SkillReturn>(API_SKILL_TABLE, {
         params: {
             userid: id,
             page,

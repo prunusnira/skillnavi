@@ -21,7 +21,11 @@ export default async function RootLayout({
 
     return (
         <html lang={locale}>
-            <body className={cn('w-full flex-col-center')}>
+            <body
+                className={cn(
+                    'w-full flex flex-col justify-start items-center',
+                )}
+            >
                 <NextIntlClientProvider messages={messages}>
                     <Wrappers>
                         <Suspense>{children}</Suspense>

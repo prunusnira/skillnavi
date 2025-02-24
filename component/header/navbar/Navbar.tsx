@@ -1,6 +1,6 @@
 'use client';
 
-import { IMG, LINK } from '@/data/url';
+import { IMG, LINK_AUTH_LOGIN } from '@/url/url';
 import NavItem from '@/component/header/NavItem';
 import useNavbar from '@/component/header/navbar/useNavbar';
 import { useTranslations } from 'next-intl';
@@ -72,7 +72,7 @@ const Navbar = () => {
                         {session ? (
                             <div onClick={() => signOut()}>{t('logout')}</div>
                         ) : (
-                            <div onClick={() => router.push(LINK.AUTH.login)}>
+                            <div onClick={() => router.push(LINK_AUTH_LOGIN)}>
                                 {t('login')}
                             </div>
                         )}

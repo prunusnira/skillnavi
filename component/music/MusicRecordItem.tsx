@@ -4,7 +4,7 @@ import { cn } from '@/module/util/cn';
 import { Skill } from '@/data/skill/Skill';
 import { useTranslations } from 'next-intl';
 import { useRouter } from '@/i18n/routing';
-import { LINK } from '@/data/url';
+import { LINK_PATTERN_RANK } from '@/url/url';
 import { getPatternTypeFromCode } from '@/module/util/pattern/getPatternTypeFromCode';
 
 interface Props {
@@ -54,7 +54,7 @@ const MusicRecordItem = ({
                     className={cn('link no-line-wrap')}
                     onClick={() =>
                         router.push(
-                            LINK.PATTERN.rank(
+                            LINK_PATTERN_RANK(
                                 String(version),
                                 1,
                                 String(mid),

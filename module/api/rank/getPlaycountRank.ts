@@ -1,6 +1,6 @@
 import { fetchAdv } from '@/module/api/fetchAdv';
 import { PlayCount } from '@/data/rank/PlayCount';
-import { API } from '@/data/api';
+import { API_RANK_PLAYCOUNT } from '@/url/api';
 
 interface Params {
     page: number;
@@ -8,7 +8,7 @@ interface Params {
 }
 
 export const getPlaycountRank = async ({ page, version }: Params) => {
-    return await fetchAdv.get<PlayCount>(API.RANK.playcount, {
+    return await fetchAdv.get<PlayCount>(API_RANK_PLAYCOUNT, {
         params: {
             page,
             version,

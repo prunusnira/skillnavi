@@ -1,5 +1,5 @@
-import { API } from '@/data/api';
 import { fetchAdv } from '@/module/api/fetchAdv';
+import { API_PATTERN_RANK_META } from '@/url/api';
 
 interface Params {
     mid: number;
@@ -13,7 +13,7 @@ export const getPatternRankingPages = async ({
     patterncode,
 }: Params) => {
     const result = await fetchAdv.get<{ pages: number }>(
-        API.PATTERN.rankPages,
+        API_PATTERN_RANK_META,
         {
             params: {
                 mid,
