@@ -3,7 +3,7 @@
 import usePatternRankTable from '@/component/music/usePatternRankTable';
 import { cn } from '@/module/util/cn';
 import { getSkillCN } from '@/module/api/skill/getSkillCN';
-import { IMG } from '@/data/url';
+import { IMG } from '@/url/url';
 import { MUSICLIST_SIZE } from '@/data/env/constant';
 import Pager from '@/component/common/pager/Pager';
 import Image from 'next/image';

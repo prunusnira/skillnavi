@@ -1,6 +1,6 @@
 import { useAtom } from 'jotai/index';
 import { atomEnv } from '@/jotai/atomEnv';
-import { LINK } from '@/data/url';
+import { LINK_MAIN } from '@/url/url';
 import { useMemo } from 'react';
 import { useRouter } from '@/i18n/routing';
 
@@ -12,7 +12,7 @@ const useNavbar = () => {
     const router = useRouter();
 
     const handleLinkMain = () => {
-        router.push(LINK.MAIN);
+        router.push(LINK_MAIN);
     };
 
     const setTheme = (mode: boolean) => {

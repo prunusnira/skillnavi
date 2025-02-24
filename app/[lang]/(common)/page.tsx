@@ -4,7 +4,7 @@ import { getLocale, getTranslations } from 'next-intl/server';
 import { getServerSession } from 'next-auth';
 import UserInfo from '@/component/main/userCard/UserInfo';
 import { getNotice } from '@/module/api/notice/getNotice';
-import { IMG, LINK } from '@/data/url';
+import { IMG, LINK_AUTH_LOGIN } from '@/url/url';
 import { getNoticeByLocale } from '@/module/lib/notice/getNoticeByLocale';
 import dayjs from 'dayjs';
 import style from './page.module.scss';
@@ -35,7 +35,7 @@ const PageIndex = async () => {
                     ) : (
                         <section>
                             <div className={cn('link')}>
-                                <Link href={LINK.AUTH.login}>
+                                <Link href={LINK_AUTH_LOGIN}>
                                     {t('self.login')}
                                 </Link>
                             </div>

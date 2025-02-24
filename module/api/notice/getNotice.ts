@@ -1,6 +1,6 @@
 import { fetchAdv } from '@/module/api/fetchAdv';
-import { API } from '@/data/api';
 import { Notice } from '@/data/notice/Notice';
+import { API_NOTICE } from '@/url/api';
 
 interface Params {
     page: number;
@@ -8,7 +8,7 @@ interface Params {
 }
 
 export const getNotice = async ({ page, size }: Params) => {
-    return fetchAdv.get<Notice[]>(API.NOTICE, {
+    return fetchAdv.get<Notice[]>(API_NOTICE, {
         params: {
             page,
             size,

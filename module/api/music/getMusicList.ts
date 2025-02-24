@@ -1,7 +1,7 @@
 import { fetchAdv } from '@/module/api/fetchAdv';
 import { MusicListPage } from '@/data/music/MusicListPageData';
-import { API } from '@/data/api';
 import { getLatestVersion } from '@/module/api/env/getGameVersions';
+import { API_MUSIC_LIST } from '@/url/api';
 
 interface Params {
     version?: number;
@@ -11,7 +11,7 @@ interface Params {
 
 export const getMusicList = async ({ version, order, page }: Params) => {
     const latest = await getLatestVersion();
-    return await fetchAdv.get<MusicListPage>(API.MUSIC.list, {
+    return await fetchAdv.get<MusicListPage>(API_MUSIC_LIST, {
         params: {
             version: version || latest,
             order: order || 'titleasc',

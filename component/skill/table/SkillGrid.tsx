@@ -2,7 +2,7 @@
 
 import { cn } from '@/module/util/cn';
 import { getSkillCN } from '@/module/api/skill/getSkillCN';
-import { IMG, LINK } from '@/data/url';
+import { IMG, LINK_MUSIC_INFO } from '@/url/url';
 import { convertPatternCode } from '@/module/util/convertPatternCode';
 import { convertLevel } from '@/module/util/convertLevel';
 import { convertRank } from '@/module/util/convertRank';
@@ -56,7 +56,7 @@ const SkillGrid = ({ skill, index }: Props) => {
                     'px-2 link',
                 )}
                 text={music.name}
-                path={LINK.MUSIC.info({
+                path={LINK_MUSIC_INFO({
                     version: Number(searchParams.get('version') || 0),
                     uid: Number(id),
                     mid: skill.mid,

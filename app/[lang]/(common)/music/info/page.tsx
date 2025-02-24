@@ -3,7 +3,7 @@ import Card from '@/component/common/card/Card';
 import { cn } from '@/module/util/cn';
 import MusicRecord from '@/component/music/MusicRecord';
 import { getProfile } from '@/module/api/profile/getProfile';
-import { IMG } from '@/data/url';
+import { IMG } from '@/url/url';
 import MusicData from '@/component/music/MusicData';
 import Image from 'next/image';
 

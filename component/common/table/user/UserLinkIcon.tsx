@@ -1,6 +1,6 @@
 'use client';
 
-import { IMG, LINK } from '@/data/url';
+import { IMG, LINK_PROFILE_MAIN } from '@/url/url';
 import { cn } from '@/module/util/cn';
 import { ProfileSimple } from '@/data/profile/ProfileSimple';
 import { useRouter } from '@/i18n/routing';
@@ -15,7 +15,7 @@ const UserLinkIcon = ({ user }: Props) => {
     return (
         <div
             className={cn('flex items-center gap-2')}
-            onClick={() => router.push(LINK.PROFILE.main(user.id))}
+            onClick={() => router.push(LINK_PROFILE_MAIN(user.id))}
         >
             {user.titletower && (
                 <Image

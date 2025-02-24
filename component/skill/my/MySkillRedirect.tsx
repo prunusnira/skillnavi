@@ -2,7 +2,7 @@
 
 import { useRouter } from '@/i18n/routing';
 import { useEffect } from 'react';
-import { LINK } from '@/data/url';
+import { LINK_SKILL_TABLE } from '@/url/url';
 import { useAtomValue } from 'jotai';
 import { atomGameVersionLatest } from '@/jotai/atomGameVersion';
 import { useParams } from 'next/navigation';
@@ -22,7 +22,7 @@ const MySkillRedirect = ({ userid }: Props) => {
         if (!recent) return;
 
         router.push(
-            LINK.SKILL.skill({
+            LINK_SKILL_TABLE({
                 id: userid,
                 game: params.type,
                 pageType: 'target',

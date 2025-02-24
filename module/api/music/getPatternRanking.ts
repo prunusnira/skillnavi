@@ -1,6 +1,6 @@
 import { fetchAdv } from '@/module/api/fetchAdv';
-import { API } from '@/data/api';
 import { Skill } from '@/data/skill/Skill';
+import { API_PATTERN_RANK } from '@/url/api';
 
 interface Params {
     mid: number;
@@ -15,7 +15,7 @@ export const getPatternRanking = async ({
     patterncode,
     page,
 }: Params) => {
-    return await fetchAdv.get<Skill[]>(API.PATTERN.rank, {
+    return await fetchAdv.get<Skill[]>(API_PATTERN_RANK, {
         params: {
             mid,
             version,

@@ -1,6 +1,6 @@
 import { cn } from '@/module/util/cn';
 import Image from 'next/image';
-import { IMG } from '@/data/url';
+import { IMG } from '@/url/url';
 import { Profile } from '@/data/profile/Profile';
 
 interface Props {
