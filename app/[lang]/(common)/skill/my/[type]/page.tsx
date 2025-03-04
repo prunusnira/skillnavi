@@ -1,6 +1,6 @@
 import { getServerSession } from 'next-auth';
-import { getProfileSession } from '@/module/api/profile/getProfileSession';
-import MySkillRedirect from '@/component/skill/my/MySkillRedirect';
+import { getProfileSession } from '@/feature/profile/api/getProfileSession';
+import MySkillRedirect from '@/feature/skill/component/my/MySkillRedirect';
 
 export const dynamic = 'force-dynamic';
 

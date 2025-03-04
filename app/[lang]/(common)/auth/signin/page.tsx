@@ -1,7 +1,7 @@
-import Card from '@/component/common/card/Card';
+import Card from '@/common/card/Card';
 import { getTranslations } from 'next-intl/server';
-import { cn } from '@/module/util/cn';
-import LoginForm from '@/component/auth/login/LoginForm';
+import { cn } from '@/lib/cn';
+import LoginForm from '@/feature/auth/login/LoginForm';
 
 export const dynamic = 'force-dynamic';
 

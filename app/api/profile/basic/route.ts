@@ -1,8 +1,8 @@
-import RouteWrapper from '@/module/api/routeWrapper';
+import RouteWrapper from '@/lib/fetch/routeWrapper';
 import { NextRequest, NextResponse } from 'next/server';
-import { FetchError } from '@/data/fetch/FetchError';
-import prisma from '@/module/lib/db/prisma';
-import { Profile } from '@/data/profile/Profile';
+import { FetchError } from '@/lib/fetch/FetchError';
+import prisma from '@/lib/db/prisma';
+import { Profile } from '@/feature/profile/data/Profile';
 
 export const GET = async (req: NextRequest) => {
     return RouteWrapper({

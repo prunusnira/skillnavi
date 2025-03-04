@@ -1,7 +1,7 @@
-import RouteWrapper from '@/module/api/routeWrapper';
+import RouteWrapper from '@/lib/fetch/routeWrapper';
 import { NextRequest, NextResponse } from 'next/server';
-import { Music } from '@/data/music/Music';
-import prisma from '@/module/lib/db/prisma';
+import { Music } from '@/feature/music/data/Music';
+import prisma from '@/lib/db/prisma';
 
 export const GET = async (req: NextRequest) => {
     return await RouteWrapper({

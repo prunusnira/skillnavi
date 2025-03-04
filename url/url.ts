@@ -1,6 +1,6 @@
-import { GameType } from '@/data/game/GameType';
-import { Order } from '@/data/filter/Order';
-import { SkillPageParams } from '@/data/skill/SkillPageParams';
+import { GameType } from '@/common/game/data/GameType';
+import { Order } from '@/common/filter/Order';
+import { SkillPageParams } from '@/feature/skill/data/SkillPageParams';
 
 export const IMG = process.env.NEXT_PUBLIC_URL_IMG || '';
 export const ALBUM = process.env.NEXT_PUBLIC_URL_ALBUM || '';

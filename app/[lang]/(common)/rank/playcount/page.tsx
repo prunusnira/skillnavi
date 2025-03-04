@@ -1,11 +1,11 @@
-import Card from '@/component/common/card/Card';
+import Card from '@/common/card/Card';
 import { getTranslations } from 'next-intl/server';
-import { getPlaycountRank } from '@/module/api/rank/getPlaycountRank';
-import { getLatestVersion } from '@/module/api/env/getGameVersions';
-import PlayCountRankType from '@/component/rank/playcount/PlayCountRankType';
-import PlayCountRankUser from '@/component/rank/playcount/PlayCountRankUser';
-import { MUSICLIST_SIZE } from '@/data/env/constant';
-import Pager from '@/component/common/pager/Pager';
+import { getPlaycountRank } from '@/feature/rank/playcount/api/getPlaycountRank';
+import { getLatestVersion } from '@/feature/env/api/getGameVersions';
+import PlayCountRankType from '@/feature/rank/playcount/component/PlayCountRankType';
+import PlayCountRankUser from '@/feature/rank/playcount/component/PlayCountRankUser';
+import { MUSICLIST_SIZE } from '@/feature/env/data/constant';
+import Pager from '@/common/pager/Pager';
 
 const PagePlaycount = async ({
     searchParams,

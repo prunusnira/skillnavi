@@ -1,8 +1,8 @@
-import { MUSICLIST_SIZE } from '@/data/env/constant';
-import RouteWrapper from '@/module/api/routeWrapper';
+import { MUSICLIST_SIZE } from '@/feature/env/data/constant';
+import RouteWrapper from '@/lib/fetch/routeWrapper';
 import { NextRequest, NextResponse } from 'next/server';
-import prisma from '@/module/lib/db/prisma';
-import { Skill } from '@/data/skill/Skill';
+import prisma from '@/lib/db/prisma';
+import { Skill } from '@/feature/skill/data/Skill';
 
 export const GET = async (req: NextRequest) => {
     return RouteWrapper({

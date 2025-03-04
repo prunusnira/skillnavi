@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import RouteWrapper from '@/module/api/routeWrapper';
-import { UpdateProfileInfo } from '@/data/update/UpdateProfileInfo';
-import { getUserFromToken } from '@/module/api/auth/getUserFromToken';
-import { getLatestVersion } from '@/module/api/env/getGameVersions';
-import prisma from '@/module/lib/db/prisma';
+import RouteWrapper from '@/lib/fetch/routeWrapper';
+import { UpdateProfileInfo } from '@/common/update/UpdateProfileInfo';
+import { getUserFromToken } from '@/feature/auth/api/getUserFromToken';
+import { getLatestVersion } from '@/feature/env/api/getGameVersions';
+import prisma from '@/lib/db/prisma';
 
 export const POST = async (req: NextRequest) => {
     return RouteWrapper({

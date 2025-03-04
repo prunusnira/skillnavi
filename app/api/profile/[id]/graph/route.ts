@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import RouteWrapper from '@/module/api/routeWrapper';
-import { fetchFile } from '@/module/api/fetchAdv';
-import { ProfileGraphRaw } from '@/data/profile/ProfileGraph';
+import RouteWrapper from '@/lib/fetch/routeWrapper';
+import { fetchFile } from '@/lib/fetch/fetchAdv';
+import { ProfileGraphRaw } from '@/feature/profile/data/ProfileGraph';
 
 export const GET = async (
     req: NextRequest,

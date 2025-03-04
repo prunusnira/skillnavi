@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
-import RouteWrapper from '@/module/api/routeWrapper';
-import { GameType } from '@/data/game/GameType';
-import prisma from '@/module/lib/db/prisma';
-import { SKILLRANK_SIZE } from '@/data/env/constant';
-import { SkillRank } from '@/data/skill/SkillRank';
-import { ProfileSkill } from '@/data/profile/ProfileSkill';
-import { Profile } from '@/data/profile/Profile';
-import { getLatestVersion } from '@/module/api/env/getGameVersions';
+import RouteWrapper from '@/lib/fetch/routeWrapper';
+import { GameType } from '@/common/game/data/GameType';
+import prisma from '@/lib/db/prisma';
+import { SKILLRANK_SIZE } from '@/feature/env/data/constant';
+import { SkillRank } from '@/feature/skill/data/SkillRank';
+import { ProfileSkill } from '@/feature/profile/data/ProfileSkill';
+import { Profile } from '@/feature/profile/data/Profile';
+import { getLatestVersion } from '@/feature/env/api/getGameVersions';
 
 export const GET = async (req: NextRequest) => {
     return RouteWrapper({

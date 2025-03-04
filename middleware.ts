@@ -2,7 +2,7 @@ import createMiddleware from 'next-intl/middleware';
 import { locales, routing } from '@/i18n/routing';
 import { withAuth } from 'next-auth/middleware';
 import { NextRequest } from 'next/server';
-import { authPages } from '@/module/api/auth/authPages';
+import { authPages } from '@/feature/auth/data/authPages';
 
 const publicPagesExact = [
     '/',
@@ -37,7 +37,6 @@ const authMiddleware = withAuth(
 );
 
 export const middleware = (req: NextRequest) => {
-    console.log('==============', req.nextUrl.pathname);
     const publicPathnameRegex = RegExp(
         `^(/(${locales.join('|')}))?(((${publicPagesExact
             .flatMap((p) =>
@@ -61,7 +60,6 @@ export const middleware = (req: NextRequest) => {
         'i',
     );
     const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname);
-    console.log('isPublicPage', isPublicPage);
     if (isPublicPage) {
         return handleI18nRouting(req);
     } else {

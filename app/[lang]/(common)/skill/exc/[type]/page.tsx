@@ -1,5 +1,5 @@
 import { permanentRedirect } from 'next/navigation';
-import { getLatestVersion } from '@/module/api/env/getGameVersions';
+import { getLatestVersion } from '@/feature/env/api/getGameVersions';
 
 const PageSkillExc = async ({ params }: { params: { type: string } }) => {
     const { type } = params;

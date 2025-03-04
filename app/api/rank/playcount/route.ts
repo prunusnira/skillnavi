@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import RouteWrapper from '@/module/api/routeWrapper';
-import prisma from '@/module/lib/db/prisma';
-import { MUSICLIST_SIZE } from '@/data/env/constant';
-import { PlayCount, UserPlayCount } from '@/data/rank/PlayCount';
-import { Profile } from '@/data/profile/Profile';
+import RouteWrapper from '@/lib/fetch/routeWrapper';
+import prisma from '@/lib/db/prisma';
+import { MUSICLIST_SIZE } from '@/feature/env/data/constant';
+import { PlayCount, UserPlayCount } from '@/feature/rank/playcount/data/PlayCount';
+import { Profile } from '@/feature/profile/data/Profile';
 
 export const GET = async (req: NextRequest) => {
     return RouteWrapper({

@@ -1,9 +1,9 @@
-import Card from '@/component/common/card/Card';
+import Card from '@/common/card/Card';
 import { getTranslations } from 'next-intl/server';
-import { cn } from '@/module/util/cn';
-import SkillColor from '@/component/common/skillColor/SkillColor';
-import UserLinkIcon from '@/component/common/table/user/UserLinkIcon';
-import { getRecent } from '@/module/api/recent/getRecent';
+import { cn } from '@/lib/cn';
+import SkillColor from '@/common/skillColor/SkillColor';
+import UserLinkIcon from '@/common/table/user/UserLinkIcon';
+import { getRecent } from '@/feature/recent/api/getRecent';
 
 export const dynamic = 'force-dynamic';
 

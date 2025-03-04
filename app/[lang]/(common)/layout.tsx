@@ -1,7 +1,7 @@
-import Header from '@/component/header/Header';
-import { cn } from '@/module/util/cn';
-import Footer from '@/component/footer/Footer';
-import Version from '@/component/version/Version';
+import Header from '@/feature/header/Header';
+import { cn } from '@/lib/cn';
+import Footer from '@/feature/footer/Footer';
+import Version from '@/feature/version/Version';
 import { ReactNode } from 'react';
 
 interface Props {

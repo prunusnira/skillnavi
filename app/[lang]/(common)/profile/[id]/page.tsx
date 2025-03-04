@@ -1,16 +1,16 @@
-import { cn } from '@/module/util/cn';
-import Card from '@/component/common/card/Card';
+import { cn } from '@/lib/cn';
+import Card from '@/common/card/Card';
 import { getTranslations } from 'next-intl/server';
-import UserBox from '@/component/profile/UserBox';
-import { getProfile } from '@/module/api/profile/getProfile';
-import { getProfileGraph } from '@/module/api/profile/getProfileGraph';
-import GraphBox from '@/component/profile/graphbox/GraphBox';
-import SkillBox from '@/component/profile/skillbox/SkillBox';
+import UserBox from '@/feature/profile/component/UserBox';
+import { getProfile } from '@/feature/profile/api/getProfile';
+import { getProfileGraph } from '@/feature/profile/api/getProfileGraph';
+import GraphBox from '@/feature/profile/component/graphbox/GraphBox';
+import SkillBox from '@/feature/profile/component/skillbox/SkillBox';
 import style from './page.module.scss';
-import ButtonRounded from '@/component/common/button/ButtonRounded';
-import ProfileButton from '@/component/profile/button/ProfileButton';
-import { getProfileSkill } from '@/module/api/profile/getProfileSkill';
-import { getGameVersions } from '@/module/api/env/getGameVersions';
+import ButtonRounded from '@/common/button/ButtonRounded';
+import ProfileButton from '@/feature/profile/component/button/ProfileButton';
+import { getProfileSkill } from '@/feature/profile/api/getProfileSkill';
+import { getGameVersions } from '@/feature/env/api/getGameVersions';
 import Image from 'next/image';
 
 export const dynamic = 'force-dynamic';

@@ -1,4 +1,4 @@
-import RouteWrapper from '@/module/api/routeWrapper';
+import RouteWrapper from '@/lib/fetch/routeWrapper';
 import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
 

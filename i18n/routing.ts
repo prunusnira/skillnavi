@@ -1,6 +1,6 @@
 import { createNavigation } from 'next-intl/navigation';
 import { defineRouting } from 'next-intl/routing';
-import { Language } from '@/data/env/Language';
+import { Language } from '@/feature/env/data/Language';
 
 export const locales = Object.values(Language);
 

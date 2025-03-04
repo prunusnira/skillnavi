@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import RouteWrapper from '@/module/api/routeWrapper';
-import prisma from '@/module/lib/db/prisma';
+import RouteWrapper from '@/lib/fetch/routeWrapper';
+import prisma from '@/lib/db/prisma';
 import { Prisma } from '@prisma/client';
-import { PlayCountResponse } from '@/component/playcount/PlayCount.type';
-import { getLatestVersion } from '@/module/api/env/getGameVersions';
+import { PlayCountResponse } from '@/feature/playcount/component/PlayCount.type';
+import { getLatestVersion } from '@/feature/env/api/getGameVersions';
 
 export const GET = async (req: NextRequest) => {
     return RouteWrapper({

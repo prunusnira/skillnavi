@@ -1,11 +1,11 @@
-import Pager from '@/component/common/pager/Pager';
-import { GameType } from '@/data/game/GameType';
-import { getSkillRank } from '@/module/api/rank/getSkillRank';
-import SkillRankUser from '@/component/rank/skill/SkillRankUser';
-import { SKILLRANK_SIZE } from '@/data/env/constant';
-import Card from '@/component/common/card/Card';
+import Pager from '@/common/pager/Pager';
+import { GameType } from '@/common/game/data/GameType';
+import { getSkillRank } from '@/feature/rank/skill/api/getSkillRank';
+import SkillRankUser from '@/feature/rank/skill/component/SkillRankUser';
+import { SKILLRANK_SIZE } from '@/feature/env/data/constant';
+import Card from '@/common/card/Card';
 import { getTranslations } from 'next-intl/server';
-import SkillRankType from '@/component/rank/skill/SkillRankType';
+import SkillRankType from '@/feature/rank/skill/component/SkillRankType';
 
 const PageSkillRank = async ({
     searchParams,

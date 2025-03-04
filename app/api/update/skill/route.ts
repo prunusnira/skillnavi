@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
-import RouteWrapper from '@/module/api/routeWrapper';
-import { UpdateSkillInfo } from '@/data/update/UpdateSkillInfo';
-import { getLatestVersion } from '@/module/api/env/getGameVersions';
-import prisma from '@/module/lib/db/prisma';
-import { Music } from '@/data/music/Music';
-import { Pattern } from '@/data/pattern/Pattern';
-import { Skill } from '@/data/skill/Skill';
+import RouteWrapper from '@/lib/fetch/routeWrapper';
+import { UpdateSkillInfo } from '@/common/update/UpdateSkillInfo';
+import { getLatestVersion } from '@/feature/env/api/getGameVersions';
+import prisma from '@/lib/db/prisma';
+import { Music } from '@/feature/music/data/Music';
+import { Pattern } from '@/feature/music/data/Pattern';
+import { Skill } from '@/feature/skill/data/Skill';
 
 export const POST = async (req: NextRequest) => {
     return RouteWrapper({

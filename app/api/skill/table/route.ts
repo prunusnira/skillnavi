@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
-import RouteWrapper from '@/module/api/routeWrapper';
-import { FetchError } from '@/data/fetch/FetchError';
-import { SkillTableData } from '@/data/skill/SkillTableData';
-import { SkillForTable } from '@/data/skill/Skill';
-import { Pattern } from '@/data/pattern/Pattern';
-import { SKILL_SIZE } from '@/data/env/constant';
-import prisma from '@/module/lib/db/prisma';
+import RouteWrapper from '@/lib/fetch/routeWrapper';
+import { FetchError } from '@/lib/fetch/FetchError';
+import { SkillTableData } from '@/feature/skill/data/SkillTableData';
+import { SkillForTable } from '@/feature/skill/data/Skill';
+import { Pattern } from '@/feature/music/data/Pattern';
+import { SKILL_SIZE } from '@/feature/env/data/constant';
+import prisma from '@/lib/db/prisma';
 import { Prisma } from '@prisma/client';
-import { Music } from '@/data/music/Music';
+import { Music } from '@/feature/music/data/Music';
 
 export const GET = async (req: NextRequest) => {
     return RouteWrapper({
@@ -174,7 +174,7 @@ export const GET = async (req: NextRequest) => {
             if (!tableItems.length) {
                 throw new FetchError({
                     status: 500,
-                    response: 'Skill data error',
+                    response: 'Skill common error',
                 });
             }
 

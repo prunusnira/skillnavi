@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import './globals.scss';
-import Wrappers from '@/module/wrapper/Wrappers';
+import Wrappers from '@/common/wrapper/Wrappers';
 import { getLocale, getMessages } from 'next-intl/server';
 import { Suspense } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
-import { cn } from '@/module/util/cn';
+import { cn } from '@/lib/cn';
 
 export const metadata: Metadata = {
     title: 'Skill Navigator',

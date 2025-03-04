@@ -1,10 +1,10 @@
-import RouteWrapper from '@/module/api/routeWrapper';
+import RouteWrapper from '@/lib/fetch/routeWrapper';
 import { NextRequest, NextResponse } from 'next/server';
-import { Recent } from '@/data/recent/Recent';
-import { ProfileSkill } from '@/data/profile/ProfileSkill';
-import { Profile } from '@/data/profile/Profile';
-import { VER_NX } from '@/data/env/constant';
-import prisma from '@/module/lib/db/prisma';
+import { Recent } from '@/feature/recent/data/Recent';
+import { ProfileSkill } from '@/feature/profile/data/ProfileSkill';
+import { Profile } from '@/feature/profile/data/Profile';
+import { VER_NX } from '@/feature/env/data/constant';
+import prisma from '@/lib/db/prisma';
 
 export const GET = async (req: NextRequest) => {
     return RouteWrapper({

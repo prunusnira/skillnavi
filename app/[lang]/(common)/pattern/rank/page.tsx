@@ -1,12 +1,12 @@
-import Card from '@/component/common/card/Card';
+import Card from '@/common/card/Card';
 import { getTranslations } from 'next-intl/server';
-import MusicData from '@/component/music/MusicData';
-import PatternRankTable from '@/component/music/PatternRankTable';
-import { cn } from '@/module/util/cn';
-import { getMusicPattern } from '@/module/api/music/getMusicPattern';
-import { getPatternTypeFromCode } from '@/module/util/pattern/getPatternTypeFromCode';
-import { getGameTypeFromCode } from '@/module/util/pattern/getGameTypeFromCode';
-import { getGameVersions } from '@/module/api/env/getGameVersions';
+import MusicData from '@/feature/music/component/MusicData';
+import PatternRankTable from '@/feature/music/component/PatternRankTable';
+import { cn } from '@/lib/cn';
+import { getMusicPattern } from '@/feature/music/api/getMusicPattern';
+import { getPatternTypeFromCode } from '@/lib/pattern/getPatternTypeFromCode';
+import { getGameTypeFromCode } from '@/lib/pattern/getGameTypeFromCode';
+import { getGameVersions } from '@/feature/env/api/getGameVersions';
 
 const PagePatternRank = async ({
     searchParams,

@@ -1,6 +1,6 @@
-import SkillTable from '@/component/skill/table/SkillTable';
-import { TableType } from '@/data/skill/TableType';
-import { TableDataType } from '@/data/skill/TableDataType';
+import SkillTable from '@/feature/skill/component/table/SkillTable';
+import { TableType } from '@/feature/skill/data/TableType';
+import { TableDataType } from '@/feature/skill/data/TableDataType';
 
 export const dynamic = 'force-dynamic';
 

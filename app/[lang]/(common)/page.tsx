@@ -1,11 +1,11 @@
-import { cn } from '@/module/util/cn';
-import Card from '@/component/common/card/Card';
+import { cn } from '@/lib/cn';
+import Card from '@/common/card/Card';
 import { getLocale, getTranslations } from 'next-intl/server';
 import { getServerSession } from 'next-auth';
-import UserInfo from '@/component/main/userCard/UserInfo';
-import { getNotice } from '@/module/api/notice/getNotice';
+import UserInfo from '@/feature/main/userCard/UserInfo';
+import { getNotice } from '@/feature/notice/api/getNotice';
 import { IMG, LINK_AUTH_LOGIN } from '@/url/url';
-import { getNoticeByLocale } from '@/module/lib/notice/getNoticeByLocale';
+import { getNoticeByLocale } from '@/lib/notice/getNoticeByLocale';
 import dayjs from 'dayjs';
 import style from './page.module.scss';
 import Link from 'next/link';

@@ -1,12 +1,12 @@
-import Card from '@/component/common/card/Card';
-import { cn } from '@/module/util/cn';
-import MusicRemoved from '@/component/music/MusicRemoved';
-import AlbumArt from '@/component/common/albumart/AlbumArt';
-import MusicDiffTable from '@/component/music/MusicDiffTable';
-import Pager from '@/component/common/pager/Pager';
+import Card from '@/common/card/Card';
+import { cn } from '@/lib/cn';
+import MusicRemoved from '@/feature/music/component/MusicRemoved';
+import AlbumArt from '@/common/albumart/AlbumArt';
+import MusicDiffTable from '@/feature/music/component/MusicDiffTable';
+import Pager from '@/common/pager/Pager';
 import { getTranslations } from 'next-intl/server';
-import { MUSICLIST_SIZE } from '@/data/env/constant';
-import { getMusicList } from '@/module/api/music/getMusicList';
+import { MUSICLIST_SIZE } from '@/feature/env/data/constant';
+import { getMusicList } from '@/feature/music/api/getMusicList';
 
 const PageMusicList = async ({
     searchParams,

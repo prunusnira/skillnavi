@@ -1,10 +1,10 @@
-import Card from '@/component/common/card/Card';
+import Card from '@/common/card/Card';
 import { getTranslations } from 'next-intl/server';
-import PlayCountTypePresenter from '@/component/playcount/PlayCountType.presenter';
-import { getPlayCount } from '@/module/api/playcount/getPlayCount';
+import PlayCountTypePresenter from '@/feature/playcount/component/PlayCountType.presenter';
+import { getPlayCount } from '@/feature/playcount/api/getPlayCount';
 import { getServerSession } from 'next-auth';
-import { getProfileSession } from '@/module/api/profile/getProfileSession';
-import PlayCountItem from '@/component/playcount/PlayCount.item';
+import { getProfileSession } from '@/feature/profile/api/getProfileSession';
+import PlayCountItem from '@/feature/playcount/component/PlayCount.item';
 
 const PagePlaycount = async ({
     searchParams,

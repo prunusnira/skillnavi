@@ -1,10 +1,10 @@
 import { getTranslations } from 'next-intl/server';
-import Card from '@/component/common/card/Card';
-import { cn } from '@/module/util/cn';
-import MusicRecord from '@/component/music/MusicRecord';
-import { getProfile } from '@/module/api/profile/getProfile';
+import Card from '@/common/card/Card';
+import { cn } from '@/lib/cn';
+import MusicRecord from '@/feature/music/component/MusicRecord';
+import { getProfile } from '@/feature/profile/api/getProfile';
 import { IMG } from '@/url/url';
-import MusicData from '@/component/music/MusicData';
+import MusicData from '@/feature/music/component/MusicData';
 import Image from 'next/image';
 
 const PageMusic = async ({
