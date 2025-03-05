@@ -1,0 +1,22 @@
+.table {
+  @apply flex flex-col justify-center items-center;
+  @apply w-full;
+}
+
+.tableRow {
+  @apply flex justify-center items-center;
+}
+
+.tableCell {
+  @apply w-[50px];
+  @apply text-center;
+}
+
+.isBold {
+  @apply font-bold;
+}
+
+.isHeader {
+  @apply font-bold;
+  @apply bg-yellow-500 text-black;
+}

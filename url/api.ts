@@ -23,3 +23,4 @@ export const API_PATTERN_RANK_META = `${PREFIX}/pattern/rank/meta`;
 export const API_RANK_SKILL = `${PREFIX}/rank/skill`;
 export const API_RANK_PLAYCOUNT = `${PREFIX}/rank/playcount`;
 export const API_PLAYCOUNT = `${PREFIX}/playcount`;
+export const API_CLEARTABLE = `${PREFIX}/cleartable`;

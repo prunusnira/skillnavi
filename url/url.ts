@@ -68,7 +68,7 @@ export const LINK_PATTERN_LIST = ({
     return `/music/list${query.length > 0 ? `?${query}` : ''}`;
 };
 export const LINK_PATTERN_NOPLAY = '/pattern/noplay';
-export const LINK_PATTERN_TABLE = '/pattern/table';
+export const LINK_PATTERN_TABLE = '/cleartable';
 export const LINK_PATTERN_RANK = (
     version: string,
     page: number,
