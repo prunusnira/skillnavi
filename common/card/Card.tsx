@@ -19,7 +19,7 @@ const Card = ({ title, children }: Props) => {
             {title && (
                 <div
                     className={cn(
-                        ' w-full bg-gray-800 text-white text-lg font-extrabold rounded-t-2xl px-5 py-2.5',
+                        ' w-full bg-gray-800 text-white text-2xl font-extrabold rounded-t-2xl px-[20px] py-[10px]',
                     )}
                 >
                     {title}

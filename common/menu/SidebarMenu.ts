@@ -2,7 +2,6 @@ import {
     IMG,
     LINK_MAIN,
     LINK_PATTERN_LIST,
-    LINK_PATTERN_NOPLAY,
     LINK_PATTERN_TABLE,
     LINK_PLAYCOUNT,
     LINK_PROFILE_SELF,
@@ -88,10 +87,6 @@ export const SidebarMenuItems: SidebarMenu[] = [
             {
                 id: 'pattern.list',
                 href: LINK_PATTERN_LIST({}),
-            },
-            {
-                id: 'pattern.noplay',
-                href: LINK_PATTERN_NOPLAY,
             },
             {
                 id: 'pattern.table',
