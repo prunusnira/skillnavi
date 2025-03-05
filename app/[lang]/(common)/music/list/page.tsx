@@ -1,8 +1,8 @@
 import Card from '@/common/card/Card';
 import { cn } from '@/lib/cn';
-import MusicRemoved from '@/feature/music/component/MusicRemoved';
+import MusicRemoved from '@/feature/music/component/remove/MusicRemoved';
 import AlbumArt from '@/common/albumart/AlbumArt';
-import MusicDiffTable from '@/feature/music/component/MusicDiffTable';
+import MusicDiffTable from '@/feature/music/component/diff/MusicDiffTable';
 import Pager from '@/common/pager/Pager';
 import { getTranslations } from 'next-intl/server';
 import { MUSICLIST_SIZE } from '@/feature/env/data/constant';

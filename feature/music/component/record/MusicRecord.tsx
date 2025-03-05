@@ -1,9 +1,9 @@
 'use client';
 
-import useMusicRecord from '@/feature/music/component/useMusicRecord';
+import useMusicRecord from '@/feature/music/component/record/useMusicRecord';
 import { cn } from '@/lib/cn';
 import ButtonRounded from '@/common/button/ButtonRounded';
-import MusicRecordItem from '@/feature/music/component/MusicRecordItem';
+import MusicRecordItem from '@/feature/music/component/record/MusicRecordItem';
 
 // CSR 기록 정보
 const MusicRecord = () => {

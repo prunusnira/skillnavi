@@ -1,7 +1,7 @@
 import Card from '@/common/card/Card';
 import { getTranslations } from 'next-intl/server';
-import MusicData from '@/feature/music/component/MusicData';
-import PatternRankTable from '@/feature/music/component/PatternRankTable';
+import MusicData from '@/feature/music/component/data/MusicData';
+import PatternRankTable from '@/feature/music/component/patternrank/PatternRankTable';
 import { cn } from '@/lib/cn';
 import { getMusicPattern } from '@/feature/music/api/getMusicPattern';
 import { getPatternTypeFromCode } from '@/lib/pattern/getPatternTypeFromCode';

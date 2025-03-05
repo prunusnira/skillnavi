@@ -1,6 +1,6 @@
 'use client';
 
-import usePatternRankTable from '@/feature/music/component/usePatternRankTable';
+import usePatternRankTable from '@/feature/music/component/patternrank/usePatternRankTable';
 import { cn } from '@/lib/cn';
 import { getSkillCN } from '@/feature/skill/api/getSkillCN';
 import { IMG } from '@/url/url';
