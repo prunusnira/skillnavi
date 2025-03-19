@@ -53,17 +53,22 @@ export const POST = async (req: NextRequest) => {
                     dexcnum: body.dexcnum,
                 };
 
-                await prisma.profileSkill.update({
+                await prisma.profileSkill.upsert({
                     where: {
                         version_uid: {
                             uid: body.userId,
                             version: body.targetVersion ?? latest,
                         },
                     },
-                    data: skill,
+                    update: skill,
+                    create: {
+                        ...skill,
+                        uid: body.userId,
+                        version: body.targetVersion ?? latest,
+                    },
                 });
             }
-            return NextResponse.json({});
+            return NextResponse.json({ result: 'success' });
         },
     });
 };

@@ -1,7 +1,5 @@
-export interface UpdateSkillInfo {
+export interface SkillMusicData {
     musictitle: string;
-    version: number;
-    uid: number;
     data: {
         ptcode: number;
         level: number;
@@ -14,4 +12,10 @@ export interface UpdateSkillInfo {
         combo: number;
         meter: string;
     }[];
+}
+
+export interface UpdateSkillInfo {
+    version: number;
+    uid: number;
+    musicData: SkillMusicData[];
 }
