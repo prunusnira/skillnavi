@@ -12,6 +12,7 @@ import SkillList from '@/feature/skill/component/table/SkillList';
 import SkillGrid from '@/feature/skill/component/table/SkillGrid';
 import Pager from '@/common/pager/Pager';
 import SkillTableTextProfile from '@/feature/skill/component/table/SkillTableTextProfile';
+import Loading from '@/common/loading/Loading';
 
 const SkillTable = ({
     searchParams,
@@ -30,7 +31,7 @@ const SkillTable = ({
         useSkillTable();
 
     if (isLoading) {
-        return <>Loading</>;
+        return <Loading size={'80px'} />;
     }
 
     if (pageType !== 'exc' && !profile) {
