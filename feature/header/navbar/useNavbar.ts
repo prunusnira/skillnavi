@@ -17,11 +17,11 @@ const useNavbar = () => {
 
     const setTheme = (mode: boolean) => {
         const theme = mode ? 'dark' : 'light';
-        setEnv({ type: 'theme', data: theme });
+        setEnv({ theme });
     };
 
     const controlMenu = () => {
-        setEnv({ type: 'menu', data: !env.menu });
+        setEnv({ menu: !env.menu });
     };
 
     const theme = useMemo(() => env.theme, [env]);

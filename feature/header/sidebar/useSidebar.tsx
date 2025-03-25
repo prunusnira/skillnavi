@@ -1,5 +1,5 @@
-import { useAtomValue } from 'jotai';
-import { Fragment, useMemo } from 'react';
+import { useAtom } from 'jotai';
+import { Fragment, useEffect, useMemo } from 'react';
 import { SidebarMenuItems, SidebarSubMenu } from '@/common/menu/SidebarMenu';
 import { cn } from '@/lib/cn';
 import { useTranslations } from 'next-intl';
@@ -8,7 +8,10 @@ import Image from 'next/image';
 import { atomEnv } from '@/feature/env/data/AtomEnv';
 
 const useSidebar = () => {
-    const env = useAtomValue(atomEnv);
+    const [
+        env,
+        setEnv,
+    ] = useAtom(atomEnv);
     const t = useTranslations('header');
     const router = useRouter();
 
@@ -60,6 +63,11 @@ const useSidebar = () => {
             )),
         [],
     );
+
+    // 페이지를 이동하면 메뉴 닫기
+    useEffect(() => {
+        setEnv({ menu: false });
+    }, []);
 
     return {
         isMenuOpen: env.menu,
