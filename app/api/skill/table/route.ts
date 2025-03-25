@@ -4,10 +4,17 @@ import { FetchError } from '@/lib/fetch/FetchError';
 import { SkillTableData } from '@/feature/skill/data/SkillTableData';
 import { SkillForTable } from '@/feature/skill/data/Skill';
 import { Pattern } from '@/feature/music/data/Pattern';
-import { SKILL_SIZE } from '@/feature/env/data/constant';
 import prisma from '@/lib/db/prisma';
 import { Prisma } from '@prisma/client';
 import { Music } from '@/feature/music/data/Music';
+import {
+    getQuerySkillAllDM,
+    getQuerySkillAllGF,
+    getQuerySkillTargetHotDM,
+    getQuerySkillTargetHotGF,
+    getQuerySkillTargetOtherDM,
+    getQuerySkillTargetOtherGF,
+} from '@/feature/skill/db/Skill.prisma';
 
 export const GET = async (req: NextRequest) => {
     return RouteWrapper({
@@ -34,23 +41,16 @@ export const GET = async (req: NextRequest) => {
 
             // 버전 전체 테이블 가져오기
             if (pageType === 'all') {
-                const skill = (await prisma.$queryRaw(Prisma.sql`
-                    select mid,
-                           playver,
-                           patterncode,
-                           level,
-                           maxrank,
-                           rate,
-                           fc,
-                           hot,
-                           level * rate as skill
-                    from SkillList
-                    where uid = ${userid}
-                      and playver = ${version}
-                      and patterncode${game === 'gf' ? '<9' : '>8'}
-                    order by level * rate desc
-                    offset ${(page - 1) * SKILL_SIZE} limit ${SKILL_SIZE}
-                `)) as SkillForTable[];
+                let query;
+                if (game === 'gf') {
+                    query = getQuerySkillAllGF({ userid, version, page });
+                } else {
+                    query = getQuerySkillAllDM({ userid, version, page });
+                }
+
+                const skill = (await prisma.$queryRaw(
+                    Prisma.sql`${query}`,
+                )) as SkillForTable[];
 
                 pages = await prisma.skillList.count({
                     where: {
@@ -65,55 +65,28 @@ export const GET = async (req: NextRequest) => {
 
             // 스킬대상곡 가져오기
             if (pageType === 'target') {
-                const hot = (await prisma.$queryRaw(Prisma.sql`
-                    select s1.mid as mid,
-                           playver,
-                           patterncode,
-                           level,
-                           maxrank,
-                           rate,
-                           fc,
-                           hot,
-                           skill
-                    from SkillList s1
-                             inner join(select mid,
-                                               max(level * rate * 20 / 10000) as skill
-                                        from SkillList
-                                        where uid = ${userid}
-                                          and playver = ${version}
-                                          and hot = 1
-                                        group by mid) s2
-                                       on s1.mid = s2.mid and (s1.level * s1.rate * 20 / 10000) = s2.skill
-                    where s1.uid = ${userid}
-                      and s1.playver = ${version}
-                      and s1.hot = 1
-                    order by s1.level * s1.rate desc limit 25
-                `)) as SkillForTable[];
+                let hotQuery, otherQuery;
+                if (game === 'gf') {
+                    hotQuery = getQuerySkillTargetHotGF({ userid, version });
+                    otherQuery = getQuerySkillTargetOtherGF({
+                        userid,
+                        version,
+                    });
+                } else {
+                    hotQuery = getQuerySkillTargetHotDM({ userid, version });
+                    otherQuery = getQuerySkillTargetOtherDM({
+                        userid,
+                        version,
+                    });
+                }
 
-                const other = (await prisma.$queryRaw(Prisma.sql`
-                    select s1.mid as mid,
-                           playver,
-                           patterncode,
-                           level,
-                           maxrank,
-                           rate,
-                           fc,
-                           hot,
-                           skill
-                    from SkillList s1
-                             inner join(select mid,
-                                               max(level * rate * 20 / 10000) as skill
-                                        from SkillList
-                                        where uid = ${userid}
-                                          and playver = ${version}
-                                          and hot = 0
-                                        group by mid) s2
-                                       on s1.mid = s2.mid and (s1.level * s1.rate * 20 / 10000) = s2.skill
-                    where s1.uid = ${userid}
-                      and s1.playver = ${version}
-                      and s1.hot = 0
-                    order by s1.level * s1.rate desc limit 25
-                `)) as SkillForTable[];
+                const hot = (await prisma.$queryRaw(
+                    Prisma.sql`${hotQuery}`,
+                )) as SkillForTable[];
+
+                const other = (await prisma.$queryRaw(
+                    Prisma.sql`${otherQuery}`,
+                )) as SkillForTable[];
 
                 tableItems.push(hot);
                 tableItems.push(other);
@@ -136,7 +109,8 @@ export const GET = async (req: NextRequest) => {
                                          from PatternList pl
                                                   inner join (select id, hot, hot_end, version as ver
                                                               from MusicList) ml
-                                                             on pl.mid = ml.id and hot <= ${version} and hot_end >= ${version} and ml.ver = ${version}
+                                                             on pl.mid = ml.id and hot <= ${version} and
+                                                                hot_end >= ${version} and ml.ver = ${version}
                                          where ${game === 'gf' ? `patterncode < 9` : `patterncode > 8`}
                                          group by mid) list
                                         on p.level = list.level and p.mid = list.mid and p.version = list.ver and
@@ -159,7 +133,8 @@ export const GET = async (req: NextRequest) => {
                                          from PatternList pl
                                                   inner join (select id, hot, hot_end, version as ver
                                                               from MusicList) ml
-                                                             on pl.mid = ml.id and hot > ${version} and hot_end < ${version} and ml.ver = ${version}
+                                                             on pl.mid = ml.id and hot > ${version} and
+                                                                hot_end < ${version} and ml.ver = ${version}
                                          where ${game === 'gf' ? `patterncode < 9` : `patterncode > 8`}
                                          group by mid) list
                                         on p.level = list.level and p.mid = list.mid and p.version = list.ver and
