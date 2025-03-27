@@ -1,0 +1,7 @@
+.radioButton {
+  @apply appearance-none;
+  @apply w-[30px] h-[30px];
+  @apply border-[5px] border-solid border-white checked:border-blue-400;
+  @apply rounded-lg;
+  @apply cursor-pointer;
+}

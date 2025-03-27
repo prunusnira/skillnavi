@@ -31,6 +31,7 @@ export default async function RootLayout({
                         <Suspense>{children}</Suspense>
                     </Wrappers>
                 </NextIntlClientProvider>
+                <div id="portal" />
             </body>
         </html>
     );

@@ -1,27 +1,11 @@
 import { atom } from 'jotai';
+import { Profile } from '@/feature/profile/data/Profile';
 
-interface User {
-    id?: number;
-}
-
-const atomUserData = atom<User | undefined>(undefined);
+const atomUserData = atom<Profile | undefined>(undefined);
 
 export const atomUser = atom(
     (get) => get(atomUserData),
-    (
-        get,
-        set,
-        params: {
-            key: keyof User;
-            value: number | undefined;
-        },
-    ) => {
-        const prev = get(atomUserData);
-        const next = { ...prev };
-        const { key, value } = params;
-
-        if (key in next && typeof value === typeof next[key]) {
-            (next[key] satisfies User[typeof key]) = value;
-        }
+    (get, set, params: Profile) => {
+        set(atomUserData, params);
     },
 );

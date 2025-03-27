@@ -1,4 +1,4 @@
-import { HTMLInputTypeAttribute } from 'react';
+import { ChangeEvent, HTMLInputTypeAttribute } from 'react';
 import { cn } from '@/lib/cn';
 
 interface Props {
@@ -8,6 +8,8 @@ interface Props {
     type: HTMLInputTypeAttribute;
     labelWidth?: number;
     inputWidth?: number;
+    value: string;
+    onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const InputFormItem = ({
@@ -17,6 +19,8 @@ const InputFormItem = ({
     type,
     labelWidth,
     inputWidth,
+    value,
+    onChange,
 }: Props) => {
     return (
         <div className={cn('flex-center')}>
@@ -40,6 +44,8 @@ const InputFormItem = ({
                 style={{
                     width: inputWidth,
                 }}
+                value={value}
+                onChange={onChange}
             />
         </div>
     );

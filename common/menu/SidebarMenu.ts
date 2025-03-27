@@ -90,7 +90,7 @@ export const SidebarMenuItems: SidebarMenu[] = [
             },
             {
                 id: 'pattern.table',
-                href: LINK_PATTERN_TABLE,
+                href: LINK_PATTERN_TABLE({}),
             },
         ],
     },

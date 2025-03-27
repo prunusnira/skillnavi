@@ -10,6 +10,10 @@ export const API_PROFILE_ID = `${PREFIX}/profile/id`;
 export const API_PROFILE_GRAPH = (id: string) =>
     `${PREFIX}/profile/${id}/graph`;
 export const API_PROFILE_SKILL = `${PREFIX}/profile/skill`;
+export const API_PROFILE_COMMENT = (id: string) =>
+    `${PREFIX}/profile/${id}/comment`;
+export const API_PROFILE_OPENDATA = (id: string) =>
+    `${PREFIX}/profile/${id}/opendata`;
 export const API_RECENT = `${PREFIX}/recent`;
 export const API_SKILL_TABLE = `${PREFIX}/skill/table`;
 export const API_MUSIC_LIST = `${PREFIX}/music/list`;

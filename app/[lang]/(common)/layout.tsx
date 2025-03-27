@@ -3,6 +3,7 @@ import { cn } from '@/lib/cn';
 import Footer from '@/feature/footer/Footer';
 import Version from '@/feature/version/Version';
 import { ReactNode } from 'react';
+import UserAuthWrapper from '@/feature/auth/wrapper/UserAuthWrapper';
 
 interface Props {
     children: ReactNode;
@@ -21,6 +22,7 @@ const PageLayout = ({ children }: Props) => {
             </main>
             <Footer />
             <Version />
+            <UserAuthWrapper />
         </>
     );
 };

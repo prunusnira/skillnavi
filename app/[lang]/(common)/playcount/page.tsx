@@ -9,13 +9,13 @@ import PlayCountItem from '@/feature/playcount/component/PlayCount.item';
 const PagePlaycount = async ({
     searchParams,
 }: {
-    searchParams: { type: string };
+    searchParams: { type: string; id: number };
 }) => {
     const t = await getTranslations('user.playcount');
-    const { type } = searchParams;
+    const { type, id } = searchParams;
     const session = await getServerSession();
     const profile = await getProfileSession(session);
-    const playcount = await getPlayCount({ type, id: profile?.id });
+    const playcount = await getPlayCount({ type, id: id || profile?.id });
 
     return (
         <Card title={'My Play Count'}>

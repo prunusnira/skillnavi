@@ -26,7 +26,7 @@ const MySkillRedirect = ({ userid }: Props) => {
                 id: userid,
                 game: params.type,
                 pageType: 'target',
-                version: recent,
+                version: recent.id,
                 display: 'grid',
             }),
         );

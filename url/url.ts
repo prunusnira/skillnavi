@@ -29,7 +29,7 @@ export const LINK_SKILL_TABLE = ({
     params.set('game', game);
     params.set('pageType', pageType);
     params.set('page', String(page));
-    params.set('version', String(version.id));
+    params.set('version', String(version));
     params.set('display', display);
     if (order) params.set('order', order);
     return `/skill/${id}${params.size && `?${params.toString()}`}`;
@@ -67,7 +67,22 @@ export const LINK_PATTERN_LIST = ({
     const query = searchParams.toString();
     return `/music/list${query.length > 0 ? `?${query}` : ''}`;
 };
-export const LINK_PATTERN_TABLE = '/cleartable';
+export const LINK_PATTERN_TABLE = ({
+    type,
+    id,
+}: {
+    type?: GameType;
+    id?: number;
+}) => {
+    const params = new URLSearchParams();
+    if (type) {
+        params.set('type', type || 'gf');
+    }
+    if (id) {
+        params.set('id', id.toString());
+    }
+    return `/cleartable?${params.toString()}`;
+};
 export const LINK_PATTERN_RANK = (
     version: string,
     page: number,

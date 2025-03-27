@@ -6,12 +6,11 @@ import { getProfile } from '@/feature/profile/api/getProfile';
 import { getProfileGraph } from '@/feature/profile/api/getProfileGraph';
 import GraphBox from '@/feature/profile/component/graphbox/GraphBox';
 import SkillBox from '@/feature/profile/component/skillbox/SkillBox';
-import style from './page.module.scss';
-import ButtonRounded from '@/common/button/ButtonRounded';
 import ProfileButton from '@/feature/profile/component/button/ProfileButton';
 import { getProfileSkill } from '@/feature/profile/api/getProfileSkill';
 import { getGameVersions } from '@/feature/env/api/getGameVersions';
 import Image from 'next/image';
+import style from './page.module.scss';
 
 export const dynamic = 'force-dynamic';
 
@@ -50,11 +49,7 @@ const PageProfile = async ({ params }: { params: { id: string } }) => {
                 <div>{profile.comment}</div>
 
                 {/* 버튼 */}
-                <div className={cn('flex-center gap-2')}>
-                    <ButtonRounded text={t('button.mybest')} />
-                    <ButtonRounded text={t('button.clearRankTable')} />
-                    <ProfileButton />
-                </div>
+                <ProfileButton />
 
                 {/* 스킬 기록 */}
                 <SkillBox skill={myskill} />

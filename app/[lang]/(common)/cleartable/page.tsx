@@ -10,20 +10,24 @@ import ClearTableChart from '@/feature/cleartable/component/ClearTable.chart';
 const PageClearTable = async ({
     searchParams,
 }: {
-    searchParams: { page: number; type: GameType };
+    searchParams: { type: GameType; id: number };
 }) => {
+    const { type, id } = searchParams;
     const session = await getServerSession();
     const profile = await getProfileSession(session);
-    const type = searchParams.type || 'gf';
+    const gameType = type || 'gf';
 
     if (!profile) {
         return null;
     }
 
-    const data = await getClearTable({ type, user: profile.id });
+    const data = await getClearTable({
+        type: gameType,
+        user: id || profile.id,
+    });
 
     return (
-        <Card title={`Clear Table (${type.toUpperCase()})`}>
+        <Card title={`Clear Table (${gameType.toUpperCase()})`}>
             {/* 타입변경 */}
             <ClearTableType />
 

@@ -8,9 +8,18 @@ import { faGoogle, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import { useTranslations } from 'next-intl';
 import { signIn } from 'next-auth/react';
 import { LINK_MAIN, PUBLICEP } from '@/url/url';
+import { useState } from 'react';
 
 const LoginForm = () => {
     const t = useTranslations('user.login');
+    const [
+        id,
+        setId,
+    ] = useState<string>('');
+    const [
+        pw,
+        setPw,
+    ] = useState<string>('');
 
     return (
         <section className={'flex-col-center m-4'}>
@@ -22,6 +31,8 @@ const LoginForm = () => {
                     id="id"
                     type="text"
                     labelWidth={100}
+                    value={id}
+                    onChange={(e) => setId(e.currentTarget.value)}
                 />
                 <InputFormItem
                     label={t('placeholder.pw')}
@@ -29,6 +40,8 @@ const LoginForm = () => {
                     id="pw"
                     type="password"
                     labelWidth={100}
+                    value={pw}
+                    onChange={(e) => setPw(e.currentTarget.value)}
                 />
             </section>
 
