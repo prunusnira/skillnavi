@@ -7,7 +7,7 @@ const Header = () => {
     return (
         <header
             className={cn([
-                'w-full h-[60px] px-[20px] py-[10px] sticky top-0 fixed bg-blue-950',
+                'w-full h-[60px] px-[20px] py-[10px] sticky top-0 fixed bg-blue-200 bg-opacity-70',
             ])}
         >
             {/* 상단 네비바 */}

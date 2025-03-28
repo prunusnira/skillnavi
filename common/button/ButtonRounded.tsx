@@ -27,7 +27,10 @@ const ButtonRounded = ({
 
     return (
         <button
-            className={cn('flex-center border rounded-2xl px-2 py-1', color)}
+            className={cn(
+                'flex-center border border-black rounded-2xl px-2 py-1',
+                color,
+            )}
             onClick={onClick}
             style={{
                 width: fixedWidth,

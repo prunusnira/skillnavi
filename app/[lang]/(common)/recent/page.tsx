@@ -41,13 +41,17 @@ const PageRecent = async () => {
                         <div className={cn('flex-col-center w-30')}>
                             <div className={cn('flex-center gap-2')}>
                                 <div className={cn('w-8 text-center')}>GF</div>
-                                <div className={cn('w-20 text-center')}>
+                                <div
+                                    className={cn('w-20 text-center bg-black')}
+                                >
                                     <SkillColor value={r.gskill / 100} />
                                 </div>
                             </div>
                             <div className={cn('flex-center gap-2')}>
                                 <div className={cn('w-8 text-center')}>DM</div>
-                                <div className={cn('w-20 text-center')}>
+                                <div
+                                    className={cn('w-20 text-center bg-black')}
+                                >
                                     <SkillColor value={r.dskill / 100} />
                                 </div>
                             </div>

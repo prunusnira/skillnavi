@@ -17,7 +17,7 @@ const Card = ({ title, children }: Props) => {
             {title && (
                 <div
                     className={
-                        'w-full bg-gray-800 text-white text-xl font-bold rounded-t-2xl px-[20px] py-[10px]'
+                        'w-full bg-purple-300 text-black text-xl font-bold rounded-t-2xl px-[20px] py-[10px]'
                     }
                 >
                     {title}
@@ -25,7 +25,7 @@ const Card = ({ title, children }: Props) => {
             )}
             <div
                 className={cn(
-                    'flex-col-center bg-gray-700 w-full h-full flex-grow',
+                    'flex-col-center bg-purple-200 w-full h-full flex-grow',
                     {
                         ['rounded-2xl']: !title,
                         ['rounded-b-2xl rounded-t-none']: !!title,

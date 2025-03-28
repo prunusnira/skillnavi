@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 import { usePathname, useRouter } from '@/i18n/routing';
 
-const PlayCountTypePresenter = () => {
+const PlayCountType = () => {
     const t = useTranslations('user.playcount.button');
     const searchParams = useSearchParams();
     const router = useRouter();
@@ -22,26 +22,26 @@ const PlayCountTypePresenter = () => {
         <section>
             <ButtonStandard
                 text={t('music')}
-                bgColor={type === 'music' || !type ? 'black' : undefined}
+                bgColor={type === 'music' || !type ? 'lightgreen' : undefined}
                 onClick={() => changePage('music')}
             />
             <ButtonStandard
                 text={t('pt')}
-                bgColor={type === 'pattern' ? 'black' : undefined}
+                bgColor={type === 'pattern' ? 'lightgreen' : undefined}
                 onClick={() => changePage('pattern')}
             />
             <ButtonStandard
                 text={t('gf')}
-                bgColor={type === 'gf' ? 'black' : undefined}
+                bgColor={type === 'gf' ? 'lightgreen' : undefined}
                 onClick={() => changePage('gf')}
             />
             <ButtonStandard
                 text={t('dm')}
-                bgColor={type === 'dm' ? 'black' : undefined}
+                bgColor={type === 'dm' ? 'lightgreen' : undefined}
                 onClick={() => changePage('dm')}
             />
         </section>
     );
 };
 
-export default PlayCountTypePresenter;
+export default PlayCountType;

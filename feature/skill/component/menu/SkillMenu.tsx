@@ -32,7 +32,7 @@ const SkillMenu = () => {
             </section>
             <section
                 className={cn(
-                    'absolute left-0 top-8 w-full md:w-768px flex-col-center bg-black bg-opacity-70',
+                    'absolute left-0 top-8 w-full md:w-768px flex-col-center bg-white bg-opacity-80',
                     'p-5 transition-left',
                     {
                         ['left-0']: active,

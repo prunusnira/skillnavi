@@ -14,7 +14,7 @@ const Footer = async () => {
                     'flex flex-col w-full max-w-[1920px] gap-2 text-white text-sm px-10 py-8',
                 )}
             >
-                <div>(c) 2016 Nira</div>
+                <div>(c) 2016 Nira, Made with NextJS</div>
                 <div>{t('fanpage')}</div>
             </section>
         </footer>

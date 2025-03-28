@@ -13,7 +13,7 @@ const ButtonStandard = ({ iconUrl, text, bgColor, onClick, size }: Props) => {
     return (
         <section
             className={cn(
-                'flex-center bg-blue-950 px-[16px] py-[8px] rounded-xl cursor-pointer',
+                'flex-center bg-blue-400 px-[16px] py-[8px] rounded-xl cursor-pointer',
             )}
             style={{ backgroundColor: bgColor }}
             onClick={onClick}

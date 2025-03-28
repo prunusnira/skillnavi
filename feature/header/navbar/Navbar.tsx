@@ -22,16 +22,25 @@ const Navbar = () => {
         <nav className={'w-full h-full flex-between'}>
             {/* left side (logo) */}
             <div
-                className={'w-[40px] h-[40px] cursor-pointer'}
+                className={'cursor-pointer flex-center gap-[8px]'}
                 onClick={handleLinkMain}
             >
-                <Image
-                    unoptimized={true}
-                    alt={'icon'}
-                    src={`${IMG}/header/logoidx.png`}
-                    width={40}
-                    height={40}
-                />
+                <div className={'w-[40px] h-[40px]'}>
+                    <Image
+                        unoptimized={true}
+                        alt={'icon'}
+                        src={`${IMG}/header/logoidx.png`}
+                        width={40}
+                        height={40}
+                    />
+                </div>
+
+                <div className={'flex flex-col'}>
+                    <div className={'text-sm'}>
+                        GITADORA Series Skill Simulator
+                    </div>
+                    <div className={'text-xl'}>Skill Navigator</div>
+                </div>
             </div>
 
             {/* right side */}

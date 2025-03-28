@@ -30,10 +30,10 @@ const SkillBox = ({ skill }: Props) => {
     const { id } = useParams<{ id: string }>();
 
     return (
-        <section className={'flex-col-center'}>
+        <section className={'flex-col-center py-[20px]'}>
             <div
                 className={cn(
-                    'flex flex-col justify-start items-center overflow-y-hidden relative gap-[2px]',
+                    'flex flex-col justify-start items-center overflow-y-hidden relative gap-[2px] bg-black',
                 )}
                 style={{
                     height: viewAll ? 'auto' : '100px',

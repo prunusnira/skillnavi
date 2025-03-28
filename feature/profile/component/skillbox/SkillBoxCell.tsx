@@ -6,7 +6,7 @@ interface Props {
 }
 
 const SkillBoxCell = ({ children }: Props) => (
-    <div className={cn('w-40 text-center')}>{children}</div>
+    <div className={cn('w-40 text-center text-white')}>{children}</div>
 );
 
 export default SkillBoxCell;

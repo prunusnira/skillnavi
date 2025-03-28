@@ -1,6 +1,6 @@
 import Card from '@/common/card/Card';
 import { getTranslations } from 'next-intl/server';
-import PlayCountTypePresenter from '@/feature/playcount/component/PlayCountType.presenter';
+import PlayCountType from '@/feature/playcount/component/PlayCountType';
 import { getPlayCount } from '@/feature/playcount/api/getPlayCount';
 import { getServerSession } from 'next-auth';
 import { getProfileSession } from '@/feature/profile/api/getProfileSession';
@@ -27,7 +27,7 @@ const PagePlaycount = async ({
             </section>
 
             {/* 타입변경 */}
-            <PlayCountTypePresenter />
+            <PlayCountType />
 
             {/* 데이터 */}
             <section className={'grid grid-cols-2 md:grid-cols-4 gap-[10px]'}>
@@ -36,7 +36,7 @@ const PagePlaycount = async ({
                         key={`${type}_${item.id}`}
                         pos={index + 1}
                         item={item}
-                        type={type}
+                        type={type || 'music'}
                     />
                 ))}
             </section>

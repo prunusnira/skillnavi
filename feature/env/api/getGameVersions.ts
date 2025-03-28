@@ -8,5 +8,5 @@ export const getGameVersions = async () => {
 
 export const getLatestVersion = async () => {
     // return await fetchAdv.get<number>(API_ENV_LATEST);
-    return 28;
+    return 30;
 };

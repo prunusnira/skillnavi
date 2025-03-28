@@ -25,7 +25,7 @@ const CustomTooltip = ({
         return (
             <div
                 className={cn(
-                    'flex-col-center bg-black border-white border border-solid p-2',
+                    'flex-col-center bg-white border-black border border-solid p-2',
                 )}
             >
                 <div>Date: {dayjs(label).format('YYYY-MM-DD')}</div>
@@ -58,14 +58,14 @@ const LineGraph = ({ type, data, min, max }: Props) => {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis
                     dataKey="date"
-                    stroke={'white'}
+                    stroke={'black'}
                 />
                 <YAxis
                     domain={[
                         min,
                         max,
                     ]}
-                    stroke={'white'}
+                    stroke={'black'}
                 />
                 <Tooltip
                     cursor={true}
