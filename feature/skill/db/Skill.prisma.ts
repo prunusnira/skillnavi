@@ -34,6 +34,7 @@ export const getQuerySkillTargetHotGF = ({
                         where uid = ${userid}
                           and playver = ${version}
                           and hot = 1
+                          and patterncode < 9
                         group by mid) s2
                        on s1.mid = s2.mid and s1.skill = s2.skill
              inner join (select id
@@ -69,6 +70,7 @@ export const getQuerySkillTargetOtherGF = ({
                         where uid = ${userid}
                           and playver = ${version}
                           and hot = 0
+                          and patterncode < 9
                         group by mid) s2
                        on s1.mid = s2.mid and s1.skill = s2.skill
              inner join (select id
@@ -104,6 +106,7 @@ export const getQuerySkillTargetHotDM = ({
                         where uid = ${userid}
                           and playver = ${version}
                           and hot = 1
+                          and patterncode > 8
                         group by mid) s2
                        on s1.mid = s2.mid and s1.skill = s2.skill
              inner join (select id
@@ -139,6 +142,7 @@ export const getQuerySkillTargetOtherDM = ({
                         where uid = ${userid}
                           and playver = ${version}
                           and hot = 0
+                          and patterncode > 8
                         group by mid) s2
                        on s1.mid = s2.mid and s1.skill = s2.skill
              inner join (select id

@@ -92,7 +92,7 @@ const SkillTable = () => {
                         className={cn('flex justify-around w-full py-2.5')}
                     >
                         <div className={cn('flex-col-center')}>
-                            <div>SKILL</div>
+                            <div className={'text-white font-bold'}>SKILL</div>
                             <SkillColor
                                 value={
                                     skillSum.reduce(
@@ -103,14 +103,14 @@ const SkillTable = () => {
                             />
                         </div>
                         <div className={cn('flex-col-center')}>
-                            <div>HOT</div>
+                            <div className={'text-white font-bold'}>HOT</div>
                             <SkillColor
                                 value={skillSum[0] / 100}
                                 multiplier={2}
                             />
                         </div>
                         <div className={cn('flex-col-center')}>
-                            <div>OTHER</div>
+                            <div className={'text-white font-bold'}>OTHER</div>
                             <SkillColor
                                 value={skillSum[1] / 100}
                                 multiplier={2}
@@ -147,7 +147,7 @@ const SkillTable = () => {
                 skill?.map((table, tidx) => (
                     <section
                         key={`grid_${tidx}`}
-                        className={'flex-col-center'}
+                        className={'flex-col-center w-full'}
                     >
                         <div className={'text-2xl font-semibold py-[20px]'}>
                             {table.title}

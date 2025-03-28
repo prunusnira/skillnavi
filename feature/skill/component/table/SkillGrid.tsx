@@ -34,9 +34,9 @@ const SkillGrid = ({ skill, index }: Props) => {
 
     return (
         <section
-            className={cn('flex-col-center w-full hover:bg-gray-900', {
-                ['bg-gray-600']: index % 2 === 1,
-                ['bg-gray-700']: index % 2 === 0,
+            className={cn('flex-col-center w-full hover:bg-blue-400', {
+                ['bg-blue-100']: index % 2 === 1,
+                ['bg-blue-200']: index % 2 === 0,
             })}
         >
             {/* 색상 */}
@@ -52,7 +52,7 @@ const SkillGrid = ({ skill, index }: Props) => {
             {/* 곡 제목 */}
             <AnchorText
                 className={cn(
-                    'w-full text-center text-ellipsis break-all overflow-hidden whitespace-nowrap',
+                    'w-full text-center text-ellipsis break-all overflow-hidden whitespace-nowrap text-black',
                     'px-2 link',
                 )}
                 text={music.name}

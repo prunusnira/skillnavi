@@ -10,7 +10,7 @@ interface Props {
 const SkillItemVersion = ({ versionId }: Props) => {
     const { version } = useSkillVersion({ versionId });
 
-    return <div>{version?.short}</div>;
+    return <div className={'text-sm'}>{version?.short}</div>;
 };
 
 export default SkillItemVersion;
