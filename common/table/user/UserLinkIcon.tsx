@@ -15,7 +15,11 @@ const UserLinkIcon = ({ user }: Props) => {
     return (
         <div
             className={cn('flex items-center gap-2')}
-            onClick={() => router.push(LINK_PROFILE_MAIN(user.id))}
+            onClick={() => {
+                if (user.openinfo) {
+                    router.push(LINK_PROFILE_MAIN(user.id));
+                }
+            }}
         >
             {user.titletower && (
                 <Image

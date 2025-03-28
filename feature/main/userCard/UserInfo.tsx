@@ -3,10 +3,13 @@ import { getProfileSession } from '@/feature/profile/api/getProfileSession';
 import { getServerSession } from 'next-auth';
 import UserButton from '@/feature/main/userCard/UserButton';
 import UserBox from '@/feature/profile/component/UserBox';
+import { getTranslations } from 'next-intl/server';
+import UserScript from '@/feature/main/userCard/UserScript';
 
 const UserInfo = async () => {
     const session = await getServerSession();
     const mydata = await getProfileSession(session);
+    const t = await getTranslations('index.script');
 
     if (!mydata) {
         return null;
@@ -19,10 +22,13 @@ const UserInfo = async () => {
             <UserButton />
 
             {/* 갱신 스크립트 */}
-            <section>
-                <div></div>
-                <div></div>
-                <div></div>
+            <section className={'flex-col-center my-[40px]'}>
+                <div className={'text-md font-bold'}>{t('title')}</div>
+                <div className={'text-sm'}>{t('cont')}</div>
+                <div className={'text-sm font-bold text-red-400'}>
+                    {t('scriptLogin')}
+                </div>
+                <UserScript unique={mydata.unique_id} />
             </section>
         </section>
     );

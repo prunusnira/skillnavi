@@ -33,7 +33,7 @@ const PageIndex = async () => {
                     {session ? (
                         <UserInfo />
                     ) : (
-                        <section>
+                        <section className={'flex-col-center'}>
                             <div className={cn('link')}>
                                 <Link href={LINK_AUTH_LOGIN}>
                                     {t('self.login')}
