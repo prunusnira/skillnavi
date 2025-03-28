@@ -1,7 +1,6 @@
 import { ChangeEvent, useMemo, useState } from 'react';
-import { useAtom, useAtomValue } from 'jotai';
+import { useAtomValue } from 'jotai';
 import { atomGameVersionList } from '@/common/game/data/atomGameVersion';
-import { atomSkillTableOptions } from '@/feature/skill/data/atomSkillTableOptions';
 import { TableDataType } from '@/feature/skill/data/TableDataType';
 import { TableType } from '@/feature/skill/data/TableType';
 import { GameType } from '@/common/game/data/GameType';
@@ -18,11 +17,6 @@ const useSkillMenu = () => {
         active,
         setActive,
     ] = useState<boolean>(false);
-
-    const [
-        tableOptions,
-        setTableOptions,
-    ] = useAtom(atomSkillTableOptions);
 
     const toggleMenu = () => {
         setActive(!active);
@@ -48,38 +42,22 @@ const useSkillMenu = () => {
             }
         });
         newSearchParams.set(targetKey, targetValue);
-        router.replace(`${pathname}?${newSearchParams.toString()}`);
+        router.push(`${pathname}?${newSearchParams.toString()}`);
     };
 
     const onChangeVersion = (e: ChangeEvent<HTMLSelectElement>) => {
-        setTableOptions({
-            type: 'versionId',
-            data: Number(e.currentTarget.value),
-        });
         updateSearchParams('version', e.currentTarget.value);
     };
 
     const onChangeTable = (table: TableType) => {
-        setTableOptions({
-            type: 'table',
-            data: table,
-        });
         updateSearchParams('display', table);
     };
 
     const onChangeData = (data: TableDataType) => {
-        setTableOptions({
-            type: 'data',
-            data,
-        });
         updateSearchParams('pageType', data);
     };
 
     const onChangeGame = (data: GameType) => {
-        setTableOptions({
-            type: 'game',
-            data,
-        });
         updateSearchParams('game', data);
     };
 
@@ -91,7 +69,7 @@ const useSkillMenu = () => {
         onChangeTable,
         onChangeData,
         onChangeGame,
-        tableOptions,
+        currentVersion: Number(searchParams.get('version')),
     };
 };
 

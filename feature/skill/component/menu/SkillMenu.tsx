@@ -17,7 +17,7 @@ const SkillMenu = () => {
         onChangeTable,
         onChangeData,
         onChangeGame,
-        tableOptions,
+        currentVersion,
     } = useSkillMenu();
     const t = useTranslations('skill.menu');
 
@@ -46,20 +46,20 @@ const SkillMenu = () => {
                     <Select
                         onChange={onChangeVersion}
                         options={versionSelectOption}
-                        value={tableOptions.versionId}
+                        value={currentVersion}
                     />
                 </div>
 
                 {/* 데이터 설정 */}
-                <div className={cn('mt-5')}>{t('common.title')}</div>
+                <div className={cn('mt-5')}>{t('data.title')}</div>
                 <div className={cn('flex-center')}>
                     <ButtonRounded
                         onClick={() => onChangeData('target')}
-                        text={t('common.target')}
+                        text={t('data.target')}
                     />
                     <ButtonRounded
                         onClick={() => onChangeData('all')}
-                        text={t('common.all')}
+                        text={t('data.all')}
                     />
                 </div>
 

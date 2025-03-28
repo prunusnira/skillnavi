@@ -21,7 +21,10 @@ const SkillTableTitleVersion = ({ versionId }: Props) => {
             return latest;
         }
         return versionList?.find((v) => Number(v.id) === Number(versionId));
-    }, [versionList]);
+    }, [
+        versionList,
+        versionId,
+    ]);
 
     return <section className={cn('flex-col-center')}>{version?.full}</section>;
 };

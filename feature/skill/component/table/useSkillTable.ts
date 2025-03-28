@@ -2,50 +2,50 @@ import { useParams, useSearchParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import { getSkillTable } from '@/feature/skill/api/getSkillTable';
 import { getProfile } from '@/feature/profile/api/getProfile';
-import { useEffect, useMemo } from 'react';
-import { TableType } from '@/feature/skill/data/TableType';
+import { useCallback, useEffect, useMemo } from 'react';
 import { TableDataType } from '@/feature/skill/data/TableDataType';
 import { GameType } from '@/common/game/data/GameType';
-import { useAtomValue, useSetAtom } from 'jotai';
-import {
-    atomSkillTableOptions,
-    atomSkillTableOptionsInit,
-} from '@/feature/skill/data/atomSkillTableOptions';
 import { OrderType } from '@/feature/skill/data/OrderType';
 import { getProfileSkill } from '@/feature/profile/api/getProfileSkill';
+import { TableType } from '@/feature/skill/data/TableType';
 
 const useSkillTable = () => {
     const searchParams = useSearchParams();
     const params = useParams<{ id: string }>();
-    const setInit = useSetAtom(atomSkillTableOptionsInit);
-    const option = useAtomValue(atomSkillTableOptions);
 
-    useEffect(() => {
-        setInit({
-            versionId: Number(searchParams.get('version') || 0),
-            table: (searchParams.get('display') as TableType) || 'grid',
-            data: (searchParams.get('pageType') as TableDataType) || 'target',
+    const { page, game, version, display, pageType } = useMemo(
+        () => ({
             page: Number(searchParams.get('page') || 1),
             game: (searchParams.get('game') as GameType) || 'gf',
+            version: Number(searchParams.get('version') || 0),
+            display: (searchParams.get('display') as TableType) || 'grid',
+            pageType:
+                (searchParams.get('pageType') as TableDataType) || 'target',
+        }),
+        [searchParams],
+    );
+
+    const getSkill = useCallback(async () => {
+        return await getSkillTable({
+            id: params.id,
+            page: Number(searchParams.get('page') || 1),
+            game: (searchParams.get('game') as GameType) || 'gf',
+            version: Number(searchParams.get('version') || 0),
             order: (searchParams.get('order') as OrderType) || undefined,
+            pageType:
+                (searchParams.get('pageType') as TableDataType) || 'target',
         });
     }, [searchParams]);
 
-    const getSkill = async () => {
-        return await getSkillTable({
-            id: params.id,
-            page: option.page,
-            game: option.game,
-            version: option.versionId,
-            order: option.order,
-            pageType: option.data,
-        });
-    };
-
     // 전체 목록 스킬 데이터
-    const { data: result, isLoading } = useQuery({
+    const {
+        data: result,
+        isLoading,
+        refetch,
+    } = useQuery({
         queryKey: [
-            option,
+            'skill',
+            searchParams,
         ],
         queryFn: getSkill,
     });
@@ -56,11 +56,9 @@ const useSkillTable = () => {
     const skillSum = useMemo(() => {
         const sum: number[] = [];
         skill?.forEach((table) => {
-            const skillSum = table.reduce(
-                (acc, cur) =>
-                    Math.floor((cur.rate * cur.level * 20) / 10000) + acc,
-                0,
-            );
+            const skillSum = table.data.reduce((acc, cur) => {
+                return cur.skill + acc;
+            }, 0);
             sum.push(skillSum);
         });
         return sum;
@@ -96,6 +94,11 @@ const useSkillTable = () => {
         searchParams,
     ]);
 
+    // Skill menu에 의하여 searchParams가 변경된 경우 데이터를 새로 가져오도록 처리
+    useEffect(() => {
+        refetch();
+    }, [searchParams]);
+
     return {
         userSkill,
         skillSum,
@@ -103,6 +106,12 @@ const useSkillTable = () => {
         skill,
         isLoading,
         pages,
+
+        page,
+        game,
+        version,
+        display,
+        pageType,
     };
 };
 

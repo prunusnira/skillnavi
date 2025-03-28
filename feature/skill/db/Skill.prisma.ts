@@ -29,13 +29,19 @@ export const getQuerySkillTargetHotGF = ({
            s1.skill as skill
     from SkillList s1
              inner join(select mid,
-                               skill
+                               max(skill) as skill
                         from SkillList
                         where uid = ${userid}
                           and playver = ${version}
                           and hot = 1
                         group by mid) s2
                        on s1.mid = s2.mid and s1.skill = s2.skill
+             inner join (select id
+                         from MusicList
+                         where (remove = 0
+                             or remove > ${version})
+                           and version <= ${version}) m
+                        on s1.mid = m.id
     where s1.uid = ${userid}
       and s1.playver = ${version}
       and s1.hot = 1
@@ -58,13 +64,19 @@ export const getQuerySkillTargetOtherGF = ({
            s1.skill as skill
     from SkillList s1
              inner join(select mid,
-                               skill
+                               max(skill) as skill
                         from SkillList
                         where uid = ${userid}
                           and playver = ${version}
-                          and hot = 1
+                          and hot = 0
                         group by mid) s2
                        on s1.mid = s2.mid and s1.skill = s2.skill
+             inner join (select id
+                         from MusicList
+                         where (remove = 0
+                             or remove > ${version})
+                           and version <= ${version}) m
+                        on s1.mid = m.id
     where s1.uid = ${userid}
       and s1.playver = ${version}
       and s1.hot = 0
@@ -87,13 +99,19 @@ export const getQuerySkillTargetHotDM = ({
            s1.skill as skill
     from SkillList s1
              inner join(select mid,
-                               skill
+                               max(skill) as skill
                         from SkillList
                         where uid = ${userid}
                           and playver = ${version}
                           and hot = 1
                         group by mid) s2
                        on s1.mid = s2.mid and s1.skill = s2.skill
+             inner join (select id
+                         from MusicList
+                         where (remove = 0
+                             or remove > ${version})
+                           and version <= ${version}) m
+                        on s1.mid = m.id
     where s1.uid = ${userid}
       and s1.playver = ${version}
       and s1.hot = 1
@@ -116,13 +134,19 @@ export const getQuerySkillTargetOtherDM = ({
            s1.skill as skill
     from SkillList s1
              inner join(select mid,
-                               skill
+                               max(skill) as skill
                         from SkillList
                         where uid = ${userid}
                           and playver = ${version}
-                          and hot = 1
+                          and hot = 0
                         group by mid) s2
                        on s1.mid = s2.mid and s1.skill = s2.skill
+             inner join (select id
+                         from MusicList
+                         where (remove = 0
+                             or remove > ${version})
+                           and version <= ${version}) m
+                        on s1.mid = m.id
     where s1.uid = ${userid}
       and s1.playver = ${version}
       and s1.hot = 0

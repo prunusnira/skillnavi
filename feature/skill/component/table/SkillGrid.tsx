@@ -12,11 +12,11 @@ import AlbumArt from '@/common/albumart/AlbumArt';
 import AnchorText from '@/common/anchor/AnchorText';
 import { useParams, useSearchParams } from 'next/navigation';
 import { useMemo } from 'react';
-import { SkillTableData } from '@/feature/skill/data/SkillTableData';
 import Image from 'next/image';
+import { SkillForTableWithInfo } from '@/feature/skill/data/Skill';
 
 interface Props {
-    skill: SkillTableData;
+    skill: SkillForTableWithInfo;
     index: number;
 }
 
@@ -119,7 +119,7 @@ const SkillGrid = ({ skill, index }: Props) => {
                         'bg-lime-300 w-full text-black font-bold flex-center',
                     )}
                 >
-                    {(Math.floor(skillValue / 10000) / 100).toFixed(2)}
+                    {(skill.skill / 100).toFixed(2)}
                 </div>
                 <div
                     className={cn(

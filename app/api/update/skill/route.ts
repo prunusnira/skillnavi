@@ -166,16 +166,12 @@ export const POST = async (req: NextRequest) => {
                             rate: rateNum,
                             fc,
                             hot: music.hot,
-                            skill: Math.floor(
-                                (rateNum * pattern.level * 20) / 10000,
-                            ),
+                            skill: rateNum * pattern.level * 2,
                         };
 
                         skillArray.push(skill);
                     }
                 });
-
-                console.log(skillArray);
 
                 return skillArray.map(async (skill) => {
                     const { playver, patterncode, mid } = skill;

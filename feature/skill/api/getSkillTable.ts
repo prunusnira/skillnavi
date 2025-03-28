@@ -1,6 +1,6 @@
 import { fetchAdv } from '@/lib/fetch/fetchAdv';
-import { SkillReturn } from '@/feature/skill/data/SkillReturn';
 import { API_SKILL_TABLE } from '@/url/api';
+import { SkillReturn } from '@/feature/skill/data/Skill';
 
 interface Props {
     id: string;

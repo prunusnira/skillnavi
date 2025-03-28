@@ -5,30 +5,27 @@ import Card from '@/common/card/Card';
 import SkillColor from '@/common/skillColor/SkillColor';
 import SkillMenu from '@/feature/skill/component/menu/SkillMenu';
 import SkillTableTitleVersion from '@/feature/skill/component/table/SkillTableTitleVersion';
-import { TableType } from '@/feature/skill/data/TableType';
 import useSkillTable from '@/feature/skill/component/table/useSkillTable';
-import { TableDataType } from '@/feature/skill/data/TableDataType';
 import SkillList from '@/feature/skill/component/table/SkillList';
 import SkillGrid from '@/feature/skill/component/table/SkillGrid';
 import Pager from '@/common/pager/Pager';
 import SkillTableTextProfile from '@/feature/skill/component/table/SkillTableTextProfile';
 import Loading from '@/common/loading/Loading';
 
-const SkillTable = ({
-    searchParams,
-}: {
-    searchParams: {
-        page: number;
-        game: string;
-        version: number;
-        order: string;
-        pageType: TableDataType;
-        display: TableType;
-    };
-}) => {
-    const { page, game, version, display, pageType } = searchParams;
-    const { userSkill, skillSum, profile, skill, isLoading, pages } =
-        useSkillTable();
+const SkillTable = () => {
+    const {
+        userSkill,
+        skillSum,
+        profile,
+        skill,
+        isLoading,
+        pages,
+        page,
+        game,
+        version,
+        display,
+        pageType,
+    } = useSkillTable();
 
     if (isLoading) {
         return <Loading size={'80px'} />;
@@ -68,25 +65,29 @@ const SkillTable = ({
                     'flex-col-center w-full max-w-[600px] bg-black my-5 rounded-2xl',
                 )}
             >
-                <section className={cn('flex justify-around w-full py-2.5')}>
-                    <div className={cn('flex-col-center')}>
-                        <div>ALL</div>
-                        <SkillColor
-                            value={userSkill?.all || 0}
-                            multiplier={1 / 2}
-                        />
-                    </div>
-                    <div className={cn('flex-col-center')}>
-                        <div>GF</div>
-                        <SkillColor value={userSkill?.gf || 0} />
-                    </div>
-                    <div className={cn('flex-col-center')}>
-                        <div>DM</div>
-                        <SkillColor value={userSkill?.dm || 0} />
-                    </div>
-                </section>
+                {pageType === 'all' && (
+                    <section
+                        className={cn('flex justify-around w-full py-2.5')}
+                    >
+                        <div className={cn('flex-col-center')}>
+                            <div>ALL</div>
+                            <SkillColor
+                                value={userSkill?.all || 0}
+                                multiplier={1 / 2}
+                            />
+                        </div>
+                        <div className={cn('flex-col-center')}>
+                            <div>GF</div>
+                            <SkillColor value={userSkill?.gf || 0} />
+                        </div>
+                        <div className={cn('flex-col-center')}>
+                            <div>DM</div>
+                            <SkillColor value={userSkill?.dm || 0} />
+                        </div>
+                    </section>
+                )}
 
-                {pageType === 'target' && (
+                {(pageType === 'target' || pageType === 'exc') && (
                     <section
                         className={cn('flex justify-around w-full py-2.5')}
                     >
@@ -124,15 +125,20 @@ const SkillTable = ({
                 skill?.map((table, tidx) => (
                     <section
                         key={`list_${tidx}`}
-                        className={cn('w-full max-w-screen-lg')}
+                        className={'flex-col-center'}
                     >
-                        {table.map((skill, index) => (
-                            <SkillList
-                                key={skill.mid}
-                                skill={skill}
-                                index={index}
-                            />
-                        ))}
+                        <div className={'text-2xl font-semibold py-[20px]'}>
+                            {table.title}
+                        </div>
+                        <div className={'w-full max-w-screen-lg'}>
+                            {table.data.map((skill, index) => (
+                                <SkillList
+                                    key={skill.mid}
+                                    skill={skill}
+                                    index={index}
+                                />
+                            ))}
+                        </div>
                     </section>
                 ))}
 
@@ -141,17 +147,24 @@ const SkillTable = ({
                 skill?.map((table, tidx) => (
                     <section
                         key={`grid_${tidx}`}
-                        className={cn(
-                            'w-full grid grid-cols-2 xs:grid-cols-3 md:grid-cols-4 max-w-screen-lg',
-                        )}
+                        className={'flex-col-center'}
                     >
-                        {table.map((skill, index) => (
-                            <SkillGrid
-                                key={skill.mid}
-                                skill={skill}
-                                index={index}
-                            />
-                        ))}
+                        <div className={'text-2xl font-semibold py-[20px]'}>
+                            {table.title}
+                        </div>
+                        <div
+                            className={cn(
+                                'w-full grid grid-cols-2 xs:grid-cols-3 md:grid-cols-4 max-w-screen-lg',
+                            )}
+                        >
+                            {table.data.map((skill, index) => (
+                                <SkillGrid
+                                    key={skill.mid}
+                                    skill={skill}
+                                    index={index}
+                                />
+                            ))}
+                        </div>
                     </section>
                 ))}
 

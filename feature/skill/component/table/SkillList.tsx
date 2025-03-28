@@ -11,12 +11,11 @@ import SkillItemVersion from '@/feature/skill/component/table/SkillItemVersion';
 import AlbumArt from '@/common/albumart/AlbumArt';
 import AnchorText from '@/common/anchor/AnchorText';
 import { useParams, useSearchParams } from 'next/navigation';
-import { useMemo } from 'react';
-import { SkillTableData } from '@/feature/skill/data/SkillTableData';
 import Image from 'next/image';
+import { SkillForTableWithInfo } from '@/feature/skill/data/Skill';
 
 interface Props {
-    skill: SkillTableData;
+    skill: SkillForTableWithInfo;
     index: number;
 }
 
@@ -24,13 +23,7 @@ const SkillList = ({ skill, index }: Props) => {
     const { id } = useParams<{ id: string }>();
     const { music } = skill;
     const searchParams = useSearchParams();
-    const skillValue = useMemo(
-        () => skill.rate * skill.level * 20,
-        [
-            skill,
-        ],
-    );
-    const skillColor = getSkillCN((skillValue * 5) / 100000);
+    const skillColor = getSkillCN(skill.skill / 10);
 
     return (
         <section
@@ -109,7 +102,7 @@ const SkillList = ({ skill, index }: Props) => {
 
             {/* 스킬 / 달성률 */}
             <section className={cn('flex-col-center')}>
-                <div>{(Math.floor(skillValue / 10000) / 100).toFixed(2)}</div>
+                <div>{(skill.skill / 10).toFixed(2)}</div>
                 <div>({(skill.rate / 100).toFixed(2)}%)</div>
             </section>
         </section>
