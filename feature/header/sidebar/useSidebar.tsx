@@ -3,7 +3,7 @@ import { Fragment, useEffect, useMemo } from 'react';
 import { SidebarMenuItems, SidebarSubMenu } from '@/common/menu/SidebarMenu';
 import { cn } from '@/lib/cn';
 import { useTranslations } from 'next-intl';
-import { useRouter } from '@/i18n/routing';
+import { usePathname, useRouter } from '@/i18n/routing';
 import Image from 'next/image';
 import { atomEnv } from '@/feature/env/data/AtomEnv';
 
@@ -14,6 +14,11 @@ const useSidebar = () => {
     ] = useAtom(atomEnv);
     const t = useTranslations('header');
     const router = useRouter();
+    const pathname = usePathname();
+
+    useEffect(() => {
+        setEnv({ menu: false });
+    }, [pathname]);
 
     const renderSubMenu = (subMenu: SidebarSubMenu[]) => (
         <section className={cn('flex items-center gap-[16px]')}>
