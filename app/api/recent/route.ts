@@ -3,7 +3,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Recent } from '@/feature/recent/data/Recent';
 import { ProfileSkill } from '@/feature/profile/data/ProfileSkill';
 import { Profile } from '@/feature/profile/data/Profile';
-import { VER_NX } from '@/feature/env/data/constant';
 import prisma from '@/lib/db/prisma';
 
 export const GET = async (req: NextRequest) => {
@@ -11,9 +10,6 @@ export const GET = async (req: NextRequest) => {
         req,
         work: async () => {
             const recent = (await prisma.profileSkill.findMany({
-                where: {
-                    version: VER_NX,
-                },
                 orderBy: [
                     {
                         lastupdate: 'desc',

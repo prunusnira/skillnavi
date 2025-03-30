@@ -28,6 +28,7 @@ export const POST = async (req: NextRequest) => {
                     await prisma.profileList.update({
                         where: {
                             id: body.userId,
+                            update_at: new Date(),
                         },
                         data: profile,
                     });
