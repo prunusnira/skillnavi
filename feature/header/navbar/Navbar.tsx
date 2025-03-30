@@ -35,7 +35,7 @@ const Navbar = () => {
                     />
                 </div>
 
-                <div className={'flex flex-col'}>
+                <div className={'hidden md:flex flex-col'}>
                     <div className={'text-sm'}>
                         GITADORA Series Skill Simulator
                     </div>
