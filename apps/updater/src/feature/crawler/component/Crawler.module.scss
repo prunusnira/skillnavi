@@ -1,0 +1,9 @@
+.crawlerMain {
+    @apply h-full max-h-full;
+    @apply fixed z-[10000];
+    @apply bg-white bg-opacity-90;
+    @apply text-center;
+    @apply flex flex-col gap-[30px];
+    @apply p-[10px] overflow-y-auto;
+    @apply fixed left-0 top-0;
+}

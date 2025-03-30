@@ -1,0 +1,27 @@
+.outerBox {
+    @apply flex flex-col;
+}
+
+.header {
+    @apply flex-none;
+}
+
+.footer {
+    @apply flex flex-col;
+    @apply flex-none;
+    @apply bg-[#111111];
+    @apply text-[80%];
+
+    a {
+        @apply text-[#aaaaff];
+    }
+    
+    span {
+        @apply text-[#dddddd];
+    }
+}
+
+.center {
+    @apply flex flex-auto;
+    @apply items-center justify-center;
+} 

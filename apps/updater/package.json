@@ -1,0 +1,62 @@
+{
+  "name": "@skillnavi/updater",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@skillnavi/ui": "*",
+    "@tanstack/react-query": "^5.67.1",
+    "axios": "1.7.8",
+    "cheerio": "^1.0.0-rc.9",
+    "clsx": "^2.1.1",
+    "jotai": "^2.12.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-scripts": "^5.0.1",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.7.3"
+  },
+  "devDependencies": {
+    "@craco/craco": "^7.1.0",
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.5",
+    "@testing-library/user-event": "^12.8.1",
+    "@types/cheerio": "^0.22.28",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.13.1",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@typescript-eslint/typescript-estree": "^8.23.0",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.14",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-next": "^0.0.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.37.1",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "postcss": "^8.5.3",
+    "prettier": "^3.3.3",
+    "prettier-plugin-multiline-arrays": "^3.0.6",
+    "sass": "^1.85.1",
+    "sass-loader": "^16.0.5"
+  },
+  "scripts": {
+    "dev": "ENV=dev craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "craco eject"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
