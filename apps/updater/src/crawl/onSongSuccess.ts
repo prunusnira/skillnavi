@@ -1,13 +1,12 @@
 import * as cheerio from 'cheerio';
-import MusicData from './data/musicData';
-import PatternData from './data/patternData';
+import {MusicSkill, SkillData} from "@skillnavi/data/src/skill/SkillData";
 
 const onSongSuccess = (data: string, setCurrent: (s: string) => void) => {
     const $ = cheerio.load(data);
 
     const name = $('div.live_title').text();
 
-    const music: MusicData = {
+    const music: MusicSkill = {
         musictitle: name,
         data: [],
     };
@@ -68,7 +67,7 @@ const onSongSuccess = (data: string, setCurrent: (s: string) => void) => {
             const table = $(v).find('table');
             const tbody = $(table).find('tbody').children('tr');
 
-            const ptData: PatternData = {
+            const ptData: SkillData = {
                 ptcode: ptcodelist[i] ?? 0,
                 level: parseInt(
                     $(table).find('.diff_area').text().replace('.', ''),
@@ -150,7 +149,7 @@ const onSongSuccess = (data: string, setCurrent: (s: string) => void) => {
             const table = $(v).find('table');
             const tbody = $(table).find('tbody').children('tr');
 
-            const ptData: PatternData = {
+            const ptData: SkillData = {
                 ptcode: ptcodelist[i] ?? 0,
                 level: parseInt(
                     $(table).find('.diff_area').text().replace('.', ''),

@@ -1,5 +1,5 @@
-import { API_VERSION_AVAILABLE } from '../../../common/api';
-import { GameVersion } from '../data/GameVersion.type';
+import {API_VERSION_AVAILABLE} from '../../../common/api';
+import {GameVersion} from '@skillnavi/data/src/version';
 
 export const getAvailableVersion = async () => {
     const result = await fetch(API_VERSION_AVAILABLE, {
@@ -8,6 +8,5 @@ export const getAvailableVersion = async () => {
     if (!result.ok) {
         return null;
     }
-    const data = (await result.json()) as GameVersion[];
-    return data;
+    return (await result.json()) as GameVersion[];
 };

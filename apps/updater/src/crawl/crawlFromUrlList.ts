@@ -1,12 +1,12 @@
 import axios from 'axios';
 import crawlMusic from './crawlMusic';
-import CrawlData from './data/crawlData';
 import upload from './upload';
 import {
     CrawlerUrlList,
     CrawlerUrlRunner,
 } from '../feature/crawler/component/CrawlerImport.type';
 import crawlProfile from './crawlProfile';
+import {UpdateSkill} from "@skillnavi/data/src/skill/SkillData";
 
 const crawlFromUrlList = ({
     urls,
@@ -18,7 +18,7 @@ const crawlFromUrlList = ({
     // 순서
     // 1. ref로 이동
     // 2. targetTo로 이동해서 데이터 수집
-    const skillData: CrawlData = {
+    const skillData: UpdateSkill = {
         uid: (window as any).sinUid,
         version,
         musicData: [],
@@ -71,7 +71,7 @@ const runUrlIndex = async ({
     } else {
         // 완성된 데이터 업로드
         const dataLength = skillData.musicData.length;
-        const skillDataList: CrawlData[] = [];
+        const skillDataList: UpdateSkill[] = [];
 
         let done = 0;
         while (done < dataLength) {

@@ -1,15 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 import RouteWrapper from '@/lib/fetch/routeWrapper';
-import { UpdateProfileInfo } from '@/common/update/UpdateProfileInfo';
 import { getUserFromToken } from '@/feature/auth/api/getUserFromToken';
 import { getLatestVersion } from '@/feature/env/api/getGameVersions';
 import prisma from '@/lib/db/prisma';
+import { UpdateProfile } from "@skillnavi/data/src/profile";
 
 export const POST = async (req: NextRequest) => {
     return RouteWrapper({
         req,
         work: async () => {
-            const body = (await req.json()) as UpdateProfileInfo;
+            const body = (await req.json()) as UpdateProfile;
 
             const latest = await getLatestVersion();
 

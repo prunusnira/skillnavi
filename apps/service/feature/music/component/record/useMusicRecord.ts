@@ -12,7 +12,7 @@ import {
     atomGameVersionLatest,
     atomGameVersionList,
 } from '@/common/game/data/atomGameVersion';
-import { GameVersion } from '@/common/game/data/GameVersion';
+import { GameVersion } from '@skillnavi/data/src/version';
 
 const useMusicRecord = () => {
     const searchParams = useSearchParams();

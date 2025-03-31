@@ -1,14 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import RouteWrapper from '@/lib/fetch/routeWrapper';
-import {
-    SkillMusicData,
-    UpdateSkillInfo,
-} from '@/common/update/UpdateSkillInfo';
 import { getLatestVersion } from '@/feature/env/api/getGameVersions';
 import prisma from '@/lib/db/prisma';
 import { Music } from '@/feature/music/data/Music';
 import { Pattern } from '@/feature/music/data/Pattern';
 import { Skill } from '@/feature/skill/data/Skill';
+import {MusicSkill, UpdateSkill} from "@skillnavi/data/src/skill/SkillData";
 
 interface PatternPromiseData {
     mid: number;
@@ -22,7 +19,7 @@ export const POST = async (req: NextRequest) => {
         req,
         work: async () => {
             // const { musicdata, version, uid } =
-            const result = (await req.json()) as UpdateSkillInfo;
+            const result = (await req.json()) as UpdateSkill;
 
             const { musicData, version, uid } = result;
 
@@ -72,7 +69,7 @@ export const POST = async (req: NextRequest) => {
             };
 
             const updatePatternData = (
-                skill: SkillMusicData,
+                skill: MusicSkill,
                 music?: Music,
             ) => {
                 if (!music) {
@@ -111,7 +108,7 @@ export const POST = async (req: NextRequest) => {
             };
 
             const updateSkillData = async (
-                skill: SkillMusicData,
+                skill: MusicSkill,
                 music?: Music,
             ) => {
                 if (!music) {

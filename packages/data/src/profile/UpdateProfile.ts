@@ -1,4 +1,4 @@
-export interface UpdateProfileInfo {
+export interface UpdateProfile {
     title: string;
     name: string;
     gskill: number;

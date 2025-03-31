@@ -1,8 +1,8 @@
 import crawlProfile from './crawlProfile';
-import CrawlData from './data/crawlData';
 import getTargetSimple from './runner/getTargetSimple';
 import upload from './upload';
 import { CrawlerTargetParams } from '../feature/crawler/component/CrawlerImport.type';
+import {UpdateSkill} from "@skillnavi/data/src/skill/SkillData";
 
 const crawlTargetQuick = async ({
     gtype,
@@ -10,7 +10,7 @@ const crawlTargetQuick = async ({
     setCurrent,
     setBtnDisabled,
 }: Omit<CrawlerTargetParams, 'delay'>) => {
-    const skillData: CrawlData = {
+    const skillData: UpdateSkill = {
         uid: (window as any).sinUid,
         version,
         musicData: [],

@@ -1,7 +1,6 @@
 import axios from 'axios';
 import * as cheerio from 'cheerio';
-import MusicData from '../data/musicData';
-import PatternData from '../data/patternData';
+import {MusicSkill, SkillData} from "@skillnavi/data/src/skill/SkillData";
 
 interface Params {
     gtype: string;
@@ -15,7 +14,7 @@ const getTargetSimple = async (
     const url = window.sinUrl.find(url => url.version === version && url.urltype === 'skill')?.url;
 
     if (!url) {
-        return [] as MusicData[];
+        return [] as MusicSkill[];
     }
 
     // stype이 0이면 other, 그 외에는 hot
@@ -23,18 +22,18 @@ const getTargetSimple = async (
 
     // get all link to each song -> run get song info
     const $ = cheerio.load(html.data);
-    const returnData = Array<MusicData>();
+    const returnData: MusicSkill[] = [];
 
     // 각 tablerow에 대해서 곡을 뽑아옴
     const rows = $('.skill_table_tb').find('tbody').children('tr');
 
     $(rows).each((i, v) => {
-        const data: MusicData = {
+        const data: MusicSkill = {
             musictitle: '',
             data: [],
         };
 
-        const skill: PatternData = {
+        const skill: SkillData = {
             ptcode: 0,
             level: 0,
             playcount: 1,

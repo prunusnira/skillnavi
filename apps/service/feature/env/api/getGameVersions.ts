@@ -1,5 +1,5 @@
 import { fetchAdv } from '@/lib/fetch/fetchAdv';
-import { GameVersion } from '@/common/game/data/GameVersion';
+import { GameVersion } from '@skillnavi/data/src/version';
 import { API_ENV_LATEST, API_ENV_VERSION } from '@/url/api';
 
 export const getGameVersions = async () => {

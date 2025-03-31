@@ -1,8 +1,8 @@
 import axios from 'axios';
 import * as cheerio from 'cheerio';
-import Profile from './data/profileData';
 import upload from './upload';
 import { CrawlerProfileParams } from '../feature/crawler/component/CrawlerImport.type';
+import {UpdateProfile} from "@skillnavi/data/src/profile";
 
 const crawlProfile = async ({
     version,
@@ -45,25 +45,25 @@ const crawlProfile = async ({
         arr.push(rowarr);
     });
 
-    const profileData: Profile = {
+    const profileData: UpdateProfile = {
         title: title,
         name: name,
-        gskill: arr[0]?.[1] ?? '0',
-        dskill: arr[0]?.[2] ?? '0',
-        gskillall: arr[1]?.[1] ?? '0',
-        dskillall: arr[1]?.[2] ?? '0',
-        gclearlv: arr[2]?.[1] ?? '0',
-        dclearlv: arr[2]?.[2] ?? '0',
-        gclearnum: arr[3]?.[1] ?? '0',
-        dclearnum: arr[3]?.[2] ?? '0',
-        gfclv: arr[4]?.[1] ?? '0',
-        dfclv: arr[4]?.[2] ?? '0',
-        gfcnum: arr[5]?.[1] ?? '0',
-        dfcnum: arr[5]?.[2] ?? '0',
-        gexclv: arr[6]?.[1] ?? '0',
-        dexclv: arr[6]?.[2] ?? '0',
-        gexcnum: arr[7]?.[1] ?? '0',
-        dexcnum: arr[7]?.[2] ?? '0',
+        gskill: Number(arr[0]?.[1] ?? '0'),
+        dskill: Number(arr[0]?.[2] ?? '0'),
+        gskillall: Number(arr[1]?.[1] ?? '0'),
+        dskillall: Number(arr[1]?.[2] ?? '0'),
+        gclearlv: Number(arr[2]?.[1] ?? '0'),
+        dclearlv: Number(arr[2]?.[2] ?? '0'),
+        gclearnum: Number(arr[3]?.[1] ?? '0'),
+        dclearnum: Number(arr[3]?.[2] ?? '0'),
+        gfclv: Number(arr[4]?.[1] ?? '0'),
+        dfclv: Number(arr[4]?.[2] ?? '0'),
+        gfcnum: Number(arr[5]?.[1] ?? '0'),
+        dfcnum: Number(arr[5]?.[2] ?? '0'),
+        gexclv: Number(arr[6]?.[1] ?? '0'),
+        dexclv: Number(arr[6]?.[2] ?? '0'),
+        gexcnum: Number(arr[7]?.[1] ?? '0'),
+        dexcnum: Number(arr[7]?.[2] ?? '0'),
         crawlToken: window.sinUpdateToken() ?? '',
         userId: window.sinUid,
         targetVersion: version,

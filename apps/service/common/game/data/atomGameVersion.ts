@@ -1,4 +1,4 @@
-import { GameVersion } from '@/common/game/data/GameVersion';
+import { GameVersion } from '@skillnavi/data/src/version';
 import { atom } from 'jotai';
 
 export const atomGameVersionList = atom<GameVersion[] | undefined>(undefined);
