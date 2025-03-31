@@ -5,6 +5,7 @@ import { getLocale, getMessages } from 'next-intl/server';
 import { Suspense } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
 import { cn } from '@/lib/cn';
+import '@skillnavi/ui/dist/index.css';
 
 export const metadata: Metadata = {
     title: 'Skill Navigator',

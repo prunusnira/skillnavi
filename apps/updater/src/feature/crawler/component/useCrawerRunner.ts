@@ -8,7 +8,10 @@ import { useAtom } from 'jotai';
 import { atomCrawler } from '../atom/Crawler.atom';
 
 const useCrawerRunner = () => {
-    const [env, setEnv] = useAtom(atomCrawler);
+    const [
+        env,
+        setEnv,
+    ] = useAtom(atomCrawler);
     const { version, delay, user } = env;
 
     const setCurrent = (text: string) => {
@@ -21,7 +24,7 @@ const useCrawerRunner = () => {
 
     const crawlRunner = async (type: number) => {
         if (version === undefined || user === undefined) {
-            alert('Can not run updater due to no user data specified')
+            alert('Can not run updater due to no user data specified');
             return;
         }
 
@@ -32,13 +35,28 @@ const useCrawerRunner = () => {
 
             // quick target update
             case 10:
-                crawlTargetQuick({ gtype: 'all', delay, version, setCurrent, setBtnDisabled });
+                crawlTargetQuick({
+                    gtype: 'all',
+                    version,
+                    setCurrent,
+                    setBtnDisabled,
+                });
                 break;
             case 11:
-                crawlTargetQuick({ gtype: 'gf', delay, version, setCurrent, setBtnDisabled });
+                crawlTargetQuick({
+                    gtype: 'gf',
+                    version,
+                    setCurrent,
+                    setBtnDisabled,
+                });
                 break;
             case 12:
-                crawlTargetQuick({ gtype: 'dm', delay, version, setCurrent, setBtnDisabled });
+                crawlTargetQuick({
+                    gtype: 'dm',
+                    version,
+                    setCurrent,
+                    setBtnDisabled,
+                });
                 break;
 
             // all song update
@@ -78,42 +96,114 @@ const useCrawerRunner = () => {
 
             // target song update
             case 30:
-                crawlTarget({ gtype: 'all', delay, version, setCurrent, setBtnDisabled });
+                crawlTarget({
+                    gtype: 'all',
+                    delay,
+                    version,
+                    setCurrent,
+                    setBtnDisabled,
+                });
                 break;
             case 31:
-                crawlTarget({ gtype: 'gf', delay, version, setCurrent, setBtnDisabled });
+                crawlTarget({
+                    gtype: 'gf',
+                    delay,
+                    version,
+                    setCurrent,
+                    setBtnDisabled,
+                });
                 break;
             case 32:
-                crawlTarget({ gtype: 'dm', delay, version, setCurrent, setBtnDisabled });
+                crawlTarget({
+                    gtype: 'dm',
+                    delay,
+                    version,
+                    setCurrent,
+                    setBtnDisabled,
+                });
                 break;
 
             // favo update
             case 401:
-                crawlFavo({ page: 1, gtype: 'all', delay, setCurrent, setBtnDisabled });
+                crawlFavo({
+                    page: 1,
+                    gtype: 'all',
+                    delay,
+                    setCurrent,
+                    setBtnDisabled,
+                });
                 break;
             case 411:
-                crawlFavo({ page: 1, gtype: 'gf', delay, setCurrent, setBtnDisabled });
+                crawlFavo({
+                    page: 1,
+                    gtype: 'gf',
+                    delay,
+                    setCurrent,
+                    setBtnDisabled,
+                });
                 break;
             case 421:
-                crawlFavo({ page: 1, gtype: 'dm', delay, setCurrent, setBtnDisabled });
+                crawlFavo({
+                    page: 1,
+                    gtype: 'dm',
+                    delay,
+                    setCurrent,
+                    setBtnDisabled,
+                });
                 break;
             case 402:
-                crawlFavo({ page: 2, gtype: 'all', delay, setCurrent, setBtnDisabled });
+                crawlFavo({
+                    page: 2,
+                    gtype: 'all',
+                    delay,
+                    setCurrent,
+                    setBtnDisabled,
+                });
                 break;
             case 412:
-                crawlFavo({ page: 2, gtype: 'gf', delay, setCurrent, setBtnDisabled });
+                crawlFavo({
+                    page: 2,
+                    gtype: 'gf',
+                    delay,
+                    setCurrent,
+                    setBtnDisabled,
+                });
                 break;
             case 422:
-                crawlFavo({ page: 2, gtype: 'dm', delay, setCurrent, setBtnDisabled });
+                crawlFavo({
+                    page: 2,
+                    gtype: 'dm',
+                    delay,
+                    setCurrent,
+                    setBtnDisabled,
+                });
                 break;
             case 403:
-                crawlFavo({ page: 3, gtype: 'all', delay, setCurrent, setBtnDisabled });
+                crawlFavo({
+                    page: 3,
+                    gtype: 'all',
+                    delay,
+                    setCurrent,
+                    setBtnDisabled,
+                });
                 break;
             case 413:
-                crawlFavo({ page: 3, gtype: 'gf', delay, setCurrent, setBtnDisabled });
+                crawlFavo({
+                    page: 3,
+                    gtype: 'gf',
+                    delay,
+                    setCurrent,
+                    setBtnDisabled,
+                });
                 break;
             case 423:
-                crawlFavo({ page: 3, gtype: 'dm', delay, setCurrent, setBtnDisabled });
+                crawlFavo({
+                    page: 3,
+                    gtype: 'dm',
+                    delay,
+                    setCurrent,
+                    setBtnDisabled,
+                });
                 break;
 
             // board update
@@ -139,8 +229,10 @@ const useCrawerRunner = () => {
 
         var category: number[] = [];
 
-        const checkbox = document.querySelectorAll<HTMLInputElement>('input[name="ver[]"]:checked');
-        checkbox.forEach(v => {
+        const checkbox = document.querySelectorAll<HTMLInputElement>(
+            'input[name="ver[]"]:checked',
+        );
+        checkbox.forEach((v) => {
             v.checked ? category.push(parseInt(v.value)) : console.log('');
         });
 

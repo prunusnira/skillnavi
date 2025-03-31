@@ -4,9 +4,9 @@ import { cn } from '@/lib/cn';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import useSkillMenu from '@/feature/skill/component/menu/useSkillMenu';
-import ButtonRounded from '@/common/button/ButtonRounded';
 import Select from '@/common/select/Select';
 import { useTranslations } from 'next-intl';
+import { ButtonRounded } from '@skillnavi/ui';
 
 const SkillMenu = () => {
     const {

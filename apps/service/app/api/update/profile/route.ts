@@ -14,7 +14,7 @@ export const POST = async (req: NextRequest) => {
             const latest = await getLatestVersion();
 
             // 토큰에서 사용자 프로필 번호 확인 가능
-            const user = await getUserFromToken(body.userToken);
+            const user = await getUserFromToken(body.crawlToken);
 
             if (user) {
                 // ProfileList 갱신 관련 정보
@@ -23,12 +23,12 @@ export const POST = async (req: NextRequest) => {
                     const profile = {
                         title: body.title,
                         name: body.name,
+                        update_at: new Date(),
                     };
 
                     await prisma.profileList.update({
                         where: {
                             id: body.userId,
-                            update_at: new Date(),
                         },
                         data: profile,
                     });
@@ -36,22 +36,23 @@ export const POST = async (req: NextRequest) => {
 
                 // ProfileSkill
                 const skill = {
-                    gskill: body.gskill,
-                    dskill: body.dskill,
-                    gskillall: body.gskillall,
-                    dskillall: body.dskillall,
-                    gclearlv: body.gclearlv,
-                    dclearlv: body.dclearlv,
-                    gclearnum: body.gclearnum,
-                    dclearnum: body.dclearnum,
-                    gfclv: body.gfclv,
-                    dfclv: body.dfclv,
-                    gfcnum: body.gfcnum,
-                    dfcnum: body.dfcnum,
-                    gexclv: body.gexclv,
-                    dexclv: body.dexclv,
-                    gexcnum: body.gexcnum,
-                    dexcnum: body.dexcnum,
+                    gskill: Number(body.gskill || '0') * 100,
+                    dskill: Number(body.dskill || '0') * 100,
+                    gall: Number(body.gskillall || '0') * 100,
+                    dall: Number(body.dskillall || '0') * 100,
+                    gclearlv: Number(body.gclearlv || '0'),
+                    dclearlv: Number(body.dclearlv || '0'),
+                    gclearnum: Number(body.gclearnum || '0'),
+                    dclearnum: Number(body.dclearnum || '0'),
+                    gfclv: Number(body.gfclv || '0'),
+                    dfclv: Number(body.dfclv || '0'),
+                    gfcnum: Number(body.gfcnum || '0'),
+                    dfcnum: Number(body.dfcnum || '0'),
+                    gexclv: Number(body.gexclv || '0'),
+                    dexclv: Number(body.dexclv || '0'),
+                    gexcnum: Number(body.gexcnum || '0'),
+                    dexcnum: Number(body.dexcnum || '0'),
+                    lastupdate: new Date(),
                 };
 
                 await prisma.profileSkill.upsert({

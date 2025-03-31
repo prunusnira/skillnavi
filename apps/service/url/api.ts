@@ -2,7 +2,7 @@ const PREFIX = '/api';
 
 export const API_ENV_VERSION = `${PREFIX}/env/version`;
 export const API_ENV_LATEST = `${PREFIX}/env/latest`;
-export const API_USER_TOKEN = '${PREFIX}/user/token';
+export const API_USER_TOKEN = `${PREFIX}/user/token`;
 export const API_NOTICE = `${PREFIX}/notice`;
 export const API_PROFILE_MINE = `${PREFIX}/profile`;
 export const API_PROFILE_BASIC = `${PREFIX}/profile/basic`;

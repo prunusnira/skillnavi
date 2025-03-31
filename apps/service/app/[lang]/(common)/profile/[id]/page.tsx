@@ -30,6 +30,10 @@ const PageProfile = async ({ params }: { params: { id: string } }) => {
     // 프로필 정보 가져오기
     const profile = mydata[0];
 
+    if (!profile) {
+        return null;
+    }
+
     // 버전정보 가져오기
     const codeSorted = game.map((data) => data.id).sort((a, b) => b - a);
 

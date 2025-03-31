@@ -5,10 +5,10 @@ import { useTranslations } from 'next-intl';
 import InputFormItem from '@/common/form/InputFormItem';
 import { useState } from 'react';
 import { Profile } from '@/feature/profile/data/Profile';
-import ButtonStandard from '@/common/button/ButtonStandard';
 import { useMutation } from '@tanstack/react-query';
 import { updateComment } from '@/feature/profile/api/updateComment';
 import { useRouter } from '@/i18n/routing';
+import { ButtonStandard } from '@skillnavi/ui';
 
 interface Props {
     profile: Profile;

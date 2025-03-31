@@ -1,9 +1,9 @@
 'use client';
 
-import ButtonStandard from '@/common/button/ButtonStandard';
 import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 import { usePathname, useRouter } from '@/i18n/routing';
+import { ButtonStandard } from '@skillnavi/ui';
 
 const PlayCountType = () => {
     const t = useTranslations('user.playcount.button');
@@ -22,22 +22,22 @@ const PlayCountType = () => {
         <section>
             <ButtonStandard
                 text={t('music')}
-                bgColor={type === 'music' || !type ? 'lightgreen' : undefined}
+                isSelected={type === 'music' || !type}
                 onClick={() => changePage('music')}
             />
             <ButtonStandard
                 text={t('pt')}
-                bgColor={type === 'pattern' ? 'lightgreen' : undefined}
+                isSelected={type === 'pattern'}
                 onClick={() => changePage('pattern')}
             />
             <ButtonStandard
                 text={t('gf')}
-                bgColor={type === 'gf' ? 'lightgreen' : undefined}
+                isSelected={type === 'gf'}
                 onClick={() => changePage('gf')}
             />
             <ButtonStandard
                 text={t('dm')}
-                bgColor={type === 'dm' ? 'lightgreen' : undefined}
+                isSelected={type === 'dm'}
                 onClick={() => changePage('dm')}
             />
         </section>

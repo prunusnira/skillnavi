@@ -22,9 +22,14 @@ const PageMusic = async ({
 
     if (!user.length) {
         // TODO: 사용자를 찾지 못함 알림
+        return null;
     }
 
     const profile = user[0];
+
+    if (!profile) {
+        return null;
+    }
 
     return (
         <Card title={t('title')}>

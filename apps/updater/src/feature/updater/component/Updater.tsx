@@ -1,12 +1,12 @@
 import text from '../../../text/text';
 import React from 'react';
-import ButtonStandard from '../../common/button/ButtonStandard';
 import { useAtomValue } from 'jotai';
 import { atomCrawler } from '../../crawler/atom/Crawler.atom';
 import useCrawerRunner from '../../crawler/component/useCrawerRunner';
 import { UpdaterRow } from './Updater.data';
 import UpdaterItemRow from './Updater.item.row';
 import UpdaterBlock from './Updater.block';
+import { ButtonStandard } from '@skillnavi/ui';
 
 const Updater = () => {
     const env = useAtomValue(atomCrawler);
@@ -15,7 +15,9 @@ const Updater = () => {
 
     return (
         <section className="flex flex-col gap-[20px]">
-            <div className="text-md font-bold">{(text.crawler.datat as any)[lang]}</div>
+            <div className="text-md font-bold">
+                {(text.crawler.datat as any)[lang]}
+            </div>
 
             {/* 스킬 대상곡 (quick) */}
             <UpdaterBlock
@@ -24,33 +26,20 @@ const Updater = () => {
             >
                 <ButtonStandard
                     onClick={() => crawlRunner(11)}
-                    disabled={
-                        version !== latest
-                            ? true
-                            : btnDisabled
-                    }
+                    disabled={version !== latest ? true : btnDisabled}
                     text={'GF'}
                 />
                 <ButtonStandard
                     onClick={() => crawlRunner(12)}
-                    disabled={
-                        version !== latest
-                            ? true
-                            : btnDisabled
-                    }
+                    disabled={version !== latest ? true : btnDisabled}
                     text={'DM'}
                 />
                 <ButtonStandard
                     onClick={() => crawlRunner(10)}
-                    disabled={
-                        version !== latest
-                            ? true
-                            : btnDisabled
-                    }
+                    disabled={version !== latest ? true : btnDisabled}
                     text={'All'}
                 />
             </UpdaterBlock>
-
 
             {/* 스킬대상곡 */}
             <UpdaterBlock
@@ -198,25 +187,13 @@ const Updater = () => {
             >
                 <ButtonStandard
                     onClick={() => crawlRunner(51)}
-                    disabled={
-                        version !== latest
-                            ? true
-                            : btnDisabled
-                    }
-                    text={`GF ${
-                        (text.crawler.board.short as any)[lang]
-                    }`}
+                    disabled={version !== latest ? true : btnDisabled}
+                    text={`GF ${(text.crawler.board.short as any)[lang]}`}
                 />
                 <ButtonStandard
                     onClick={() => crawlRunner(52)}
-                    disabled={
-                        version !== latest
-                            ? true
-                            : btnDisabled
-                    }
-                    text={`DM ${
-                        (text.crawler.board.short as any)[lang]
-                    }`}
+                    disabled={version !== latest ? true : btnDisabled}
+                    text={`DM ${(text.crawler.board.short as any)[lang]}`}
                 />
             </UpdaterBlock>
 
@@ -234,20 +211,12 @@ const Updater = () => {
                     <div className="flex">
                         <ButtonStandard
                             onClick={() => crawlSelRunner(1)}
-                            disabled={
-                                version !== latest
-                                    ? true
-                                    : btnDisabled
-                            }
+                            disabled={version !== latest ? true : btnDisabled}
                             text={(text.crawler.gsel as any)[lang]}
                         />
                         <ButtonStandard
                             onClick={() => crawlSelRunner(2)}
-                            disabled={
-                                version !== latest
-                                    ? true
-                                    : btnDisabled
-                            }
+                            disabled={version !== latest ? true : btnDisabled}
                             text={(text.crawler.dsel as any)[lang]}
                         />
                     </div>

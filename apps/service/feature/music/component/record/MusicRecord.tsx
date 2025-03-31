@@ -2,8 +2,8 @@
 
 import useMusicRecord from '@/feature/music/component/record/useMusicRecord';
 import { cn } from '@/lib/cn';
-import ButtonRounded from '@/common/button/ButtonRounded';
 import MusicRecordItem from '@/feature/music/component/record/MusicRecordItem';
+import { ButtonRounded } from '@skillnavi/ui';
 
 // CSR 기록 정보
 const MusicRecord = () => {

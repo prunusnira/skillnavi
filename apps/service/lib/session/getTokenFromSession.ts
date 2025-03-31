@@ -7,5 +7,5 @@ export const getTokenFromSession = (session: Session | null) => {
         return undefined;
     }
     const id = email.split('@')[0];
-    return sha256(id);
+    return id ? sha256(id) : undefined;
 };

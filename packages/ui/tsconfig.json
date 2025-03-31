@@ -1,7 +1,4 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@skillnavi/tsconfig/for-react.json"
 }

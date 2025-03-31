@@ -14,11 +14,7 @@ const TableCell = ({
     children: ReactNode;
     isBold?: boolean;
 }) => (
-    <div
-        className={clsx(style.tableCell, {
-            [style.isBold]: isBold,
-        })}
-    >
+    <div className={clsx(style.tableCell, isBold && style.isBold)}>
         {children}
     </div>
 );

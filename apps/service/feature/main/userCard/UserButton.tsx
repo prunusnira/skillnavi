@@ -1,9 +1,9 @@
 'use client';
 
-import ButtonStandard from '@/common/button/ButtonStandard';
 import { cn } from '@/lib/cn';
 import { useRouter } from '@/i18n/routing';
 import { LINK_PLAYCOUNT, LINK_PROFILE_SELF, LINK_SKILL_SELF } from '@/url/url';
+import { ButtonStandard } from '@skillnavi/ui';
 
 const UserButton = () => {
     const router = useRouter();

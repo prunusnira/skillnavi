@@ -14,7 +14,7 @@ export interface Skill {
     combo: number;
     fc: boolean;
     meter: string | null;
-    hot: number;
+    hot: boolean;
     skill: number;
 }
 
@@ -26,7 +26,7 @@ export interface SkillForTable {
     maxrank: string;
     rate: number;
     fc: boolean;
-    hot: number;
+    hot: boolean;
     skill: number;
 }
 

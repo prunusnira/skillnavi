@@ -1,9 +1,9 @@
 'use client';
 
-import ButtonRounded from '@/common/button/ButtonRounded';
 import { GameTypeAll } from '@/common/game/data/GameType';
 import { usePathname, useRouter } from '@/i18n/routing';
 import { useSearchParams } from 'next/navigation';
+import { ButtonRounded } from '@skillnavi/ui';
 
 const PlayCountRankType = () => {
     const pathname = usePathname();

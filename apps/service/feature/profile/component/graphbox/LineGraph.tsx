@@ -29,7 +29,7 @@ const CustomTooltip = ({
                 )}
             >
                 <div>Date: {dayjs(label).format('YYYY-MM-DD')}</div>
-                <div>Skill: {`${payload[0].value}`}</div>
+                <div>Skill: {payload[0]?.value}</div>
             </div>
         );
     }

@@ -1,9 +1,9 @@
 'use client';
 
-import ButtonRounded from '@/common/button/ButtonRounded';
 import { usePathname, useRouter } from '@/i18n/routing';
 import { useSearchParams } from 'next/navigation';
 import { cn } from '@/lib/cn';
+import { ButtonRounded } from '@skillnavi/ui';
 
 interface Props {
     page: number;

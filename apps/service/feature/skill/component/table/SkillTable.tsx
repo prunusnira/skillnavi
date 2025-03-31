@@ -105,14 +105,14 @@ const SkillTable = () => {
                         <div className={cn('flex-col-center')}>
                             <div className={'text-white font-bold'}>HOT</div>
                             <SkillColor
-                                value={skillSum[0] / 100}
+                                value={(skillSum[0] ?? 0) / 100}
                                 multiplier={2}
                             />
                         </div>
                         <div className={cn('flex-col-center')}>
                             <div className={'text-white font-bold'}>OTHER</div>
                             <SkillColor
-                                value={skillSum[1] / 100}
+                                value={(skillSum[1] ?? 0) / 100}
                                 multiplier={2}
                             />
                         </div>

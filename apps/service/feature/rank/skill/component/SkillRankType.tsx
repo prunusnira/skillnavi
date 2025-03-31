@@ -1,8 +1,8 @@
 'use client';
 
-import ButtonStandard from '@/common/button/ButtonStandard';
 import { GameType } from '@/common/game/data/GameType';
 import { usePathname, useRouter } from '@/i18n/routing';
+import { ButtonStandard } from '@skillnavi/ui';
 
 const SkillRankType = () => {
     const pathname = usePathname();

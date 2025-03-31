@@ -1,4 +1,5 @@
 import { Profile } from './Profile.type';
+import { IMAGE_URL } from '../../../common/constant';
 
 interface Props {
     user: Profile;
@@ -11,8 +12,9 @@ const User = ({ user }: Props) => {
             <div className="flex gap-[8px] justify-center items-center">
                 {titletower && (
                     <img
+                        alt={'user_towerimg'}
                         style={{ width: '42px', height: '42px' }}
-                        src={`https://sin.nira.one/general-img/title/${titletower}.png`}
+                        src={`${IMAGE_URL}/title/${titletower}.png`}
                     />
                 )}
                 <div className="flex flex-col justify-center items-start">

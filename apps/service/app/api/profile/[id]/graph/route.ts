@@ -24,7 +24,7 @@ export const GET = async (
                         dm,
                     ] = converted;
                     dataArray.push({
-                        date,
+                        date: String(date),
                         gf: Number(gf),
                         dm: Number(dm),
                     });

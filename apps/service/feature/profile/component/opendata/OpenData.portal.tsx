@@ -4,10 +4,10 @@ import Portal from '@/feature/portal/component/Portal';
 import RadioGroup from '@/common/radio/Radio.group';
 import { useTranslations } from 'next-intl';
 import { Profile } from '@/feature/profile/data/Profile';
-import ButtonStandard from '@/common/button/ButtonStandard';
 import { useState } from 'react';
 import { updateOpenData } from '@/feature/profile/api/updateOpenData';
 import { useMutation } from '@tanstack/react-query';
+import { ButtonStandard } from '@skillnavi/ui';
 
 interface Props {
     profile: Profile;

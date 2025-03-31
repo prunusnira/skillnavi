@@ -18,7 +18,6 @@ export interface UpdateProfileInfo {
     gexcnum: number;
     dexcnum: number;
     crawlToken: string;
-    userToken: string;
     userId: number;
     targetVersion: number;
 }

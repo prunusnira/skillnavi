@@ -1,14 +1,12 @@
 import upload from './upload';
 import { CrawlerBoardParams } from '../feature/crawler/component/CrawlerImport.type';
 
-const crawlBoard = (
-    {
-        gtype,
-        setCurrent,
-        setBtnDisabled,
-    }: CrawlerBoardParams,
-) => {
-    const url = window.sinUrl.find(url => url.urltype === 'board')?.url;
+const crawlBoard = ({
+    gtype,
+    setCurrent,
+    setBtnDisabled,
+}: CrawlerBoardParams) => {
+    const url = window.sinUrl.find((url) => url.urltype === 'board')?.url;
 
     if (!url) {
         alert('No URL for board found');

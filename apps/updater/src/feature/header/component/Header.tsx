@@ -1,10 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
-import ButtonStandard from '../../common/button/ButtonStandard';
 import { getAvailableVersion } from '../../version/api/getAvailableVersion';
 import { atomCrawler } from '../../crawler/atom/Crawler.atom';
 import { useAtom } from 'jotai';
-import { ButtonRounded } from '@skillnavi/ui';
-// import ButtonRounded from '../../common/button/ButtonRounded';
+import { ButtonRounded, ButtonStandard } from '@skillnavi/ui';
 
 const Header = () => {
     const { data: availableVersion } = useQuery({

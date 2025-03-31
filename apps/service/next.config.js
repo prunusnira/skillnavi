@@ -3,6 +3,7 @@ const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    transpilePackages: ['@skillnavi/ui'],
     async headers() {
         return [
             {

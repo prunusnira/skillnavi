@@ -57,7 +57,8 @@ export const POST = async (req: NextRequest) => {
                             version: latest,
                             furigana: '',
                             composer: '',
-                            hot: 1,
+                            hot: latest,
+                            hot_end: latest,
                             remove: 0,
                         },
                     });
@@ -165,7 +166,9 @@ export const POST = async (req: NextRequest) => {
                             meter,
                             rate: rateNum,
                             fc,
-                            hot: music.hot,
+                            hot:
+                                version >= music.hot &&
+                                version <= music.hot_end,
                             skill: rateNum * pattern.level * 2,
                         };
 
@@ -243,6 +246,8 @@ export const POST = async (req: NextRequest) => {
             const totalResult = await Promise.allSettled(skillInnerPromise);
 
             const success = totalResult.every((r) => r.status === 'fulfilled');
+
+            console.log(success, totalResult);
 
             return NextResponse.json({
                 result: success ? 'success' : 'failure',

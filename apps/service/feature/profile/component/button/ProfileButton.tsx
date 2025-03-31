@@ -1,6 +1,5 @@
 'use client';
 
-import ButtonRounded from '@/common/button/ButtonRounded';
 import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
 import { useAtomValue } from 'jotai';
@@ -11,6 +10,7 @@ import { LINK_PATTERN_TABLE, LINK_PLAYCOUNT } from '@/url/url';
 import CommentPortal from '@/feature/profile/component/comment/Comment.portal';
 import useProfileButtonPortal from '@/feature/profile/component/button/useProfileButtonPortal';
 import OpenDataPortal from '@/feature/profile/component/opendata/OpenData.portal';
+import { ButtonRounded } from '@skillnavi/ui';
 
 const ProfileButton = () => {
     const t = useTranslations('user.profile.button');

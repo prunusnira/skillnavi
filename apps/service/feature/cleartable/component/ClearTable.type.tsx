@@ -2,8 +2,8 @@
 
 import { useSearchParams } from 'next/navigation';
 import { GameType } from '@/common/game/data/GameType';
-import ButtonRounded from '@/common/button/ButtonRounded';
 import { usePathname, useRouter } from '@/i18n/routing';
+import { ButtonRounded } from '@skillnavi/ui';
 
 const ClearTableType = () => {
     const pathname = usePathname();

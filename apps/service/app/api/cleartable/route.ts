@@ -164,11 +164,11 @@ export const GET = async (req: NextRequest) => {
                 tableResponse.push({
                     level: (i + 2) * 50,
                     total: totalCountValue[i] || 0,
-                    ss: countTableValue[i][0] || 0,
-                    s: countTableValue[i][1] || 0,
-                    a: countTableValue[i][2] || 0,
-                    b: countTableValue[i][3] || 0,
-                    c: countTableValue[i][4] || 0,
+                    ss: countTableValue[i]?.[0] || 0,
+                    s: countTableValue[i]?.[1] || 0,
+                    a: countTableValue[i]?.[2] || 0,
+                    b: countTableValue[i]?.[3] || 0,
+                    c: countTableValue[i]?.[4] || 0,
                 });
             });
 
