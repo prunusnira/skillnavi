@@ -5,6 +5,8 @@ import { getLatestVersion } from '@/feature/env/api/getGameVersions';
 import { GameType } from '@/common/game/data/GameType';
 import { ClearTableResponse } from '@/feature/cleartable/data/ClearTable';
 
+export const dynamic = 'force-dynamic';
+
 interface Params {
     type: GameType;
     level: number;

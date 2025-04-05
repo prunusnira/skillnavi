@@ -4,6 +4,8 @@ import { FetchError } from '@/lib/fetch/FetchError';
 import prisma from '@/lib/db/prisma';
 import { Profile } from '@/feature/profile/data/Profile';
 
+export const dynamic = 'force-dynamic';
+
 export const GET = async (req: NextRequest) => {
     return RouteWrapper({
         req,

@@ -8,6 +8,8 @@ import { ProfileSkill } from '@/feature/profile/data/ProfileSkill';
 import { Profile } from '@/feature/profile/data/Profile';
 import { getLatestVersion } from '@/feature/env/api/getGameVersions';
 
+export const dynamic = 'force-dynamic';
+
 export const GET = async (req: NextRequest) => {
     return RouteWrapper({
         req,

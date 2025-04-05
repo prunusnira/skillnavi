@@ -3,6 +3,8 @@ import RouteWrapper from '@/lib/fetch/routeWrapper';
 import { fetchFile } from '@/lib/fetch/fetchAdv';
 import { ProfileGraphRaw } from '@/feature/profile/data/ProfileGraph';
 
+export const dynamic = 'force-dynamic';
+
 export const GET = async (
     req: NextRequest,
     { params }: { params: { id: string } },

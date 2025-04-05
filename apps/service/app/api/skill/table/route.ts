@@ -20,6 +20,8 @@ import {
     getQuerySkillTargetOtherGF,
 } from '@/feature/skill/db/Skill.prisma';
 
+export const dynamic = 'force-dynamic';
+
 export const GET = async (req: NextRequest) => {
     return RouteWrapper({
         req,
