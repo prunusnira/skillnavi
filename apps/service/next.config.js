@@ -23,6 +23,10 @@ const nextConfig = {
                         key: 'Access-Control-Allow-Headers',
                         value: 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version',
                     },
+                    {
+                        key: 'Cache-Control',
+                        value: 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0',
+                    },
                 ],
             },
         ];
