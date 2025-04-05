@@ -5,6 +5,8 @@ import { ProfileSkill } from '@/feature/profile/data/ProfileSkill';
 import { Profile } from '@/feature/profile/data/Profile';
 import prisma from '@/lib/db/prisma';
 
+export const dynamic = 'force-dynamic';
+
 export const GET = async (req: NextRequest) => {
     return RouteWrapper({
         req,

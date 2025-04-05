@@ -5,6 +5,8 @@ import { Prisma } from '@prisma/client';
 import { PlayCountResponse } from '@/feature/playcount/component/PlayCount.type';
 import { getLatestVersion } from '@/feature/env/api/getGameVersions';
 
+export const dynamic = 'force-dynamic';
+
 export const GET = async (req: NextRequest) => {
     return RouteWrapper({
         req,

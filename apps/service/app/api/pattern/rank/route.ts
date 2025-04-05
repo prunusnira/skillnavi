@@ -4,6 +4,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/db/prisma';
 import { Skill } from '@/feature/skill/data/Skill';
 
+export const dynamic = 'force-dynamic';
+
 export const GET = async (req: NextRequest) => {
     return RouteWrapper({
         req,

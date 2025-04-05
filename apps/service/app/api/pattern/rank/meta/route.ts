@@ -3,6 +3,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { MUSICLIST_SIZE } from '@/feature/env/data/constant';
 import prisma from '@/lib/db/prisma';
 
+export const dynamic = 'force-dynamic';
+
 export const GET = async (req: NextRequest) => {
     return RouteWrapper({
         req,
