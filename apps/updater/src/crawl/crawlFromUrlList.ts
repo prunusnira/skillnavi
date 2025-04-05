@@ -70,18 +70,35 @@ const runUrlIndex = async ({
         }, delay);
     } else {
         // 완성된 데이터 업로드
-        upload({
-            json: JSON.stringify(skillData),
-            type: 'skill',
+        const dataLength = skillData.musicData.length;
+        const skillDataList: CrawlData[] = [];
+
+        let done = 0;
+        while (done < dataLength) {
+            skillDataList.push({
+                uid: skillData.uid,
+                version: skillData.version,
+                musicData: skillData.musicData.slice(done, done + 100),
+            });
+            done += 100;
+        }
+
+        await Promise.allSettled(
+            skillDataList.map((data) =>
+                upload({
+                    json: JSON.stringify(data),
+                    type: 'skill',
+                    version,
+                    setCurrent,
+                    setBtnDisabled,
+                }),
+            ),
+        );
+
+        await crawlProfile({
             version,
             setCurrent,
             setBtnDisabled,
-        }).finally(() => {
-            crawlProfile({
-                version,
-                setCurrent,
-                setBtnDisabled,
-            });
         });
     }
 };
