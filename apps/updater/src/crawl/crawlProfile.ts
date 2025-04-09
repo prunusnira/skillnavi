@@ -2,13 +2,13 @@ import axios from 'axios';
 import * as cheerio from 'cheerio';
 import upload from './upload';
 import { CrawlerProfileParams } from '../feature/crawler/component/CrawlerImport.type';
-import {UpdateProfile} from "@skillnavi/data/src/profile";
+import { UpdateProfile } from '@skillnavi/data/src/profile';
 
 const crawlProfile = async ({
-    version,
-    setCurrent,
-    setBtnDisabled,
-}: CrawlerProfileParams) => {
+                                version,
+                                setCurrent,
+                                setBtnDisabled,
+                            }: CrawlerProfileParams) => {
     console.log('[Skill Navigator] Profile Update Initializing');
     setCurrent('Profile Update Initializing...');
 

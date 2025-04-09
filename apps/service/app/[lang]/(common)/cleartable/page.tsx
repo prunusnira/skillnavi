@@ -8,8 +8,8 @@ import ClearTable from '@/feature/cleartable/component/ClearTable.table';
 import ClearTableChart from '@/feature/cleartable/component/ClearTable.chart';
 
 const PageClearTable = async ({
-    searchParams,
-}: {
+                                  searchParams,
+                              }: {
     searchParams: { type: GameType; id: number };
 }) => {
     const { type, id } = searchParams;

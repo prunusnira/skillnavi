@@ -1,3 +1,3 @@
-import {SkillData, UpdateSkill, MusicSkill} from "./SkillData";
+import { SkillData, UpdateSkill, MusicSkill } from './SkillData';
 
-export type {SkillData, UpdateSkill, MusicSkill}
+export type { SkillData, UpdateSkill, MusicSkill };

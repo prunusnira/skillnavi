@@ -22,7 +22,7 @@ const PageRecent = async () => {
                     <div
                         key={r.name}
                         className={cn(
-                            'flex w-full p-2.5 border-b border-solid border-white',
+                            'flex w-full p-2.5 border-b border-solid border-white dark:border-black',
                         )}
                     >
                         {/* 아이콘/이름 */}

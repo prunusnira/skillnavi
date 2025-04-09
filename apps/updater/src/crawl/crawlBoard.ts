@@ -1,11 +1,13 @@
 import upload from './upload';
 import { CrawlerBoardParams } from '../feature/crawler/component/CrawlerImport.type';
 
-const crawlBoard = ({
-    gtype,
-    setCurrent,
-    setBtnDisabled,
-}: CrawlerBoardParams) => {
+const crawlBoard = (
+    {
+        gtype,
+        setCurrent,
+        setBtnDisabled,
+    }: CrawlerBoardParams,
+) => {
     const url = window.sinUrl.find((url) => url.urltype === 'board')?.url;
 
     if (!url) {

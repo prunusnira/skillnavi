@@ -1,4 +1,4 @@
-import {API_USER_UNIQUEID} from "../../../common/api";
+import { API_USER_UNIQUEID } from '../../../common/api';
 import { Profile } from '../component/Profile.type';
 
 export const getUserFromUniqueId = async (id: string | null) => {
@@ -8,11 +8,11 @@ export const getUserFromUniqueId = async (id: string | null) => {
 
     const result = await fetch(`${API_USER_UNIQUEID}?token=${id}`, {
         method: 'GET',
-    })
+    });
 
     if (!result.ok) {
         return null;
     }
 
     return (await result.json()) as Profile;
-}
+};

@@ -1,5 +1,5 @@
 import * as cheerio from 'cheerio';
-import {MusicSkill, SkillData} from "@skillnavi/data/src/skill/SkillData";
+import { MusicSkill, SkillData } from '@skillnavi/data/src/skill/SkillData';
 
 const onSongSuccess = (data: string, setCurrent: (s: string) => void) => {
     const $ = cheerio.load(data);

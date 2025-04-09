@@ -6,6 +6,7 @@ body {
   max-width: 100vw;
   min-height: 100vh;
   overflow-x: hidden;
+  @apply bg-white dark:bg-black;
 }
 
 body {
@@ -20,7 +21,7 @@ body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  @apply text-black;
+  @apply text-black dark:text-white;
 }
 
 a {

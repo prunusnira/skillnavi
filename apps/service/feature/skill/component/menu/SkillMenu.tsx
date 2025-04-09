@@ -32,7 +32,7 @@ const SkillMenu = () => {
             </section>
             <section
                 className={cn(
-                    'absolute left-0 top-8 w-full md:w-768px flex-col-center bg-white bg-opacity-80',
+                    'absolute left-0 top-8 w-full md:w-768px flex-col-center bg-white dark:bg-black bg-opacity-80',
                     'p-5 transition-left',
                     {
                         ['left-0']: active,
@@ -43,11 +43,13 @@ const SkillMenu = () => {
                 {/* 버전 설정 */}
                 <div className={cn('mt-5')}>{t('version.title')}</div>
                 <div>
-                    <Select
-                        onChange={onChangeVersion}
-                        options={versionSelectOption}
-                        value={currentVersion}
-                    />
+                    {versionSelectOption && (
+                        <Select
+                            onChange={onChangeVersion}
+                            options={versionSelectOption}
+                            value={currentVersion}
+                        />
+                    )}
                 </div>
 
                 {/* 데이터 설정 */}

@@ -3,4 +3,4 @@ type UrlData = {
     ref: string,
 }
 
-export default UrlData
+export default UrlData;

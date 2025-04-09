@@ -1,5 +1,5 @@
 import UrlData from '../../../crawl/data/urlData';
-import {UpdateSkill} from "@skillnavi/data/src/skill/SkillData";
+import { UpdateSkill } from '@skillnavi/data/src/skill/SkillData';
 
 export interface CrawlerParams {
     page: number,

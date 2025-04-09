@@ -9,8 +9,8 @@ import { getGameTypeFromCode } from '@/lib/pattern/getGameTypeFromCode';
 import { getGameVersions } from '@/feature/env/api/getGameVersions';
 
 const PagePatternRank = async ({
-    searchParams,
-}: {
+                                   searchParams,
+                               }: {
     searchParams: {
         mid: number;
         version: number;

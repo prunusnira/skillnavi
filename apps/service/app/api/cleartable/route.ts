@@ -16,10 +16,10 @@ interface Params {
 }
 
 const getTotalCount = async ({
-    type,
-    level,
-    version,
-}: Omit<Params, 'user' | 'rank'>) => {
+                                 type,
+                                 level,
+                                 version,
+                             }: Omit<Params, 'user' | 'rank'>) => {
     return prisma.patternList.count({
         where: {
             level: {
@@ -67,9 +67,9 @@ const getCountTable = async ({ type, level, user, version, rank }: Params) => {
 };
 
 const getTotal = async ({
-    type,
-    version,
-}: Omit<Params, 'rank' | 'user' | 'level'>) => {
+                            type,
+                            version,
+                        }: Omit<Params, 'rank' | 'user' | 'level'>) => {
     return Promise.allSettled(
         [
             100,
@@ -155,8 +155,8 @@ export const GET = async (req: NextRequest) => {
             const countTableValue = countTable.map((lvtable) =>
                 lvtable.status === 'fulfilled'
                     ? lvtable.value.map((perRank) =>
-                          perRank.status === 'fulfilled' ? perRank.value : 0,
-                      )
+                        perRank.status === 'fulfilled' ? perRank.value : 0,
+                    )
                     : [],
             );
 

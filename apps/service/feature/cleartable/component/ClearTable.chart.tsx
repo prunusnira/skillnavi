@@ -18,11 +18,13 @@ import {
     ValueType,
 } from 'recharts/types/component/DefaultTooltipContent';
 
-const CustomTooltip = ({
-    active,
-    payload,
-    label,
-}: TooltipProps<ValueType, NameType>) => {
+const CustomTooltip = (
+    {
+        active,
+        payload,
+        label,
+    }: TooltipProps<ValueType, NameType>,
+) => {
     if (active && payload && payload.length) {
         return (
             <section

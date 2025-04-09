@@ -1,81 +1,82 @@
 .headerNav {
-    @apply bg-[#353a40];
+  @apply bg-[#353a40];
 }
 
 .navBar {
-    @apply flex flex-wrap flex-col md:flex;
-    @apply items-center justify-between md:justify-between;
-    @apply px-[20px] py-[10px];
+  @apply flex flex-wrap flex-col md:flex;
+  @apply items-center justify-between md:justify-between;
+  @apply px-[20px] py-[10px];
 }
 
 .navTitle {
-    @apply text-[20px];
+  @apply text-[20px];
 }
 
 .navMenu {
-    @apply m-[0px];
+  @apply m-[0px];
 
-    &.toggled {
-        @apply block w-full;
-        @apply list-none;
-        @apply md:hidden;
-    }
-    &:not(.toggled) {
-        @apply hidden;
-        @apply md:flex md:flex-1;
-        @apply md:list-none;
-    }
+  &.toggled {
+    @apply block w-full;
+    @apply list-none;
+    @apply md:hidden;
+  }
+
+  &:not(.toggled) {
+    @apply hidden;
+    @apply md:flex md:flex-1;
+    @apply md:list-none;
+  }
 }
 
 .navToggle {
-    @apply hidden;
-    @apply md:hidden;
+  @apply hidden;
+  @apply md:hidden;
 }
 
 .navItemX {
-    @apply w-full flex-auto;
-    @apply order-3;
-    @apply md:block md:items-start;
+  @apply w-full flex-auto;
+  @apply order-3;
+  @apply md:block md:items-start;
 }
 
 .navSubOuter {
-    @apply bg-white;
-    @apply py-[6px];
-    @apply border border-gray-400;
-    @apply rounded-[10px];
-    @apply list-disc;
-    
-    &:not(.open) {
-        @apply hidden;
-    }
+  @apply bg-white;
+  @apply py-[6px];
+  @apply border border-gray-400;
+  @apply rounded-[10px];
+  @apply list-disc;
+
+  &:not(.open) {
+    @apply hidden;
+  }
 }
 
 .navSubItem {
-    a {
-        @apply text-black;
-    }
+  a {
+    @apply text-black;
+  }
 }
 
 .imageTitle {
-    @apply max-h-[48px];
+  @apply max-h-[48px];
 }
 
 .imageIcon {
-    @apply w-[32px] h-[32px];
-    @apply float-left;
-    @apply mr-[10px];
+  @apply w-[32px] h-[32px];
+  @apply float-left;
+  @apply mr-[10px];
 }
 
 .navMenuIcon {
-    @apply hidden;
-    @apply md:hidden;
+  @apply hidden;
+  @apply md:hidden;
 }
 
 .searchBarSection {
-    @apply flex;
-    @apply w-full;
+  @apply flex;
+  @apply w-full;
 }
 
 .searchBar {
-    @apply flex-1;
+  @apply flex-1;
 } 

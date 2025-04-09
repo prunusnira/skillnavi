@@ -5,7 +5,7 @@ import prisma from '@/lib/db/prisma';
 import { Music } from '@/feature/music/data/Music';
 import { Pattern } from '@/feature/music/data/Pattern';
 import { Skill } from '@/feature/skill/data/Skill';
-import {MusicSkill, UpdateSkill} from "@skillnavi/data/src/skill/SkillData";
+import { MusicSkill, UpdateSkill } from '@skillnavi/data/src/skill/SkillData';
 
 interface PatternPromiseData {
     mid: number;

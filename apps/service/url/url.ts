@@ -17,14 +17,14 @@ export const LINK_SKILL_RECENT = '/recent';
 export const LINK_SKILL_EXC = (type: GameType) => `/skill/exc/${type}`;
 export const LINK_SKILL_SELF = (type: GameType) => `/skill/my/${type}`;
 export const LINK_SKILL_TABLE = ({
-    version,
-    game,
-    id,
-    pageType,
-    page = 1,
-    order,
-    display,
-}: SkillPageParams) => {
+                                     version,
+                                     game,
+                                     id,
+                                     pageType,
+                                     page = 1,
+                                     order,
+                                     display,
+                                 }: SkillPageParams) => {
     const params = new URLSearchParams();
     params.set('game', game);
     params.set('pageType', pageType);
@@ -36,20 +36,20 @@ export const LINK_SKILL_TABLE = ({
 };
 export const LINK_MUSIC_LIST = ``;
 export const LINK_MUSIC_INFO = ({
-    version,
-    mid,
-    uid,
-}: {
+                                    version,
+                                    mid,
+                                    uid,
+                                }: {
     version: number;
     mid: number;
     uid: number;
 }) => `/music/info?mid=${mid}&uid=${uid}&version=${version}`;
 
 export const LINK_PATTERN_LIST = ({
-    version,
-    order,
-    page,
-}: {
+                                      version,
+                                      order,
+                                      page,
+                                  }: {
     version?: number;
     order?: Order;
     page?: number;
@@ -68,9 +68,9 @@ export const LINK_PATTERN_LIST = ({
     return `/music/list${query.length > 0 ? `?${query}` : ''}`;
 };
 export const LINK_PATTERN_TABLE = ({
-    type,
-    id,
-}: {
+                                       type,
+                                       id,
+                                   }: {
     type?: GameType;
     id?: number;
 }) => {

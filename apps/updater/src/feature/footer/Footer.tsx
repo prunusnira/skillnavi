@@ -7,6 +7,6 @@ const Footer = () => {
             <a href="/privacy">개인정보처리방침</a>
         </div>
     );
-}
+};
 
 export default Footer; 

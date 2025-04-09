@@ -35,7 +35,7 @@ export const ButtonStandard = (
         if (disabled) {
             return customDisabledClass || 'bg-blue-200 text-white';
         }
-        return customClass || 'bg-blue-400 text-white';
+        return customClass || 'bg-blue-500 text-white';
     }, [disabled, isSelected]);
 
     return (

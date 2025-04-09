@@ -1,8 +1,8 @@
 export const getClearState = ({
-    rate,
-    fc,
-    short,
-}: {
+                                  rate,
+                                  fc,
+                                  short,
+                              }: {
     rate: number;
     fc: boolean;
     short?: boolean;

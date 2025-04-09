@@ -3,7 +3,7 @@ import RouteWrapper from '@/lib/fetch/routeWrapper';
 import { getUserFromToken } from '@/feature/auth/api/getUserFromToken';
 import { getLatestVersion } from '@/feature/env/api/getGameVersions';
 import prisma from '@/lib/db/prisma';
-import { UpdateProfile } from "@skillnavi/data/src/profile";
+import { UpdateProfile } from '@skillnavi/data/src/profile';
 
 export const POST = async (req: NextRequest) => {
     return RouteWrapper({

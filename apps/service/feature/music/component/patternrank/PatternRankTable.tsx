@@ -36,7 +36,7 @@ const PatternRankTable = ({ level, page }: Props) => {
                         {/* 색상 */}
                         <div
                             className={cn(
-                                'flex-center w-5 text-sm text-black font-bold',
+                                'flex-center w-5 text-sm text-black dark:text-white font-bold',
                                 skillColor,
                             )}
                         >

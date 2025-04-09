@@ -1,21 +1,19 @@
-import { Language } from '@/feature/env/data/Language';
-import { Theme } from '@/feature/env/data/Theme';
 import { atom } from 'jotai/index';
 
 interface AtomEnv {
-    theme: Theme;
-    language: keyof typeof Language;
     transparency: boolean;
     menu: boolean;
+    option: boolean;
     currentVersion?: number;
+    theme: 'light' | 'dark';
 }
 
 export const atomEnvData = atom<AtomEnv>({
-    theme: 'light',
-    language: Language.en,
     transparency: false,
     menu: false,
+    option: false,
     currentVersion: undefined,
+    theme: 'light',
 });
 
 export const atomEnv = atom(

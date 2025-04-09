@@ -17,7 +17,7 @@ const getTargetUrl = async (
 ) => {
     const url = window.sinUrl.find(url => url.version === version && url.urltype === 'skill')?.url;
 
-    if(!url) {
+    if (!url) {
         return [] as UrlData[];
     }
 

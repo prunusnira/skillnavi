@@ -15,14 +15,14 @@ interface Props {
 }
 
 const PlayCountRankUser = ({
-    rank,
-    id,
-    name,
-    titletower,
-    openinfo,
-    gcount,
-    dcount,
-}: Props) => {
+                               rank,
+                               id,
+                               name,
+                               titletower,
+                               openinfo,
+                               gcount,
+                               dcount,
+                           }: Props) => {
     const searchParams = useSearchParams();
     const type = searchParams.get('type') || '';
     const value = useMemo(() => {

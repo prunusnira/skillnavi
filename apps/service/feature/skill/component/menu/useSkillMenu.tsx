@@ -6,6 +6,7 @@ import { TableType } from '@/feature/skill/data/TableType';
 import { GameType } from '@/common/game/data/GameType';
 import { useSearchParams } from 'next/navigation';
 import { usePathname, useRouter } from '@/i18n/routing';
+import { SelectOption } from '@/common/select/SelectOption';
 
 const useSkillMenu = () => {
     const versionList = useAtomValue(atomGameVersionList);
@@ -22,14 +23,12 @@ const useSkillMenu = () => {
         setActive(!active);
     };
 
-    const versionSelectOption = useMemo(() => {
+    const versionSelectOption: SelectOption[] | undefined = useMemo(() => {
         return versionList?.map((ver) => (
-            <option
-                key={ver.id}
-                value={ver.id}
-            >
-                {ver.full}
-            </option>
+            {
+                value: ver.id.toString(),
+                display: ver.full,
+            }
         ));
     }, [versionList]);
 

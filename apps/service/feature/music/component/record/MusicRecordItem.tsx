@@ -33,12 +33,12 @@ const ColumnData = ({ title, content }: DataProps) => {
 
 // CSR 개별 기록 정보
 const MusicRecordItem = ({
-    skill,
-    level,
-    patterncode,
-    mid,
-    version,
-}: Props) => {
+                             skill,
+                             level,
+                             patterncode,
+                             mid,
+                             version,
+                         }: Props) => {
     const t = useTranslations('music.record');
     const difficulty = getPatternTypeFromCode(patterncode);
     const router = useRouter();

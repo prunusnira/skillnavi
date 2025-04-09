@@ -15,9 +15,9 @@ interface ParamsAll extends ParamsTarget {
 }
 
 export const getQuerySkillTargetHotGF = ({
-    userid,
-    version,
-}: ParamsTarget) => Prisma.sql`
+                                             userid,
+                                             version,
+                                         }: ParamsTarget) => Prisma.sql`
     select s1.mid   as mid,
            playver,
            patterncode,
@@ -51,9 +51,9 @@ export const getQuerySkillTargetHotGF = ({
 `;
 
 export const getQuerySkillTargetOtherGF = ({
-    userid,
-    version,
-}: ParamsTarget) => Prisma.sql`
+                                               userid,
+                                               version,
+                                           }: ParamsTarget) => Prisma.sql`
     select s1.mid   as mid,
            playver,
            patterncode,
@@ -87,9 +87,9 @@ export const getQuerySkillTargetOtherGF = ({
 `;
 
 export const getQuerySkillTargetHotDM = ({
-    userid,
-    version,
-}: ParamsTarget) => Prisma.sql`
+                                             userid,
+                                             version,
+                                         }: ParamsTarget) => Prisma.sql`
     select s1.mid   as mid,
            playver,
            patterncode,
@@ -123,9 +123,9 @@ export const getQuerySkillTargetHotDM = ({
 `;
 
 export const getQuerySkillTargetOtherDM = ({
-    userid,
-    version,
-}: ParamsTarget) => Prisma.sql`
+                                               userid,
+                                               version,
+                                           }: ParamsTarget) => Prisma.sql`
     select s1.mid   as mid,
            playver,
            patterncode,
@@ -159,10 +159,10 @@ export const getQuerySkillTargetOtherDM = ({
 `;
 
 export const getQuerySkillAllGF = ({
-    userid,
-    version,
-    page,
-}: ParamsAll) => Prisma.sql`
+                                       userid,
+                                       version,
+                                       page,
+                                   }: ParamsAll) => Prisma.sql`
     select mid,
            playver,
            patterncode,
@@ -182,10 +182,10 @@ export const getQuerySkillAllGF = ({
 `;
 
 export const getQuerySkillAllDM = ({
-    userid,
-    version,
-    page,
-}: ParamsAll) => Prisma.sql`
+                                       userid,
+                                       version,
+                                       page,
+                                   }: ParamsAll) => Prisma.sql`
     select mid,
            playver,
            patterncode,

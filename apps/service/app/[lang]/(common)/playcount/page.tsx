@@ -7,8 +7,8 @@ import { getProfileSession } from '@/feature/profile/api/getProfileSession';
 import PlayCountItem from '@/feature/playcount/component/PlayCount.item';
 
 const PagePlaycount = async ({
-    searchParams,
-}: {
+                                 searchParams,
+                             }: {
     searchParams: { type: string; id: number };
 }) => {
     const t = await getTranslations('user.playcount');

@@ -7,12 +7,12 @@ import {
 import { CrawlerUpload } from '../feature/crawler/component/CrawlerImport.type';
 
 const axiosUpload = async ({
-    url,
-    json,
-    type,
-    setCurrent,
-    setBtnDisabled,
-}: CrawlerUpload & { url: string }) => {
+                               url,
+                               json,
+                               type,
+                               setCurrent,
+                               setBtnDisabled,
+                           }: CrawlerUpload & { url: string }) => {
     try {
         const rtn = await axios.post(url, json, {
             headers: {

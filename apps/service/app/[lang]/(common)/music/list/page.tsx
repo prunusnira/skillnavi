@@ -9,8 +9,8 @@ import { MUSICLIST_SIZE } from '@/feature/env/data/constant';
 import { getMusicList } from '@/feature/music/api/getMusicList';
 
 const PageMusicList = async ({
-    searchParams,
-}: {
+                                 searchParams,
+                             }: {
     searchParams: {
         version: number;
         order: string;

@@ -10,11 +10,11 @@ interface Params {
 }
 
 export const getPatternRanking = async ({
-    mid,
-    version,
-    patterncode,
-    page,
-}: Params) => {
+                                            mid,
+                                            version,
+                                            patterncode,
+                                            page,
+                                        }: Params) => {
     return await fetchAdv.get<Skill[]>(API_PATTERN_RANK, {
         params: {
             mid,

@@ -28,3 +28,4 @@ export const API_RANK_SKILL = `${PREFIX}/rank/skill`;
 export const API_RANK_PLAYCOUNT = `${PREFIX}/rank/playcount`;
 export const API_PLAYCOUNT = `${PREFIX}/playcount`;
 export const API_CLEARTABLE = `${PREFIX}/cleartable`;
+export const API_COOKIE = `${PREFIX}/cookie`;

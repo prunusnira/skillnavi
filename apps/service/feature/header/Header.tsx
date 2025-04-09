@@ -2,12 +2,13 @@ import Navbar from '@/feature/header/navbar/Navbar';
 import Sidebar from '@/feature/header/sidebar/Sidebar';
 import HeaderNotice from '@/feature/header/Notice';
 import { cn } from '@/lib/cn';
+import Option from '@/feature/header/option/Option';
 
 const Header = () => {
     return (
         <header
             className={cn([
-                'w-full h-[60px] px-[20px] py-[10px] sticky top-0 fixed bg-blue-200 bg-opacity-70',
+                'w-full h-[60px] px-[20px] py-[10px] sticky top-0 bg-opacity-70 bg-blue-600',
             ])}
         >
             {/* 상단 네비바 */}
@@ -18,6 +19,9 @@ const Header = () => {
 
             {/* 헤더에 표시하는 공지사항 */}
             <HeaderNotice />
+
+            {/* 옵션 */}
+            <Option />
         </header>
     );
 };

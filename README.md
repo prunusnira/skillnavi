@@ -19,6 +19,6 @@
 - 2016 Spring + JSP
 - 2018 Spring + ReactJS
 - 2025 Monorepo-ized
-  - Powered by Turborepo
-  - Updater integrated (React)
-  - All codes re-written with NextJS for both server and client
+    - Powered by Turborepo
+    - Updater integrated (React)
+    - All codes re-written with NextJS for both server and client

@@ -8,8 +8,8 @@ import MusicData from '@/feature/music/component/data/MusicData';
 import Image from 'next/image';
 
 const PageMusic = async ({
-    searchParams,
-}: {
+                             searchParams,
+                         }: {
     searchParams: {
         mid: number;
         uid: number;

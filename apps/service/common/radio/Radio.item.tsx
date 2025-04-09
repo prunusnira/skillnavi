@@ -9,11 +9,11 @@ interface Props<T> {
 }
 
 const RadioItem = <T extends string | number>({
-    radioGroupName,
-    item,
-    selected,
-    onChange,
-}: Props<T>) => {
+                                                  radioGroupName,
+                                                  item,
+                                                  selected,
+                                                  onChange,
+                                              }: Props<T>) => {
     return (
         <label
             htmlFor={item.id}
