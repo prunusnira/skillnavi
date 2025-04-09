@@ -1,12 +1,12 @@
 {
-    "plugins": [
-        "./node_modules/prettier-plugin-multiline-arrays/dist/index.js"
-    ],
-    "singleQuote": true,
-    "tabWidth": 4,
-    "trailingComma": "all",
-    "singleAttributePerLine": true,
-    "multilineArraysWrapThreshold": 1,
-    "semi": true,
-    "bracketSpacing": true
+  "plugins": [
+    "./node_modules/prettier-plugin-multiline-arrays/dist/index.js"
+  ],
+  "singleQuote": true,
+  "tabWidth": 4,
+  "trailingComma": "all",
+  "singleAttributePerLine": true,
+  "multilineArraysWrapThreshold": 1,
+  "semi": true,
+  "bracketSpacing": true
 }

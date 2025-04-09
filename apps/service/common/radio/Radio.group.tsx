@@ -9,11 +9,11 @@ interface Props<T> {
 }
 
 const RadioGroup = <T extends string | number>({
-    radioGroupName,
-    itemList,
-    currentValue,
-    onChange,
-}: Props<T>) => {
+                                                   radioGroupName,
+                                                   itemList,
+                                                   currentValue,
+                                                   onChange,
+                                               }: Props<T>) => {
     return (
         <section className={'flex gap-[30px]'}>
             {itemList.map((item) => (

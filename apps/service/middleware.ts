@@ -42,18 +42,18 @@ export const middleware = (req: NextRequest) => {
             .flatMap((p) =>
                 p === '/'
                     ? [
-                          '',
-                          '/',
-                      ]
+                        '',
+                        '/',
+                    ]
                     : p,
             )
             .join('|')})/?$)|((${publicPages
             .flatMap((p) =>
                 p === '/'
                     ? [
-                          '',
-                          '/',
-                      ]
+                        '',
+                        '/',
+                    ]
                     : p,
             )
             .join('|')})/?.*))`,

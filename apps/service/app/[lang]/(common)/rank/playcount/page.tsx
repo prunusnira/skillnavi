@@ -8,8 +8,8 @@ import { MUSICLIST_SIZE } from '@/feature/env/data/constant';
 import Pager from '@/common/pager/Pager';
 
 const PagePlaycount = async ({
-    searchParams,
-}: {
+                                 searchParams,
+                             }: {
     searchParams: { page: number; version: number };
 }) => {
     const { page, version } = searchParams;

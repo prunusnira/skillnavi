@@ -14,7 +14,9 @@
     "isolatedModules": true,
     "baseUrl": "./src",
     "paths": {
-      "@skillnavi/ui": ["../../packages/ui/src"]
+      "@skillnavi/ui": [
+        "../../packages/ui/src"
+      ]
     }
   },
   "include": [

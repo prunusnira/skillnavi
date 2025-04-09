@@ -6,15 +6,15 @@ import {
     CrawlerUrlRunner,
 } from '../feature/crawler/component/CrawlerImport.type';
 import crawlProfile from './crawlProfile';
-import {UpdateSkill} from "@skillnavi/data/src/skill/SkillData";
+import { UpdateSkill } from '@skillnavi/data/src/skill/SkillData';
 
 const crawlFromUrlList = ({
-    urls,
-    delay,
-    version,
-    setCurrent,
-    setBtnDisabled,
-}: CrawlerUrlList) => {
+                              urls,
+                              delay,
+                              version,
+                              setCurrent,
+                              setBtnDisabled,
+                          }: CrawlerUrlList) => {
     // 순서
     // 1. ref로 이동
     // 2. targetTo로 이동해서 데이터 수집
@@ -35,14 +35,14 @@ const crawlFromUrlList = ({
 };
 
 const runUrlIndex = async ({
-    skillData,
-    urls,
-    delay,
-    version,
-    index,
-    setBtnDisabled,
-    setCurrent,
-}: CrawlerUrlRunner) => {
+                               skillData,
+                               urls,
+                               delay,
+                               version,
+                               index,
+                               setBtnDisabled,
+                               setCurrent,
+                           }: CrawlerUrlRunner) => {
     if (index < urls.length) {
         const current = urls[index];
 

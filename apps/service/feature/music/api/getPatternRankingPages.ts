@@ -8,10 +8,10 @@ interface Params {
 }
 
 export const getPatternRankingPages = async ({
-    mid,
-    version,
-    patterncode,
-}: Params) => {
+                                                 mid,
+                                                 version,
+                                                 patterncode,
+                                             }: Params) => {
     const result = await fetchAdv.get<{ pages: number }>(
         API_PATTERN_RANK_META,
         {

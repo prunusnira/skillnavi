@@ -1,6 +1,5 @@
 import { useAtom } from 'jotai/index';
 import { LINK_MAIN } from '@/url/url';
-import { useMemo } from 'react';
 import { useRouter } from '@/i18n/routing';
 import { atomEnv } from '@/feature/env/data/AtomEnv';
 
@@ -15,23 +14,19 @@ const useNavbar = () => {
         router.push(LINK_MAIN);
     };
 
-    const setTheme = (mode: boolean) => {
-        const theme = mode ? 'dark' : 'light';
-        setEnv({ theme });
-    };
-
     const controlMenu = () => {
         setEnv({ menu: !env.menu });
     };
 
-    const theme = useMemo(() => env.theme, [env]);
+    const controlOption = () => {
+        setEnv({ option: !env.option });
+    };
 
     return {
         isMenuOpen: env.menu,
-        theme,
-        setTheme,
         handleLinkMain,
         controlMenu,
+        controlOption,
     };
 };
 

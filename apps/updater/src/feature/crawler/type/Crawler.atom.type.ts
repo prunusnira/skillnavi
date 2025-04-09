@@ -1,4 +1,4 @@
-import { Profile } from "../../user/component/Profile.type";
+import { Profile } from '../../user/component/Profile.type';
 
 export interface CrawlerAtom {
     // 지연 시간

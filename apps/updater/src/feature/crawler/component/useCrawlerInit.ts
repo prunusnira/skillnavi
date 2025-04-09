@@ -43,7 +43,7 @@ const useCrawlerInit = () => {
         const devToken = searchParams.get('token');
 
         const token = window.sinUpdateToken?.() || devToken || undefined;
-        if(token) {
+        if (token) {
             setToken(token);
         }
 

@@ -1,4 +1,4 @@
-import {FetchError} from "./FetchError";
+import { FetchError } from './FetchError';
 
 export interface CustomParams {
     [key: string]: number | string | boolean | undefined;
@@ -30,8 +30,8 @@ export class FetchExtended {
     ) => {
         const options: FetchOptions = {
             ...this.defaultOptions,
-            ...option
-        }
+            ...option,
+        };
 
         const {
             params,
@@ -69,7 +69,7 @@ export class FetchExtended {
             data = JSON.stringify(data);
         }
 
-        let headers: HeadersInit = {...options.headers};
+        let headers: HeadersInit = { ...options.headers };
         if (headers) {
             headers = {
                 ...headers,
@@ -89,36 +89,36 @@ export class FetchExtended {
         );
 
         if (!res.ok) {
-            throw new FetchError({status: res.status, response: res});
+            throw new FetchError({ status: res.status, response: res });
         }
 
         return (await res.json()) as T;
     };
 
     public get = async <T>(url: string, options?: FetchOptions) =>
-        this.fetchWork<T>(url, {method: 'GET', ...options});
+        this.fetchWork<T>(url, { method: 'GET', ...options });
 
     public post = async <T>(url: string, options?: FetchOptions) =>
-        this.fetchWork<T>(url, {method: 'POST', ...options});
+        this.fetchWork<T>(url, { method: 'POST', ...options });
 
     public put = async <T>(url: string, options?: FetchOptions) =>
-        this.fetchWork<T>(url, {method: 'PUT', ...options});
+        this.fetchWork<T>(url, { method: 'PUT', ...options });
 
     public delete = async <T>(url: string, options?: FetchOptions) =>
-        this.fetchWork<T>(url, {method: 'DELETE', ...options});
+        this.fetchWork<T>(url, { method: 'DELETE', ...options });
 
     public patch = async <T>(url: string, options?: FetchOptions) =>
-        this.fetchWork<T>(url, {method: 'PATCH', ...options});
+        this.fetchWork<T>(url, { method: 'PATCH', ...options });
 
     public options = async <T>(url: string, options?: FetchOptions) =>
-        this.fetchWork<T>(url, {method: 'OPTIONS', ...options});
+        this.fetchWork<T>(url, { method: 'OPTIONS', ...options });
 
     public head = async <T>(url: string, options?: FetchOptions) =>
-        this.fetchWork<T>(url, {method: 'HEAD', ...options});
+        this.fetchWork<T>(url, { method: 'HEAD', ...options });
 
     public trace = async <T>(url: string, options?: FetchOptions) =>
-        this.fetchWork<T>(url, {method: 'TRACE', ...options});
+        this.fetchWork<T>(url, { method: 'TRACE', ...options });
 
     public connect = async <T>(url: string, options?: FetchOptions) =>
-        this.fetchWork<T>(url, {method: 'CONNECT', ...options});
+        this.fetchWork<T>(url, { method: 'CONNECT', ...options });
 }

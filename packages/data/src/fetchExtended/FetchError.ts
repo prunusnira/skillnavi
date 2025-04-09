@@ -5,7 +5,7 @@ export class FetchError {
     response: any = undefined;
 
     // eslint-disable-next-line
-    constructor({status, response}: { status: number; response: any }) {
+    constructor({ status, response }: { status: number; response: any }) {
         this.status = status;
         this.response = response;
     }

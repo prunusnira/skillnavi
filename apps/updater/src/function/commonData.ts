@@ -1,4 +1,4 @@
-const PREFIX = 'https://sin.nira.one'
+const PREFIX = 'https://sin.nira.one';
 
 export const UrlUploadProfile = `${PREFIX}/api/update/profile`;
 export const UrlUploadSkill = `${PREFIX}/api/update/skill`;

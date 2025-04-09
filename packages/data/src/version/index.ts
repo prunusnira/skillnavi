@@ -1,3 +1,3 @@
-import {GameVersion} from "./GameVersion";
+import { GameVersion } from './GameVersion';
 
-export type {GameVersion};
+export type { GameVersion };

@@ -30,12 +30,12 @@ export const ButtonRounded = (
 ) => {
     const color = useMemo(() => {
         if (disabled) {
-            return customDisabledClass || 'bg-gray-500, text-white border-white';
+            return customDisabledClass || 'bg-gray-500, text-white border-gray-500';
         }
         if (isSelected) {
-            return customSelectedClass || 'bg-black text-white border-white';
+            return customSelectedClass || 'bg-black text-white border-gray-500';
         }
-        return customClass || 'bg-transparent text-black border-black';
+        return customClass || 'bg-transparent text-black border-black dark:border-white dark:text-white';
     }, [isSelected, disabled]);
 
     return (

@@ -5,15 +5,15 @@ import NavItem from '@/feature/header/NavItem';
 import useNavbar from '@/feature/header/navbar/useNavbar';
 import { useTranslations } from 'next-intl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faGear } from '@fortawesome/free-solid-svg-icons';
 import { signOut, useSession } from 'next-auth/react';
 import { useRouter } from '@/i18n/routing';
-import { faDiscord, faXTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 import Image from 'next/image';
 import { clsx } from 'clsx';
 
 const Navbar = () => {
-    const { isMenuOpen, handleLinkMain, controlMenu } = useNavbar();
+    const { isMenuOpen, handleLinkMain, controlMenu, controlOption } = useNavbar();
     const t = useTranslations('header');
     const { data: session } = useSession();
     const router = useRouter();
@@ -59,17 +59,13 @@ const Navbar = () => {
                     </div>
                 </NavItem>
 
-                {/* 트위터 링크 */}
+                {/* 옵션메뉴 */}
                 <NavItem>
                     <div
                         className={'cursor-pointer'}
-                        onClick={() =>
-                            router.push(
-                                process.env.NEXT_PUBLIC_URL_TWITTER || '',
-                            )
-                        }
+                        onClick={controlOption}
                     >
-                        <FontAwesomeIcon icon={faXTwitter} />
+                        <FontAwesomeIcon icon={faGear} />
                     </div>
                 </NavItem>
 

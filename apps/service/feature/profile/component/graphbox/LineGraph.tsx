@@ -17,15 +17,15 @@ import { cn } from '@/lib/cn';
 import dayjs from 'dayjs';
 
 const CustomTooltip = ({
-    active,
-    payload,
-    label,
-}: TooltipProps<ValueType, NameType>) => {
+                           active,
+                           payload,
+                           label,
+                       }: TooltipProps<ValueType, NameType>) => {
     if (active && payload && payload.length) {
         return (
             <div
                 className={cn(
-                    'flex-col-center bg-white border-black border border-solid p-2',
+                    'flex-col-center bg-white dark:bg-black border-black dark:border-white border border-solid p-2',
                 )}
             >
                 <div>Date: {dayjs(label).format('YYYY-MM-DD')}</div>
@@ -42,9 +42,10 @@ interface Props {
     data: ProfileGraph[];
     min?: number;
     max?: number;
+    color: string;
 }
 
-const LineGraph = ({ type, data, min, max }: Props) => {
+const LineGraph = ({ type, data, min, max, color }: Props) => {
     if (min === undefined || max === undefined) {
         return null;
     }
@@ -58,14 +59,14 @@ const LineGraph = ({ type, data, min, max }: Props) => {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis
                     dataKey="date"
-                    stroke={'black'}
+                    stroke={color}
                 />
                 <YAxis
                     domain={[
                         min,
                         max,
                     ]}
-                    stroke={'black'}
+                    stroke={color}
                 />
                 <Tooltip
                     cursor={true}

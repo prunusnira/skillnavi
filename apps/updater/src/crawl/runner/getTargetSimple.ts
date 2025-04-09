@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as cheerio from 'cheerio';
-import {MusicSkill, SkillData} from "@skillnavi/data/src/skill/SkillData";
+import { MusicSkill, SkillData } from '@skillnavi/data/src/skill/SkillData';
 
 interface Params {
     gtype: string;

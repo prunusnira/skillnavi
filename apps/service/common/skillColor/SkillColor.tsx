@@ -12,11 +12,11 @@ interface Props {
 }
 
 const SkillColor = ({
-    value,
-    multiplier = 1,
-    onClick,
-    externalStyleClass,
-}: Props) => {
+                        value,
+                        multiplier = 1,
+                        onClick,
+                        externalStyleClass,
+                    }: Props) => {
     const className = useMemo(() => getSkillCN(value * multiplier), [value]);
     return (
         <div

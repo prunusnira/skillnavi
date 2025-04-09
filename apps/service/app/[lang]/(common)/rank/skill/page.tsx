@@ -8,8 +8,8 @@ import { getTranslations } from 'next-intl/server';
 import SkillRankType from '@/feature/rank/skill/component/SkillRankType';
 
 const PageSkillRank = async ({
-    searchParams,
-}: {
+                                 searchParams,
+                             }: {
     searchParams: { page: number; type: GameType };
 }) => {
     const { page, type } = searchParams;

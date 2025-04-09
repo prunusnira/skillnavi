@@ -1,5 +1,5 @@
-import { atom } from "jotai";
-import { CrawlerAtom } from "../type/Crawler.atom.type";
+import { atom } from 'jotai';
+import { CrawlerAtom } from '../type/Crawler.atom.type';
 
 export const atomCrawlerData = atom<CrawlerAtom>({
     delay: 500,
@@ -13,7 +13,7 @@ export const atomCrawler = atom(
     (get, set, update: Partial<CrawlerAtom>) => {
         const prev = get(atomCrawlerData);
         if (!prev) return;
-        set(atomCrawlerData, {...prev, ...update});
+        set(atomCrawlerData, { ...prev, ...update });
         console.log(update);
-    }
-)
+    },
+);

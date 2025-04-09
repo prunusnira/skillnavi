@@ -2,14 +2,14 @@ import crawlProfile from './crawlProfile';
 import getTargetSimple from './runner/getTargetSimple';
 import upload from './upload';
 import { CrawlerTargetParams } from '../feature/crawler/component/CrawlerImport.type';
-import {UpdateSkill} from "@skillnavi/data/src/skill/SkillData";
+import { UpdateSkill } from '@skillnavi/data/src/skill/SkillData';
 
 const crawlTargetQuick = async ({
-    gtype,
-    version,
-    setCurrent,
-    setBtnDisabled,
-}: Omit<CrawlerTargetParams, 'delay'>) => {
+                                    gtype,
+                                    version,
+                                    setCurrent,
+                                    setBtnDisabled,
+                                }: Omit<CrawlerTargetParams, 'delay'>) => {
     const skillData: UpdateSkill = {
         uid: (window as any).sinUid,
         version,
