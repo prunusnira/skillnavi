@@ -18,7 +18,6 @@ const Toggle = ({ id, isLoading, value, callback }: Props) => {
 
     useEffect(() => {
         setActive(value);
-        console.log(value);
     }, [value]);
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {

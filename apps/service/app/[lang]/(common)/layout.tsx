@@ -12,11 +12,11 @@ interface Props {
 
 const PageLayout = ({ children }: Props) => {
     return (
-        <main className={'relative w-full min-h-screen'}>
+        <main className={'relative w-full min-h-screen flex-col-center'}>
             <Header />
             <section
                 className={cn(
-                    'max-w-screen-xl w-full min-h-full flex-col-center pt-[60px]',
+                    'max-w-screen-xl w-full min-h-[calc(100vh-172px)] flex-col-center pt-[60px]',
                 )}
             >
                 {children}

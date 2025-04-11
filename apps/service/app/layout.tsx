@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import './globals.scss';
 import Wrappers from '@/common/wrapper/Wrappers';
 import { getLocale, getMessages } from 'next-intl/server';
-import { Suspense } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
 import { cn } from '@/lib/cn';
 import '@skillnavi/ui/dist/index.css';
@@ -33,7 +32,7 @@ export default async function RootLayout(
         >
         <NextIntlClientProvider messages={messages}>
             <Wrappers>
-                <Suspense>{children}</Suspense>
+                {children}
             </Wrappers>
         </NextIntlClientProvider>
         <div id="portal" />

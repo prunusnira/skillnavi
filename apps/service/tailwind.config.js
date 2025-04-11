@@ -8,7 +8,7 @@ module.exports = {
         './lib/**/*.{js,jsx,ts,tsx}',
     ],
     presets: [require('@skillnavi/tailwind-config')],
-    darkMode: 'selector',
+    darkMode: 'class',
 };
 
 /** @type {import('tailwindcss').Config} */

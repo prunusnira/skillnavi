@@ -91,6 +91,7 @@ export const LINK_PATTERN_RANK = (
 ) =>
     `/pattern/rank?mid=${mid}&page=${page}&version=${version}&ptcode=${ptcode}`;
 export const LINK_TOWER_MAIN = '/tower';
+export const LINK_TOWER_DETAIL = '/tower/detail'
 export const LINK_AUTH_LOGIN = `/auth/signin`;
 export const LINK_RANK_SKILL = (type: GameType, page: number) =>
     `/rank/skill?type=${type}&page=${page}`;

@@ -4,6 +4,11 @@ const withNextIntl = createNextIntlPlugin();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     transpilePackages: ['@skillnavi/ui'],
+    images: {
+        domains: [
+            'img.nira.one'
+        ]
+    },
     async headers() {
         return [
             {
