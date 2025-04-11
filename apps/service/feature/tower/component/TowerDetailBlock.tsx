@@ -1,0 +1,40 @@
+'use client';
+
+import { PropsWithChildren, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { clsx } from 'clsx';
+
+interface Props extends PropsWithChildren {
+    floor: number;
+}
+
+export const TowerDetailBlock = ({ floor, children }: Props) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+        <div>
+            <div
+                className={'text-4xl font-bold text-center py-[10px] flex-center gap-[10px] cursor-pointer'}
+                onClick={() => setIsOpen(!isOpen)}
+            >
+                <span>
+                    Floor {floor}
+                </span>
+                {isOpen ? (
+                    <FontAwesomeIcon icon={faChevronUp} />
+                ) : (
+                    <FontAwesomeIcon icon={faChevronDown} />
+                )}
+            </div>
+            <div
+                className={clsx('flex-col gap-[20px] w-full', {
+                    ['hidden']: !isOpen,
+                    ['flex']: isOpen,
+                })}
+            >
+                {children}
+            </div>
+        </div>
+    );
+};

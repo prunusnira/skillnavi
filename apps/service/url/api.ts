@@ -18,6 +18,7 @@ export const API_RECENT = `${PREFIX}/recent`;
 export const API_SKILL_TABLE = `${PREFIX}/skill/table`;
 export const API_MUSIC_LIST = `${PREFIX}/music/list`;
 export const API_MUSIC_INFO = `${PREFIX}/music/info`;
+export const API_MUSIC_INFOS = `${PREFIX}/music/infos`;
 export const API_MUSIC_RECORD = (mid: number) =>
     `${PREFIX}/music/${mid}/record`;
 export const API_MUSIC_PATTERN = (mid: number) =>
@@ -29,3 +30,5 @@ export const API_RANK_PLAYCOUNT = `${PREFIX}/rank/playcount`;
 export const API_PLAYCOUNT = `${PREFIX}/playcount`;
 export const API_CLEARTABLE = `${PREFIX}/cleartable`;
 export const API_COOKIE = `${PREFIX}/cookie`;
+export const API_TOWER_LIST = `${PREFIX}/tower/list`;
+export const API_TOWER_DETAIL = `${PREFIX}/tower/detail`;
