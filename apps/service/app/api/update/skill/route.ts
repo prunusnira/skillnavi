@@ -244,8 +244,6 @@ export const POST = async (req: NextRequest) => {
 
             const success = totalResult.every((r) => r.status === 'fulfilled');
 
-            console.log(success, totalResult);
-
             return NextResponse.json({
                 result: success ? 'success' : 'failure',
             });
