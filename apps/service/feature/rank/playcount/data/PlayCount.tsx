@@ -1,3 +1,10 @@
+export interface PlayCountRankData {
+    uid: number;
+    gcount: number;
+    dcount: number;
+    allcount: number;
+}
+
 export interface UserPlayCount {
     id: number;
     titletower: string;
@@ -5,6 +12,7 @@ export interface UserPlayCount {
     openinfo: boolean;
     gcount: number;
     dcount: number;
+    allcount: number;
 }
 
 export interface PlayCount {
