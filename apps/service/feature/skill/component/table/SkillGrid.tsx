@@ -7,7 +7,6 @@ import { convertPatternCode } from '@/lib/game/convertPatternCode';
 import { convertLevel } from '@/lib/game/convertLevel';
 import { convertRank } from '@/lib/game/convertRank';
 import { getClearState } from '@/lib/game/getClearState';
-import SkillItemVersion from '@/feature/skill/component/table/SkillItemVersion';
 import AlbumArt from '@/common/albumart/AlbumArt';
 import AnchorText from '@/common/anchor/AnchorText';
 import { useParams, useSearchParams } from 'next/navigation';
@@ -35,8 +34,8 @@ const SkillGrid = ({ skill, index }: Props) => {
     return (
         <section
             className={cn('flex-col-center w-full hover:bg-blue-400', {
-                ['bg-blue-100']: index % 2 === 1,
-                ['bg-blue-200']: index % 2 === 0,
+                ['bg-blue-100 dark:bg-gray-700']: index % 2 === 1,
+                ['bg-blue-200 dark:bg-gray-800']: index % 2 === 0,
             })}
         >
             {/* 색상 */}
@@ -46,7 +45,7 @@ const SkillGrid = ({ skill, index }: Props) => {
                     skillColor,
                 )}
             >
-                {index + 1}
+                {(Number(searchParams.get('page') || 1) - 1) * 32 + index + 1}
             </div>
 
             {/* 곡 제목 */}
@@ -69,10 +68,6 @@ const SkillGrid = ({ skill, index }: Props) => {
                     <AlbumArt
                         mid={skill.mid}
                         className={'rounded-full'}
-                    />
-                    <SkillItemVersion
-                        versionId={skill.playver}
-                        type={'short'}
                     />
                 </div>
 

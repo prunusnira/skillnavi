@@ -7,7 +7,6 @@ import { convertPatternCode } from '@/lib/game/convertPatternCode';
 import { convertLevel } from '@/lib/game/convertLevel';
 import { convertRank } from '@/lib/game/convertRank';
 import { getClearState } from '@/lib/game/getClearState';
-import SkillItemVersion from '@/feature/skill/component/table/SkillItemVersion';
 import AlbumArt from '@/common/albumart/AlbumArt';
 import AnchorText from '@/common/anchor/AnchorText';
 import { useParams, useSearchParams } from 'next/navigation';
@@ -23,13 +22,13 @@ const SkillList = ({ skill, index }: Props) => {
     const { id } = useParams<{ id: string }>();
     const { music } = skill;
     const searchParams = useSearchParams();
-    const skillColor = getSkillCN(skill.skill / 10);
+    const skillColor = getSkillCN((skill.skill / 100) * 50);
 
     return (
         <section
             className={cn('flex w-full hover:bg-gray-900', {
-                ['bg-gray-600']: index % 2 === 1,
-                ['bg-gray-700']: index % 2 === 0,
+                ['bg-blue-100 dark:bg-gray-700']: index % 2 === 1,
+                ['bg-blue-200 dark:bg-gray-800']: index % 2 === 0,
             })}
         >
             {/* 색상 */}
@@ -39,7 +38,7 @@ const SkillList = ({ skill, index }: Props) => {
                     skillColor,
                 )}
             >
-                {index + 1}
+                {(Number(searchParams.get('page') || 1) - 1) * 32 + index + 1}
             </div>
 
             {/* 자켓 */}
@@ -56,7 +55,7 @@ const SkillList = ({ skill, index }: Props) => {
                 <AnchorText
                     className={cn(
                         'w-full text-ellipsis break-all overflow-hidden whitespace-nowrap',
-                        'px-2 link',
+                        'px-[8px] link',
                     )}
                     text={music.name}
                     path={LINK_MUSIC_INFO({
@@ -67,7 +66,7 @@ const SkillList = ({ skill, index }: Props) => {
                 />
 
                 {/* 기타 */}
-                <div className={cn('flex')}>
+                <div className={cn('flex gap-[8px] items-center pl-[8px]')}>
                     <div className={cn('flex-center')}>
                         <Image
                             unoptimized={true}
@@ -77,7 +76,7 @@ const SkillList = ({ skill, index }: Props) => {
                             height={20}
                         />
                     </div>
-                    <div>{convertLevel(skill.level)}</div>
+                    <div className={'text-sm'}>{convertLevel(skill.level)}</div>
                     <div>
                         <Image
                             unoptimized={true}
@@ -87,22 +86,18 @@ const SkillList = ({ skill, index }: Props) => {
                             height={20}
                         />
                     </div>
-                    <div className={cn('font-bold')}>
+                    <div className={cn('font-bold text-sm')}>
                         {getClearState({
                             rate: skill.rate,
                             fc: skill.fc,
                         })}
                     </div>
-                    <SkillItemVersion
-                        versionId={skill.playver}
-                        type={'short'}
-                    />
                 </div>
             </section>
 
             {/* 스킬 / 달성률 */}
-            <section className={cn('flex-col-center')}>
-                <div>{(skill.skill / 10).toFixed(2)}</div>
+            <section className={cn('flex-col-center px-[8px] text-sm')}>
+                <div>{(skill.skill / 100).toFixed(2)}</div>
                 <div>({(skill.rate / 100).toFixed(2)}%)</div>
             </section>
         </section>

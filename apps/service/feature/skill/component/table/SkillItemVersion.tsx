@@ -5,12 +5,13 @@ import useSkillVersion from '@/feature/skill/component/table/useSkillVersion';
 interface Props {
     versionId: number;
     type: 'short' | 'full';
+    className?: string;
 }
 
-const SkillItemVersion = ({ versionId }: Props) => {
+const SkillItemVersion = ({ versionId, type, className }: Props) => {
     const { version } = useSkillVersion({ versionId });
 
-    return <div className={'text-sm'}>{version?.short}</div>;
+    return <div className={className}>{type === 'short' ? version?.short : version?.full}</div>;
 };
 
 export default SkillItemVersion;

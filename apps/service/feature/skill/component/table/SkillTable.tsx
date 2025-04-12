@@ -125,7 +125,7 @@ const SkillTable = () => {
                 skill?.map((table, tidx) => (
                     <section
                         key={`list_${tidx}`}
-                        className={'flex-col-center'}
+                        className={'flex-col-center w-full md:px-[24px]'}
                     >
                         <div className={'text-2xl font-semibold py-[20px]'}>
                             {table.title}
