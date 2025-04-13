@@ -20,7 +20,7 @@ export const GET = async (
             const recordInfo = (await prisma.skillList.findMany({
                 where: {
                     uid,
-                    mid,
+                    mid: Number(mid),
                     playver: version,
                 },
             })) as Skill[];

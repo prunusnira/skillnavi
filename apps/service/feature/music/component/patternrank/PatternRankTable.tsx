@@ -7,6 +7,7 @@ import { IMG } from '@/url/url';
 import { MUSICLIST_SIZE } from '@/feature/env/data/constant';
 import Pager from '@/common/pager/Pager';
 import Image from 'next/image';
+import Loading from '@/common/loading/Loading';
 
 interface Props {
     page: number;
@@ -19,7 +20,9 @@ const PatternRankTable = ({ level, page }: Props) => {
     if (!pages) return null;
 
     if (isLoading) {
-        return 'Loading';
+        return (
+            <Loading />
+        );
     }
 
     return (

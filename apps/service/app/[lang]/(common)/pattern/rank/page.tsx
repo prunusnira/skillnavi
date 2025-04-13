@@ -8,20 +8,22 @@ import { getPatternTypeFromCode } from '@/lib/pattern/getPatternTypeFromCode';
 import { getGameTypeFromCode } from '@/lib/pattern/getGameTypeFromCode';
 import { getGameVersions } from '@/feature/env/api/getGameVersions';
 
-const PagePatternRank = async ({
-                                   searchParams,
-                               }: {
-    searchParams: {
-        mid: number;
-        version: number;
-        page: number;
-        ptcode: number;
-    };
-}) => {
+const PagePatternRank = async (
+    {
+        searchParams,
+    }: {
+        searchParams: {
+            mid: string;
+            version: string;
+            page: string;
+            ptcode: string;
+        };
+    },
+) => {
     const t = await getTranslations('pattern.rank');
     const { mid, version, ptcode, page } = searchParams;
     const gameVersion = await getGameVersions();
-    const patternList = await getMusicPattern({ mid, version });
+    const patternList = await getMusicPattern({ mid: Number(mid), version: Number(version) });
     const pattern = patternList.find((pt) => pt.patterncode === Number(ptcode));
 
     if (!pattern) {
@@ -31,7 +33,7 @@ const PagePatternRank = async ({
     return (
         <Card title={'title'}>
             {/* 곡 정보 */}
-            <MusicData mid={mid} />
+            <MusicData mid={Number(mid)} />
 
             {/* 패턴 / 난이도 정보 */}
             <section
@@ -60,7 +62,7 @@ const PagePatternRank = async ({
                 <div className={cn('flex-col-center')}>
                     <div>TYPE</div>
                     <div className={cn('font-semibold')}>
-                        {getGameTypeFromCode(ptcode)}
+                        {getGameTypeFromCode(Number(ptcode))}
                     </div>
                 </div>
 

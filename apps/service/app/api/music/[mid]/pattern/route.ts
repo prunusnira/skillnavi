@@ -18,7 +18,7 @@ export const GET = async (
 
             const pattern = (await prisma.patternList.findMany({
                 where: {
-                    mid,
+                    mid: Number(mid),
                     version,
                 },
             })) as Pattern[];

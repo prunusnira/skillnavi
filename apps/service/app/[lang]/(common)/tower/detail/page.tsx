@@ -23,7 +23,7 @@ const PageTowerDetail = async ({ searchParams }: { searchParams: { id: number } 
     const floorIcons = await getTowerIcon(id);
     const session = await getServerSession();
     const user = await getProfileSession(session);
-    console.log(floorIcons);
+
     if (!user) {
         return null;
     }

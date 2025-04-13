@@ -35,15 +35,17 @@ export const LINK_SKILL_TABLE = ({
     return `/skill/${id}${params.size && `?${params.toString()}`}`;
 };
 export const LINK_MUSIC_LIST = ``;
-export const LINK_MUSIC_INFO = ({
-                                    version,
-                                    mid,
-                                    uid,
-                                }: {
-    version: number;
-    mid: number;
-    uid: number;
-}) => `/music/info?mid=${mid}&uid=${uid}&version=${version}`;
+export const LINK_MUSIC_INFO = (
+    {
+        version,
+        mid,
+        uid,
+    }: {
+        version: number;
+        mid: number;
+        uid: number;
+    },
+) => `/music/info?mid=${mid}&uid=${uid}&version=${version}`;
 
 export const LINK_PATTERN_LIST = ({
                                       version,
@@ -91,7 +93,7 @@ export const LINK_PATTERN_RANK = (
 ) =>
     `/pattern/rank?mid=${mid}&page=${page}&version=${version}&ptcode=${ptcode}`;
 export const LINK_TOWER_MAIN = '/tower';
-export const LINK_TOWER_DETAIL = '/tower/detail'
+export const LINK_TOWER_DETAIL = '/tower/detail';
 export const LINK_AUTH_LOGIN = `/auth/signin`;
 export const LINK_RANK_SKILL = (type: GameType, page: number) =>
     `/rank/skill?type=${type}&page=${page}`;

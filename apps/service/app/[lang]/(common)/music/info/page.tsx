@@ -7,18 +7,20 @@ import { IMG } from '@/url/url';
 import MusicData from '@/feature/music/component/data/MusicData';
 import Image from 'next/image';
 
-const PageMusic = async ({
-                             searchParams,
-                         }: {
-    searchParams: {
-        mid: number;
-        uid: number;
-    };
-}) => {
+const PageMusic = async (
+    {
+        searchParams,
+    }: {
+        searchParams: {
+            mid: string;
+            uid: string;
+        };
+    },
+) => {
     const t = await getTranslations('music.detail');
     const { mid, uid } = searchParams;
 
-    const user = await getProfile([uid]);
+    const user = await getProfile([Number(uid)]);
 
     if (!user.length) {
         // TODO: 사용자를 찾지 못함 알림
@@ -50,7 +52,7 @@ const PageMusic = async ({
                 </section>
 
                 {/* 음악 데이터 */}
-                <MusicData mid={mid} />
+                <MusicData mid={Number(mid)} />
 
                 {/* 기록 정보 */}
                 <MusicRecord />
