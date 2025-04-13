@@ -177,7 +177,7 @@ export const getQuerySkillAllGF = ({
       and playver = ${version}
       and patterncode < 9
     order by skill desc
-    limit ${SKILL_SIZE}
+        limit ${SKILL_SIZE}
     offset ${(page - 1) * SKILL_SIZE}
 `;
 
@@ -200,6 +200,154 @@ export const getQuerySkillAllDM = ({
       and playver = ${version}
       and patterncode > 8
     order by skill desc
-    limit ${SKILL_SIZE}
+        limit ${SKILL_SIZE}
     offset ${(page - 1) * SKILL_SIZE}
 `;
+
+export const getSkillExcGFHot = (version: number) =>
+    Prisma.sql`
+        select p.mid                      as mid,
+               p.version                  as playver,
+               p.patterncode              as patterncode,
+               p.level                    as level,
+               'SS'                       as maxrank,
+               10000                      as rate,
+               1                          as fc,
+               1                          as hot,
+               p.level * 10000 * 2 / 1000 as skill
+        from PatternList p
+                 inner join (select mid,
+                                    max(pl.level) as level,
+                                    hot,
+                                    hot_end,
+                                    ml.version    as musicVersion,
+                                    pl.version    as patternVersion,
+                                    remove
+                             from PatternList pl
+                                      inner join (select id, hot, hot_end, version, remove
+                                                  from MusicList
+                                                  where remove = 0
+                                                     or remove > ${version}) ml
+                                                 on pl.mid = ml.id and
+                                                    (hot <= ${version} and hot_end >= ${version}) and
+                                                    pl.version = ${version}
+                             where patterncode < 9
+                             group by mid
+                             order by level desc) list
+                            on p.level = list.level and
+                               p.mid = list.mid and
+                               p.version = list.patternVersion and
+                               p.patterncode < 9
+        order by level desc limit 25
+    `;
+
+export const getSkillExcDMHot = (version: number) =>
+    Prisma.sql`
+        select p.mid                      as mid,
+               p.version                  as playver,
+               p.patterncode              as patterncode,
+               p.level                    as level,
+               'SS'                       as maxrank,
+               10000                      as rate,
+               1                          as fc,
+               1                          as hot,
+               p.level * 10000 * 2 / 1000 as skill
+        from PatternList p
+                 inner join (select mid,
+                                    max(pl.level) as level,
+                                    hot,
+                                    hot_end,
+                                    ml.version    as musicVersion,
+                                    pl.version    as patternVersion,
+                                    remove
+                             from PatternList pl
+                                      inner join (select id, hot, hot_end, version, remove
+                                                  from MusicList
+                                                  where remove = 0
+                                                     or remove > ${version}) ml
+                                                 on pl.mid = ml.id and
+                                                    (hot <= ${version} and hot_end >= ${version}) and
+                                                    pl.version = ${version}
+                             where patterncode > 8
+                             group by mid
+                             order by level desc) list
+                            on p.level = list.level and
+                               p.mid = list.mid and
+                               p.version = list.patternVersion and
+                               p.patterncode > 8
+        order by level desc limit 25
+    `;
+
+export const getSkillExcGFOther = (version: number) =>
+    Prisma.sql`
+        select p.mid                      as mid,
+               p.version                  as playver,
+               p.patterncode              as patterncode,
+               p.level                    as level,
+               'SS'                       as maxrank,
+               10000                      as rate,
+               1                          as fc,
+               0                          as hot,
+               p.level * 10000 * 2 / 1000 as skill
+        from PatternList p
+                 inner join (select mid,
+                                    max(pl.level) as level,
+                                    hot,
+                                    hot_end,
+                                    ml.version    as musicVersion,
+                                    pl.version    as patternVersion,
+                                    remove
+                             from PatternList pl
+                                      inner join (select id, hot, hot_end, version, remove
+                                                  from MusicList
+                                                  where remove = 0
+                                                     or remove > ${version}) ml
+                                                 on pl.mid = ml.id and
+                                 !(hot <= ${version} and hot_end >= ${version}) and
+                                 pl.version = ${version}
+                             where patterncode < 9
+                             group by mid
+                             order by level desc) list
+                            on p.level = list.level and
+                               p.mid = list.mid and
+                               p.version = list.patternVersion and
+                               p.patterncode < 9
+        order by level desc limit 25
+    `;
+
+export const getSkillExcDMOther = (version: number) =>
+    Prisma.sql`
+        select p.mid                      as mid,
+               p.version                  as playver,
+               p.patterncode              as patterncode,
+               p.level                    as level,
+               'SS'                       as maxrank,
+               10000                      as rate,
+               1                          as fc,
+               0                          as hot,
+               p.level * 10000 * 2 / 1000 as skill
+        from PatternList p
+                 inner join (select mid,
+                                    max(pl.level) as level,
+                                    hot,
+                                    hot_end,
+                                    ml.version    as musicVersion,
+                                    pl.version    as patternVersion,
+                                    remove
+                             from PatternList pl
+                                      inner join (select id, hot, hot_end, version, remove
+                                                  from MusicList
+                                                  where remove = 0
+                                                     or remove > ${version}) ml
+                                                 on pl.mid = ml.id and
+                                 !(hot <= ${version} and hot_end >= ${version}) and
+                                 pl.version = ${version}
+                             where patterncode > 8
+                             group by mid
+                             order by level desc) list
+                            on p.level = list.level and
+                               p.mid = list.mid and
+                               p.version = list.patternVersion and
+                               p.patterncode > 8
+        order by level desc limit 25
+    `;

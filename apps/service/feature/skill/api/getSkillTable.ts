@@ -11,14 +11,16 @@ interface Props {
     pageType: string;
 }
 
-export const getSkillTable = async ({
-                                        id,
-                                        page,
-                                        game,
-                                        version,
-                                        order,
-                                        pageType,
-                                    }: Props) => {
+export const getSkillTable = async (
+    {
+        id,
+        page,
+        game,
+        version,
+        order,
+        pageType,
+    }: Props,
+) => {
     return await fetchAdv.get<SkillReturn>(API_SKILL_TABLE, {
         params: {
             userid: id,
