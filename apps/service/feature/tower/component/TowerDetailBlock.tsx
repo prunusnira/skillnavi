@@ -4,13 +4,15 @@ import { PropsWithChildren, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { clsx } from 'clsx';
+import { TowerUpdateFloorIcon } from '@/feature/tower/component/TowerUpdateFloorIcon';
 
 interface Props extends PropsWithChildren {
     floor: number;
     isCleared: boolean;
+    icon?: string;
 }
 
-export const TowerDetailBlock = ({ floor, isCleared, children }: Props) => {
+export const TowerDetailBlock = ({ floor, isCleared, icon, children }: Props) => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
@@ -25,6 +27,9 @@ export const TowerDetailBlock = ({ floor, isCleared, children }: Props) => {
                 <span className={'text-xl'}>
                     {isCleared ? `(CLEARED)` : `(NOT CLEAR)`}
                 </span>
+                {isCleared && icon && (
+                    <TowerUpdateFloorIcon icon={icon} />
+                )}
                 <span className={'text-xl'}>
                     {isOpen ? (
                         <FontAwesomeIcon icon={faChevronUp} />

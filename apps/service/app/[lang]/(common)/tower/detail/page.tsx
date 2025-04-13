@@ -13,14 +13,17 @@ import { getServerSession } from 'next-auth';
 import { getProfileSession } from '@/feature/profile/api/getProfileSession';
 import { Skill } from '@/feature/skill/data/Skill';
 import VersionDisplay from '@/feature/version/VersionDisplay';
+import { getTowerIcon } from '@/feature/tower/api/getTowerIcon';
+import { TowerUpdateFloorIcon } from '@/feature/tower/component/TowerUpdateFloorIcon';
 
 const PageTowerDetail = async ({ searchParams }: { searchParams: { id: number } }) => {
     const { id } = searchParams;
     const detailList = await getTowerDetail(id);
     const towerInfo = await getTowerInfo(id);
+    const floorIcons = await getTowerIcon(id);
     const session = await getServerSession();
     const user = await getProfileSession(session);
-
+    console.log(floorIcons);
     if (!user) {
         return null;
     }
@@ -77,6 +80,7 @@ const PageTowerDetail = async ({ searchParams }: { searchParams: { id: number } 
                     item,
                     music,
                     isCleared,
+                    icon: item.icon,
                     data: conditionOk,
                 });
             }
@@ -98,11 +102,20 @@ const PageTowerDetail = async ({ searchParams }: { searchParams: { id: number } 
             <section className={'flex flex-col gap-[60px] w-full px-[10px] py-[20px]'}>
                 {keys.map(floor => {
                     const list = floorDetailData.get(floor)!;
+                    const clearRate = list.filter(disp => disp.isCleared).length / list.length;
+                    let icon;
+                    if (clearRate >= 0.95) {
+                        icon = floorIcons.find(info => info.floor === floor && info.type === 1)?.icon;
+                    } else if (clearRate >= 0.7) {
+                        icon = floorIcons.find(info => info.floor === floor && info.type === 0)?.icon;
+                    }
+
                     return (
                         <TowerDetailBlock
                             key={floor}
                             floor={floor}
-                            isCleared={list.filter(disp => disp.isCleared).length / list.length > 0.7}
+                            icon={icon}
+                            isCleared={clearRate >= 0.7}
                         >
                             {list.map(display => {
                                 const { music, item, isCleared, data } = display;
@@ -157,8 +170,13 @@ const PageTowerDetail = async ({ searchParams }: { searchParams: { id: number } 
 
                                         <section
                                             className={'absolute bottom-[24px] right-[16px] flex flex-col items-end'}>
-                                            <div className={'text-3xl font-bold'}>
-                                                {isCleared ? 'CLEARED' : 'NOT YET'}
+                                            <div className={'flex gap-[8px]'}>
+                                                <div className={'text-3xl font-bold'}>
+                                                    {isCleared ? 'CLEARED' : 'NOT YET'}
+                                                </div>
+                                                {isCleared && item.icon && (
+                                                    <TowerUpdateFloorIcon icon={item.icon} />
+                                                )}
                                             </div>
                                             {data && (
                                                 <div className={'w-full text-right'}>

@@ -19,11 +19,20 @@ export interface TowerItem {
     rate: number;
     fc: boolean;
     description: string;
+    icon?: string;
+}
+
+export interface TowerFloorIcon {
+    tid: number;
+    floor: number;
+    icon: string;
+    type: number;
 }
 
 export interface TowerDetailDisplay {
     item: TowerItem;
     music: Music;
     isCleared: boolean;
+    icon?: string;
     data?: Skill;
 }

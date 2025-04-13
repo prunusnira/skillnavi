@@ -14,6 +14,7 @@ export const API_PROFILE_COMMENT = (id: string) =>
     `${PREFIX}/profile/${id}/comment`;
 export const API_PROFILE_OPENDATA = (id: string) =>
     `${PREFIX}/profile/${id}/opendata`;
+export const API_PROFILE_ICON = (id: number) => `${PREFIX}/profile/${id}/icon`;
 export const API_RECENT = `${PREFIX}/recent`;
 export const API_SKILL_TABLE = `${PREFIX}/skill/table`;
 export const API_SKILL_TOWER = `${PREFIX}/skill/tower`;
@@ -34,3 +35,4 @@ export const API_COOKIE = `${PREFIX}/cookie`;
 export const API_TOWER_LIST = `${PREFIX}/tower/list`;
 export const API_TOWER_INFO = (id: number) => `${PREFIX}/tower/list/${id}`;
 export const API_TOWER_DETAIL = `${PREFIX}/tower/detail`;
+export const API_TOWER_ICON = (id: number) => `${PREFIX}/tower/list/${id}/icon`;
