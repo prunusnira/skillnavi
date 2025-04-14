@@ -11,6 +11,8 @@ import SkillGrid from '@/feature/skill/component/table/SkillGrid';
 import Pager from '@/common/pager/Pager';
 import SkillTableTextProfile from '@/feature/skill/component/table/SkillTableTextProfile';
 import Loading from '@/common/loading/Loading';
+import { ButtonRounded } from '@skillnavi/ui';
+import { screenshot } from '@/lib/screenshot/screenshot';
 
 const SkillTable = () => {
     const {
@@ -25,6 +27,7 @@ const SkillTable = () => {
         version,
         display,
         pageType,
+        ref,
     } = useSkillTable();
 
     if (isLoading) {
@@ -36,7 +39,20 @@ const SkillTable = () => {
     }
 
     return (
-        <Card title="Skill">
+        <Card
+            title="Skill"
+            sub={(
+                <ButtonRounded
+                    text={'Take Screenshot'}
+                    onClick={() => {
+                        if (ref.current) {
+                            screenshot(ref.current, 'SkillNavigator-SkillTable');
+                        }
+                    }}
+                />
+            )}
+            ref={ref}
+        >
             {/* 메뉴버튼 영역 */}
             <SkillMenu />
 

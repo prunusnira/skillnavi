@@ -1,5 +1,6 @@
 .skill-text {
   @apply bg-clip-text font-extrabold;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 

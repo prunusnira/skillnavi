@@ -1,26 +1,33 @@
 'use client';
 
 import { cn } from '@/lib/cn';
-import { ReactNode } from 'react';
+import { forwardRef, ReactNode } from 'react';
 
 interface Props {
     title?: string;
+    sub?: ReactNode;
     children: ReactNode;
 }
 
-const Card = ({ title, children }: Props) => {
+const Card = forwardRef<HTMLDivElement, Props>(({ title, sub, children }, ref) => {
     return (
         // 공통 카드 ui
         <section
             className={'flex-col-center p-[6px] w-full flex-grow min-h-[300px]'}
+            ref={ref}
         >
             {title && (
                 <div
                     className={
-                        'w-full bg-purple-300 dark:bg-gray-600 text-black dark:text-white text-xl font-bold rounded-t-2xl px-[20px] py-[10px]'
+                        'w-full bg-purple-300 dark:bg-gray-600 text-black dark:text-white text-xl font-bold rounded-t-2xl px-[20px] py-[10px] flex justify-between'
                     }
                 >
-                    {title}
+                    <span>
+                        {title}
+                    </span>
+                    <div>
+                        {sub}
+                    </div>
                 </div>
             )}
             <div
@@ -36,6 +43,8 @@ const Card = ({ title, children }: Props) => {
             </div>
         </section>
     );
-};
+});
 
 export default Card;
+
+Card.displayName = 'Card';
