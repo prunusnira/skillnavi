@@ -36,3 +36,4 @@ export const API_TOWER_LIST = `${PREFIX}/tower/list`;
 export const API_TOWER_INFO = (id: number) => `${PREFIX}/tower/list/${id}`;
 export const API_TOWER_DETAIL = `${PREFIX}/tower/detail`;
 export const API_TOWER_ICON = (id: number) => `${PREFIX}/tower/list/${id}/icon`;
+export const API_USER_JOIN = `${PREFIX}/user/join`;

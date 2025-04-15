@@ -1,7 +1,6 @@
 import { NextAuthOptions } from 'next-auth';
 import Google from 'next-auth/providers/google';
 import { authPages } from '@/feature/auth/data/authPages';
-import Twitter from 'next-auth/providers/twitter';
 
 export const authOptions: NextAuthOptions = {
     providers: [
