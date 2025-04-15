@@ -4,6 +4,8 @@ import { getUserFromToken } from '@/feature/auth/api/getUserFromToken';
 import { getLatestVersion } from '@/feature/env/api/getGameVersions';
 import prisma from '@/lib/db/prisma';
 import { UpdateProfile } from '@skillnavi/data/src/profile';
+import * as fs from 'node:fs';
+import dayjs from 'dayjs';
 
 export const POST = async (req: NextRequest) => {
     return RouteWrapper({
@@ -69,6 +71,43 @@ export const POST = async (req: NextRequest) => {
                         version: body.targetVersion ?? latest,
                     },
                 });
+
+                // skill record 파일 업데이트
+                let rfd, wfd;
+                try {
+                    const filePath = `${process.env.NEXT_PUBLIC_RECORD}${String(user.id)}.dat`;
+
+                    // 파일이 없으면 새로 추가
+                    rfd = fs.openSync(filePath, 'r');
+                    const file = fs.readFileSync(rfd, 'utf8');
+                    fs.closeSync(rfd);
+                    const content = file.split('\n').filter(str => str !== '');
+
+                    const now = dayjs();
+                    content.push(`${now.format('YYYYMMDD')}_${body.gskill}_${body.dskill}`);
+
+                    let newContent: string[];
+                    if (content.length > 1000) {
+                        newContent = content.slice(content.length - 1000, content.length - 1);
+                    } else {
+                        newContent = content;
+                    }
+
+                    wfd = fs.openSync(filePath, 'w');
+                    fs.writeFileSync(wfd, newContent.join('\n'));
+                    fs.closeSync(wfd);
+                } catch (error) {
+                    // error handle, 여기서는 아무것도 안함
+                    console.log(error);
+                } finally {
+                    if (rfd) {
+                        fs.closeSync(rfd);
+                    }
+                    if (wfd) {
+                        fs.closeSync(wfd);
+                    }
+                }
+
             }
             return NextResponse.json({ result: 'success' });
         },
