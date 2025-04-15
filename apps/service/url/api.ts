@@ -4,7 +4,6 @@ export const API_ENV_VERSION = `${PREFIX}/env/version`;
 export const API_ENV_LATEST = `${PREFIX}/env/latest`;
 export const API_USER_TOKEN = `${PREFIX}/user/token`;
 export const API_NOTICE = `${PREFIX}/notice`;
-export const API_PROFILE_MINE = `${PREFIX}/profile`;
 export const API_PROFILE_BASIC = `${PREFIX}/profile/basic`;
 export const API_PROFILE_ID = `${PREFIX}/profile/id`;
 export const API_PROFILE_GRAPH = (id: string) =>
@@ -37,3 +36,6 @@ export const API_TOWER_INFO = (id: number) => `${PREFIX}/tower/list/${id}`;
 export const API_TOWER_DETAIL = `${PREFIX}/tower/detail`;
 export const API_TOWER_ICON = (id: number) => `${PREFIX}/tower/list/${id}/icon`;
 export const API_USER_JOIN = `${PREFIX}/user/join`;
+export const API_SNAPSHOT_LIST = `${PREFIX}/snapshot/list`;
+export const API_SNAPSHOT_DETAIL = `${PREFIX}/snapshot/get`;
+export const API_SNAPSHOT_CREATE = `${PREFIX}/snapshot/create`;

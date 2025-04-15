@@ -13,6 +13,9 @@ import SkillTableTextProfile from '@/feature/skill/component/table/SkillTableTex
 import Loading from '@/common/loading/Loading';
 import { ButtonRounded } from '@skillnavi/ui';
 import { screenshot } from '@/lib/screenshot/screenshot';
+import { useAtomValue } from 'jotai';
+import { atomUser } from '@/feature/profile/data/atomUser';
+import { useCreateSnapshot } from '@/feature/snapshot/component/useCreateSnapshot';
 
 const SkillTable = () => {
     const {
@@ -29,6 +32,10 @@ const SkillTable = () => {
         pageType,
         ref,
     } = useSkillTable();
+    const {
+        makeSnapshot,
+    } = useCreateSnapshot();
+    const user = useAtomValue(atomUser);
 
     if (isLoading) {
         return <Loading size={'80px'} />;
@@ -42,14 +49,39 @@ const SkillTable = () => {
         <Card
             title="Skill"
             sub={(
-                <ButtonRounded
-                    text={'Take Screenshot'}
-                    onClick={() => {
-                        if (ref.current) {
-                            screenshot(ref.current, 'SkillNavigator-SkillTable');
-                        }
-                    }}
-                />
+                <div className={'flex gap-[4px]'}>
+                    {profile &&
+                        profile?.id === user?.id &&
+                        pageType === 'target' &&
+                        (
+                            <ButtonRounded
+                                text={'Create Snapshot'}
+                                onClick={() => {
+                                    makeSnapshot({
+                                        uid: profile.id,
+                                        uname: profile.name,
+                                        type: game,
+                                        hot: skill?.find(set => set.title === 'HOT')?.data.map(data => ({
+                                            ...data,
+                                            mname: data.music.name,
+                                        })) || [],
+                                        other: skill?.find(set => set.title === 'OTHER')?.data.map(data => ({
+                                            ...data,
+                                            mname: data.music.name,
+                                        })) || [],
+                                    });
+                                }}
+                            />
+                        )}
+                    <ButtonRounded
+                        text={'Take Screenshot'}
+                        onClick={() => {
+                            if (ref.current) {
+                                screenshot(ref.current, 'SkillNavigator-SkillTable');
+                            }
+                        }}
+                    />
+                </div>
             )}
             ref={ref}
         >
