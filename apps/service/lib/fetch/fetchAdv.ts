@@ -114,17 +114,3 @@ export class FetchAdv {
 export const fetchAdv = new FetchAdv({
     url: `${typeof window !== 'undefined' ? `${process.env.NEXT_PUBLIC_URL_PUBLICEP}` : process.env.NEXT_PUBLIC_URL_ENDPOINT}`,
 });
-
-export const fetchFile = async (url: string) => {
-    const res = await fetch(url, {
-        headers: {
-            contentType: 'multipart/form-common',
-        },
-    });
-
-    if (!res.ok) {
-        throw new FetchError({ status: res.status, response: res });
-    }
-
-    return await res.text();
-};
