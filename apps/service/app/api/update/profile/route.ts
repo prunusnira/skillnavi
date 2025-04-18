@@ -73,41 +73,28 @@ export const POST = async (req: NextRequest) => {
                 });
 
                 // skill record 파일 업데이트
-                let rfd, wfd;
                 try {
                     const filePath = `${process.env.NEXT_PUBLIC_RECORD}${String(user.id)}.dat`;
 
                     // 파일이 없으면 새로 추가
-                    rfd = fs.openSync(filePath, 'r');
-                    const file = fs.readFileSync(rfd, 'utf8');
-                    fs.closeSync(rfd);
-                    const content = file.split('\n').filter(str => str !== '');
-
-                    const now = dayjs();
-                    content.push(`${now.format('YYYYMMDD')}_${body.gskill}_${body.dskill}`);
-
-                    let newContent: string[];
-                    if (content.length > 1000) {
-                        newContent = content.slice(content.length - 1000, content.length - 1);
-                    } else {
-                        newContent = content;
+                    let newContent: string[] = [];
+                    if(fs.existsSync(filePath)) {
+                        const file = fs.readFileSync(filePath, 'utf8');
+                        const content = file.split('\n').filter(str => str !== '');
+                        newContent = [...content];
                     }
 
-                    wfd = fs.openSync(filePath, 'w');
-                    fs.writeFileSync(wfd, newContent.join('\n'));
-                    fs.closeSync(wfd);
+                    const now = dayjs();
+                    newContent.push(`${now.format('YYYYMMDD')}_${body.gskill}_${body.dskill}`);
+
+                    if (newContent.length > 1000) {
+                        newContent = newContent.slice(newContent.length - 1000, newContent.length - 1);
+                    }
+                    fs.writeFileSync(filePath, newContent.join('\n'));
                 } catch (error) {
                     // error handle, 여기서는 아무것도 안함
                     console.log(error);
-                } finally {
-                    if (rfd) {
-                        fs.closeSync(rfd);
-                    }
-                    if (wfd) {
-                        fs.closeSync(wfd);
-                    }
                 }
-
             }
             return NextResponse.json({ result: 'success' });
         },
