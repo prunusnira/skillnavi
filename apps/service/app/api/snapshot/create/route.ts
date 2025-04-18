@@ -12,13 +12,10 @@ export const POST = async (req: NextRequest) => {
                 const { date, uid, type } = body;
 
                 const filePath = `${process.env.NEXT_PUBLIC_SNAPSHOT}/${uid}/${date}_${type}.json`;
-                try {
-                    fs.writeFileSync(filePath, JSON.stringify(body));
-                } catch (error) {
-                    console.log(error);
-                }
+                fs.writeFileSync(filePath, JSON.stringify(body));
                 return NextResponse.json({ detail: 'success' });
             } catch (error) {
+                console.error(error);
                 return NextResponse.json({ detail: 'error' }, { status: 500 });
             }
         },

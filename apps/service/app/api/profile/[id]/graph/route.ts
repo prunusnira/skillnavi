@@ -13,7 +13,7 @@ export const GET = async (
         req,
         work: async () => {
             const { id } = params;
-            const fileUrl = `${process.env.NEXT_PUBLIC_URL_DATA}${process.env.NEXT_PUBLIC_DIR_GRAPH}/${id}.dat`;
+            const fileUrl = `${process.env.NEXT_PUBLIC_RECORD}/${id}.dat`;
             if(!fs.existsSync(fileUrl)) {
                 return NextResponse.json([] as ProfileGraphRaw[]);
             }
