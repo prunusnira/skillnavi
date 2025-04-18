@@ -122,3 +122,5 @@ export class FetchExtended {
     public connect = async <T>(url: string, options?: FetchOptions) =>
         this.fetchWork<T>(url, { method: 'CONNECT', ...options });
 }
+
+export const fetchExtended = new FetchExtended();

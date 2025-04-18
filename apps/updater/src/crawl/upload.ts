@@ -5,14 +5,17 @@ import {
     UrlUploadSkill,
 } from '../function/commonData';
 import { CrawlerUpload } from '../feature/crawler/component/CrawlerImport.type';
+import { createLog } from '@skillnavi/data/src/log/createLog';
 
-const axiosUpload = async ({
-                               url,
-                               json,
-                               type,
-                               setCurrent,
-                               setBtnDisabled,
-                           }: CrawlerUpload & { url: string }) => {
+const axiosUpload = async (
+    {
+        url,
+        json,
+        type,
+        setCurrent,
+        setBtnDisabled,
+    }: CrawlerUpload & { url: string },
+) => {
     try {
         const rtn = await axios.post(url, json, {
             headers: {
@@ -21,6 +24,15 @@ const axiosUpload = async ({
         });
 
         if (rtn.data.result === 'success') {
+            try {
+                createLog({
+                    uid: window.sinUid,
+                    action: 'update',
+                    data: type,
+                });
+            } catch (error) {
+                // do nothing if log failed
+            }
             alert(`[${type}] Update complete`);
             console.log(`[${type}] Update complete`);
             setCurrent(`[${type}] Update complete`);

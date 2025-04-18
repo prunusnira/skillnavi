@@ -16,6 +16,7 @@ import { screenshot } from '@/lib/screenshot/screenshot';
 import { useAtomValue } from 'jotai';
 import { atomUser } from '@/feature/profile/data/atomUser';
 import { useCreateSnapshot } from '@/feature/snapshot/component/useCreateSnapshot';
+import { createLog } from '@skillnavi/data/src/log/createLog';
 
 const SkillTable = () => {
     const {
@@ -70,6 +71,11 @@ const SkillTable = () => {
                                             mname: data.music.name,
                                         })) || [],
                                     });
+                                    createLog({
+                                        uid: user?.id || 0,
+                                        action: 'click',
+                                        data: 'skill_create_snapshot',
+                                    })
                                 }}
                             />
                         )}
@@ -78,6 +84,13 @@ const SkillTable = () => {
                         onClick={() => {
                             if (ref.current) {
                                 screenshot(ref.current, 'SkillNavigator-SkillTable');
+                                createLog({
+                                    uid: user?.id || 0,
+                                    action: 'click',
+                                    data: 'skill_screenshot',
+                                })
+                            } else {
+                                alert('Screenshot failed');
                             }
                         }}
                     />

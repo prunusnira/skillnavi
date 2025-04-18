@@ -5,6 +5,7 @@ import Version from '@/feature/version/Version';
 import { ReactNode } from 'react';
 import UserAuthWrapper from '@/feature/auth/wrapper/UserAuthWrapper';
 import Theme from '@/feature/theme/component/Theme';
+import { LogPageView } from '@/common/log/LogPageView';
 
 interface Props {
     children: ReactNode;
@@ -25,6 +26,7 @@ const PageLayout = ({ children }: Props) => {
             <Version />
             <UserAuthWrapper />
             <Theme />
+            <LogPageView />
         </main>
     );
 };
