@@ -10,10 +10,10 @@ import SkillRankType from '@/feature/rank/skill/component/SkillRankType';
 const PageSkillRank = async ({
                                  searchParams,
                              }: {
-    searchParams: { page: number; type: GameType };
+    searchParams: { page: string; type: GameType };
 }) => {
     const { page, type } = searchParams;
-    const { rank, pages } = await getSkillRank({ page, type });
+    const { rank, pages } = await getSkillRank({ page: Number(page), type });
     const t = await getTranslations('skill.ranking');
 
     return (
@@ -26,7 +26,7 @@ const PageSkillRank = async ({
                 {rank.map((user, idx) => (
                     <SkillRankUser
                         key={`${type}_${user.value}`}
-                        rank={(page - 1) * SKILLRANK_SIZE + idx + 1}
+                        rank={(Number(page) - 1) * SKILLRANK_SIZE + idx + 1}
                         data={user}
                     />
                 ))}
@@ -34,7 +34,7 @@ const PageSkillRank = async ({
 
             {/* 페이지 */}
             <Pager
-                page={page}
+                page={Number(page)}
                 allpage={pages}
             />
         </Card>

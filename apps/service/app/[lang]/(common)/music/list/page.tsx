@@ -12,13 +12,13 @@ const PageMusicList = async ({
                                  searchParams,
                              }: {
     searchParams: {
-        version: number;
+        version: string;
         order: string;
-        page: number;
+        page: string;
     };
 }) => {
     const { version, order, page } = searchParams;
-    const data = await getMusicList({ version, order, page });
+    const data = await getMusicList({ version: Number(version), order, page: Number(page) });
 
     const { count, music } = data;
     const pages =
@@ -51,7 +51,7 @@ const PageMusicList = async ({
             ))}
 
             <Pager
-                page={page}
+                page={Number(page)}
                 allpage={pages}
             />
         </Card>
