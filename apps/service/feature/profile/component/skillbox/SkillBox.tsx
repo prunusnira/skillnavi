@@ -33,7 +33,7 @@ const SkillBox = ({ skill }: Props) => {
         <section className={'flex-col-center py-[20px]'}>
             <div
                 className={cn(
-                    'flex flex-col justify-start items-center overflow-y-hidden relative gap-[2px] bg-black',
+                    'flex flex-col justify-start items-center overflow-y-hidden gap-[2px] bg-black',
                 )}
                 style={{
                     height: viewAll ? 'auto' : '100px',
