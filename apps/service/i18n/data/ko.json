@@ -1,233 +1,133 @@
 {
-  "common": {
-    "other": {
-      "days": "일전",
-      "hrs": "시간",
-      "mins": "분전"
-    },
-    "emptyname": "비공개"
+  "navbar": {
+    "login": "가입/로그인",
+    "logout": "로그아웃"
   },
-  "error404": {
-    "e404_1": "잘못된 접근을 수행하였습니다 (404)",
-    "e404_2": "문제가 자꾸 발생한다면 개발자에게 문의를 주세요"
-  },
-  "error500": {
-    "e500_1": "이 페이지가 나오는 원인은 2가지가 있습니다.",
-    "e500_2": "1. 로그인을 먼저 수행해주세요",
-    "e500_3": "만약 로그인 후에도 이 페이지가 계속 나타난다면 개발자에게 문의를 주세요",
-    "e500_4": "2. 관련 계정 주인만 접근할 수 있는 페이지 일 수 있습니다",
-    "e500_5": "이 경우에는 해당 기능과 관련된 계정주 본인만 접근할 수 있습니다",
-    "e500_6": "문의처: Twitter "
-  },
-  "header": {
-    "index": {
-      "title": "Skill Navigator"
-    },
+  "bottom": "이 사이트는 팬사이트로 영리적 목적을 가지고 있지 않습니다",
+  "sidemenu": {
+    "home": "메인 페이지",
     "mydata": {
-      "title": "내 데이터",
+      "title": "나의 데이터",
       "profile": "프로필",
-      "mygf": "GF스킬",
-      "mydm": "DM스킬",
-      "count": "플레이 횟수",
-      "snapshot": "스킬표 보관함"
+      "mygf": "나의 GF 스킬",
+      "mydm": "나의 DM 스킬",
+      "count": "플레이 카운트",
+      "snapshot": "스냅샷 보관함"
     },
     "skill": {
       "title": "스킬",
       "recent": "최근 갱신 유저",
-      "rank": "스킬랭킹",
-      "exc": "스킬 이론치",
-      "countrank": "플레이 카운트 랭킹"
+      "ranking": "스킬랭킹",
+      "exc": "스킬이론치",
+      "countrank": "플카랭킹"
     },
     "pattern": {
       "title": "패턴",
       "list": "패턴목록",
-      "noplay": "미 플레이 패턴",
-      "table": "클리어 테이블"
+      "cleartable": "클리어테이블"
     },
     "tower": {
       "title": "타워"
     },
-    "login": "가입/로그인",
-    "logout": "로그아웃",
-    "theme": "다크모드",
     "search": {
-      "title": "검색 항목 변경",
-      "music": "음악 제목",
-      "gskill": "기타 스킬",
-      "dskill": "드럼 스킬",
-      "player": "플레이어 닉네임"
-    },
-    "test": "현재 서버 점검이 진행중입니다. 부분적으로 서버가 불안해질 수 있습니다"
+      "type": {
+        "music": "곡명 검색",
+        "player": "유저네임 검색",
+        "gfskill": "GF스킬 검색",
+        "dmskill": "DM스킬 검색"
+      }
+    }
   },
-  "footer": {
-    "fanpage": "이 사이트는 팬사이트로 영리적 목적을 가지고 있지 않습니다",
-    "langsel": "언어선택"
-  },
-  "index": {
-    "self": {
+  "main": {
+    "user": {
       "title": "로그인",
-      "login": "로그인",
-      "loginFirst": " 해주세요"
+      "beforeLogin": {
+        "link": "로그인",
+        "desc": "을 먼저 해주세요"
+      },
+      "script": {
+        "title": "데이터 갱신 스크립트",
+        "desc": {
+          "desc1": "아래 박스를 클릭하면 스크립트가 복사됩니다",
+          "desc2": "스크립트는 개인별로 다르므로 절대 공유하지 마세요"
+        },
+        "click": "맨 앞의 'j'를 제외한 스크립트가 복사되었습니다. 붙여넣을 때 주의하세요"
+      },
+      "button": {
+        "profile": "프로필",
+        "mygf": "내 GF스킬",
+        "mydm": "내 DM스킬",
+        "playcount": "플레이카운트"
+      }
     },
     "notice": {
       "title": "공지사항",
-      "desc": "최근 공지사항 3개입니다",
-      "id": "번호",
-      "summary": "제목",
-      "date": "날짜"
-    },
-    "about": {
-      "title": "이 사이트는?",
-      "cont": "자신의 기타도라 스킬의 변화를 기록하고 다른 플레이어들과 공유할 수 있는 사이트입니다.\n        사이트 관련 공지는 아래 트위터 계정에서 확인해주세요"
-    },
-    "script": {
-      "title": "갱신 스크립트",
-      "cont": "아래의 스크립트를 클릭/터치하여 복사한 후 사용해주세요",
-      "scriptTitle": "스크립트",
-      "scriptNoLogin": "스크립트는 개인별로 제공됩니다. 로그인해주세요",
-      "scriptLogin": "아래 스크립트는 개인별로 다릅니다. 절대 타인에게 공유하지 마세요.",
-      "alert": "첫 문자 j를 제외한 나머지 문자열이 복사되었습니다"
+      "table": {
+        "no": "번호",
+        "title": "제목",
+        "date": "일자"
+      },
+      "empty": "공지사항이 없습니다"
     },
     "howto": {
-      "title": "사용방법",
-      "desc1": "기타도라 홈페이지로 이동하여 스크립트를 붙여넣고 실행합니다",
-      "desc2": "미리 공식 홈페이지에 로그인 한 상태여야 합니다",
-      "desc3": "「javascript:」부분이 빠지지 않도록 주의",
-      "browser": "권장 브라우저",
-      "desc4": "각 항목을 선택하여 업데이트를 실행합니다.",
-      "lang": "지원 언어"
+      "part1": {
+        "title": "사용방법 (Step 1)",
+        "desc": {
+          "step1": "eAmusement 홈페이지로 이동합니다",
+          "step2": "사이트에 로그인합니다",
+          "step3": "스크립트를 주소창에 붙여넣고 실행합니다"
+        }
+      },
+      "part2": {
+        "title": "사용방법 (Step 2)",
+        "desc": {
+          "step1": "표시된 화면을 보고 버튼을 눌러 업데이트를 실행합니다",
+          "step2": "갱신중에는 eAmusement 사이트를 사용하면 안됩니다 (다른 디바이스 포함)"
+        }
+      }
     }
   },
-  "notice": {
-    "title": "공지사항",
-    "no": "번호",
-    "noti": "제목",
-    "date": "게시시간"
-  },
-  "music": {
-    "list": {
-      "title": "곡 목록"
+  "profile": {
+    "info": {
+      "title": "유저 정보",
+      "button": {
+        "count": "플레이카운트",
+        "cleartable": "클리어현황",
+        "comment": "코멘트 변경",
+        "openinfo": "정보공개 설정"
+      },
+      "skillbox": {
+        "open": "열기",
+        "close": "닫기"
+      }
     },
-    "record": {
-      "norecord": "데이터가 없습니다",
-      "rank": "랭크",
-      "rate": "달성률",
-      "combo": "콤보",
-      "skill": "스킬",
-      "link": "패턴 랭킹 보기"
-    },
+    "graph": "스킬 추이",
     "detail": {
-      "title": "곡별 상세 데이터"
-    }
+      "title":"상세정보",
+      "table": {
+        "skill": "스킬",
+        "clear": "클리어 (레벨/수)",
+        "fc": "풀콤보 (레벨/수)",
+        "exc": "엑설런트 (레벨/수)",
+        "count": "플레이 스테이지 수"
+      }
+    },
+    "board": "플레이어 보드"
   },
   "pattern": {
-    "music": {
-      "count": "클리어 횟수",
-      "rank": "랭크",
-      "rate": "달성률",
-      "score": "점수",
-      "combo": "콤보",
-      "skill": "스킬",
-      "oldrate": "구작 달성률"
-    },
-    "noplay": {
-      "desc": "기종별로 플레이 한 적 없는 패턴의 리스트를 보여줍니다",
-      "all": "모든 버전",
-      "ver": "이번작 한정",
-      "filter": {
-        "btn": {
-          "title": "이름순",
-          "version": "버전"
-        }
-      }
-    },
-    "rank": {
-      "title": "패턴 랭킹",
-      "desc1": "각 패턴의 난이도를 선택해주세요",
-      "desc2": "로그인 후 곡 제목을 누르면 각 곡 성과 페이지로 이동합니다",
-      "ptinfo": "곡 정보",
-      "selectver": "버전을 반드시 선택해주세요",
-      "filter": {
-        "btn": {
-          "title": "이름순",
-          "version": "버전"
-        }
-      },
-      "notexist": "패턴 정보가 없습니다"
-    },
-    "rankeach": {
-      "title": "패턴별 랭킹",
-      "desc": "각 패턴의 정보를 저장한 유저들의 랭킹을 확인할 수 있습니다",
-      "pattern": "패턴 정보",
-      "mine": "자기 기록",
-      "table": {
-        "ptinfo": "패턴 정보",
-        "ranking": "랭킹"
-      }
-    }
+    "title": "패턴 목록"
   },
-  "recent": {
-    "recent": "최근 갱신유저",
-    "notice": "공지사항",
-    "click": "* 스킬을 터치하여 스킬표로 이동 *"
+  "music": {
+    "title": "상세 기록",
+    "nodata": "데이터가 없습니다",
+    "version": "버전",
+    "mode": "게임모드",
+    "ranking": "패턴 랭킹 보기"
   },
-  "search": {
-    "title": "검색 결과",
-    "desc": "검색 결과는 영문 대소문자를 구분하지 않습니다",
-    "table": {
-      "empty": "표시할 항목이 없습니다"
-    }
-  },
+  "recent": "최근 갱신유저",
+  "ranking": "스킬 랭킹",
   "skill": {
-    "countrank": {
-      "title": "플레이 카운트 랭킹",
-      "desc": {
-        "desc1": "플레이 수 비공개 유저: 이름, 프로필 페이지 링크 미표기",
-        "desc2": "플레이 수 = 스테이지 수",
-        "desc3": "정확한 플레이 카운트를 알기 위해서는 전곡 데이터가 필요합니다."
-      }
-    },
-    "ranking": {
-      "title": "스킬 랭킹",
-      "totaltitle": "전곡 스킬 랭킹",
-      "desc": "본 서비스에 등록한 유저간의 랭킹입니다",
-      "table": {
-        "comp": "비교",
-        "uptime": "갱신"
-      },
-      "click": "* 스킬을 터치하여 스킬표로 이동 *"
-    },
-    "table": {
-      "scrshot": "현재 표 찍기",
-      "btnShareTable": "공유용 스킬표",
-      "btnNormalTable": "기본 스킬표",
-      "order": {
-        "skillasc": "스킬 오름차순",
-        "skilldesc": "스킬 내림차순",
-        "titleasc": "곡명 오름차순",
-        "titledesc": "곡명 내림차순",
-        "verasc": "버전 오름차순",
-        "verdesc": "버전 내림차순",
-        "rateasc": "달성률 오름차순",
-        "ratedesc": "달성률 내림차순",
-        "playdesc": "플레이 카운트 내림차순"
-      },
-      "tablehead": {
-        "empty": "표시할 항목이 없습니다"
-      },
-      "float": "스킬표 메뉴 열기/닫기",
-      "snapshot": {
-        "button": "데이터 보존하기",
-        "created": "스킬표가 저장되었습니다"
-      },
-      "exc": "스킬 이론치",
-      "filter": {
-        "btn": {
-          "title": "이름순",
-          "version": "버전"
-        }
-      }
-    },
+    "title": "스킬",
     "menu": {
       "version": {
         "title": "버전 선택"
@@ -250,46 +150,23 @@
       "button": {
         "close": "닫기"
       }
-    }
+    },
+    "snapshot": "스냅샷 생성하기",
+    "screenshot": "스크린샷 찍기"
   },
+  "countrank": {
+    "title": "플레이 카운트 랭킹"
+  },
+  "cleartable": "클리어 테이블",
   "tower": {
-    "towerlist": {
-      "main": {
-        "desc": "타워을 선택해주세요",
-        "skilltower": "스킬 타워",
-        "sptower": "스페셜 타워",
-        "howto": "타워 대상곡 갱신 방법"
-      },
-      "detail": {
-        "progress": "진행도",
-        "below": "필요: 하위 층 클리어",
-        "titlechangable": "칭호변경 가능",
-        "titleunchangable": "칭호변경 불가",
-        "btntitlechange": "칭호변경",
-        "require1": "전체 ",
-        "require2": "패턴 중 ",
-        "require3": "이상 클리어 필요"
-      },
-      "howto": {
-        "step1": "1. 인 게임 혹은 홈페이지에서 갱신할 패턴들을 '즐겨찾기' 폴더에 등록합니다",
-        "step2": "2. SIN의 업데이터에서 'GF 즐겨찾기' 혹은 'DM 즐겨찾기' 버튼을 눌러 갱신하면 해당 곡들만 갱신할 수 있습니다."
-      },
-      "title": {
-        "changed": "칭호가 변경되었습니다"
-      }
+    "title": "타워",
+    "changeIcon": {
+      "button": "아이콘 변경",
+      "dialog": "아이콘을 변경할까요?"
     },
-    "towerstatus": {
-      "towerhead": "탑 클리어 현황",
-      "nodata": "데이터가 갱신되지 않았습니다. 계정주가 프로필 페이지에서 데이터를 갱신해야 합니다.",
-      "floor": "층",
-      "titlehead": "현재 보유한 칭호 리스트",
-      "duplicate": "칭호 목록은 중복될 수 있습니다",
-      "btntitle": "칭호 리스트로",
-      "btntop": "페이지 맨 위로"
-    },
-    "towertitle": {
-      "title": "칭호 변경",
-      "body": "아래의 칭호로 변경합니다"
+    "status": {
+      "clear": "클리어",
+      "yet": "진행가능"
     }
   },
   "user": {
@@ -299,27 +176,13 @@
         "pw": "비밀번호"
       },
       "title": "로그인",
-      "google": "본 서비스는 구글 계정을 사용한 로그인만을 지원합니다.",
-      "titleAppFail": "로그인 실패",
-      "contentAppFailTitle": "로그인이 실패하였습니다",
-      "contentAppFail": "1. 앱 하단에서 Login 탭을 눌러 로그인하거나<br/>\n            2. 아래 버튼을 눌러 비로그인 상태에서 진행해주세요<br/><br/>\n            * 일반적인 상황에서는 이 페이지가 표시되지 않아야 합니다.<br/>\n            * 이 페이지가 나타났다면 개발자에게 문의해주세요.",
-      "loginErrorModal": {
-        "title": "로그인 실패",
-        "body": {
-          "p1": "이유를 알 수 없는 로그인 오류입니다.",
-          "p2": "Google쪽에 문제가 있을 수 있으니 다른 디바이스에서 로그인하거나 잠시 후 시도해주세요",
-          "p3": "Incognito/InPrivate 등의 모드에서는 로그인할 수 없습니다",
-          "msg": "에러 메시지"
-        }
-      }
+      "google": "Google 계정으로 로그인"
     },
     "join": {
       "title": "Skill Navigator에 오신 것을 환영합니다!",
       "desc": "아래의 버튼을 누르면 신규 유저 데이터를 작성합니다",
       "btnsign": "가입",
-      "btndecline": "취소",
-      "existAccess": "이미 존재하는 계정으로부터 온 잘못된 접근입니다",
-      "invalidAccess": "뭔가 잘못되었습니다. 개발자에게 문의해주세요"
+      "btndecline": "취소"
     },
     "playcount": {
       "desc_1": "마이베스트 리스트를 정확히 표시하려면 ",
@@ -337,62 +200,6 @@
       },
       "nodata": "데이터가 없습니다"
     },
-    "profile": {
-      "profile": "유저 정보",
-      "table1": {
-        "prof": "프로필",
-        "title": "칭호",
-        "name": "이름",
-        "comment": "코멘트",
-        "emptyname": "비공개"
-      },
-      "oldver": {
-        "more": "눌러서 이전 버전 기록 보기",
-        "less": "닫기"
-      },
-      "graph": "스킬 추이",
-      "detail": "상세 정보",
-      "button": {
-        "title": "바로가기",
-        "chkpskill": "스킬 보기",
-        "setdataopen": "정보 공개 설정",
-        "changecomment": "코멘트 변경",
-        "clearRankTable": "클리어 표",
-        "mybest": "플레이 횟수",
-        "compare": "스킬비교",
-        "reset": "스킬데이터 리셋",
-        "resetdanger": "이 작업은 저장된 스킬데이터를 모두 리셋하며 복구할 수 없습니다. 계속 하시겠습니까?",
-        "resetdone": "스킬데이터 리셋이 완료되었습니다.",
-        "countupdate": "플카 강제갱신",
-        "countdesc": "업데이트 갱신으로 플레이 횟수가 바뀌지 않았을 경우에 아래 버튼을 눌러보세요",
-        "towerupdate": "탑 클리어 상태 갱신",
-        "towerstatus": "탑 클리어 현황"
-      },
-      "detailed": {
-        "s": "스킬",
-        "clv": "클리어",
-        "flv": "풀콤보",
-        "elv": "엑설런트",
-        "count": "플레이 수",
-        "notopen": "비공개",
-        "countdesc": "플레이 수에 대하여\n            * 플레이 수는 지금까지 플레이 한 총 스테이지 수 입니다(Stage Failed 포함)\n            * 공개 설정에 따라 다른 사람에게 보입니다(기본 비공개)\n            * 정확한 플레이 수의 계산을 위해서는 전곡 데이터가 필요합니다"
-      },
-      "board": {
-        "title": "플레이어 보드"
-      },
-      "dataopen": {
-        "yes": "공개",
-        "no": "비공개"
-      },
-      "changecomment": {
-        "desc": "변경할 코멘트를 입력하세요 (최대 25자)"
-      },
-      "towerupdate": {
-        "alert": "이 과정은 최대 2~3분정도 소요됩니다 (일반적으로 10초 이내) 완료 메시지가 표시될 때까지 기다려주세요",
-        "done": "타워 데이터를 갱신하였습니다"
-      },
-      "click": "* 스킬을 터치하여 스킬표로 이동 *"
-    },
     "reset": {
       "title": "데이터 리셋에 대하여",
       "desc1": "이 과정을 실행하면 지금까지 등록한 모든 데이터가 삭제되며 다시는 복구할 수 없습니다.",
@@ -401,14 +208,13 @@
       "desc3": "계정은 삭제되지 않지만 Google 계정연결 해제는 Google 홈페이지의 개인정보 관리에서 할 수 있습니다.",
       "desc4": "Google - 내 계정 - 계정 환경설정 - 연결된 앱 및 사이트 - 앱 관리 - GITADORA Info 선택 - 선택 취소",
       "desc5": "데이터를 삭제하겠습니까?"
-    },
-    "snapshot": {
-      "desc1": "저장한 스냅샷 목록을 표시합니다",
-      "desc2": "이 스냅샷 목록 페이지는 링크를 공유해도 본인 이외의 사람은 볼 수 없습니다",
-      "desc3": "(각 스냅샷 스킬표 페이지는 링크로 공유 가능합니다)",
-      "btnN": "일반",
-      "btnS": "공유",
-      "btnD": "다운로드"
+    }
+  },
+  "search": {
+    "title": "검색 결과",
+    "desc": "검색 결과는 영문 대소문자를 구분하지 않습니다",
+    "table": {
+      "empty": "표시할 항목이 없습니다"
     }
   }
 }

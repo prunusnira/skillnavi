@@ -19,21 +19,21 @@ export interface SidebarSubMenu {
     href: string;
 }
 
-interface SidebarMenu {
+export interface SidebarMenu {
     id: string;
     iconSrc: string;
     href?: string;
     subMenu?: SidebarSubMenu[];
 }
 
-export const SidebarMenuItems: SidebarMenu[] = [
-    {
-        id: 'index',
+export const SidebarMenuItems = {
+    home: {
+        id: 'home',
         iconSrc: `${IMG}/header/logo.png`,
         href: LINK_MAIN,
     },
-    {
-        id: 'mydata',
+    mydata: {
+        id: 'mydata.title',
         iconSrc: `${IMG}/header/mydata.png`,
         subMenu: [
             {
@@ -58,8 +58,8 @@ export const SidebarMenuItems: SidebarMenu[] = [
             },
         ],
     },
-    {
-        id: 'skill',
+    skill: {
+        id: 'skill.title',
         iconSrc: `${IMG}/header/skill.png`,
         subMenu: [
             {
@@ -67,7 +67,7 @@ export const SidebarMenuItems: SidebarMenu[] = [
                 href: LINK_SKILL_RECENT,
             },
             {
-                id: 'skill.rank',
+                id: 'skill.ranking',
                 href: LINK_RANK_SKILL('gf', 1),
             },
             {
@@ -80,8 +80,8 @@ export const SidebarMenuItems: SidebarMenu[] = [
             },
         ],
     },
-    {
-        id: 'pattern',
+    pattern: {
+        id: 'pattern.title',
         iconSrc: `${IMG}/header/pattern.png`,
         subMenu: [
             {
@@ -89,14 +89,16 @@ export const SidebarMenuItems: SidebarMenu[] = [
                 href: LINK_PATTERN_LIST({}),
             },
             {
-                id: 'pattern.table',
+                id: 'pattern.cleartable',
                 href: LINK_PATTERN_TABLE({}),
             },
         ],
     },
-    {
-        id: 'tower',
+    tower: {
+        id: 'tower.title',
         iconSrc: `${IMG}/header/tower.png`,
         href: LINK_TOWER_MAIN,
     },
-];
+};
+
+export type SidebarItemKeys = keyof typeof SidebarMenuItems;

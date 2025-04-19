@@ -4,7 +4,7 @@ import PlayCountRankType from '@/feature/rank/playcount/component/PlayCountRankT
 import { PlayCountRankList } from '@/feature/rank/playcount/component/PlayCountRankList';
 
 const PagePlaycount = async () => {
-    const t = await getTranslations('skill.countrank');
+    const t = await getTranslations('countrank');
     return (
         <Card title={t('title')}>
             <PlayCountRankType />

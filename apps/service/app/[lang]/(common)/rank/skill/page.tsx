@@ -14,10 +14,10 @@ const PageSkillRank = async ({
 }) => {
     const { page, type } = searchParams;
     const { rank, pages } = await getSkillRank({ page: Number(page), type });
-    const t = await getTranslations('skill.ranking');
+    const t = await getTranslations();
 
     return (
-        <Card title={t('title')}>
+        <Card title={t('ranking')}>
             {/* 타입 선택 */}
             <SkillRankType />
 

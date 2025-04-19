@@ -4,14 +4,14 @@ import { cn } from '@/lib/cn';
 // import InputFormItem from '@/common/form/InputFormItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
-// import { useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { signIn } from 'next-auth/react';
 import { LINK_MAIN, PUBLICEP } from '@/url/url';
 import { ButtonRounded } from '@skillnavi/ui';
 // import { useState } from 'react';
 
 const LoginForm = () => {
-    // const t = useTranslations('user.login');
+    const t = useTranslations('user.login');
     // const [
     //     id,
     //     setId,
@@ -59,7 +59,7 @@ const LoginForm = () => {
                             icon={faGoogle}
                         />
                     }
-                    text="Sign in with Google"
+                    text={t('google')}
                     fixedWidth={200}
                     onClick={() => {
                         signIn('google', {

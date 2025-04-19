@@ -1,14 +1,24 @@
+'use client';
+
 import style from './MusicDiffTable.module.scss';
 import { Pattern } from '@/feature/music/data/Pattern';
 import { useCallback } from 'react';
 import { cn } from '@/lib/cn';
+import { useRouter } from '@/i18n/routing';
+import { LINK_MUSIC_INFO } from '@/url/url';
+import { useAtomValue } from 'jotai';
+import { atomUser } from '@/feature/profile/data/atomUser';
 
 interface Props {
     pattern: Pattern[];
+    mid: number;
+    version: number;
 }
 
 // CSR 난이도 테이블
-const MusicDiffTable = ({ pattern }: Props) => {
+const MusicDiffTable = ({ pattern, mid, version }: Props) => {
+    const router = useRouter();
+    const user = useAtomValue(atomUser);
     const getLevel = useCallback(
         (ptcode: number) => {
             const level = pattern.find((p) => p.patterncode === ptcode)?.level;
@@ -18,7 +28,18 @@ const MusicDiffTable = ({ pattern }: Props) => {
     );
 
     return (
-        <section className={style.musicBox}>
+        <section
+            className={style.musicBox}
+            onClick={() => {
+                if (user) {
+                    router.push(LINK_MUSIC_INFO({
+                        uid: user.id,
+                        mid,
+                        version,
+                    }));
+                }
+            }}
+        >
             <section className={style.musicRow}>
                 <div className={cn(style.musicCell, style.titleCell)}></div>
                 <div className={cn(style.musicCell, style.titleCell)}>G</div>

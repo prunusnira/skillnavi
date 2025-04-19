@@ -15,6 +15,7 @@ import { Skill } from '@/feature/skill/data/Skill';
 import VersionDisplay from '@/feature/version/VersionDisplay';
 import { getTowerIcon } from '@/feature/tower/api/getTowerIcon';
 import { TowerUpdateFloorIcon } from '@/feature/tower/component/TowerUpdateFloorIcon';
+import { getTranslations } from 'next-intl/server';
 
 const PageTowerDetail = async ({ searchParams }: { searchParams: { id: number } }) => {
     const { id } = searchParams;
@@ -23,6 +24,7 @@ const PageTowerDetail = async ({ searchParams }: { searchParams: { id: number } 
     const floorIcons = await getTowerIcon(id);
     const session = await getServerSession();
     const user = await getProfileSession(session);
+    const t = await getTranslations('tower');
 
     if (!user) {
         return null;
@@ -90,7 +92,7 @@ const PageTowerDetail = async ({ searchParams }: { searchParams: { id: number } 
     });
 
     return (
-        <Card title={''}>
+        <Card title={t('title')}>
             <section className={'flex-col-center'}>
                 <span className={'text-2xl font-bold'}>
                     {getTowerType(towerInfo.game)}
@@ -172,7 +174,7 @@ const PageTowerDetail = async ({ searchParams }: { searchParams: { id: number } 
                                             className={'absolute bottom-[24px] right-[16px] flex flex-col items-end'}>
                                             <div className={'flex gap-[8px]'}>
                                                 <div className={'text-3xl font-bold'}>
-                                                    {isCleared ? 'CLEARED' : 'NOT YET'}
+                                                    {isCleared ? t('status.clear') : t('status.yet')}
                                                 </div>
                                                 {isCleared && item.icon && (
                                                     <TowerUpdateFloorIcon icon={item.icon} />

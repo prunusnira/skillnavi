@@ -4,6 +4,7 @@ import useMusicRecord from '@/feature/music/component/record/useMusicRecord';
 import { cn } from '@/lib/cn';
 import MusicRecordItem from '@/feature/music/component/record/MusicRecordItem';
 import { ButtonRounded } from '@skillnavi/ui';
+import { useTranslations } from 'next-intl';
 
 // CSR 기록 정보
 const MusicRecord = () => {
@@ -18,6 +19,7 @@ const MusicRecord = () => {
         version,
         mid,
     } = useMusicRecord();
+    const t = useTranslations('music');
 
     return (
         <section className={cn('w-full')}>
@@ -25,7 +27,7 @@ const MusicRecord = () => {
             <section className={'flex-col-center'}>
                 {/* 버전 */}
                 <div className={cn('flex items-center w-full py-2.5')}>
-                    <div className={cn('w-[100px]')}>Version</div>
+                    <div className={cn('w-[100px]')}>{t('version')}</div>
                     <div className={cn('flex')}>
                         {availableVersion?.map((ver) => (
                             <ButtonRounded
@@ -40,7 +42,7 @@ const MusicRecord = () => {
 
                 {/* 타입 */}
                 <div className={cn('flex items-center w-full py-2.5')}>
-                    <div className={cn('w-[100px]')}>Mode</div>
+                    <div className={cn('w-[100px]')}>{t('mode')}</div>
                     <div className={cn('flex w-full')}>
                         <ButtonRounded
                             onClick={() => changeGameType('g')}

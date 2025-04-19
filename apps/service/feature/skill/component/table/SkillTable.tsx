@@ -17,6 +17,7 @@ import { useAtomValue } from 'jotai';
 import { atomUser } from '@/feature/profile/data/atomUser';
 import { useCreateSnapshot } from '@/feature/snapshot/component/useCreateSnapshot';
 import { createLog } from '@skillnavi/data/src/log/createLog';
+import { useTranslations } from 'next-intl';
 
 const SkillTable = () => {
     const {
@@ -37,6 +38,7 @@ const SkillTable = () => {
         makeSnapshot,
     } = useCreateSnapshot();
     const user = useAtomValue(atomUser);
+    const t = useTranslations('skill');
 
     if (isLoading) {
         return <Loading size={'80px'} />;
@@ -48,7 +50,7 @@ const SkillTable = () => {
 
     return (
         <Card
-            title="Skill"
+            title={t('title')}
             sub={(
                 <div className={'flex gap-[4px]'}>
                     {profile &&
@@ -56,7 +58,7 @@ const SkillTable = () => {
                         pageType === 'target' &&
                         (
                             <ButtonRounded
-                                text={'Create Snapshot'}
+                                text={t('snapshot')}
                                 onClick={() => {
                                     makeSnapshot({
                                         uid: profile.id,
@@ -80,7 +82,7 @@ const SkillTable = () => {
                             />
                         )}
                     <ButtonRounded
-                        text={'Take Screenshot'}
+                        text={t('screenshot')}
                         onClick={() => {
                             if (ref.current) {
                                 screenshot(ref.current, 'SkillNavigator-SkillTable');
