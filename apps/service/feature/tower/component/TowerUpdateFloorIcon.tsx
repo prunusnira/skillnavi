@@ -9,6 +9,7 @@ import Portal from '@/feature/portal/component/Portal';
 import Image from 'next/image';
 import { IMG } from '@/url/url';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 interface Props {
     icon: string;
@@ -17,6 +18,7 @@ interface Props {
 export const TowerUpdateFloorIcon = ({ icon }: Props) => {
     const user = useAtomValue(atomUser);
     const [displayIcon, setDisplayIcon] = useState<boolean>(false);
+    const t = useTranslations('tower.changeIcon');
 
     const { mutate } = useMutation({
         mutationKey: ['tower', 'floor', 'icon'],
@@ -31,7 +33,7 @@ export const TowerUpdateFloorIcon = ({ icon }: Props) => {
     return (
         <>
             <ButtonStandard
-                text={'GET ICON'}
+                text={t('button')}
                 onClick={() => {
                     setDisplayIcon(true);
                 }}
@@ -47,7 +49,7 @@ export const TowerUpdateFloorIcon = ({ icon }: Props) => {
                             height={50}
                         />
                         <span>
-                            Change Icon?
+                            {t('dialog')}
                         </span>
                         <div className={'flex gap-[10px]'}>
                             <ButtonRounded

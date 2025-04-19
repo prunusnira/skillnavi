@@ -17,7 +17,7 @@ const PageMusic = async (
         };
     },
 ) => {
-    const t = await getTranslations('music.detail');
+    const t = await getTranslations('music');
     const { mid, uid } = searchParams;
 
     const user = await getProfile([Number(uid)]);

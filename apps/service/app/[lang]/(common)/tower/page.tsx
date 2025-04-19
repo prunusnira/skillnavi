@@ -2,8 +2,10 @@ import Card from '@/common/card/Card';
 import { getTowerList } from '@/feature/tower/api/getTowerList';
 import { TowerList } from '@/feature/tower/data/Tower';
 import { TowerListBlock } from '@/feature/tower/component/TowerListBlock';
+import { getTranslations } from 'next-intl/server';
 
 const PageTowerMain = async () => {
+    const t = await getTranslations('tower');
     const towerList = await getTowerList();
     const gfList: TowerList[] = [];
     const dmList: TowerList[] = [];
@@ -26,7 +28,7 @@ const PageTowerMain = async () => {
     });
 
     return (
-        <Card title={'Tower'}>
+        <Card title={t('title')}>
             <article className={'flex-col-center w-full gap-[16px]'}>
                 <TowerListBlock type={'gf'} itemList={gfList} />
                 <TowerListBlock type={'dm'} itemList={dmList} />

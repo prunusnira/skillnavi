@@ -14,7 +14,7 @@ import { clsx } from 'clsx';
 
 const Navbar = () => {
     const { isMenuOpen, handleLinkMain, controlMenu, controlOption } = useNavbar();
-    const t = useTranslations('header');
+    const t = useTranslations('navbar');
     const { data: session } = useSession();
     const router = useRouter();
 

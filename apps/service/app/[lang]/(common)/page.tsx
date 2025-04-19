@@ -18,7 +18,7 @@ export const dynamic = 'force-dynamic';
  */
 const PageIndex = async () => {
     const session = await getServerSession();
-    const t = await getTranslations('index');
+    const t = await getTranslations('main');
     const locale = await getLocale();
 
     const notice = await getNotice({ page: 1, size: 4 });
@@ -29,17 +29,17 @@ const PageIndex = async () => {
             {/* 사용자 로그인 정보 & 스크립트 / 공지사항 목록 */}
             <section className={cn('flex flex-col md:flex-row w-full')}>
                 {/* 로그인/사용자 정보 */}
-                <Card title={t('self.title')}>
+                <Card title={t('user.title')}>
                     {session ? (
                         <UserInfo />
                     ) : (
                         <section className={'flex-col-center'}>
                             <div className={cn('link')}>
                                 <Link href={LINK_AUTH_LOGIN}>
-                                    {t('self.login')}
+                                    {t('user.beforeLogin.link')}
                                 </Link>
                             </div>
-                            <div>{t('self.loginFirst')}</div>
+                            <div>{t('user.beforeLogin.desc')}</div>
                         </section>
                     )}
                 </Card>
@@ -51,32 +51,32 @@ const PageIndex = async () => {
                             <section
                                 className={cn(
                                     style.noticeItem,
-                                    'bg-white text-black font-bold',
+                                    'bg-white font-bold',
                                 )}
                             >
                                 <div
                                     className={cn(
                                         style.noticeId,
-                                        'justify-center',
+                                        'justify-center text-black',
                                     )}
                                 >
-                                    {t('notice.id')}
+                                    {t('notice.table.no')}
                                 </div>
                                 <div
                                     className={cn(
                                         style.noticeTitle,
-                                        'justify-center',
+                                        'justify-center text-black',
                                     )}
                                 >
-                                    {t('notice.summary')}
+                                    {t('notice.table.title')}
                                 </div>
                                 <div
                                     className={cn(
                                         style.noticeTime,
-                                        'justify-center',
+                                        'justify-center text-black',
                                     )}
                                 >
-                                    {t('notice.date')}
+                                    {t('notice.table.date')}
                                 </div>
                             </section>
                             {noticeDisplay.map((n) => (
@@ -95,7 +95,7 @@ const PageIndex = async () => {
                             ))}
                         </section>
                     ) : (
-                        <div>No notice</div>
+                        <div>{t('notice.empty')}</div>
                     )}
                 </Card>
             </section>
@@ -103,13 +103,11 @@ const PageIndex = async () => {
             {/* 소개 및 사용방법 */}
             <section className={cn('flex flex-col md:flex-row w-full')}>
                 {/* 카드 1 */}
-                <Card title={`${t('howto.title')} (Step 1)`}>
+                <Card title={t('howto.part1.title')}>
                     <section className={cn('px-2 py-1')}>
-                        <div>{t('howto.desc1')}</div>
-                        <div>{t('howto.desc2')}</div>
-                        <div>{t('howto.desc3')}</div>
-                        <div>{t('howto.browser')}</div>
-                        <div>Google Chrome, Safari</div>
+                        <div>1. {t('howto.part1.desc.step1')}</div>
+                        <div>2. {t('howto.part1.desc.step2')}</div>
+                        <div>3. {t('howto.part1.desc.step3')}</div>
                         <img
                             alt={'how to image 1'}
                             src={`${IMG}/howto/howto2-browser.png`}
@@ -118,10 +116,10 @@ const PageIndex = async () => {
                 </Card>
 
                 {/* 카드 2 */}
-                <Card title={`${t('howto.title')} (Step 2)`}>
+                <Card title={t('howto.part2.title')}>
                     <section className={cn('px-2 py-1')}>
-                        <div>{t('howto.desc4')}</div>
-                        <div>{t('howto.lang')}: 한국어, 日本語, English</div>
+                        <div>{t('howto.part2.desc.step1')}</div>
+                        <div>{t('howto.part2.desc.step2')}</div>
                         <img
                             alt={'how to image 2'}
                             src={`${IMG}/howto/howto3.png`}

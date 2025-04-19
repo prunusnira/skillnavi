@@ -15,7 +15,7 @@ import style from './page.module.scss';
 export const dynamic = 'force-dynamic';
 
 const PageProfile = async ({ params }: { params: { id: string } }) => {
-    const t = await getTranslations('user.profile');
+    const t = await getTranslations('profile');
     const { id } = params;
     const mydata = await getProfile([Number(id)]);
     const myskill = await getProfileSkill([Number(id)]);
@@ -45,7 +45,7 @@ const PageProfile = async ({ params }: { params: { id: string } }) => {
     return (
         <article className={cn('flex-col-center w-full')}>
             {/* 프로필 카드 */}
-            <Card title={t('profile')}>
+            <Card title={t('info.title')}>
                 {/* 기본 프로필 영역 */}
                 <UserBox mydata={profile} />
 
@@ -66,7 +66,7 @@ const PageProfile = async ({ params }: { params: { id: string } }) => {
 
             {/* 상세 정보 테이블 */}
             {latestSkill && (
-                <Card title={t('detail')}>
+                <Card title={t('detail.title')}>
                     <section className={cn('flex-col-center w-full')}>
                         <div className={style.detailRow}>
                             <div className={style.detailCell}>#</div>
@@ -75,7 +75,7 @@ const PageProfile = async ({ params }: { params: { id: string } }) => {
                         </div>
                         <div className={style.detailRow}>
                             <div className={style.detailCell}>
-                                {t('detailed.s')}
+                                {t('detail.table.skill')}
                             </div>
                             <div className={style.detailCell}>
                                 {latestSkill.gskill}
@@ -86,7 +86,7 @@ const PageProfile = async ({ params }: { params: { id: string } }) => {
                         </div>
                         <div className={style.detailRow}>
                             <div className={style.detailCell}>
-                                {t('detailed.clv')}
+                                {t('detail.table.clear')}
                             </div>
                             <div className={style.detailCell}>
                                 {latestSkill.gclearlv} ({latestSkill.gclearnum})
@@ -97,7 +97,7 @@ const PageProfile = async ({ params }: { params: { id: string } }) => {
                         </div>
                         <div className={style.detailRow}>
                             <div className={style.detailCell}>
-                                {t('detailed.flv')}
+                                {t('detail.table.fc')}
                             </div>
                             <div className={style.detailCell}>
                                 {latestSkill.gfclv} ({latestSkill.gfcnum})
@@ -108,7 +108,7 @@ const PageProfile = async ({ params }: { params: { id: string } }) => {
                         </div>
                         <div className={style.detailRow}>
                             <div className={style.detailCell}>
-                                {t('detailed.elv')}
+                                {t('detail.table.exc')}
                             </div>
                             <div className={style.detailCell}>
                                 {latestSkill.gexclv} ({latestSkill.gexcnum})
@@ -119,7 +119,7 @@ const PageProfile = async ({ params }: { params: { id: string } }) => {
                         </div>
                         <div className={style.detailRow}>
                             <div className={style.detailCell}>
-                                {t('detailed.count')}
+                                {t('detail.table.count')}
                             </div>
                             <div className={style.detailCell}>
                                 {latestSkill.gcount}
@@ -133,7 +133,7 @@ const PageProfile = async ({ params }: { params: { id: string } }) => {
             )}
 
             {/* 플레이어 보드: 사이즈 조정으로 제공, 클릭 시 새 탭으로 열기 */}
-            <Card title={t('board.title')}>
+            <Card title={t('board')}>
                 <Image
                     unoptimized={true}
                     alt="playerboard"

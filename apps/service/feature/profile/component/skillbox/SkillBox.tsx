@@ -16,6 +16,7 @@ import {
 import { useRouter } from '@/i18n/routing';
 import { LINK_SKILL_TABLE } from '@/url/url';
 import { useParams } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 interface Props {
     skill: ProfileSkill[];
@@ -28,6 +29,7 @@ const SkillBox = ({ skill }: Props) => {
     const versionList = useAtomValue(atomGameVersionList);
     const router = useRouter();
     const { id } = useParams<{ id: string }>();
+    const t = useTranslations('profile.info.skillbox');
 
     return (
         <section className={'flex-col-center py-[20px]'}>
@@ -101,7 +103,7 @@ const SkillBox = ({ skill }: Props) => {
                     }
                     onClick={closeViewBox}
                 >
-                    <div>Close</div>
+                    <div>{t('close')}</div>
                     <FontAwesomeIcon
                         icon={faCircleChevronUp}
                         width={20}
@@ -114,7 +116,7 @@ const SkillBox = ({ skill }: Props) => {
                     }
                     onClick={openViewBox}
                 >
-                    <div>Expand</div>
+                    <div>{t('open')}</div>
                     <FontAwesomeIcon
                         icon={faCircleChevronDown}
                         width={20}

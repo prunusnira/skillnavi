@@ -1,23 +1,46 @@
-'use client';
+import { SidebarMenu, SidebarMenuItems } from '@/common/menu/SidebarMenu';
+import { SidebarWrapper } from '@/feature/header/sidebar/item/SidebarWrapper';
+import { SidebarMenuTitle } from '@/feature/header/sidebar/item/SidebarMenuTitle';
+import { SidebarBox } from '@/feature/header/sidebar/item/SidebarBox';
+import { getTranslations } from 'next-intl/server';
+import { Link } from '@/i18n/routing';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClose } from '@fortawesome/free-solid-svg-icons';
 
-import { cn } from '@/lib/cn';
-import useSidebar from '@/feature/header/sidebar/useSidebar';
-
-const Sidebar = () => {
-    const { isMenuOpen, menu } = useSidebar();
+const Sidebar = async () => {
+    const keys = Object.keys(SidebarMenuItems) as (keyof typeof SidebarMenuItems)[];
+    const t = await getTranslations('sidemenu');
 
     return (
-        <section
-            className={cn(
-                'flex flex-col items-center gap-[16px] pt-[90px] px-[16px] transition-[right] duration-200 ease-in-out bg-white bg-opacity-85 absolute w-full h-screen top-0',
-                {
-                    ['right-0']: isMenuOpen,
-                    ['-right-full']: !isMenuOpen,
-                },
-            )}
-        >
-            {menu}
-        </section>
+        <SidebarWrapper>
+            {keys.map(key => {
+                const menu = SidebarMenuItems[key] as SidebarMenu;
+
+                return (
+                    <section className={'flex flex-col w-full max-w-[768px]'}>
+                        <SidebarMenuTitle id={menu.id} iconSrc={menu.iconSrc} href={menu.href} />
+                        {menu.subMenu && menu.subMenu.length > 0 && (
+                            <SidebarBox>
+                                {menu.subMenu.map(menu => (
+                                    <Link href={menu.href} className={'text-black text-sm'}>
+                                        {t(menu.id)}
+                                    </Link>
+                                ))}
+                            </SidebarBox>
+                        )}
+                    </section>
+                );
+            })}
+
+            <div
+                className={'absolute top-[15px] right-[20px]'}
+            >
+                <FontAwesomeIcon
+                    icon={faClose}
+                    className={'w-[30px] h-[30px]'}
+                />
+            </div>
+        </SidebarWrapper>
     );
 };
 

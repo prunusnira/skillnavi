@@ -8,7 +8,7 @@ import { getRecent } from '@/feature/recent/api/getRecent';
 export const dynamic = 'force-dynamic';
 
 const PageRecent = async () => {
-    const t = await getTranslations('recent');
+    const t = await getTranslations();
     const recent = await getRecent();
 
     if (!recent) {

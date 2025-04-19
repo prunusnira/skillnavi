@@ -13,7 +13,7 @@ import OpenDataPortal from '@/feature/profile/component/opendata/OpenData.portal
 import { ButtonRounded } from '@skillnavi/ui';
 
 const ProfileButton = () => {
-    const t = useTranslations('user.profile.button');
+    const t = useTranslations('profile.info.button');
     const { id } = useParams();
     const user = useAtomValue(atomUser);
     const router = useRouter();
@@ -29,13 +29,13 @@ const ProfileButton = () => {
     return (
         <div className={cn('flex-center gap-2')}>
             <ButtonRounded
-                text={t('mybest')}
+                text={t('count')}
                 onClick={() =>
                     router.push(`${LINK_PLAYCOUNT}?id=${id}&type=music`)
                 }
             />
             <ButtonRounded
-                text={t('clearRankTable')}
+                text={t('cleartable')}
                 onClick={() =>
                     router.push(LINK_PATTERN_TABLE({ id: Number(id) }))
                 }
@@ -43,11 +43,11 @@ const ProfileButton = () => {
             {user && user.id === Number(id) ? (
                 <>
                     <ButtonRounded
-                        text={t('changecomment')}
+                        text={t('comment')}
                         onClick={openCommentPortal}
                     />
                     <ButtonRounded
-                        text={t('setdataopen')}
+                        text={t('openinfo')}
                         onClick={openOpenDataPortal}
                     />
                 </>

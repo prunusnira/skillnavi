@@ -2,7 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import { cn } from '@/lib/cn';
 
 const Footer = async () => {
-    const t = await getTranslations('footer');
+    const t = await getTranslations();
 
     return (
         <footer
@@ -16,7 +16,7 @@ const Footer = async () => {
                 )}
             >
                 <div>(c) 2016 Nira, Made with NextJS</div>
-                <div>{t('fanpage')}</div>
+                <div>{t('bottom')}</div>
             </section>
         </footer>
     );

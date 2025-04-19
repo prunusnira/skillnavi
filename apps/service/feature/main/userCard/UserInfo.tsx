@@ -9,7 +9,7 @@ import UserScript from '@/feature/main/userCard/UserScript';
 const UserInfo = async () => {
     const session = await getServerSession();
     const mydata = await getProfileSession(session);
-    const t = await getTranslations('index.script');
+    const t = await getTranslations('main.user.script');
 
     if (!mydata) {
         return null;
@@ -24,9 +24,9 @@ const UserInfo = async () => {
             {/* 갱신 스크립트 */}
             <section className={'flex-col-center my-[40px]'}>
                 <div className={'text-md font-bold'}>{t('title')}</div>
-                <div className={'text-sm'}>{t('cont')}</div>
+                <div className={'text-sm'}>{t('desc.desc1')}</div>
                 <div className={'text-sm font-bold text-red-400'}>
-                    {t('scriptLogin')}
+                    {t('desc.desc2')}
                 </div>
                 <UserScript unique={mydata.unique_id} />
             </section>

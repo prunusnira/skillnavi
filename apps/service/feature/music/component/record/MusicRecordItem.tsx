@@ -39,7 +39,7 @@ const MusicRecordItem = ({
                              mid,
                              version,
                          }: Props) => {
-    const t = useTranslations('music.record');
+    const t = useTranslations('music');
     const difficulty = getPatternTypeFromCode(patterncode);
     const router = useRouter();
 
@@ -63,7 +63,7 @@ const MusicRecordItem = ({
                         )
                     }
                 >
-                    {t('link')}
+                    {t('ranking')}
                 </div>
             </div>
 
@@ -75,7 +75,7 @@ const MusicRecordItem = ({
             >
                 {/* 데이터 없음 */}
                 {!skill && (
-                    <div className={cn('text-center')}>{t('norecord')}</div>
+                    <div className={cn('text-center')}>{t('nodata')}</div>
                 )}
 
                 {skill && (

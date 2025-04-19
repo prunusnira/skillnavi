@@ -6,6 +6,7 @@ import { GameType } from '@/common/game/data/GameType';
 import ClearTableType from '@/feature/cleartable/component/ClearTable.type';
 import ClearTable from '@/feature/cleartable/component/ClearTable.table';
 import ClearTableChart from '@/feature/cleartable/component/ClearTable.chart';
+import { getTranslations } from 'next-intl/server';
 
 const PageClearTable = async ({
                                   searchParams,
@@ -16,6 +17,7 @@ const PageClearTable = async ({
     const session = await getServerSession();
     const profile = await getProfileSession(session);
     const gameType = type || 'gf';
+    const t = await getTranslations();
 
     if (!profile) {
         return null;
@@ -27,7 +29,7 @@ const PageClearTable = async ({
     });
 
     return (
-        <Card title={`Clear Table (${gameType.toUpperCase()})`}>
+        <Card title={`${t('cleartable')} (${gameType.toUpperCase()})`}>
             {/* 타입변경 */}
             <ClearTableType />
 
