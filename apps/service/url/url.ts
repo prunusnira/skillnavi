@@ -13,19 +13,20 @@ export const LINK_PROFILE_MAIN = (id: number) => `/profile/${id}`;
 export const LINK_PROFILE_MYSKILL = (type: GameType) => `/myskill/${type}`;
 export const LINK_PLAYCOUNT = '/playcount'; // 기존의 마이베스트임
 export const LINK_SNAPSHOT = '/snapshot';
-export const LINK_SNAPSHOT_DETAIL = (uid: number, type: string, date: string) => `/snapshot/${uid}/${type}/${date}`
+export const LINK_SNAPSHOT_DETAIL = (uid: number, type: string, date: string) =>
+    `/snapshot/${uid}/${type}/${date}`;
 export const LINK_SKILL_RECENT = '/recent';
 export const LINK_SKILL_EXC = (type: GameType) => `/skill/exc/${type}`;
 export const LINK_SKILL_SELF = (type: GameType) => `/skill/my/${type}`;
 export const LINK_SKILL_TABLE = ({
-                                     version,
-                                     game,
-                                     id,
-                                     pageType,
-                                     page = 1,
-                                     order,
-                                     display,
-                                 }: SkillPageParams) => {
+    version,
+    game,
+    id,
+    pageType,
+    page = 1,
+    order,
+    display,
+}: SkillPageParams) => {
     const params = new URLSearchParams();
     params.set('game', game);
     params.set('pageType', pageType);
@@ -36,23 +37,21 @@ export const LINK_SKILL_TABLE = ({
     return `/skill/${id}${params.size && `?${params.toString()}`}`;
 };
 export const LINK_MUSIC_LIST = ``;
-export const LINK_MUSIC_INFO = (
-    {
-        version,
-        mid,
-        uid,
-    }: {
-        version: number;
-        mid: number;
-        uid: number;
-    },
-) => `/music/info?mid=${mid}&uid=${uid}&version=${version}`;
+export const LINK_MUSIC_INFO = ({
+    version,
+    mid,
+    uid,
+}: {
+    version: number;
+    mid: number;
+    uid: number;
+}) => `/music/info?mid=${mid}&uid=${uid}&version=${version}`;
 
 export const LINK_PATTERN_LIST = ({
-                                      version,
-                                      order,
-                                      page,
-                                  }: {
+    version,
+    order,
+    page,
+}: {
     version?: number;
     order?: Order;
     page?: number;
@@ -71,9 +70,9 @@ export const LINK_PATTERN_LIST = ({
     return `/music/list${query.length > 0 ? `?${query}` : ''}`;
 };
 export const LINK_PATTERN_TABLE = ({
-                                       type,
-                                       id,
-                                   }: {
+    type,
+    id,
+}: {
     type?: GameType;
     id?: number;
 }) => {
@@ -96,7 +95,10 @@ export const LINK_PATTERN_RANK = (
 export const LINK_TOWER_MAIN = '/tower';
 export const LINK_TOWER_DETAIL = '/tower/detail';
 export const LINK_AUTH_LOGIN = `/auth/signin`;
-export const LINK_AUTH_NEWUSER = `/user/join`;export const LINK_RANK_SKILL = (type: GameType, page: number) =>
+export const LINK_AUTH_NEWUSER = `/user/join`;
+export const LINK_RANK_SKILL = (type: GameType, page: number) =>
     `/rank/skill?type=${type}&page=${page}`;
 export const LINK_RANK_PLAYCOUNT = (page: number) =>
     `/rank/playcount?page=${page}`;
+export const LINK_SEARCH = (type: string, value: string) =>
+    `/search?type=${type}&value=${value}&page=1`;

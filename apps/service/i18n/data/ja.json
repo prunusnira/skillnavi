@@ -35,7 +35,8 @@
         "player": "ユーザー名検索",
         "gfskill": "GFスキル検索",
         "dmskill": "DMスキル検索"
-      }
+      },
+      "button": "検索"
     }
   },
   "main": {

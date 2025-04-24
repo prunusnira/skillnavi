@@ -39,4 +39,5 @@ export const API_USER_JOIN = `${PREFIX}/user/join`;
 export const API_SNAPSHOT_LIST = `${PREFIX}/snapshot/list`;
 export const API_SNAPSHOT_DETAIL = `${PREFIX}/snapshot/get`;
 export const API_SNAPSHOT_CREATE = `${PREFIX}/snapshot/create`;
-export const API_LOG = `${PREFIX}/log`;
+export const API_SEARCH = (type: string, value: string, page: number) =>
+    `${PREFIX}/search?type=${type}&value=${value}&page=${page}`;

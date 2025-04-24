@@ -35,7 +35,8 @@
         "player": "Search by Username",
         "gfskill": "Search GF Skill",
         "dmskill": "Search DM Skill"
-      }
+      },
+      "button": "Search"
     }
   },
   "main": {

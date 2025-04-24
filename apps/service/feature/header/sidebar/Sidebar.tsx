@@ -6,23 +6,39 @@ import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
+import { SidebarSearch } from '@/feature/header/sidebar/item/SidebarSearch';
 
 const Sidebar = async () => {
-    const keys = Object.keys(SidebarMenuItems) as (keyof typeof SidebarMenuItems)[];
+    const keys = Object.keys(
+        SidebarMenuItems,
+    ) as (keyof typeof SidebarMenuItems)[];
     const t = await getTranslations('sidemenu');
 
     return (
         <SidebarWrapper>
-            {keys.map(key => {
+            <SidebarSearch />
+
+            {keys.map((key) => {
                 const menu = SidebarMenuItems[key] as SidebarMenu;
 
                 return (
-                    <section className={'flex flex-col w-full max-w-[768px]'}>
-                        <SidebarMenuTitle id={menu.id} iconSrc={menu.iconSrc} href={menu.href} />
+                    <section
+                        key={`sidebar_${key}`}
+                        className={'flex flex-col w-full max-w-[768px]'}
+                    >
+                        <SidebarMenuTitle
+                            id={menu.id}
+                            iconSrc={menu.iconSrc}
+                            href={menu.href}
+                        />
                         {menu.subMenu && menu.subMenu.length > 0 && (
                             <SidebarBox>
-                                {menu.subMenu.map(menu => (
-                                    <Link href={menu.href} className={'text-black text-sm'}>
+                                {menu.subMenu.map((menu) => (
+                                    <Link
+                                        key={menu.id}
+                                        href={menu.href}
+                                        className={'text-black text-sm'}
+                                    >
                                         {t(menu.id)}
                                     </Link>
                                 ))}
@@ -32,9 +48,7 @@ const Sidebar = async () => {
                 );
             })}
 
-            <div
-                className={'absolute top-[15px] right-[20px]'}
-            >
+            <div className={'absolute top-[15px] right-[20px]'}>
                 <FontAwesomeIcon
                     icon={faClose}
                     className={'w-[30px] h-[30px]'}
