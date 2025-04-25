@@ -41,6 +41,7 @@ const Header = () => {
                         onClick={() => {
                             setEnv({ version: version.id });
                         }}
+                        customClass={'!border-black !text-black'}
                     />
                 ))}
             </section>

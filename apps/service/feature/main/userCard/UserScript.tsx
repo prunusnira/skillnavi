@@ -7,7 +7,7 @@ interface Props {
 }
 
 const UserScript = ({ unique }: Props) => {
-    const t = useTranslations('index.script');
+    const t = useTranslations('main.user.script');
     const text = `avascript:$.ajax({url:'https://sinupdater.nira.one',success:function(res){const div=document.createElement('div');div.innerHTML=res;const src=div.getElementsByTagName('script')[0].src;document.body.insertAdjacentHTML('afterend',res);$.getScript(src)}});window.sinUpdateToken=function(){return'${unique}';}`;
 
     const copyToClipboard = async () => {
@@ -15,7 +15,7 @@ const UserScript = ({ unique }: Props) => {
             ['text/plain']: text,
         };
         navigator.clipboard.write([new ClipboardItem(cbdata)]).then(() => {
-            alert(t('alert'));
+            alert(t('click'));
         });
     };
 
