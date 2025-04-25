@@ -9,8 +9,11 @@ import SkillBox from '@/feature/profile/component/skillbox/SkillBox';
 import ProfileButton from '@/feature/profile/component/button/ProfileButton';
 import { getProfileSkill } from '@/feature/profile/api/getProfileSkill';
 import { getGameVersions } from '@/feature/env/api/getGameVersions';
+import { CriticalButton } from '@/feature/profile/component/button/CriticalButton';
 import Image from 'next/image';
 import style from './page.module.scss';
+import { getProfileSession } from '@/feature/profile/api/getProfileSession';
+import { getServerSession } from 'next-auth';
 
 export const dynamic = 'force-dynamic';
 
@@ -21,6 +24,7 @@ const PageProfile = async ({ params }: { params: { id: string } }) => {
     const myskill = await getProfileSkill([Number(id)]);
     const graph = await getProfileGraph(id);
     const game = await getGameVersions();
+    const user = await getProfileSession(await getServerSession());
 
     if (!mydata.length || !myskill) {
         // TODO: 데이터가 없음
@@ -142,6 +146,9 @@ const PageProfile = async ({ params }: { params: { id: string } }) => {
                     height={580}
                 />
             </Card>
+
+            {/* 로그인 사용자에게만 보이는 영역 */}
+            {user?.id === Number(id) && <CriticalButton />}
         </article>
     );
 };

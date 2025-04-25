@@ -14,6 +14,8 @@ export const API_PROFILE_COMMENT = (id: string) =>
 export const API_PROFILE_OPENDATA = (id: string) =>
     `${PREFIX}/profile/${id}/opendata`;
 export const API_PROFILE_ICON = (id: number) => `${PREFIX}/profile/${id}/icon`;
+export const API_PROFILE_RESET = (id: string) =>
+    `${PREFIX}/profile/${id}/reset`;
 export const API_RECENT = `${PREFIX}/recent`;
 export const API_SKILL_TABLE = `${PREFIX}/skill/table`;
 export const API_SKILL_TOWER = `${PREFIX}/skill/tower`;

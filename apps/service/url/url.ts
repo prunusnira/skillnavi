@@ -11,6 +11,7 @@ export const LINK_MAIN = '/';
 export const LINK_PROFILE_SELF = '/profile';
 export const LINK_PROFILE_MAIN = (id: number) => `/profile/${id}`;
 export const LINK_PROFILE_MYSKILL = (type: GameType) => `/myskill/${type}`;
+export const LINK_PROFILE_RESET = (id: number) => `/profile/${id}/reset`;
 export const LINK_PLAYCOUNT = '/playcount'; // 기존의 마이베스트임
 export const LINK_SNAPSHOT = '/snapshot';
 export const LINK_SNAPSHOT_DETAIL = (uid: number, type: string, date: string) =>

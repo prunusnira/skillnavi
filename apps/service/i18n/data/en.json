@@ -113,7 +113,26 @@
         "count": "Number of Play Stages"
       }
     },
-    "board": "Player Board"
+    "board": "Player Board",
+    "critical": {
+      "title": "Critical Area",
+      "button": {
+        "reset": "Reset Data"
+      }
+    }
+  },
+  "reset": {
+    "title": "Reset Data",
+    "description": {
+      "desc1": "This process is irreversible, so please proceed with caution.",
+      "desc2": "All saved record data will be deleted.",
+      "desc3": "Are you sure you want to continue?"
+    },
+    "alert": {
+      "invalid": "User could not be verified.",
+      "error": "An error has occurred.",
+      "success": "Data reset and logout have been completed."
+    }
   },
   "pattern": {
     "title": "Pattern List"
