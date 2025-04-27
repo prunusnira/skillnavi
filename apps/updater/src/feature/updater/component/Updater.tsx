@@ -11,7 +11,7 @@ import { ButtonStandard } from '@skillnavi/ui';
 const Updater = () => {
     const env = useAtomValue(atomCrawler);
     const { crawlSelRunner, crawlRunner } = useCrawerRunner();
-    const { lang, version, btnDisabled, latest } = env;
+    const { lang, btnDisabled } = env;
 
     return (
         <section className="flex flex-col gap-[20px]">
@@ -26,17 +26,17 @@ const Updater = () => {
             >
                 <ButtonStandard
                     onClick={() => crawlRunner(11)}
-                    disabled={version !== latest ? true : btnDisabled}
+                    disabled={btnDisabled}
                     text={'GF'}
                 />
                 <ButtonStandard
                     onClick={() => crawlRunner(12)}
-                    disabled={version !== latest ? true : btnDisabled}
+                    disabled={btnDisabled}
                     text={'DM'}
                 />
                 <ButtonStandard
                     onClick={() => crawlRunner(10)}
-                    disabled={version !== latest ? true : btnDisabled}
+                    disabled={btnDisabled}
                     text={'All'}
                 />
             </UpdaterBlock>
@@ -80,106 +80,6 @@ const Updater = () => {
                 />
             </UpdaterBlock>
 
-            {/* 즐겨찾기 */}
-            {/*<UpdaterBlock*/}
-            {/*    title={(text.crawler.descFavoT as any)[lang]}*/}
-            {/*    description={(text.crawler.descFavo as any)[lang]}*/}
-            {/*>*/}
-            {/*    <ButtonStandard*/}
-            {/*        onClick={() => crawlRunner(411)}*/}
-            {/*        disabled={*/}
-            {/*            version !== latest*/}
-            {/*                ? true*/}
-            {/*                : btnDisabled*/}
-            {/*        }*/}
-            {/*        text={'GF'}*/}
-            {/*    />*/}
-            {/*    <ButtonStandard*/}
-            {/*        onClick={() => crawlRunner(421)}*/}
-            {/*        disabled={*/}
-            {/*            version !== latest*/}
-            {/*                ? true*/}
-            {/*                : btnDisabled*/}
-            {/*        }*/}
-            {/*        text={'DM'}*/}
-            {/*    />*/}
-            {/*    <ButtonStandard*/}
-            {/*        onClick={() => crawlRunner(401)}*/}
-            {/*        disabled={*/}
-            {/*            version !== latest*/}
-            {/*                ? true*/}
-            {/*                : btnDisabled*/}
-            {/*        }*/}
-            {/*        text={'All'}*/}
-            {/*    />*/}
-            {/*</UpdaterBlock>*/}
-
-            {/*<UpdaterBlock*/}
-            {/*    title={(text.crawler.descFavoT as any)[lang]}*/}
-            {/*    description={(text.crawler.descFavo as any)[lang]}*/}
-            {/*>*/}
-            {/*    <ButtonStandard*/}
-            {/*        onClick={() => crawlRunner(412)}*/}
-            {/*        disabled={*/}
-            {/*            version !== latest*/}
-            {/*                ? true*/}
-            {/*                : btnDisabled*/}
-            {/*        }*/}
-            {/*        text={'GF'}*/}
-            {/*    />*/}
-            {/*    <ButtonStandard*/}
-            {/*        onClick={() => crawlRunner(422)}*/}
-            {/*        disabled={*/}
-            {/*            version !== latest*/}
-            {/*                ? true*/}
-            {/*                : btnDisabled*/}
-            {/*        }*/}
-            {/*        text={'DM'}*/}
-            {/*    />*/}
-            {/*    <ButtonStandard*/}
-            {/*        onClick={() => crawlRunner(402)}*/}
-            {/*        disabled={*/}
-            {/*            version !== latest*/}
-            {/*                ? true*/}
-            {/*                : btnDisabled*/}
-            {/*        }*/}
-            {/*        text={'All'}*/}
-            {/*    />*/}
-            {/*</UpdaterBlock>*/}
-
-            {/*<UpdaterBlock*/}
-            {/*    title={(text.crawler.descFavoT as any)[lang]}*/}
-            {/*    description={(text.crawler.descFavo as any)[lang]}*/}
-            {/*>*/}
-            {/*    <ButtonStandard*/}
-            {/*        onClick={() => crawlRunner(413)}*/}
-            {/*        disabled={*/}
-            {/*            version !== latest*/}
-            {/*                ? true*/}
-            {/*                : btnDisabled*/}
-            {/*        }*/}
-            {/*        text={'GF'}*/}
-            {/*    />*/}
-            {/*    <ButtonStandard*/}
-            {/*        onClick={() => crawlRunner(423)}*/}
-            {/*        disabled={*/}
-            {/*            version !== latest*/}
-            {/*                ? true*/}
-            {/*                : btnDisabled*/}
-            {/*        }*/}
-            {/*        text={'DM'}*/}
-            {/*    />*/}
-            {/*    <ButtonStandard*/}
-            {/*        onClick={() => crawlRunner(403)}*/}
-            {/*        disabled={*/}
-            {/*            version !== latest*/}
-            {/*                ? true*/}
-            {/*                : btnDisabled*/}
-            {/*        }*/}
-            {/*        text={'All'}*/}
-            {/*    />*/}
-            {/*</UpdaterBlock>*/}
-
             {/* 플레이어 보드 */}
             <UpdaterBlock
                 title={(text.crawler.board.title as any)[lang]}
@@ -187,12 +87,12 @@ const Updater = () => {
             >
                 <ButtonStandard
                     onClick={() => crawlRunner(51)}
-                    disabled={version !== latest ? true : btnDisabled}
+                    disabled={btnDisabled}
                     text={`GF ${(text.crawler.board.short as any)[lang]}`}
                 />
                 <ButtonStandard
                     onClick={() => crawlRunner(52)}
-                    disabled={version !== latest ? true : btnDisabled}
+                    disabled={btnDisabled}
                     text={`DM ${(text.crawler.board.short as any)[lang]}`}
                 />
             </UpdaterBlock>
@@ -211,12 +111,12 @@ const Updater = () => {
                     <div className="flex">
                         <ButtonStandard
                             onClick={() => crawlSelRunner(1)}
-                            disabled={version !== latest ? true : btnDisabled}
+                            disabled={btnDisabled}
                             text={(text.crawler.gsel as any)[lang]}
                         />
                         <ButtonStandard
                             onClick={() => crawlSelRunner(2)}
-                            disabled={version !== latest ? true : btnDisabled}
+                            disabled={btnDisabled}
                             text={(text.crawler.dsel as any)[lang]}
                         />
                     </div>

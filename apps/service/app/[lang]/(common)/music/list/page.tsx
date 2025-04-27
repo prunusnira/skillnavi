@@ -5,23 +5,28 @@ import { MUSICLIST_SIZE } from '@/feature/env/data/constant';
 import { getMusicList } from '@/feature/music/api/getMusicList';
 import { getLatestVersion } from '@/feature/env/api/getGameVersions';
 import { MusicListItem } from '@/feature/music/component/list/MusicListItem';
+import { PatternListMenu } from '@/feature/music/component/list/menu/PatternListMenu';
 
 const PageMusicList = async ({
     searchParams,
 }: {
     searchParams: {
-        version: string;
+        musicVersion: string;
+        gameVersion: string;
         order: string;
         page: string;
     };
 }) => {
+    const latest = await getLatestVersion();
     const {
-        version = await getLatestVersion(),
+        musicVersion = latest,
+        gameVersion = latest,
         order,
         page = 1,
     } = searchParams;
     const data = await getMusicList({
-        version: Number(version),
+        musicVersion: Number(musicVersion),
+        gameVersion: Number(gameVersion),
         order,
         page: Number(page),
     });
@@ -33,18 +38,22 @@ const PageMusicList = async ({
 
     return (
         <Card title={t('title')}>
-            {music.map((s) => (
-                <MusicListItem
-                    key={s.mid}
-                    s={s}
-                    version={version}
-                />
-            ))}
+            <section className={'flex-col-center gap-[20px] w-full'}>
+                <PatternListMenu />
 
-            <Pager
-                page={Number(page)}
-                allpage={pages}
-            />
+                {music.map((s) => (
+                    <MusicListItem
+                        key={s.mid}
+                        s={s}
+                        version={gameVersion}
+                    />
+                ))}
+
+                <Pager
+                    page={Number(page)}
+                    allpage={pages}
+                />
+            </section>
         </Card>
     );
 };

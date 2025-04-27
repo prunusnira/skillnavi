@@ -17,20 +17,21 @@ export const GET = async (req: NextRequest) => {
         work: async () => {
             const searchParams = req.nextUrl.searchParams;
 
-            const version = Number(searchParams.get('version'));
+            const musicVersion = Number(searchParams.get('musicVersion'));
+            const gameVersion = Number(searchParams.get('gameVersion'));
             const order = searchParams.get('order') || 'titleasc';
             const page = Number(searchParams.get('page'));
 
             const musicCount = await prisma.musicList.count({
                 where: {
-                    version,
+                    version: musicVersion,
                 },
             });
 
             // 현재 페이지의 음악 목록
             const musicList = (await prisma.musicList.findMany({
                 where: {
-                    version,
+                    version: musicVersion,
                 },
                 orderBy: [
                     {
@@ -50,7 +51,7 @@ export const GET = async (req: NextRequest) => {
                 const patternList = (await prisma.patternList.findMany({
                     where: {
                         mid: id,
-                        version,
+                        version: gameVersion,
                     },
                 })) as Pattern[];
 

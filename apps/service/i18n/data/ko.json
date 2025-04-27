@@ -142,7 +142,12 @@
     "nodata": "데이터가 없습니다",
     "version": "버전",
     "mode": "게임모드",
-    "ranking": "패턴 랭킹 보기"
+    "ranking": "패턴 랭킹 보기",
+    "menu": {
+      "musicVersion": "곡 버전",
+      "gameVersion": "게임 버전",
+      "close": "닫기"
+    }
   },
   "recent": "최근 갱신유저",
   "ranking": "스킬 랭킹",

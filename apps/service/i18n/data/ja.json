@@ -142,7 +142,12 @@
     "nodata": "データがありません",
     "version": "バージョン",
     "mode": "ゲームモード",
-    "ranking": "パターンランキングを見る"
+    "ranking": "パターンランキングを見る",
+    "menu": {
+      "musicVersion": "曲バージョン",
+      "gameVersion": "ゲームバーション",
+      "close": "閉じる"
+    }
   },
   "recent": "最近更新したユーザー",
   "ranking": "スキルランキング",

@@ -142,7 +142,12 @@
     "nodata": "No data available",
     "version": "Version",
     "mode": "Game Mode",
-    "ranking": "View Pattern Ranking"
+    "ranking": "View Pattern Ranking",
+    "menu": {
+      "musicVersion": "Music Version",
+      "gameVersion": "Game Version",
+      "close": "Close"
+    }
   },
   "recent": "Recently Updated Users",
   "ranking": "Skill Ranking",

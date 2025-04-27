@@ -1,31 +1,28 @@
+'use client';
+
+import { useAtomValue } from 'jotai';
+import { atomGameVersionList } from '@/common/game/data/atomGameVersion';
+
 interface Props {
     version: number;
 }
 
 // ALL 곡 삭제 정보
 const MusicRemoved = ({ version }: Props) => {
+    const versionList = useAtomValue(atomGameVersionList);
     const removeText = (version: number) => {
-        switch (version) {
-            case 24:
-                return 'removed in TB';
-            case 25:
-                return 'removed in TBRE';
-            case 26:
-                return 'removed in MX';
-            case 27:
-                return 'removed in EX';
-            case 28:
-                return 'removed in NX';
-            case 29:
-                return 'removed in HV';
-            case 30:
-                return 'removed in FU';
-            case 31:
-                return 'removed in GW';
-        }
+        return `removed in ${versionList?.find((v) => v.id === version)?.short ?? 'unknown'}`;
     };
 
-    return <div>{removeText(version)}</div>;
+    if (version === 0) {
+        return null;
+    }
+
+    return (
+        <div className={'text-sm text-red-500 font-bold'}>
+            {removeText(version)}
+        </div>
+    );
 };
 
 export default MusicRemoved;
