@@ -36,7 +36,8 @@
         "gfskill": "GF스킬 검색",
         "dmskill": "DM스킬 검색"
       },
-      "button": "검색"
+      "button": "검색",
+      "placeholder": "검색어 입력"
     }
   },
   "main": {
@@ -61,14 +62,10 @@
         "playcount": "플레이카운트"
       }
     },
-    "notice": {
-      "title": "공지사항",
-      "table": {
-        "no": "번호",
-        "title": "제목",
-        "date": "일자"
-      },
-      "empty": "공지사항이 없습니다"
+    "discord": {
+      "title": "Skill Navigator 디스코드 서버",
+      "desc": "서비스 공지사항 등 중요 내용을 Skill Navigator 디스코드에서 확인해주세요",
+      "link": "바로가기"
     },
     "howto": {
       "part1": {

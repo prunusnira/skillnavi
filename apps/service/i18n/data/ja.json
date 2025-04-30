@@ -36,7 +36,8 @@
         "gfskill": "GFスキル検索",
         "dmskill": "DMスキル検索"
       },
-      "button": "検索"
+      "button": "検索",
+      "placeholder": "検索のキーワード入力"
     }
   },
   "main": {
@@ -61,14 +62,10 @@
         "playcount": "プレイ回数"
       }
     },
-    "notice": {
-      "title": "お知らせ",
-      "table": {
-        "no": "番号",
-        "title": "タイトル",
-        "date": "日付"
-      },
-      "empty": "お知らせはありません。"
+    "discord": {
+      "title": "Skill Navigator ディスコード",
+      "desc": "お知らせはSkill Navigatorディスコードでご確認ください",
+      "link": "Discordへ移動"
     },
     "howto": {
       "part1": {

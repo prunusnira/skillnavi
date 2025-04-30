@@ -1,6 +1,6 @@
 'use client';
 
-import { IMG, LINK_AUTH_LOGIN } from '@/url/url';
+import { DISCORD, IMG, LINK_AUTH_LOGIN } from '@/url/url';
 import NavItem from '@/feature/header/NavItem';
 import useNavbar from '@/feature/header/navbar/useNavbar';
 import { useTranslations } from 'next-intl';
@@ -13,7 +13,8 @@ import Image from 'next/image';
 import { clsx } from 'clsx';
 
 const Navbar = () => {
-    const { isMenuOpen, handleLinkMain, controlMenu, controlOption } = useNavbar();
+    const { isMenuOpen, handleLinkMain, controlMenu, controlOption } =
+        useNavbar();
     const t = useTranslations('navbar');
     const { data: session } = useSession();
     const router = useRouter();
@@ -49,11 +50,7 @@ const Navbar = () => {
                 <NavItem>
                     <div
                         className={'cursor-pointer'}
-                        onClick={() =>
-                            router.push(
-                                process.env.NEXT_PUBLIC_URL_DISCORD || '',
-                            )
-                        }
+                        onClick={() => router.push(DISCORD)}
                     >
                         <FontAwesomeIcon icon={faDiscord} />
                     </div>

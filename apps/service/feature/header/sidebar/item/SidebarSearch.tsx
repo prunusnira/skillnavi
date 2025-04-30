@@ -20,7 +20,11 @@ export const SidebarSearch = () => {
     const router = useRouter();
     const t = useTranslations('sidemenu.search');
     return (
-        <div className={'flex flex-row max-w-[768px]'}>
+        <div
+            className={
+                'flex flex-col md:flex-row w-full max-w-[768px] gap-[4px]'
+            }
+        >
             <Select
                 options={[
                     {
@@ -44,11 +48,13 @@ export const SidebarSearch = () => {
                 onChange={(e) => setSearchType(e.currentTarget.value)}
             />
             <InputText
-                customClass={'flex-grow-1'}
+                customClass={'flex-1 w-full'}
                 value={searchText}
+                placeholder={t('placeholder')}
                 onChange={(e) => setSearchText(e.currentTarget.value)}
             />
             <ButtonStandard
+                customClass={'break-keep'}
                 text={t('button')}
                 onClick={() => {
                     router.push(LINK_SEARCH(searchType, searchText));

@@ -7,6 +7,8 @@ export const ALBUM = process.env.NEXT_PUBLIC_URL_ALBUM || '';
 
 export const PUBLICEP = process.env.NEXT_PUBLIC_URL_PUBLICEP || '';
 
+export const DISCORD = process.env.NEXT_PUBLIC_URL_DISCORD || '';
+
 export const LINK_MAIN = '/';
 export const LINK_PROFILE_SELF = '/profile';
 export const LINK_PROFILE_MAIN = (id: number) => `/profile/${id}`;

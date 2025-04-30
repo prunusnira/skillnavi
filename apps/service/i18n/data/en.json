@@ -36,7 +36,8 @@
         "gfskill": "Search GF Skill",
         "dmskill": "Search DM Skill"
       },
-      "button": "Search"
+      "button": "Search",
+      "placeholder": "Search keyword here"
     }
   },
   "main": {
@@ -61,14 +62,10 @@
         "playcount": "Play Count"
       }
     },
-    "notice": {
-      "title": "Notice",
-      "table": {
-        "no": "No",
-        "title": "Title",
-        "date": "Date"
-      },
-      "empty": "No notices available."
+    "discord": {
+      "title": "Skill Navigator Discord Server",
+      "desc": "Please check Skill Navigator discord server for announcements",
+      "link": "Open Discord Link"
     },
     "howto": {
       "part1": {
