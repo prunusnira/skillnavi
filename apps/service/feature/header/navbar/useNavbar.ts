@@ -1,4 +1,4 @@
-import { useAtom } from 'jotai/index';
+import { useAtom } from 'jotai';
 import { LINK_MAIN } from '@/url/url';
 import { useRouter } from '@/i18n/routing';
 import { atomEnv } from '@/feature/env/data/AtomEnv';

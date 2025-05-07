@@ -1,6 +1,6 @@
 {
   "name": "skillnavi",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "skillnavi-workspaces",
   "main": "index.js",
   "repository": "https://github.com/prunusnira/skillnavi-nextjs.git",

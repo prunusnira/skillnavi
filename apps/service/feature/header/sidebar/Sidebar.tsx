@@ -4,9 +4,8 @@ import { SidebarMenuTitle } from '@/feature/header/sidebar/item/SidebarMenuTitle
 import { SidebarBox } from '@/feature/header/sidebar/item/SidebarBox';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClose } from '@fortawesome/free-solid-svg-icons';
 import { SidebarSearch } from '@/feature/header/sidebar/item/SidebarSearch';
+import { SidebarClose } from '@/feature/header/sidebar/item/SidebarClose';
 
 const Sidebar = async () => {
     const keys = Object.keys(
@@ -48,12 +47,7 @@ const Sidebar = async () => {
                 );
             })}
 
-            <div className={'absolute top-[15px] right-[20px]'}>
-                <FontAwesomeIcon
-                    icon={faClose}
-                    className={'w-[30px] h-[30px]'}
-                />
-            </div>
+            <SidebarClose />
         </SidebarWrapper>
     );
 };

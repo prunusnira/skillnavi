@@ -9,9 +9,9 @@ export const SidebarWrapper = ({ children }: PropsWithChildren) => {
     return (
         <section
             className={cn(
-                'flex flex-col items-center gap-[16px] pt-[90px] px-[16px]',
+                'flex flex-col items-center gap-[16px] py-[90px] px-[16px]',
                 'transition-[right] duration-200 ease-in-out',
-                'fixed w-full h-screen top-0',
+                'fixed w-full h-screen top-0 overflow-y-scroll',
                 'bg-[linear-gradient(#000000dd,#ffffffdd,#ffffffdd,#ffffffdd,#ffffffdd,#ffffffdd,#ffffffdd,#ffffffdd,#ffffffdd,#ffffffdd)]',
                 {
                     ['right-0']: isMenuOpen,
