@@ -68,6 +68,8 @@ export const LINK_PATTERN_LIST = ({
     }
     if (page) {
         searchParams.set('page', String(page));
+    } else {
+        searchParams.set('page', '1');
     }
     const query = searchParams.toString();
     return `/music/list${query.length > 0 ? `?${query}` : ''}`;

@@ -8,15 +8,14 @@ import MusicData from '@/feature/music/component/data/MusicData';
 import Image from 'next/image';
 
 const PageMusic = async (
-    {
-        searchParams,
-    }: {
-        searchParams: {
+    props: {
+        searchParams: Promise<{
             mid: string;
             uid: string;
-        };
-    },
+        }>;
+    }
 ) => {
+    const searchParams = await props.searchParams;
     const t = await getTranslations('music');
     const { mid, uid } = searchParams;
 

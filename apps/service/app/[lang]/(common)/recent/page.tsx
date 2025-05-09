@@ -4,8 +4,6 @@ import { cn } from '@/lib/cn';
 import { getRecent } from '@/feature/recent/api/getRecent';
 import { RecentItem } from '@/feature/recent/component/Recent.item';
 
-export const dynamic = 'force-dynamic';
-
 const PageRecent = async () => {
     const t = await getTranslations();
     const recent = await getRecent();
@@ -17,9 +15,9 @@ const PageRecent = async () => {
     return (
         <Card title={t('recent')}>
             <section className={cn('w-full px-2 py-8')}>
-                {recent.map((r) => (
+                {recent.map((r, i) => (
                     <RecentItem
-                        key={r.id}
+                        key={`${r.id}_${i}`}
                         user={r}
                     />
                 ))}

@@ -3,12 +3,11 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Skill } from '@/feature/skill/data/Skill';
 import prisma from '@/lib/db/prisma';
 
-export const dynamic = 'force-dynamic';
-
 export const GET = async (
     req: NextRequest,
-    { params }: { params: { mid: number } },
+    props: { params: Promise<{ mid: number }> },
 ) => {
+    const params = await props.params;
     return await RouteWrapper({
         req,
         work: async () => {

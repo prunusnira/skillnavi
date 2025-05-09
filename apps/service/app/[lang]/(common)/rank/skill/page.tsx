@@ -7,11 +7,12 @@ import Card from '@/common/card/Card';
 import { getTranslations } from 'next-intl/server';
 import SkillRankType from '@/feature/rank/skill/component/SkillRankType';
 
-const PageSkillRank = async ({
-                                 searchParams,
-                             }: {
-    searchParams: { page: string; type: GameType };
-}) => {
+const PageSkillRank = async (
+    props: {
+        searchParams: Promise<{ page: string; type: GameType }>;
+    }
+) => {
+    const searchParams = await props.searchParams;
     const { page, type } = searchParams;
     const { rank, pages } = await getSkillRank({ page: Number(page), type });
     const t = await getTranslations();

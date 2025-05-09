@@ -5,10 +5,8 @@ import { Prisma } from '@prisma/client';
 import { getServerSession } from 'next-auth';
 import { getProfileSession } from '@/feature/profile/api/getProfileSession';
 
-export const POST = async (
-    req: NextRequest,
-    { params }: { params: { id: string } },
-) => {
+export const POST = async (req: NextRequest, props: { params: Promise<{ id: string }> }) => {
+    const params = await props.params;
     return RouteWrapper({
         req,
         work: async () => {

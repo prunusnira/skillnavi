@@ -1,13 +1,15 @@
+const path = require('node:path');
 const createNextIntlPlugin = require('next-intl/plugin');
 const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    outputFileTracingRoot: path.join(__dirname, '../../'),
     transpilePackages: ['@skillnavi/ui'],
     images: {
         domains: [
-            'img.nira.one'
-        ]
+            'img.nira.one',
+        ],
     },
     async headers() {
         return [

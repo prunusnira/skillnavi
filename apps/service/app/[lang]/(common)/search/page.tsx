@@ -8,11 +8,12 @@ import { getLatestVersion } from '@/feature/env/api/getGameVersions';
 import { Recent } from '@/feature/recent/data/Recent';
 import { RecentItem } from '@/feature/recent/component/Recent.item';
 
-const PageSearch = async ({
-    searchParams,
-}: {
-    searchParams: { type: string; value: string; page: number };
-}) => {
+const PageSearch = async (
+    props: {
+        searchParams: Promise<{ type: string; value: string; page: number }>;
+    }
+) => {
+    const searchParams = await props.searchParams;
     const t = await getTranslations('search');
     const t2 = await getTranslations('sidemenu.search.type');
     const latest = await getLatestVersion();

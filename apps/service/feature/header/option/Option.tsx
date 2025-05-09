@@ -22,7 +22,7 @@ const Option = () => {
     const onChangeLocale = (e: ChangeEvent<HTMLSelectElement>) => {
         const nextLanguage = e.currentTarget.value as keyof typeof Language;
 
-        // @ts-ignore - next-intl에서 무시하게 함
+        // @ts-expect-error - next-intl에서 무시하게 함
         router.push({ pathname, params }, { locale: nextLanguage });
     };
 
@@ -32,7 +32,9 @@ const Option = () => {
 
     return (
         <section
-            className={'fixed right-[20px] top-[70px] flex flex-col gap-[16px] bg-white dark:bg-gray-900 px-[20px] py-[10px] rounded-2xl shadow'}
+            className={
+                'fixed right-[20px] top-[70px] flex flex-col gap-[16px] bg-white dark:bg-gray-900 px-[20px] py-[10px] rounded-2xl shadow'
+            }
         >
             {/* 테마 변경 */}
             <div className={'flex items-center'}>
@@ -57,21 +59,15 @@ const Option = () => {
                         options={[
                             {
                                 value: 'en',
-                                display: (
-                                    <div>English</div>
-                                ),
+                                display: 'English',
                             },
                             {
                                 value: 'ko',
-                                display: (
-                                    <div>한국어</div>
-                                ),
+                                display: '한국어',
                             },
                             {
                                 value: 'ja',
-                                display: (
-                                    <div>日本語</div>
-                                ),
+                                display: '日本語',
                             },
                         ]}
                         value={locale}

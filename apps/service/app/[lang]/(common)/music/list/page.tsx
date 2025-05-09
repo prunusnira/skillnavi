@@ -7,16 +7,17 @@ import { getLatestVersion } from '@/feature/env/api/getGameVersions';
 import { MusicListItem } from '@/feature/music/component/list/MusicListItem';
 import { PatternListMenu } from '@/feature/music/component/list/menu/PatternListMenu';
 
-const PageMusicList = async ({
-    searchParams,
-}: {
-    searchParams: {
-        musicVersion: string;
-        gameVersion: string;
-        order: string;
-        page: string;
-    };
-}) => {
+const PageMusicList = async (
+    props: {
+        searchParams: Promise<{
+            musicVersion: string;
+            gameVersion: string;
+            order: string;
+            page: string;
+        }>;
+    }
+) => {
+    const searchParams = await props.searchParams;
     const latest = await getLatestVersion();
     const {
         musicVersion = latest,

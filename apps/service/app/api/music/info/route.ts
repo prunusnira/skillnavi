@@ -3,8 +3,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Music } from '@/feature/music/data/Music';
 import prisma from '@/lib/db/prisma';
 
-export const dynamic = 'force-dynamic';
-
 export const GET = async (req: NextRequest) => {
     return await RouteWrapper({
         req,

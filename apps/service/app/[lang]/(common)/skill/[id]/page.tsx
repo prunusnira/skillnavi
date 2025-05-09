@@ -1,7 +1,5 @@
 import SkillTable from '@/feature/skill/component/table/SkillTable';
 
-export const dynamic = 'force-dynamic';
-
 /**
  * @about 스킬 페이지
  * @componentType nextjs page

@@ -21,7 +21,7 @@ export default async function RootLayout(
 ) {
     const locale = await getLocale();
     const messages = await getMessages();
-    const theme = cookies().get('theme');
+    const theme = (await cookies()).get('theme');
 
     return (
         <html lang={locale} className={theme?.value}>

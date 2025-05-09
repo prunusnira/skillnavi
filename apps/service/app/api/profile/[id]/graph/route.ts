@@ -3,18 +3,17 @@ import RouteWrapper from '@/lib/fetch/routeWrapper';
 import { ProfileGraphRaw } from '@/feature/profile/data/ProfileGraph';
 import * as fs from 'node:fs';
 
-export const dynamic = 'force-dynamic';
-
 export const GET = async (
     req: NextRequest,
-    { params }: { params: { id: string } },
+    props: { params: Promise<{ id: string }> },
 ) => {
+    const params = await props.params;
     return RouteWrapper({
         req,
         work: async () => {
             const { id } = params;
             const fileUrl = `${process.env.NEXT_PUBLIC_RECORD}/${id}.dat`;
-            if(!fs.existsSync(fileUrl)) {
+            if (!fs.existsSync(fileUrl)) {
                 return NextResponse.json([] as ProfileGraphRaw[]);
             }
 

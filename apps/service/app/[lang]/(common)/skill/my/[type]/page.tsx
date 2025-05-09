@@ -2,8 +2,6 @@ import { getServerSession } from 'next-auth';
 import { getProfileSession } from '@/feature/profile/api/getProfileSession';
 import MySkillRedirect from '@/feature/skill/component/my/MySkillRedirect';
 
-export const dynamic = 'force-dynamic';
-
 const PageMySkikll = async () => {
     const session = await getServerSession();
     const profile = await getProfileSession(session);

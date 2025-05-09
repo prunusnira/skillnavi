@@ -10,7 +10,6 @@ interface Props {
 export const RecentItem = ({ user }: Props) => {
     return (
         <div
-            key={user.name}
             className={cn(
                 'flex w-full p-2.5 border-b border-solid border-white dark:border-black',
             )}
