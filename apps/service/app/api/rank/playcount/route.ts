@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import RouteWrapper from '@/lib/fetch/routeWrapper';
 import prisma from '@/lib/db/prisma';
 import {
-    PlayCount, PlayCountRankData,
+    PlayCount,
+    PlayCountRankData,
     UserPlayCount,
 } from '@/feature/rank/playcount/data/PlayCount';
 import { Profile } from '@/feature/profile/data/Profile';
@@ -14,21 +15,23 @@ import {
     getPlayCountRankGFQuery,
 } from '@/feature/rank/playcount/db/PlayCountRank.prisma';
 
-export const dynamic = 'force-dynamic';
-
 export const GET = async (req: NextRequest) => {
     return RouteWrapper({
         req,
         work: async () => {
             const searchParams = req.nextUrl.searchParams;
             const page = Number(searchParams.get('page'));
-            const version = Number(searchParams.get('version') || await getLatestVersion());
+            const version = Number(
+                searchParams.get('version') || (await getLatestVersion()),
+            );
             const gtype = searchParams.get('gtype');
 
             const query =
-                gtype === 'gf' ? getPlayCountRankGFQuery({ page, version }) :
-                    gtype === 'dm' ? getPlayCountRankDMQuery({ page, version }) :
-                        getPlayCountRankALLQuery({ page, version });
+                gtype === 'gf'
+                    ? getPlayCountRankGFQuery({ page, version })
+                    : gtype === 'dm'
+                      ? getPlayCountRankDMQuery({ page, version })
+                      : getPlayCountRankALLQuery({ page, version });
 
             const rankdata = (await prisma.$queryRaw(
                 Prisma.sql`${query}`,

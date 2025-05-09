@@ -17,10 +17,12 @@ import {
     getQuerySkillTargetHotDM,
     getQuerySkillTargetHotGF,
     getQuerySkillTargetOtherDM,
-    getQuerySkillTargetOtherGF, getSkillExcDMHot, getSkillExcDMOther, getSkillExcGFHot, getSkillExcGFOther,
+    getQuerySkillTargetOtherGF,
+    getSkillExcDMHot,
+    getSkillExcDMOther,
+    getSkillExcGFHot,
+    getSkillExcGFOther,
 } from '@/feature/skill/db/Skill.prisma';
-
-export const dynamic = 'force-dynamic';
 
 export const GET = async (req: NextRequest) => {
     return RouteWrapper({
@@ -125,11 +127,27 @@ export const GET = async (req: NextRequest) => {
                     otherQuery = getSkillExcDMOther(version);
                 }
 
-                const hot = (await prisma.$queryRaw(Prisma.sql`${hotQuery}`)) as SkillForTable[];
-                const other = (await prisma.$queryRaw(Prisma.sql`${otherQuery}`)) as SkillForTable[];
+                const hot = (await prisma.$queryRaw(
+                    Prisma.sql`${hotQuery}`,
+                )) as SkillForTable[];
+                const other = (await prisma.$queryRaw(
+                    Prisma.sql`${otherQuery}`,
+                )) as SkillForTable[];
 
-                tableItems.push({ title: 'HOT', data: hot.map(item => ({ ...item, skill: Number(item.skill) })) });
-                tableItems.push({ title: 'OTHER', data: other.map(item => ({ ...item, skill: Number(item.skill) })) });
+                tableItems.push({
+                    title: 'HOT',
+                    data: hot.map((item) => ({
+                        ...item,
+                        skill: Number(item.skill),
+                    })),
+                });
+                tableItems.push({
+                    title: 'OTHER',
+                    data: other.map((item) => ({
+                        ...item,
+                        skill: Number(item.skill),
+                    })),
+                });
             }
 
             if (!tableItems.length) {

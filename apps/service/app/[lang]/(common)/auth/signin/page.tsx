@@ -3,8 +3,6 @@ import { getTranslations } from 'next-intl/server';
 import { cn } from '@/lib/cn';
 import LoginForm from '@/feature/auth/login/LoginForm';
 
-export const dynamic = 'force-dynamic';
-
 const PageSignIn = async () => {
     const t = await getTranslations('user.login');
 

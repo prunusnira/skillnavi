@@ -3,9 +3,10 @@ import RouteWrapper from '@/lib/fetch/routeWrapper';
 import { Pattern } from '@/feature/music/data/Pattern';
 import prisma from '@/lib/db/prisma';
 
-export const dynamic = 'force-dynamic';
-
-export const GET = async (req: NextRequest, props: { params: Promise<{ mid: number }> }) => {
+export const GET = async (
+    req: NextRequest,
+    props: { params: Promise<{ mid: number }> },
+) => {
     const params = await props.params;
     return RouteWrapper({
         req,

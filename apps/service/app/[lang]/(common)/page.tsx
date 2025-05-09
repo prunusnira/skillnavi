@@ -5,8 +5,6 @@ import UserInfo from '@/feature/main/userCard/UserInfo';
 import { DISCORD, IMG, LINK_AUTH_LOGIN } from '@/url/url';
 import Link from 'next/link';
 
-export const dynamic = 'force-dynamic';
-
 /**
  * @abou 메인 페이지
  * @componentType nextjs page

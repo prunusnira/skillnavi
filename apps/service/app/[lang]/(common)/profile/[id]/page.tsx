@@ -15,8 +15,6 @@ import style from './page.module.scss';
 import { getProfileSession } from '@/feature/profile/api/getProfileSession';
 import { getServerSession } from 'next-auth';
 
-export const dynamic = 'force-dynamic';
-
 const PageProfile = async (props: { params: Promise<{ id: string }> }) => {
     const params = await props.params;
     const t = await getTranslations('profile');

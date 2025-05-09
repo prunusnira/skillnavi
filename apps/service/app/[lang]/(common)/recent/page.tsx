@@ -4,8 +4,6 @@ import { cn } from '@/lib/cn';
 import { getRecent } from '@/feature/recent/api/getRecent';
 import { RecentItem } from '@/feature/recent/component/Recent.item';
 
-export const dynamic = 'force-dynamic';
-
 const PageRecent = async () => {
     const t = await getTranslations();
     const recent = await getRecent();
