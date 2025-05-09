@@ -4,11 +4,12 @@ import { SnapshotData, SnapshotSkill } from '@/feature/snapshot/data/Snapshot';
 import { SkillForTable } from '@/feature/skill/data/Skill';
 import SkillGridForSnapshot from '@/feature/skill/component/table/SkillGridForSnapshot';
 
-const PageSnapshotDetail = async ({
-    params,
-}: {
-    params: { id: string; type: string; date: string };
-}) => {
+const PageSnapshotDetail = async (
+    props: {
+        params: Promise<{ id: string; type: string; date: string }>;
+    }
+) => {
+    const params = await props.params;
     const { id, type, date } = params;
     const data = await getSnapshotDetail(id, type, date);
     const json = JSON.parse(data) as SnapshotData;

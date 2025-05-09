@@ -6,11 +6,12 @@ import { getServerSession } from 'next-auth';
 import { getProfileSession } from '@/feature/profile/api/getProfileSession';
 import PlayCountItem from '@/feature/playcount/component/PlayCount.item';
 
-const PagePlaycount = async ({
-                                 searchParams,
-                             }: {
-    searchParams: { type: string; id: number };
-}) => {
+const PagePlaycount = async (
+    props: {
+        searchParams: Promise<{ type: string; id: number }>;
+    }
+) => {
+    const searchParams = await props.searchParams;
     const t = await getTranslations('user.playcount');
     const { type, id } = searchParams;
     const session = await getServerSession();

@@ -3,7 +3,8 @@ import RouteWrapper from '@/lib/fetch/routeWrapper';
 import prisma from '@/lib/db/prisma';
 import { TowerList } from '@/feature/tower/data/Tower';
 
-export const GET = async (req: NextRequest, { params }: { params: { id: string } }) => {
+export const GET = async (req: NextRequest, props: { params: Promise<{ id: string }> }) => {
+    const params = await props.params;
     return RouteWrapper({
         req,
         work: async () => {

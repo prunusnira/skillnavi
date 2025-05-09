@@ -17,7 +17,8 @@ import { getServerSession } from 'next-auth';
 
 export const dynamic = 'force-dynamic';
 
-const PageProfile = async ({ params }: { params: { id: string } }) => {
+const PageProfile = async (props: { params: Promise<{ id: string }> }) => {
+    const params = await props.params;
     const t = await getTranslations('profile');
     const { id } = params;
     const mydata = await getProfile([Number(id)]);

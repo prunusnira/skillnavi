@@ -9,17 +9,16 @@ import { getGameTypeFromCode } from '@/lib/pattern/getGameTypeFromCode';
 import { getGameVersions } from '@/feature/env/api/getGameVersions';
 
 const PagePatternRank = async (
-    {
-        searchParams,
-    }: {
-        searchParams: {
+    props: {
+        searchParams: Promise<{
             mid: string;
             version: string;
             page: string;
             ptcode: string;
-        };
-    },
+        }>;
+    }
 ) => {
+    const searchParams = await props.searchParams;
     const t = await getTranslations('pattern.rank');
     const { mid, version, ptcode, page } = searchParams;
     const gameVersion = await getGameVersions();

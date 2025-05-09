@@ -5,10 +5,8 @@ import * as fs from 'node:fs';
 
 export const dynamic = 'force-dynamic';
 
-export const GET = async (
-    req: NextRequest,
-    { params }: { params: { id: string } },
-) => {
+export const GET = async (req: NextRequest, props: { params: Promise<{ id: string }> }) => {
+    const params = await props.params;
     return RouteWrapper({
         req,
         work: async () => {

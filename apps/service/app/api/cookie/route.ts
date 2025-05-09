@@ -8,7 +8,7 @@ export const POST = async (req: NextRequest) => {
         work: async () => {
             const cookie = (await req.json()) as { key: string, value: string };
 
-            cookies().set(cookie.key, cookie.value, {
+            (await cookies()).set(cookie.key, cookie.value, {
                 path: '/',
                 sameSite: 'lax',
             });

@@ -5,7 +5,6 @@ import { SidebarBox } from '@/feature/header/sidebar/item/SidebarBox';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
 import { SidebarSearch } from '@/feature/header/sidebar/item/SidebarSearch';
-import { SidebarClose } from '@/feature/header/sidebar/item/SidebarClose';
 
 const Sidebar = async () => {
     const keys = Object.keys(
@@ -46,8 +45,6 @@ const Sidebar = async () => {
                     </section>
                 );
             })}
-
-            <SidebarClose />
         </SidebarWrapper>
     );
 };

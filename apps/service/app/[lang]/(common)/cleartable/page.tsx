@@ -8,11 +8,12 @@ import ClearTable from '@/feature/cleartable/component/ClearTable.table';
 import ClearTableChart from '@/feature/cleartable/component/ClearTable.chart';
 import { getTranslations } from 'next-intl/server';
 
-const PageClearTable = async ({
-                                  searchParams,
-                              }: {
-    searchParams: { type: GameType; id: number };
-}) => {
+const PageClearTable = async (
+    props: {
+        searchParams: Promise<{ type: GameType; id: number }>;
+    }
+) => {
+    const searchParams = await props.searchParams;
     const { type, id } = searchParams;
     const session = await getServerSession();
     const profile = await getProfileSession(session);

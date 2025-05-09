@@ -5,10 +5,8 @@ import prisma from '@/lib/db/prisma';
 
 export const dynamic = 'force-dynamic';
 
-export const GET = async (
-    req: NextRequest,
-    { params }: { params: { mid: number } },
-) => {
+export const GET = async (req: NextRequest, props: { params: Promise<{ mid: number }> }) => {
+    const params = await props.params;
     return await RouteWrapper({
         req,
         work: async () => {

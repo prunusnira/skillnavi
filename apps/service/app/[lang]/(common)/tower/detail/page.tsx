@@ -17,7 +17,8 @@ import { getTowerIcon } from '@/feature/tower/api/getTowerIcon';
 import { TowerUpdateFloorIcon } from '@/feature/tower/component/TowerUpdateFloorIcon';
 import { getTranslations } from 'next-intl/server';
 
-const PageTowerDetail = async ({ searchParams }: { searchParams: { id: number } }) => {
+const PageTowerDetail = async (props: { searchParams: Promise<{ id: number }> }) => {
+    const searchParams = await props.searchParams;
     const { id } = searchParams;
     const detailList = await getTowerDetail(id);
     const towerInfo = await getTowerInfo(id);

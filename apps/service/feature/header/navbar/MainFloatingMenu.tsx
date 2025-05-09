@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { clsx } from 'clsx';
 
-export const SidebarClose = () => {
+export const MainFloatingMenu = () => {
     const { controlMenu } = useNavbar();
     return (
         <div

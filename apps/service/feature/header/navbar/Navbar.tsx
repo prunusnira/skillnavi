@@ -10,6 +10,7 @@ import { signOut, useSession } from 'next-auth/react';
 import { useRouter } from '@/i18n/routing';
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 import Image from 'next/image';
+import { MainFloatingMenu } from '@/feature/header/navbar/MainFloatingMenu';
 
 const Navbar = () => {
     const { handleLinkMain, controlOption } = useNavbar();
@@ -79,9 +80,11 @@ const Navbar = () => {
                     </div>
                 </NavItem>
 
-                {/* 메뉴 버튼 */}
-                <NavItem>{` `}</NavItem>
+                <NavItem> </NavItem>
             </div>
+
+            {/* 메뉴 버튼 */}
+            <MainFloatingMenu />
         </nav>
     );
 };
