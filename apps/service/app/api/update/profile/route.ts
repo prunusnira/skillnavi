@@ -78,22 +78,29 @@ export const POST = async (req: NextRequest) => {
 
                     // 파일이 없으면 새로 추가
                     let newContent: string[] = [];
-                    if(fs.existsSync(filePath)) {
+                    if (fs.existsSync(filePath)) {
                         const file = fs.readFileSync(filePath, 'utf8');
-                        const content = file.split('\n').filter(str => str !== '');
+                        const content = file
+                            .split('\n')
+                            .filter((str) => str !== '');
                         newContent = [...content];
                     }
 
                     const now = dayjs();
-                    newContent.push(`${now.format('YYYYMMDD')}_${body.gskill}_${body.dskill}`);
+                    newContent.push(
+                        `${now.format('YYYYMMDD')}_${body.gskill}_${body.dskill}`,
+                    );
 
                     if (newContent.length > 1000) {
-                        newContent = newContent.slice(newContent.length - 1000, newContent.length - 1);
+                        newContent = newContent.slice(
+                            newContent.length - 1000,
+                            newContent.length - 1,
+                        );
                     }
                     fs.writeFileSync(filePath, newContent.join('\n'));
                 } catch (error) {
                     // error handle, 여기서는 아무것도 안함
-                    console.log(error);
+                    console.error(error);
                 }
             }
             return NextResponse.json({ result: 'success' });

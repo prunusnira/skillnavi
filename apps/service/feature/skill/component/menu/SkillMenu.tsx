@@ -4,7 +4,7 @@ import { cn } from '@/lib/cn';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import useSkillMenu from '@/feature/skill/component/menu/useSkillMenu';
-import Select from '@/common/select/Select';
+import { Select } from '@skillnavi/ui';
 import { useTranslations } from 'next-intl';
 import { ButtonRounded } from '@skillnavi/ui';
 

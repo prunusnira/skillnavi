@@ -27,8 +27,11 @@ export const UserJoinButton = () => {
                 text={t('btnsign')}
                 onClick={() => {
                     const email = data?.user?.email?.split('@');
-                    if (email && email.length >= 1 && typeof email[0] === 'string') {
-                        console.log(email[0], sha256(email[0]));
+                    if (
+                        email &&
+                        email.length >= 1 &&
+                        typeof email[0] === 'string'
+                    ) {
                         mutate({
                             token: sha256(email[0]),
                         });

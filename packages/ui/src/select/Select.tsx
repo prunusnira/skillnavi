@@ -1,6 +1,5 @@
-import { cn } from '@/lib/cn';
 import { ChangeEventHandler } from 'react';
-import { SelectOption } from '@/common/select/SelectOption';
+import { SelectOption } from './SelectOption';
 
 interface Props {
     options: SelectOption[];
@@ -8,14 +7,14 @@ interface Props {
     onChange: ChangeEventHandler<HTMLSelectElement>;
 }
 
-const Select = ({ options, value, onChange }: Props) => {
+export const Select = ({ options, value, onChange }: Props) => {
     return (
         <select
-            className={cn('rounded-2xl px-4 py-2 text-black')}
+            className={'rounded-2xl px-4 py-2 text-black'}
             value={value}
             onChange={onChange}
         >
-            {options.map(option => (
+            {options.map((option) => (
                 <option
                     key={option.value}
                     value={option.value}
@@ -26,5 +25,3 @@ const Select = ({ options, value, onChange }: Props) => {
         </select>
     );
 };
-
-export default Select;

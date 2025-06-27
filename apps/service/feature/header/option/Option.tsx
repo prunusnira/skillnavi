@@ -1,6 +1,6 @@
 'use client';
 
-import Select from '@/common/select/Select';
+import { Select } from '@skillnavi/ui';
 import Toggle from '@/common/toggle/toggle';
 import { useAtomValue } from 'jotai';
 import { atomEnv } from '@/feature/env/data/AtomEnv';

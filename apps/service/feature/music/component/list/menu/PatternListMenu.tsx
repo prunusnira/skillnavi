@@ -3,7 +3,7 @@
 import { cn } from '@/lib/cn';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import Select from '@/common/select/Select';
+import { Select } from '@skillnavi/ui';
 import { usePatternMenu } from '@/feature/music/component/list/menu/usePatternMenu';
 import { useTranslations } from 'next-intl';
 import { ButtonRounded } from '@skillnavi/ui';

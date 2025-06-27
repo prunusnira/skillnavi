@@ -2,9 +2,7 @@ import RouteWrapper from '@/lib/fetch/routeWrapper';
 import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
 
-export const POST = async (
-    req: NextRequest,
-) => {
+export const POST = async (req: NextRequest) => {
     return RouteWrapper({
         req,
         work: async () => {
@@ -19,9 +17,9 @@ export const POST = async (
                 fs.writeFileSync(fd, buffer);
                 fs.close(fd);
             } catch (error) {
-                console.log(error);
+                console.error(error);
             } finally {
-                if(fd) fs.close(fd);
+                if (fd) fs.close(fd);
             }
 
             return NextResponse.json({});

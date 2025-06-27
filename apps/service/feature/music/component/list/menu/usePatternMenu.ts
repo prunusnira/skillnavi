@@ -5,7 +5,7 @@ import { atomGameVersionList } from '@/common/game/data/atomGameVersion';
 import { useSearchParams } from 'next/navigation';
 import { usePathname, useRouter } from '@/i18n/routing';
 import { ChangeEvent, useMemo, useState } from 'react';
-import { SelectOption } from '@/common/select/SelectOption';
+import { SelectOption } from '@skillnavi/ui';
 
 export const usePatternMenu = () => {
     const versionList = useAtomValue(atomGameVersionList);

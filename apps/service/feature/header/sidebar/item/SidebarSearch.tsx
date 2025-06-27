@@ -3,7 +3,7 @@
 import { InputText } from '@/common/input/InputText';
 import { ButtonStandard } from '@skillnavi/ui';
 import { useTranslations } from 'next-intl';
-import Select from '@/common/select/Select';
+import { Select } from '@skillnavi/ui';
 import { useState } from 'react';
 import { useRouter } from '@/i18n/routing';
 import { LINK_SEARCH } from '@/url/url';
