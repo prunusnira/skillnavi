@@ -1,4 +1,5 @@
 import { Pattern } from '@/feature/music/data/Pattern';
+import { Skill } from '@/feature/skill/data/Skill';
 
 export interface MusicListPageData {
     mid: number;
@@ -7,6 +8,7 @@ export interface MusicListPageData {
     version: number;
     remove: number;
     patterns: Pattern[];
+    skills: Skill[];
 }
 
 export interface MusicListPage {

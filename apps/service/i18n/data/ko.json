@@ -143,6 +143,8 @@
     "menu": {
       "musicVersion": "곡 버전",
       "gameVersion": "게임 버전",
+      "difficulty": "난이도",
+      "rank": "랭크",
       "close": "닫기"
     }
   },

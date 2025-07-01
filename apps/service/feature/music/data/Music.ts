@@ -1,3 +1,5 @@
+import { Pattern } from '@/feature/music/data/Pattern';
+
 export interface Music {
     id: number;
     name: string;
@@ -7,4 +9,5 @@ export interface Music {
     hot: number;
     hot_end: number;
     remove: number;
+    patterns?: Pattern[];
 }

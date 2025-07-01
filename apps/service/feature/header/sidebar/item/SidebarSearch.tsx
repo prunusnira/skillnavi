@@ -1,12 +1,12 @@
 'use client';
 
-import { InputText } from '@/common/input/InputText';
 import { ButtonStandard } from '@skillnavi/ui';
 import { useTranslations } from 'next-intl';
 import { Select } from '@skillnavi/ui';
 import { useState } from 'react';
 import { useRouter } from '@/i18n/routing';
 import { LINK_SEARCH } from '@/url/url';
+import { InputText } from '@skillnavi/ui/src/input/InputText';
 
 export const SidebarSearch = () => {
     const [

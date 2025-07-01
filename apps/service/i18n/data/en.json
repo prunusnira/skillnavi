@@ -143,6 +143,8 @@
     "menu": {
       "musicVersion": "Music Version",
       "gameVersion": "Game Version",
+      "difficulty": "Difficulty",
+      "rank": "Rank",
       "close": "Close"
     }
   },

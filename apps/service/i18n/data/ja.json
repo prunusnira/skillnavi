@@ -143,6 +143,8 @@
     "menu": {
       "musicVersion": "曲バージョン",
       "gameVersion": "ゲームバーション",
+      "difficulty": "レベル",
+      "rank": "ランク",
       "close": "閉じる"
     }
   },

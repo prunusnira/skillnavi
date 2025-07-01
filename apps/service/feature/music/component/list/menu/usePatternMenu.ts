@@ -4,7 +4,7 @@ import { useAtomValue } from 'jotai';
 import { atomGameVersionList } from '@/common/game/data/atomGameVersion';
 import { useSearchParams } from 'next/navigation';
 import { usePathname, useRouter } from '@/i18n/routing';
-import { ChangeEvent, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { SelectOption } from '@skillnavi/ui';
 
 export const usePatternMenu = () => {
@@ -41,21 +41,10 @@ export const usePatternMenu = () => {
         router.push(`${pathname}?${newSearchParams.toString()}`);
     };
 
-    const onChangeMusicVersion = (e: ChangeEvent<HTMLSelectElement>) => {
-        updateSearchParams('musicVersion', e.currentTarget.value);
-    };
-
-    const onChangeGameVersion = (e: ChangeEvent<HTMLSelectElement>) => {
-        updateSearchParams('gameVersion', e.currentTarget.value);
-    };
-
     return {
+        updateSearchParams,
         active,
         toggleMenu,
         versionSelectOption,
-        onChangeMusicVersion,
-        onChangeGameVersion,
-        currentMusicVersion: Number(searchParams.get('musicVersion')),
-        currentGameVersion: Number(searchParams.get('gameVersion')),
     };
 };

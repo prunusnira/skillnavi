@@ -3,21 +3,16 @@
 import { cn } from '@/lib/cn';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import { Select } from '@skillnavi/ui';
 import { usePatternMenu } from '@/feature/music/component/list/menu/usePatternMenu';
 import { useTranslations } from 'next-intl';
 import { ButtonRounded } from '@skillnavi/ui';
+import { PatternMenuMusicVersion } from '@/feature/music/component/list/menu/PatternMenuMusicVersion';
+import { PatternMenuGameVersion } from '@/feature/music/component/list/menu/PatternMenuGameVersion';
+import { PatternMenuDifficulty } from '@/feature/music/component/list/menu/PatternMenuDifficulty';
 
 export const PatternListMenu = () => {
-    const {
-        active,
-        toggleMenu,
-        versionSelectOption,
-        onChangeMusicVersion,
-        onChangeGameVersion,
-        currentMusicVersion,
-        currentGameVersion,
-    } = usePatternMenu();
+    const { active, toggleMenu, versionSelectOption } = usePatternMenu();
+
     const t = useTranslations('music.menu');
 
     return (
@@ -40,28 +35,20 @@ export const PatternListMenu = () => {
                 )}
             >
                 {/* 곡 버전 설정 */}
-                <div className={cn('mt-5')}>{t('musicVersion')}</div>
-                <div>
-                    {versionSelectOption && (
-                        <Select
-                            onChange={onChangeMusicVersion}
-                            options={versionSelectOption}
-                            value={currentMusicVersion}
-                        />
-                    )}
-                </div>
+                <PatternMenuMusicVersion
+                    versionSelectOption={versionSelectOption}
+                />
 
                 {/* 게임 버전 설정 */}
-                <div className={cn('mt-5')}>{t('gameVersion')}</div>
-                <div>
-                    {versionSelectOption && (
-                        <Select
-                            onChange={onChangeGameVersion}
-                            options={versionSelectOption}
-                            value={currentGameVersion}
-                        />
-                    )}
-                </div>
+                <PatternMenuGameVersion
+                    versionSelectOption={versionSelectOption}
+                />
+
+                {/* 난이도 필터 */}
+                <PatternMenuDifficulty />
+
+                {/* 랭크 필터 */}
+                {/*<PatternMenuRank />*/}
 
                 {/* 닫기버튼 */}
                 <div className={cn('my-5')}>

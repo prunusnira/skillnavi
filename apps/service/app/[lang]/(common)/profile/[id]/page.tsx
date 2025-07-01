@@ -23,7 +23,8 @@ const PageProfile = async (props: { params: Promise<{ id: string }> }) => {
     const myskill = await getProfileSkill([Number(id)]);
     const graph = await getProfileGraph(id);
     const game = await getGameVersions();
-    const user = await getProfileSession(await getServerSession());
+    const session = await getServerSession();
+    const user = await getProfileSession(session);
 
     if (!mydata.length || !myskill) {
         // TODO: 데이터가 없음

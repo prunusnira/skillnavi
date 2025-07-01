@@ -11,5 +11,9 @@
     .titleCell {
       @apply text-black bg-yellow-500 font-bold;
     }
+
+    .levelCell {
+      @apply flex items-center justify-center gap-[12px];
+    }
   }
 }
