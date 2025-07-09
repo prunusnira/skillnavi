@@ -1,14 +1,10 @@
 'use client';
 
-import { useAtomValue } from 'jotai';
-import { atomGameVersionList } from '@/common/game/data/atomGameVersion';
 import { useSearchParams } from 'next/navigation';
 import { usePathname, useRouter } from '@/i18n/routing';
-import { useMemo, useState } from 'react';
-import { SelectOption } from '@skillnavi/ui';
+import { useState } from 'react';
 
 export const usePatternMenu = () => {
-    const versionList = useAtomValue(atomGameVersionList);
     const searchParams = useSearchParams();
     const router = useRouter();
     const pathname = usePathname();
@@ -21,13 +17,6 @@ export const usePatternMenu = () => {
     const toggleMenu = () => {
         setActive(!active);
     };
-
-    const versionSelectOption: SelectOption[] | undefined = useMemo(() => {
-        return versionList?.map((ver) => ({
-            value: ver.id.toString(),
-            display: ver.full,
-        }));
-    }, [versionList]);
 
     const updateSearchParams = (targetKey: string, targetValue: string) => {
         const newSearchParams = new URLSearchParams();
@@ -45,6 +34,5 @@ export const usePatternMenu = () => {
         updateSearchParams,
         active,
         toggleMenu,
-        versionSelectOption,
     };
 };

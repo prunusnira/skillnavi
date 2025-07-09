@@ -12,8 +12,10 @@ export const GET = async (req: NextRequest) => {
             const searchParams = req.nextUrl.searchParams;
             const type = searchParams.get('type') || 'music';
             const id = Number(searchParams.get('id'));
+            const versionStr = searchParams.get('version');
 
             const latest = await getLatestVersion();
+            const version = versionStr ? Number(versionStr) : latest;
 
             let result;
 
@@ -27,7 +29,7 @@ export const GET = async (req: NextRequest) => {
                                          FROM SkillList
                                          WHERE uid = ${id}
                                            and playcount > 0
-                                           and playver = ${latest}
+                                           and playver = ${version}
                                          GROUP BY mid) s ON m.id = s.mid
                     ORDER BY s.playcount DESC LIMIT 50
                 `)) as PlayCountResponse[];
@@ -42,7 +44,7 @@ export const GET = async (req: NextRequest) => {
                                          FROM SkillList
                                          WHERE uid = ${id}
                                            and playcount > 0
-                                           and playver = ${latest}
+                                           and playver = ${version}
                                            and patterncode < 9
                                          GROUP BY mid) s ON m.id = s.mid
                     ORDER BY s.playcount DESC LIMIT 50
@@ -58,7 +60,7 @@ export const GET = async (req: NextRequest) => {
                                          FROM SkillList
                                          WHERE uid = ${id}
                                            and playcount > 0
-                                           and playver = ${latest}
+                                           and playver = ${version}
                                            and patterncode > 8
                                          GROUP BY mid) s ON m.id = s.mid
                     ORDER BY s.playcount DESC LIMIT 50
@@ -74,7 +76,7 @@ export const GET = async (req: NextRequest) => {
                                          FROM SkillList
                                          WHERE uid = ${id}
                                            and playcount > 0
-                                           and playver = ${latest}
+                                           and playver = ${version}
                                          GROUP BY mid) s ON m.id = s.mid
                     ORDER BY s.playcount DESC LIMIT 50
                 `)) as PlayCountResponse[];

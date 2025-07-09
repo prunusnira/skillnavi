@@ -142,10 +142,13 @@ export const GET = async (req: NextRequest) => {
             const searchParams = req.nextUrl.searchParams;
             const type = searchParams.get('type') as GameType;
             const user = Number(searchParams.get('user'));
+            const versionStr = searchParams.get('version');
             const latest = await getLatestVersion();
 
-            const totalCount = await getTotal({ type, version: latest });
-            const countTable = await getCount({ type, version: latest, user });
+            const version = versionStr ? Number(versionStr) : latest;
+
+            const totalCount = await getTotal({ type, version });
+            const countTable = await getCount({ type, version, user });
 
             const totalCountValue = totalCount.map((x) =>
                 x.status === 'fulfilled' ? x.value : 0,

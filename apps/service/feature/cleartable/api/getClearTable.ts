@@ -6,13 +6,15 @@ import { ClearTableResponse } from '@/feature/cleartable/data/ClearTable';
 interface Params {
     type: GameType;
     user: number;
+    version?: number;
 }
 
-export const getClearTable = async ({ type = 'gf', user }: Params) => {
+export const getClearTable = async ({ type = 'gf', user, version }: Params) => {
     return await fetchAdv.get<ClearTableResponse[]>(API_CLEARTABLE, {
         params: {
             type,
             user,
+            version,
         },
     });
 };

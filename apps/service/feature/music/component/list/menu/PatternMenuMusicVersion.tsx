@@ -1,13 +1,9 @@
 import { cn } from '@/lib/cn';
-import { Select, SelectOption } from '@skillnavi/ui';
 import { usePatternMusicVersion } from '@/feature/music/component/list/menu/usePatternMusicVersion';
 import { useTranslations } from 'next-intl';
+import { VersionSelector } from '@/common/versionSelector/VersionSelector';
 
-interface Props {
-    versionSelectOption?: SelectOption[];
-}
-
-export const PatternMenuMusicVersion = ({ versionSelectOption }: Props) => {
+export const PatternMenuMusicVersion = () => {
     const { currentMusicVersion, onChangeMusicVersion } =
         usePatternMusicVersion();
     const t = useTranslations('music.menu');
@@ -16,13 +12,10 @@ export const PatternMenuMusicVersion = ({ versionSelectOption }: Props) => {
         <>
             <div className={cn('mt-5')}>{t('musicVersion')}</div>
             <div>
-                {versionSelectOption && (
-                    <Select
-                        onChange={onChangeMusicVersion}
-                        options={versionSelectOption}
-                        value={currentMusicVersion}
-                    />
-                )}
+                <VersionSelector
+                    onChangeVersion={onChangeMusicVersion}
+                    currentVersion={currentMusicVersion}
+                />
             </div>
         </>
     );

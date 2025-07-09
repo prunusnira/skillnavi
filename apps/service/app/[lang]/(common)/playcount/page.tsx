@@ -1,22 +1,24 @@
 import Card from '@/common/card/Card';
 import { getTranslations } from 'next-intl/server';
-import PlayCountType from '@/feature/playcount/component/PlayCountType';
+import PlayCountOption from '@/feature/playcount/component/PlayCountOption';
 import { getPlayCount } from '@/feature/playcount/api/getPlayCount';
 import { getServerSession } from 'next-auth';
 import { getProfileSession } from '@/feature/profile/api/getProfileSession';
 import PlayCountItem from '@/feature/playcount/component/PlayCount.item';
 
-const PagePlaycount = async (
-    props: {
-        searchParams: Promise<{ type: string; id: number }>;
-    }
-) => {
+const PagePlaycount = async (props: {
+    searchParams: Promise<{ type: string; id: number; version: number }>;
+}) => {
     const searchParams = await props.searchParams;
     const t = await getTranslations('user.playcount');
     const { type, id } = searchParams;
     const session = await getServerSession();
     const profile = await getProfileSession(session);
-    const playcount = await getPlayCount({ type, id: id || profile?.id });
+    const playcount = await getPlayCount({
+        type,
+        id: id || profile?.id,
+        version: searchParams.version,
+    });
 
     return (
         <Card title={'My Play Count'}>
@@ -28,7 +30,7 @@ const PagePlaycount = async (
             </section>
 
             {/* 타입변경 */}
-            <PlayCountType />
+            <PlayCountOption />
 
             {/* 데이터 */}
             <section className={'grid grid-cols-2 md:grid-cols-4 gap-[10px]'}>

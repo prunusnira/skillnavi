@@ -71,6 +71,7 @@ export const GET = async (req: NextRequest) => {
                         remove,
                         version: musicVer,
                         patterns: patternList,
+                        skills: [],
                     };
                     if (data) {
                         display.push(data);

@@ -11,7 +11,7 @@ import { PatternMenuGameVersion } from '@/feature/music/component/list/menu/Patt
 import { PatternMenuDifficulty } from '@/feature/music/component/list/menu/PatternMenuDifficulty';
 
 export const PatternListMenu = () => {
-    const { active, toggleMenu, versionSelectOption } = usePatternMenu();
+    const { active, toggleMenu } = usePatternMenu();
 
     const t = useTranslations('music.menu');
 
@@ -35,14 +35,10 @@ export const PatternListMenu = () => {
                 )}
             >
                 {/* 곡 버전 설정 */}
-                <PatternMenuMusicVersion
-                    versionSelectOption={versionSelectOption}
-                />
+                <PatternMenuMusicVersion />
 
                 {/* 게임 버전 설정 */}
-                <PatternMenuGameVersion
-                    versionSelectOption={versionSelectOption}
-                />
+                <PatternMenuGameVersion />
 
                 {/* 난이도 필터 */}
                 <PatternMenuDifficulty />
