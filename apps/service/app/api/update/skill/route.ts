@@ -68,10 +68,7 @@ export const POST = async (req: NextRequest) => {
                 })) as Music;
             };
 
-            const updatePatternData = (
-                skill: MusicSkill,
-                music?: Music,
-            ) => {
+            const updatePatternData = (skill: MusicSkill, music?: Music) => {
                 if (!music) {
                     return undefined;
                 }
@@ -243,6 +240,41 @@ export const POST = async (req: NextRequest) => {
             const totalResult = await Promise.allSettled(skillInnerPromise);
 
             const success = totalResult.every((r) => r.status === 'fulfilled');
+
+            // 결과값과 별개로 플레이카운트 갱신 진행
+            const playcountData = (await prisma.skillList.findMany({
+                where: {
+                    uid,
+                    playver: version,
+                },
+                select: {
+                    playcount: true,
+                    patterncode: true,
+                },
+            })) as { playcount: number; patterncode: number }[];
+
+            let gcount = 0,
+                dcount = 0;
+            playcountData.forEach((entry) => {
+                if (entry.patterncode < 9) {
+                    gcount += entry.playcount;
+                } else {
+                    dcount += entry.playcount;
+                }
+            });
+
+            await prisma.profileSkill.update({
+                where: {
+                    version_uid: {
+                        version,
+                        uid,
+                    },
+                },
+                data: {
+                    gcount,
+                    dcount,
+                },
+            });
 
             return NextResponse.json({
                 result: success ? 'success' : 'failure',
