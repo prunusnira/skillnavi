@@ -1,13 +1,14 @@
 'use client';
 
 import Portal from '@/feature/portal/component/Portal';
-import RadioGroup from '@/common/radio/Radio.group';
 import { useTranslations } from 'next-intl';
 import { Profile } from '@/feature/profile/data/Profile';
 import { useState } from 'react';
 import { updateOpenData } from '@/feature/profile/api/updateOpenData';
 import { useMutation } from '@tanstack/react-query';
 import { ButtonStandard } from '@skillnavi/ui';
+import { RadioGroup } from '@skillnavi/ui/src/radio';
+import radioStyle from '@skillnavi/service/common/Radio.item.module.css';
 
 interface Props {
     profile: Profile;
@@ -15,7 +16,7 @@ interface Props {
 }
 
 const OpenDataPortal = ({ profile, closePortal }: Props) => {
-    const t = useTranslations('user.profile.dataopen');
+    const t = useTranslations('common.yesno');
     const [
         open,
         setOpen,
@@ -49,6 +50,7 @@ const OpenDataPortal = ({ profile, closePortal }: Props) => {
                     ]}
                     currentValue={open}
                     onChange={(value) => setOpen(value)}
+                    className={radioStyle.radioButton}
                 />
                 <div className={'flex'}>
                     <ButtonStandard

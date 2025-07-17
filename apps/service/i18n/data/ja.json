@@ -1,4 +1,10 @@
 {
+  "common": {
+    "yesno": {
+      "yes": "はい",
+      "no": "いいえ"
+    }
+  },
   "navbar": {
     "login": "登録 / ログイン",
     "logout": "ログアウト"

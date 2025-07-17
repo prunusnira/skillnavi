@@ -1,4 +1,10 @@
 {
+  "common": {
+    "yesno": {
+      "yes": "예",
+      "no": "아니오"
+    }
+  },
   "navbar": {
     "login": "가입/로그인",
     "logout": "로그아웃"

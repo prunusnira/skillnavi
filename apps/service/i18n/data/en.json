@@ -1,4 +1,10 @@
 {
+  "common": {
+    "yesno": {
+      "yes": "Yes",
+      "no": "No"
+    }
+  },
   "navbar": {
     "login": "Sign Up / Login",
     "logout": "Logout"

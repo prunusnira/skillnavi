@@ -31,7 +31,7 @@ const Card = forwardRef<HTMLDivElement, Props>(
                 )}
                 <div
                     className={cn(
-                        'flex flex-col justify-start items-center bg-purple-200 dark:bg-gray-700 w-full h-full flex-grow',
+                        'flex flex-col justify-center items-center bg-purple-200 dark:bg-gray-700 w-full h-full flex-grow',
                         {
                             ['rounded-2xl']: !title,
                             ['rounded-b-2xl rounded-t-none']: !!title,

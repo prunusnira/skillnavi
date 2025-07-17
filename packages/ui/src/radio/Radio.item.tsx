@@ -1,19 +1,20 @@
-import { RadioOptions } from '@/common/radio/Radio.data';
-import style from './Radio.item.module.scss';
+import { RadioOptions } from './Radio.data';
 
 interface Props<T> {
     radioGroupName: string;
     item: RadioOptions;
     selected: boolean;
     onChange: (value: T) => void;
+    className?: string;
 }
 
-const RadioItem = <T extends string | number>({
-                                                  radioGroupName,
-                                                  item,
-                                                  selected,
-                                                  onChange,
-                                              }: Props<T>) => {
+export const RadioItem = <T extends string | number>({
+    radioGroupName,
+    item,
+    selected,
+    onChange,
+    className,
+}: Props<T>) => {
     return (
         <label
             htmlFor={item.id}
@@ -22,7 +23,7 @@ const RadioItem = <T extends string | number>({
             }
         >
             <input
-                className={style.radioButton}
+                className={className}
                 name={radioGroupName}
                 id={item.id}
                 value={item.value}
@@ -35,5 +36,3 @@ const RadioItem = <T extends string | number>({
         </label>
     );
 };
-
-export default RadioItem;
