@@ -6,7 +6,12 @@ import { PlayCountRankList } from '@/feature/rank/playcount/component/PlayCountR
 const PagePlaycount = async () => {
     const t = await getTranslations('countrank');
     return (
-        <Card title={t('title')}>
+        <Card
+            title={t('title')}
+            option={{
+                itemStartPosition: 'start',
+            }}
+        >
             <PlayCountRankType />
             <PlayCountRankList />
         </Card>

@@ -2,15 +2,17 @@
 
 import { cn } from '@/lib/cn';
 import { forwardRef, ReactNode } from 'react';
+import { CardOptions } from '@/common/card/CardOptions';
 
 interface Props {
     title?: string;
     sub?: ReactNode;
     children: ReactNode;
+    option?: CardOptions;
 }
 
 const Card = forwardRef<HTMLDivElement, Props>(
-    ({ title, sub, children }, ref) => {
+    ({ title, sub, children, option }, ref) => {
         return (
             // 공통 카드 ui
             <section
@@ -31,12 +33,15 @@ const Card = forwardRef<HTMLDivElement, Props>(
                 )}
                 <div
                     className={cn(
-                        'flex flex-col justify-center items-center bg-purple-200 dark:bg-gray-700 w-full h-full flex-grow',
+                        'flex flex-col items-center bg-purple-200 dark:bg-gray-700 w-full h-full flex-grow py-[20px]',
                         {
                             ['rounded-2xl']: !title,
                             ['rounded-b-2xl rounded-t-none']: !!title,
                         },
                     )}
+                    style={{
+                        justifyContent: option?.itemStartPosition ?? 'center',
+                    }}
                 >
                     {children}
                 </div>

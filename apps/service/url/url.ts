@@ -104,6 +104,6 @@ export const LINK_AUTH_NEWUSER = `/user/join`;
 export const LINK_RANK_SKILL = (type: GameType, page: number) =>
     `/rank/skill?type=${type}&page=${page}`;
 export const LINK_RANK_PLAYCOUNT = (page: number) =>
-    `/rank/playcount?page=${page}`;
+    `/rank/playcount?type=all&page=${page}`;
 export const LINK_SEARCH = (type: string, value: string) =>
     `/search?type=${type}&value=${value}&page=1`;
