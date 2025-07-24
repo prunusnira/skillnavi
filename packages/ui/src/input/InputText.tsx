@@ -18,7 +18,7 @@ export const InputText = ({
 }: Props) => {
     return (
         <input
-            className={clsx('p-[10px] rounded-[25px]', customClass)}
+            className={clsx('p-[10px] rounded-[25px] bg-white', customClass)}
             onChange={onChange}
             onBlur={onBlur}
             placeholder={placeholder}

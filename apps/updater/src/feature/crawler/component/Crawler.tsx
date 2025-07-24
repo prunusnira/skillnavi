@@ -1,5 +1,5 @@
 import useCrawlerInit from './useCrawlerInit';
-import styles from './Crawler.module.scss';
+import styles from './Crawler.module.css';
 import Header from '../../header/component/Header';
 import InvalidUser from '../../invalid/component/InavlidUser';
 import Caution from '../../caution/component/Caution';

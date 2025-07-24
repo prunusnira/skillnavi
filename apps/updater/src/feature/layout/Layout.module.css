@@ -11,14 +11,14 @@
   @apply flex-none;
   @apply bg-[#111111];
   @apply text-[80%];
+}
 
-  a {
-    @apply text-[#aaaaff];
-  }
+.footer a {
+  @apply text-[#aaaaff];
+}
 
-  span {
-    @apply text-[#dddddd];
-  }
+.footer span {
+  @apply text-[#dddddd];
 }
 
 .center {

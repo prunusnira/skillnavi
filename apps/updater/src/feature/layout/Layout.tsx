@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import styles from './Layout.module.scss';
+import styles from './Layout.module.css';
 
 interface LayoutProps {
     children: ReactNode;
@@ -8,12 +8,8 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
     return (
         <div className={styles.outerBox}>
-            <header className={styles.header}>
-                {/* Header content */}
-            </header>
-            <div className={styles.center}>
-                {children}
-            </div>
+            <header className={styles.header}>{/* Header content */}</header>
+            <div className={styles.center}>{children}</div>
             <footer className={styles.footer}>
                 <span>© 2024 SkillNavi. All rights reserved.</span>
                 <a href="/privacy">개인정보처리방침</a>
@@ -22,4 +18,4 @@ const Layout = ({ children }: LayoutProps) => {
     );
 };
 
-export default Layout; 
+export default Layout;

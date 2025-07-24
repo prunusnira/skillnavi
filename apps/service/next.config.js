@@ -1,9 +1,14 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 const path = require('node:path');
 const createNextIntlPlugin = require('next-intl/plugin');
+const { nanoid } = require('nanoid');
 const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    generateBuildId: async () => {
+        return nanoid();
+    },
     outputFileTracingRoot: path.join(__dirname, '../../'),
     transpilePackages: ['@skillnavi/ui'],
     images: {

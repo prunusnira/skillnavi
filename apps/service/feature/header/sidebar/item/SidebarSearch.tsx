@@ -48,13 +48,13 @@ export const SidebarSearch = () => {
                 onChange={(e) => setSearchType(e.currentTarget.value)}
             />
             <InputText
-                customClass={'flex-1 w-full'}
+                customClass={'flex-1 w-full placeholder-gray-500 text-black'}
                 value={searchText}
                 placeholder={t('placeholder')}
                 onChange={(e) => setSearchText(e.currentTarget.value)}
             />
             <ButtonStandard
-                customClass={'break-keep'}
+                customClass={'break-keep bg-blue-400'}
                 text={t('button')}
                 onClick={() => {
                     router.push(LINK_SEARCH(searchType, searchText));

@@ -9,7 +9,10 @@ import { getUrl } from '../../updater/api/getUrl';
 
 // 역할: 토큰 파싱, 기본 데이터 정의 등
 const useCrawlerInit = () => {
-    const [token, setToken] = useState<string | null>(null);
+    const [
+        token,
+        setToken,
+    ] = useState<string | null>(null);
     const setConfig = useSetAtom(atomCrawler);
 
     // token으로 사용자 정보 가져오기

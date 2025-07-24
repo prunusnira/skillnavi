@@ -51,10 +51,8 @@
   }
 }
 
-.navSubItem {
-  a {
-    @apply text-black;
-  }
+.navSubItem a {
+  @apply text-black;
 }
 
 .imageTitle {

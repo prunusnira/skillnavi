@@ -1,13 +1,15 @@
 import './index.css';
 import '@skillnavi/ui/dist/index.css';
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
 import Crawler from './feature/crawler/component/Crawler';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-const root = ReactDOM.createRoot(document.getElementById('crawler-root')!);
+const el = document.getElementById('crawler-root');
+const root = createRoot(el);
+
 root.render(
-    <React.StrictMode>
+    <StrictMode>
         <QueryClientProvider
             client={
                 new QueryClient({
@@ -22,5 +24,5 @@ root.render(
         >
             <Crawler />
         </QueryClientProvider>
-    </React.StrictMode>,
+    </StrictMode>,
 );

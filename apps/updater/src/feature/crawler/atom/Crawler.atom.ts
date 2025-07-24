@@ -14,6 +14,5 @@ export const atomCrawler = atom(
         const prev = get(atomCrawlerData);
         if (!prev) return;
         set(atomCrawlerData, { ...prev, ...update });
-        console.log(update);
     },
 );

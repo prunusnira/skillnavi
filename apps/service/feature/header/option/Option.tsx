@@ -33,7 +33,7 @@ const Option = () => {
     return (
         <section
             className={
-                'fixed right-[20px] top-[70px] flex flex-col gap-[16px] bg-white dark:bg-gray-900 px-[20px] py-[10px] rounded-2xl shadow'
+                'bg-white dark:bg-gray-900 fixed right-[20px] top-[70px] flex flex-col gap-[16px] px-[20px] py-[10px] rounded-2xl shadow'
             }
         >
             {/* 테마 변경 */}
