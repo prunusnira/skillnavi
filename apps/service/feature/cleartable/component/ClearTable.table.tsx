@@ -1,5 +1,5 @@
 import { ClearTableResponse } from '@/feature/cleartable/data/ClearTable';
-import style from './ClearTable.table.module.scss';
+import style from './ClearTable.table.module.css';
 import { ReactNode } from 'react';
 import { clsx } from 'clsx';
 
@@ -7,15 +7,13 @@ interface Props {
     tableData: ClearTableResponse[];
 }
 
-const TableCell = (
-    {
-        children,
-        isBold,
-    }: {
-        children: ReactNode;
-        isBold?: boolean;
-    },
-) => (
+const TableCell = ({
+    children,
+    isBold,
+}: {
+    children: ReactNode;
+    isBold?: boolean;
+}) => (
     <div className={clsx(style.tableCell, isBold && style.isBold)}>
         {children}
     </div>

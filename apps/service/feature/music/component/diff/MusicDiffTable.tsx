@@ -1,6 +1,6 @@
 'use client';
 
-import style from './MusicDiffTable.module.scss';
+import style from './MusicDiffTable.module.css';
 import { Pattern } from '@/feature/music/data/Pattern';
 import { cn } from '@/lib/cn';
 import { useRouter } from '@/i18n/routing';

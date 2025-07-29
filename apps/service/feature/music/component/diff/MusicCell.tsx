@@ -2,7 +2,7 @@ import { useCallback, useMemo } from 'react';
 import { Pattern } from '@/feature/music/data/Pattern';
 import { Skill } from '@/feature/skill/data/Skill';
 import { cn } from '@/lib/cn';
-import style from './MusicCell.module.scss';
+import style from './MusicCell.module.css';
 import Image from 'next/image';
 import { IMG } from '@/url/url';
 import { convertRateToRank } from '@/lib/game/convertRateToRank';

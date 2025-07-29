@@ -11,7 +11,7 @@ import { getProfileSkill } from '@/feature/profile/api/getProfileSkill';
 import { getGameVersions } from '@/feature/env/api/getGameVersions';
 import { CriticalButton } from '@/feature/profile/component/button/CriticalButton';
 import Image from 'next/image';
-import style from './page.module.scss';
+import style from './page.module.css';
 import { getProfileSession } from '@/feature/profile/api/getProfileSession';
 import { getServerSession } from 'next-auth';
 

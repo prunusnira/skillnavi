@@ -1,4 +1,3 @@
-import { cn } from '@/lib/cn';
 import { ReactNode } from 'react';
 
 interface Props {
@@ -6,7 +5,7 @@ interface Props {
 }
 
 const SkillBoxCell = ({ children }: Props) => (
-    <div className={cn('w-40 text-center text-white')}>{children}</div>
+    <div className={'w-[160px] text-center text-white'}>{children}</div>
 );
 
 export default SkillBoxCell;
