@@ -18,7 +18,6 @@ export const POST = async (req: NextRequest) => {
     return RouteWrapper({
         req,
         work: async () => {
-            // const { musicdata, version, uid } =
             const result = (await req.json()) as UpdateSkill;
 
             const { musicData, version, uid } = result;

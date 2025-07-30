@@ -51,7 +51,12 @@ const PageIndex = async () => {
             {/* 소개 및 사용방법 */}
             <section className={'flex flex-col md:flex-row w-full'}>
                 {/* 카드 1 */}
-                <Card title={t('howto.part1.title')}>
+                <Card
+                    title={t('howto.part1.title')}
+                    option={{
+                        itemStartPosition: 'start',
+                    }}
+                >
                     <section className={'px-2 py-1'}>
                         <div>1. {t('howto.part1.desc.step1')}</div>
                         <div>2. {t('howto.part1.desc.step2')}</div>
@@ -64,7 +69,12 @@ const PageIndex = async () => {
                 </Card>
 
                 {/* 카드 2 */}
-                <Card title={t('howto.part2.title')}>
+                <Card
+                    title={t('howto.part2.title')}
+                    option={{
+                        itemStartPosition: 'start',
+                    }}
+                >
                     <section className={'px-2 py-1'}>
                         <div>{t('howto.part2.desc.step1')}</div>
                         <div>{t('howto.part2.desc.step2')}</div>
