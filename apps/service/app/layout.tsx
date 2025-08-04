@@ -7,6 +7,9 @@ import { cn } from '@/lib/cn';
 import '@skillnavi/ui/dist/index.css';
 import { cookies } from 'next/headers';
 
+export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
+
 export const metadata: Metadata = {
     title: 'Skill Navigator',
     description: 'GITADORA Skill Simulator',
