@@ -8,12 +8,15 @@ import GraphBox from '@/feature/profile/component/graphbox/GraphBox';
 import SkillBox from '@/feature/profile/component/skillbox/SkillBox';
 import ProfileButton from '@/feature/profile/component/button/ProfileButton';
 import { getProfileSkill } from '@/feature/profile/api/getProfileSkill';
-import { getGameVersions } from '@/feature/env/api/getGameVersions';
+
 import { CriticalButton } from '@/feature/profile/component/button/CriticalButton';
 import Image from 'next/image';
-import style from './page.module.css';
 import { getProfileSession } from '@/feature/profile/api/getProfileSession';
 import { getServerSession } from 'next-auth';
+import { DetailedInfoTable } from '@/feature/profile/component/detailedinfo/DetailedInfoTable';
+import PrefetchQuery from '@/common/wrapper/PrefetchQuery';
+import { getProfileDetail } from '@/feature/profile/api/getProfileDetail';
+import { getLatestVersion } from '@/feature/env/api/getGameVersions';
 
 const PageProfile = async (props: { params: Promise<{ id: string }> }) => {
     const params = await props.params;
@@ -22,9 +25,9 @@ const PageProfile = async (props: { params: Promise<{ id: string }> }) => {
     const mydata = await getProfile([Number(id)]);
     const myskill = await getProfileSkill([Number(id)]);
     const graph = await getProfileGraph(id);
-    const game = await getGameVersions();
     const session = await getServerSession();
     const user = await getProfileSession(session);
+    const latest = await getLatestVersion();
 
     if (!mydata.length || !myskill) {
         // TODO: 데이터가 없음
@@ -38,13 +41,13 @@ const PageProfile = async (props: { params: Promise<{ id: string }> }) => {
         return null;
     }
 
-    // 버전정보 가져오기
-    const codeSorted = game.map((data) => data.id).sort((a, b) => b - a);
-
     // 최신작 스킬
-    const latestSkill = myskill.find(
-        (skill) => skill.version === codeSorted[0],
-    );
+    const latestSkill =
+        myskill.length > 0
+            ? myskill.reduce((prev, current) =>
+                  prev.version > current.version ? prev : current,
+              )
+            : undefined;
 
     return (
         <article className={cn('flex-col-center w-full')}>
@@ -71,68 +74,17 @@ const PageProfile = async (props: { params: Promise<{ id: string }> }) => {
             {/* 상세 정보 테이블 */}
             {latestSkill && (
                 <Card title={t('detail.title')}>
-                    <section className={cn('flex-col-center w-full')}>
-                        <div className={style.detailRow}>
-                            <div className={style.detailCell}>#</div>
-                            <div className={style.detailCell}>GuitarFreaks</div>
-                            <div className={style.detailCell}>DrumMania</div>
-                        </div>
-                        <div className={style.detailRow}>
-                            <div className={style.detailCell}>
-                                {t('detail.table.skill')}
-                            </div>
-                            <div className={style.detailCell}>
-                                {latestSkill.gskill}
-                            </div>
-                            <div className={style.detailCell}>
-                                {latestSkill.dskill}
-                            </div>
-                        </div>
-                        <div className={style.detailRow}>
-                            <div className={style.detailCell}>
-                                {t('detail.table.clear')}
-                            </div>
-                            <div className={style.detailCell}>
-                                {latestSkill.gclearlv} ({latestSkill.gclearnum})
-                            </div>
-                            <div className={style.detailCell}>
-                                {latestSkill.dclearlv} ({latestSkill.dclearnum})
-                            </div>
-                        </div>
-                        <div className={style.detailRow}>
-                            <div className={style.detailCell}>
-                                {t('detail.table.fc')}
-                            </div>
-                            <div className={style.detailCell}>
-                                {latestSkill.gfclv} ({latestSkill.gfcnum})
-                            </div>
-                            <div className={style.detailCell}>
-                                {latestSkill.dfclv} ({latestSkill.dfcnum})
-                            </div>
-                        </div>
-                        <div className={style.detailRow}>
-                            <div className={style.detailCell}>
-                                {t('detail.table.exc')}
-                            </div>
-                            <div className={style.detailCell}>
-                                {latestSkill.gexclv} ({latestSkill.gexcnum})
-                            </div>
-                            <div className={style.detailCell}>
-                                {latestSkill.dexclv} ({latestSkill.dexcnum})
-                            </div>
-                        </div>
-                        <div className={style.detailRow}>
-                            <div className={style.detailCell}>
-                                {t('detail.table.count')}
-                            </div>
-                            <div className={style.detailCell}>
-                                {latestSkill.gcount}
-                            </div>
-                            <div className={style.detailCell}>
-                                {latestSkill.dcount}
-                            </div>
-                        </div>
-                    </section>
+                    <PrefetchQuery
+                        queryKey={[
+                            'profile',
+                            id,
+                            'detail',
+                            latest,
+                        ]}
+                        queryFn={() => getProfileDetail(Number(id), latest)}
+                    >
+                        <DetailedInfoTable initialSkill={latestSkill} />
+                    </PrefetchQuery>
                 </Card>
             )}
 

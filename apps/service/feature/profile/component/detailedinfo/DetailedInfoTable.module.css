@@ -1,0 +1,13 @@
+@reference '../../../../app/globals.css';
+
+.detailRow {
+    @apply flex justify-center items-center border-b border-white w-full;
+}
+
+.detailCell {
+    @apply w-1/3 text-center;
+}
+
+.detailCell:first-child {
+    @apply font-bold;
+}
