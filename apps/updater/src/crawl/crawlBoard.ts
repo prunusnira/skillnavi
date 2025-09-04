@@ -1,13 +1,11 @@
 import upload from './upload';
 import { CrawlerBoardParams } from '../feature/crawler/component/CrawlerImport.type';
 
-const crawlBoard = (
-    {
-        gtype,
-        setCurrent,
-        setBtnDisabled,
-    }: CrawlerBoardParams,
-) => {
+const crawlBoard = ({
+    gtype,
+    setCurrent,
+    setBtnDisabled,
+}: CrawlerBoardParams) => {
     const url = window.sinUrl.find((url) => url.urltype === 'board')?.url;
 
     if (!url) {
@@ -31,7 +29,9 @@ const crawlBoard = (
 
         // 이미지 데이터를 base64 인코딩 하여 전송
         upload({
-            json: dataURL.replace(/^data:image\/(png|jpg);base64,/, ''),
+            json: JSON.stringify({
+                image: dataURL.replace(/^data:image\/(png|jpg);base64,/, ''),
+            }),
             type: 'board',
             version: 0,
             setCurrent,

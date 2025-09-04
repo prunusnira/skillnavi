@@ -15,19 +15,17 @@ interface Props {
     customClass?: string;
 }
 
-export const ButtonStandard = (
-    {
-        iconUrl,
-        text,
-        onClick,
-        size,
-        isSelected,
-        disabled,
-        customDisabledClass,
-        customSelectedClass,
-        customClass,
-    }: Props,
-) => {
+export const ButtonStandard = ({
+    iconUrl,
+    text,
+    onClick,
+    size,
+    isSelected,
+    disabled,
+    customDisabledClass,
+    customSelectedClass,
+    customClass,
+}: Props) => {
     const color = useMemo(() => {
         if (isSelected) {
             return customSelectedClass || 'bg-green-500 text-white';
@@ -36,13 +34,17 @@ export const ButtonStandard = (
             return customDisabledClass || 'bg-blue-200 text-white';
         }
         return customClass || 'bg-blue-500 text-white';
-    }, [disabled, isSelected]);
+    }, [
+        disabled,
+        isSelected,
+    ]);
 
     return (
         <section
-            className={
-                clsx(color, 'flex-center rounded-xl cursor-pointer px-4 py-2')
-            }
+            className={clsx(
+                color,
+                'flex-center rounded-xl cursor-pointer px-[16px] py-[8px]',
+            )}
             onClick={() => {
                 if (!disabled && onClick) {
                     onClick();

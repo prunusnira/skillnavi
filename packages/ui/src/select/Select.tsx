@@ -10,7 +10,7 @@ interface Props {
 export const Select = ({ options, value, onChange }: Props) => {
     return (
         <select
-            className={'rounded-2xl px-4 py-2 text-black bg-white'}
+            className={'rounded-2xl px-[16px] py-[8px] text-black bg-white'}
             value={value}
             onChange={onChange}
         >

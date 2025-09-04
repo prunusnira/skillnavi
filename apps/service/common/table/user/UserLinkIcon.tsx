@@ -31,7 +31,9 @@ const UserLinkIcon = ({ user }: Props) => {
                 />
             )}
             <div className="link">
-                {user.openinfo ? user.name : '(NO NAME)'}
+                {user.openinfo && user.name && user.name !== ''
+                    ? user.name
+                    : '(NO NAME)'}
             </div>
         </div>
     );

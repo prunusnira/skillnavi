@@ -15,33 +15,39 @@ interface Props {
     customClass?: string;
 }
 
-export const ButtonRounded = (
-    {
-        icon,
-        text,
-        onClick,
-        fixedWidth,
-        isSelected,
-        disabled,
-        customDisabledClass,
-        customSelectedClass,
-        customClass,
-    }: Props,
-) => {
+export const ButtonRounded = ({
+    icon,
+    text,
+    onClick,
+    fixedWidth,
+    isSelected,
+    disabled,
+    customDisabledClass,
+    customSelectedClass,
+    customClass,
+}: Props) => {
     const color = useMemo(() => {
         if (disabled) {
-            return customDisabledClass || 'bg-gray-500, text-white border-gray-500';
+            return (
+                customDisabledClass || 'bg-gray-500, text-white border-gray-500'
+            );
         }
         if (isSelected) {
             return customSelectedClass || 'bg-black text-white border-gray-500';
         }
-        return customClass || 'bg-transparent text-black border-black dark:border-white dark:text-white';
-    }, [isSelected, disabled]);
+        return (
+            customClass ||
+            'bg-transparent text-black border-black dark:border-white dark:text-white'
+        );
+    }, [
+        isSelected,
+        disabled,
+    ]);
 
     return (
         <button
             className={clsx(
-                'flex-center border rounded-2xl px-2 py-1',
+                'flex-center border rounded-2xl px-[8px] py-[4px]',
                 color,
             )}
             onClick={onClick}

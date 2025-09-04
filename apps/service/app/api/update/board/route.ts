@@ -10,9 +10,9 @@ export const POST = async (req: NextRequest) => {
             try {
                 const searchParams = req.nextUrl.searchParams;
                 const uid = searchParams.get('uid');
-                const blob = await req.text();
+                const blob = await req.json();
                 const filePath = `${process.env.NEXT_PUBLIC_BOARD}${uid}.png`;
-                const buffer = Buffer.from(blob, 'base64');
+                const buffer = Buffer.from(blob.image, 'base64');
                 const fd = fs.openSync(filePath, 'w');
                 fs.writeFileSync(fd, buffer);
                 fs.close(fd);
