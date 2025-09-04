@@ -19,12 +19,12 @@ const Header = () => {
     ] = useAtom(atomCrawler);
 
     return (
-        <header className="flex flex-col">
+        <header className="!flex !flex-col">
             {/* 상단 타이틀 */}
-            <section className="relative flex items-center justify-center mb-[20px]">
-                <div className="flex flex-col flex-grow w-full items-start">
-                    <div className="text-md font-bold">Skill Navigator</div>
-                    <div className="text-xl font-medium">Data Updater</div>
+            <section className="!relative !flex !items-center !justify-center !mb-[20px]">
+                <div className="!flex !flex-col !flex-grow !w-full !items-start">
+                    <div className="!text-md !font-bold">Skill Navigator</div>
+                    <div className="!text-xl !font-medium">Data Updater</div>
                 </div>
                 <ButtonStandard
                     text={'CLOSE'}
@@ -33,7 +33,7 @@ const Header = () => {
             </section>
 
             {/* 버전 선택 메뉴 */}
-            <section className="flex gap-[4px]">
+            <section className="!flex !gap-[4px]">
                 {availableVersion?.map((version) => (
                     <ButtonRounded
                         text={version.full}

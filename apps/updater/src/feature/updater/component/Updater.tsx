@@ -14,8 +14,8 @@ const Updater = () => {
     const { lang, btnDisabled } = env;
 
     return (
-        <section className="flex flex-col gap-[20px]">
-            <div className="text-md font-bold">
+        <section className="!flex !flex-col !gap-[20px]">
+            <div className="!text-md !font-bold">
                 {(text.crawler.datat as any)[lang]}
             </div>
 

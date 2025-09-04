@@ -7,16 +7,22 @@ const InvalidUser = () => {
     const env = useAtomValue(atomCrawler);
     const { lang } = env;
     return (
-        <section className={'flex flex-col'}>
-            <div className="text-md font-bold mb-[10px]">User Not Logged in</div>
-            <div className="text-sm">
+        <section className={'!flex !flex-col'}>
+            <div className="!text-md !font-bold !mb-[10px]">
+                User Not Logged in
+            </div>
+            <div className="!text-sm">
                 {(text.crawler.notlogin.line1 as any)[lang]}
             </div>
-            <div className="text-sm">
+            <div className="!text-sm">
                 {(text.crawler.notlogin.line2 as any)[lang]}
             </div>
-            <div className="text-sm">
-                <a href="https://sin.nira.one" target="_blank" className="font-bold text-blue-400">
+            <div className="!text-sm">
+                <a
+                    href="https://sin.nira.one"
+                    target="_blank"
+                    className="!font-bold !text-blue-400"
+                >
                     Skill Navigator
                 </a>
                 &nbsp;

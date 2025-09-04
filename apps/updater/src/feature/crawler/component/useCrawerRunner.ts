@@ -208,10 +208,20 @@ const useCrawerRunner = () => {
 
             // board update
             case 51:
-                crawlBoard({ gtype: 'gf', setCurrent, setBtnDisabled });
+                crawlBoard({
+                    gtype: 'gf',
+                    setCurrent,
+                    setBtnDisabled,
+                    version,
+                });
                 break;
             case 52:
-                crawlBoard({ gtype: 'dm', setCurrent, setBtnDisabled });
+                crawlBoard({
+                    gtype: 'dm',
+                    setCurrent,
+                    setBtnDisabled,
+                    version,
+                });
                 break;
 
             // wrong param

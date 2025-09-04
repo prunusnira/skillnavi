@@ -5,8 +5,11 @@ const crawlBoard = ({
     gtype,
     setCurrent,
     setBtnDisabled,
+    version,
 }: CrawlerBoardParams) => {
-    const url = window.sinUrl.find((url) => url.urltype === 'board')?.url;
+    const url = window.sinUrl.find(
+        (url) => url.urltype === 'board' && url.version === version,
+    )?.url;
 
     if (!url) {
         alert('No URL for board found');

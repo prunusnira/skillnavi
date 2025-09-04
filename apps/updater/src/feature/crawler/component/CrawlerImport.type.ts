@@ -2,29 +2,47 @@ import UrlData from '../../../crawl/data/urlData';
 import { UpdateSkill } from '@skillnavi/data/src/skill/SkillData';
 
 export interface CrawlerParams {
-    page: number,
-    gtype: string,
-    delay: number,
-    isSelective: boolean,
-    category: number[],
-    version: number,
-    setCurrent: (s: string) => void,
-    setBtnDisabled: (b: boolean) => void
+    page: number;
+    gtype: string;
+    delay: number;
+    isSelective: boolean;
+    category: number[];
+    version: number;
+    setCurrent: (s: string) => void;
+    setBtnDisabled: (b: boolean) => void;
 }
 
 export type CrawlerAllParams = Omit<CrawlerParams, 'page'>;
 
-export type CrawlerProfileParams = Pick<CrawlerParams, 'version' | 'setCurrent' | 'setBtnDisabled'>;
+export type CrawlerProfileParams = Pick<
+    CrawlerParams,
+    'version' | 'setCurrent' | 'setBtnDisabled'
+>;
 
-export type CrawlerTargetParams = Pick<CrawlerParams, 'gtype' | 'delay' | 'version' | 'setCurrent' | 'setBtnDisabled'>;
+export type CrawlerTargetParams = Pick<
+    CrawlerParams,
+    'gtype' | 'delay' | 'version' | 'setCurrent' | 'setBtnDisabled'
+>;
 
-export type CrawlerTargetUrl = Pick<CrawlerParams, 'gtype' | 'version' | 'setCurrent'>;
+export type CrawlerTargetUrl = Pick<
+    CrawlerParams,
+    'gtype' | 'version' | 'setCurrent'
+>;
 
-export type CrawlerFavoParams = Pick<CrawlerParams, 'page' | 'gtype' | 'delay' | 'setCurrent' | 'setBtnDisabled'>;
+export type CrawlerFavoParams = Pick<
+    CrawlerParams,
+    'page' | 'gtype' | 'delay' | 'setCurrent' | 'setBtnDisabled'
+>;
 
-export type CralwerFavoUrl = Pick<CrawlerParams, 'page' | 'gtype' | 'setCurrent'>;
+export type CralwerFavoUrl = Pick<
+    CrawlerParams,
+    'page' | 'gtype' | 'setCurrent'
+>;
 
-export type CrawlerBoardParams = Pick<CrawlerParams, 'gtype' | 'setCurrent' | 'setBtnDisabled'>;
+export type CrawlerBoardParams = Pick<
+    CrawlerParams,
+    'gtype' | 'setCurrent' | 'setBtnDisabled' | 'version'
+>;
 
 export interface CrawlerUrlList {
     urls: UrlData[];
