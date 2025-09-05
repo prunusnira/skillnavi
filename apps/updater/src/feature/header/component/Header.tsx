@@ -2,7 +2,10 @@ import { useQuery } from '@tanstack/react-query';
 import { getAvailableVersion } from '../../version/api/getAvailableVersion';
 import { atomCrawler } from '../../crawler/atom/Crawler.atom';
 import { useAtom } from 'jotai';
-import { ButtonRounded, ButtonStandard } from '@skillnavi/ui';
+import {
+    ForceClassedButtonRounded,
+    ForceClassedButtonStandard,
+} from '../../../common/ForceClassedButtonStandard';
 
 const Header = () => {
     const { data: availableVersion } = useQuery({
@@ -26,7 +29,7 @@ const Header = () => {
                     <div className="!text-md !font-bold">Skill Navigator</div>
                     <div className="!text-xl !font-medium">Data Updater</div>
                 </div>
-                <ButtonStandard
+                <ForceClassedButtonStandard
                     text={'CLOSE'}
                     onClick={() => window.location.reload()}
                 />
@@ -35,7 +38,7 @@ const Header = () => {
             {/* 버전 선택 메뉴 */}
             <section className="!flex !gap-[4px]">
                 {availableVersion?.map((version) => (
-                    <ButtonRounded
+                    <ForceClassedButtonRounded
                         text={version.full}
                         isSelected={version.id === env.version}
                         onClick={() => {

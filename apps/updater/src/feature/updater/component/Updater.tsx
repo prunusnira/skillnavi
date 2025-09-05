@@ -6,7 +6,7 @@ import useCrawerRunner from '../../crawler/component/useCrawerRunner';
 import { UpdaterRow } from './Updater.data';
 import UpdaterItemRow from './Updater.item.row';
 import UpdaterBlock from './Updater.block';
-import { ButtonStandard } from '@skillnavi/ui';
+import { ForceClassedButtonStandard } from '../../../common/ForceClassedButtonStandard';
 
 const Updater = () => {
     const env = useAtomValue(atomCrawler);
@@ -24,17 +24,17 @@ const Updater = () => {
                 title={(text.crawler.descTgtShortT as any)[lang]}
                 description={(text.crawler.descTgtShort as any)[lang]}
             >
-                <ButtonStandard
+                <ForceClassedButtonStandard
                     onClick={() => crawlRunner(11)}
                     disabled={btnDisabled}
                     text={'GF'}
                 />
-                <ButtonStandard
+                <ForceClassedButtonStandard
                     onClick={() => crawlRunner(12)}
                     disabled={btnDisabled}
                     text={'DM'}
                 />
-                <ButtonStandard
+                <ForceClassedButtonStandard
                     onClick={() => crawlRunner(10)}
                     disabled={btnDisabled}
                     text={'All'}
@@ -46,17 +46,17 @@ const Updater = () => {
                 title={(text.crawler.descTgtAllT as any)[lang]}
                 description={(text.crawler.descTgtAll as any)[lang]}
             >
-                <ButtonStandard
+                <ForceClassedButtonStandard
                     onClick={() => crawlRunner(31)}
                     disabled={btnDisabled}
                     text={'GF'}
                 />
-                <ButtonStandard
+                <ForceClassedButtonStandard
                     onClick={() => crawlRunner(32)}
                     disabled={btnDisabled}
                     text={'DM'}
                 />
-                <ButtonStandard
+                <ForceClassedButtonStandard
                     onClick={() => crawlRunner(30)}
                     disabled={btnDisabled}
                     text={'All'}
@@ -68,12 +68,12 @@ const Updater = () => {
                 title={(text.crawler.descAllT as any)[lang]}
                 description={(text.crawler.descAll as any)[lang]}
             >
-                <ButtonStandard
+                <ForceClassedButtonStandard
                     onClick={() => crawlRunner(21)}
                     disabled={btnDisabled}
                     text={'GF'}
                 />
-                <ButtonStandard
+                <ForceClassedButtonStandard
                     onClick={() => crawlRunner(22)}
                     disabled={btnDisabled}
                     text={'DM'}
@@ -85,12 +85,12 @@ const Updater = () => {
                 title={(text.crawler.board.title as any)[lang]}
                 description={(text.crawler.board.desc as any)[lang]}
             >
-                <ButtonStandard
+                <ForceClassedButtonStandard
                     onClick={() => crawlRunner(51)}
                     disabled={btnDisabled}
                     text={`GF ${(text.crawler.board.short as any)[lang]}`}
                 />
-                <ButtonStandard
+                <ForceClassedButtonStandard
                     onClick={() => crawlRunner(52)}
                     disabled={btnDisabled}
                     text={`DM ${(text.crawler.board.short as any)[lang]}`}
@@ -109,12 +109,12 @@ const Updater = () => {
                         ))}
                     </div>
                     <div className="flex">
-                        <ButtonStandard
+                        <ForceClassedButtonStandard
                             onClick={() => crawlSelRunner(1)}
                             disabled={btnDisabled}
                             text={(text.crawler.gsel as any)[lang]}
                         />
-                        <ButtonStandard
+                        <ForceClassedButtonStandard
                             onClick={() => crawlSelRunner(2)}
                             disabled={btnDisabled}
                             text={(text.crawler.dsel as any)[lang]}
