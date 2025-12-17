@@ -2,7 +2,10 @@ import { NextRequest, NextResponse } from 'next/server';
 import RouteWrapper from '@/lib/fetch/routeWrapper';
 import prisma from '@/lib/db/prisma';
 
-export const POST = async (req: NextRequest, props: { params: Promise<{ id: number }> }) => {
+export const POST = async (
+    req: NextRequest,
+    props: { params: Promise<{ id: string }> },
+) => {
     const params = await props.params;
     return RouteWrapper({
         req,

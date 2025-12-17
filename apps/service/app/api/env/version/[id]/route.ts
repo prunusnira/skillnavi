@@ -4,7 +4,7 @@ import prisma from '@/lib/db/prisma';
 
 export const GET = async (
     req: NextRequest,
-    props: { params: Promise<{ id: number }> },
+    props: { params: Promise<{ id: string }> },
 ) => {
     const params = await props.params;
     return RouteWrapper({
@@ -12,7 +12,7 @@ export const GET = async (
         work: async () => {
             const version = await prisma.gameVersion.findUnique({
                 where: {
-                    id: params.id,
+                    id: Number(params.id),
                 },
             });
 
