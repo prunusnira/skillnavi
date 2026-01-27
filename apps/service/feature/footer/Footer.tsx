@@ -16,6 +16,7 @@ const Footer = async () => {
                 )}
             >
                 <div>(c) 2016 Nira, Made with NextJS</div>
+                <div>{t('copyright')}</div>
                 <div>{t('bottom')}</div>
             </section>
         </footer>
