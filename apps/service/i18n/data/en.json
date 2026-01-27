@@ -1,250 +1,251 @@
 {
-  "common": {
-    "yesno": {
-      "yes": "Yes",
-      "no": "No"
-    }
-  },
-  "navbar": {
-    "login": "Sign Up / Login",
-    "logout": "Logout"
-  },
-  "bottom": "This site is a fan site and has no commercial purpose.",
-  "sidemenu": {
-    "home": "Main Page",
-    "mydata": {
-      "title": "My Data",
-      "profile": "Profile",
-      "mygf": "My GF Skill",
-      "mydm": "My DM Skill",
-      "count": "Play Count",
-      "snapshot": "Snapshot Archive"
+    "common": {
+        "yesno": {
+            "yes": "Yes",
+            "no": "No"
+        }
     },
-    "skill": {
-      "title": "Skill",
-      "recent": "Recently Updated Users",
-      "ranking": "Skill Ranking",
-      "exc": "Theoretical Skill Value",
-      "countrank": "Play Count Ranking"
+    "navbar": {
+        "login": "Sign Up / Login",
+        "logout": "Logout"
     },
-    "pattern": {
-      "title": "Pattern",
-      "list": "Pattern List",
-      "cleartable": "Clear Table"
-    },
-    "tower": {
-      "title": "Tower"
-    },
-    "search": {
-      "type": {
-        "music": "Search by Song Title",
-        "player": "Search by Username",
-        "gfskill": "Search GF Skill",
-        "dmskill": "Search DM Skill"
-      },
-      "button": "Search",
-      "placeholder": "Search keyword here"
-    }
-  },
-  "main": {
-    "user": {
-      "title": "Login",
-      "beforeLogin": {
-        "link": "Login",
-        "desc": "first, please."
-      },
-      "script": {
-        "title": "Data Update Script",
-        "desc": {
-          "desc1": "Click the box below to copy the script.",
-          "desc2": "The script is unique to each user, so never share it."
+    "copyright": "All resources and content displayed on this site are copyrighted by Konami Arcade Games and other related copyright holders",
+    "bottom": "This site is a fan site and has no commercial purpose.",
+    "sidemenu": {
+        "home": "Main Page",
+        "mydata": {
+            "title": "My Data",
+            "profile": "Profile",
+            "mygf": "My GF Skill",
+            "mydm": "My DM Skill",
+            "count": "Play Count",
+            "snapshot": "Snapshot Archive"
         },
-        "click": "The script (excluding the initial 'j') has been copied. Please be careful when pasting."
-      },
-      "button": {
-        "profile": "Profile",
-        "mygf": "My GF Skill",
-        "mydm": "My DM Skill",
-        "playcount": "Play Count"
-      }
-    },
-    "discord": {
-      "title": "Skill Navigator Discord Server",
-      "desc": "Please check Skill Navigator discord server for announcements",
-      "link": "Open Discord Link"
-    },
-    "howto": {
-      "part1": {
-        "title": "How to Use (Step 1)",
-        "desc": {
-          "step1": "Go to the eAmusement website.",
-          "step2": "Log in to the site.",
-          "step3": "Paste and run the script in the address bar."
+        "skill": {
+            "title": "Skill",
+            "recent": "Recently Updated Users",
+            "ranking": "Skill Ranking",
+            "exc": "Theoretical Skill Value",
+            "countrank": "Play Count Ranking"
+        },
+        "pattern": {
+            "title": "Pattern",
+            "list": "Pattern List",
+            "cleartable": "Clear Table"
+        },
+        "tower": {
+            "title": "Tower"
+        },
+        "search": {
+            "type": {
+                "music": "Search by Song Title",
+                "player": "Search by Username",
+                "gfskill": "Search GF Skill",
+                "dmskill": "Search DM Skill"
+            },
+            "button": "Search",
+            "placeholder": "Search keyword here"
         }
-      },
-      "part2": {
-        "title": "How to Use (Step 2)",
-        "desc": {
-          "step1": "Check the displayed screen and press the button to update.",
-          "step2": "Do not use the eAmusement site during the update (including other devices)."
+    },
+    "main": {
+        "user": {
+            "title": "Login",
+            "beforeLogin": {
+                "link": "Login",
+                "desc": "first, please."
+            },
+            "script": {
+                "title": "Data Update Script",
+                "desc": {
+                    "desc1": "Click the box below to copy the script.",
+                    "desc2": "The script is unique to each user, so never share it."
+                },
+                "click": "The script (excluding the initial 'j') has been copied. Please be careful when pasting."
+            },
+            "button": {
+                "profile": "Profile",
+                "mygf": "My GF Skill",
+                "mydm": "My DM Skill",
+                "playcount": "Play Count"
+            }
+        },
+        "discord": {
+            "title": "Skill Navigator Discord Server",
+            "desc": "Please check Skill Navigator discord server for announcements",
+            "link": "Open Discord Link"
+        },
+        "howto": {
+            "part1": {
+                "title": "How to Use (Step 1)",
+                "desc": {
+                    "step1": "Go to the eAmusement website.",
+                    "step2": "Log in to the site.",
+                    "step3": "Paste and run the script in the address bar."
+                }
+            },
+            "part2": {
+                "title": "How to Use (Step 2)",
+                "desc": {
+                    "step1": "Check the displayed screen and press the button to update.",
+                    "step2": "Do not use the eAmusement site during the update (including other devices)."
+                }
+            }
         }
-      }
-    }
-  },
-  "profile": {
-    "info": {
-      "title": "User Information",
-      "button": {
-        "count": "Play Count",
-        "cleartable": "Clear Status",
-        "comment": "Change Comment",
-        "openinfo": "Privacy Settings"
-      },
-      "skillbox": {
-        "open": "Open",
-        "close": "Close"
-      }
     },
-    "graph": "Skill Graph",
-    "detail": {
-      "title": "Detailed Information",
-      "table": {
-        "skill": "Skill",
-        "clear": "Clear (Level/Count)",
-        "fc": "Full Combo (Level/Count)",
-        "exc": "Excellent (Level/Count)",
-        "count": "Number of Play Stages"
-      }
-    },
-    "board": "Player Board",
-    "critical": {
-      "title": "Critical Area",
-      "button": {
-        "reset": "Reset Data"
-      }
-    }
-  },
-  "reset": {
-    "title": "Reset Data",
-    "description": {
-      "desc1": "This process is irreversible, so please proceed with caution.",
-      "desc2": "All saved record data will be deleted.",
-      "desc3": "Are you sure you want to continue?"
-    },
-    "alert": {
-      "invalid": "User could not be verified.",
-      "error": "An error has occurred.",
-      "success": "Data reset and logout have been completed."
-    }
-  },
-  "pattern": {
-    "title": "Pattern List"
-  },
-  "music": {
-    "title": "Detailed Record",
-    "nodata": "No data available",
-    "version": "Version",
-    "mode": "Game Mode",
-    "ranking": "View Pattern Ranking",
-    "menu": {
-      "musicVersion": "Music Version",
-      "gameVersion": "Game Version",
-      "difficulty": "Difficulty",
-      "rank": "Rank",
-      "close": "Close"
-    }
-  },
-  "recent": "Recently Updated Users",
-  "ranking": "Skill Ranking",
-  "skill": {
-    "title": "Skill",
-    "menu": {
-      "version": {
-        "title": "Select Version"
-      },
-      "data": {
-        "title": "Select Data",
-        "target": "Target Skill Songs",
-        "all": "All Skills"
-      },
-      "table": {
-        "title": "Table Type",
-        "grid": "Grid",
-        "list": "List"
-      },
-      "game": {
-        "title": "Select Game",
-        "gf": "GuitarFreaks",
-        "dm": "DrumMania"
-      },
-      "button": {
-        "close": "Close"
-      }
-    },
-    "snapshot": "Create Snapshot",
-    "screenshot": "Take Screenshot"
-  },
-  "countrank": {
-    "title": "Play Count Ranking"
-  },
-  "cleartable": "Clear Table",
-  "tower": {
-    "title": "Tower",
-    "changeIcon": {
-      "button": "Change Icon",
-      "dialog": "Do you want to change the icon?"
-    },
-    "status": {
-      "clear": "Cleared",
-      "yet": "Available"
-    }
-  },
-  "user": {
-    "login": {
-      "placeholder": {
-        "id": "ID",
-        "pw": "Password"
-      },
-      "title": "Login",
-      "google": "Sign in with Google Account"
-    },
-    "join": {
-      "title": "Welcome to Skill Navigator!",
-      "desc": "Click the button below to create new user data.",
-      "btnsign": "Sign Up",
-      "btndecline": "Cancel"
-    },
-    "playcount": {
-      "desc_1": "To display your My Best list accurately, ",
-      "desc_2": "data for all patterns",
-      "desc_3": "is required.",
-      "button": {
-        "music": "Song Play Count",
-        "pt": "Pattern Play Count",
-        "gf": "Pattern Play Count (GF Only)",
-        "dm": "Pattern Play Count (DM Only)",
-        "scrshot": "Save Screenshot"
-      },
-      "table": {
-        "time": "Times"
-      },
-      "nodata": "No data available"
+    "profile": {
+        "info": {
+            "title": "User Information",
+            "button": {
+                "count": "Play Count",
+                "cleartable": "Clear Status",
+                "comment": "Change Comment",
+                "openinfo": "Privacy Settings"
+            },
+            "skillbox": {
+                "open": "Open",
+                "close": "Close"
+            }
+        },
+        "graph": "Skill Graph",
+        "detail": {
+            "title": "Detailed Information",
+            "table": {
+                "skill": "Skill",
+                "clear": "Clear (Level/Count)",
+                "fc": "Full Combo (Level/Count)",
+                "exc": "Excellent (Level/Count)",
+                "count": "Number of Play Stages"
+            }
+        },
+        "board": "Player Board",
+        "critical": {
+            "title": "Critical Area",
+            "button": {
+                "reset": "Reset Data"
+            }
+        }
     },
     "reset": {
-      "title": "About Data Reset",
-      "desc1": "If you perform this process, all data you have registered so far will be deleted and cannot be recovered.",
-      "desc2t": "List of data to be deleted",
-      "desc2s": "Titles, names, GuitarFreaks and DrumMania user data (skills, all song skills, clear counts/highest difficulty, full combo counts/highest difficulty, excellent counts/highest difficulty, play count), play data for each song (skill per song, rank, combo, play count, clear count, achievement rate, score, skill meter, old achievement rate)",
-      "desc3": "Your account will not be deleted, but you can disconnect your Google account from the Google Account management page.",
-      "desc4": "Google - My Account - Account Settings - Connected Apps & Sites - Manage Apps - Select GITADORA Info - Deselect",
-      "desc5": "Do you want to delete your data?"
+        "title": "Reset Data",
+        "description": {
+            "desc1": "This process is irreversible, so please proceed with caution.",
+            "desc2": "All saved record data will be deleted.",
+            "desc3": "Are you sure you want to continue?"
+        },
+        "alert": {
+            "invalid": "User could not be verified.",
+            "error": "An error has occurred.",
+            "success": "Data reset and logout have been completed."
+        }
+    },
+    "pattern": {
+        "title": "Pattern List"
+    },
+    "music": {
+        "title": "Detailed Record",
+        "nodata": "No data available",
+        "version": "Version",
+        "mode": "Game Mode",
+        "ranking": "View Pattern Ranking",
+        "menu": {
+            "musicVersion": "Music Version",
+            "gameVersion": "Game Version",
+            "difficulty": "Difficulty",
+            "rank": "Rank",
+            "close": "Close"
+        }
+    },
+    "recent": "Recently Updated Users",
+    "ranking": "Skill Ranking",
+    "skill": {
+        "title": "Skill",
+        "menu": {
+            "version": {
+                "title": "Select Version"
+            },
+            "data": {
+                "title": "Select Data",
+                "target": "Target Skill Songs",
+                "all": "All Skills"
+            },
+            "table": {
+                "title": "Table Type",
+                "grid": "Grid",
+                "list": "List"
+            },
+            "game": {
+                "title": "Select Game",
+                "gf": "GuitarFreaks",
+                "dm": "DrumMania"
+            },
+            "button": {
+                "close": "Close"
+            }
+        },
+        "snapshot": "Create Snapshot",
+        "screenshot": "Take Screenshot"
+    },
+    "countrank": {
+        "title": "Play Count Ranking"
+    },
+    "cleartable": "Clear Table",
+    "tower": {
+        "title": "Tower",
+        "changeIcon": {
+            "button": "Change Icon",
+            "dialog": "Do you want to change the icon?"
+        },
+        "status": {
+            "clear": "Cleared",
+            "yet": "Available"
+        }
+    },
+    "user": {
+        "login": {
+            "placeholder": {
+                "id": "ID",
+                "pw": "Password"
+            },
+            "title": "Login",
+            "google": "Sign in with Google Account"
+        },
+        "join": {
+            "title": "Welcome to Skill Navigator!",
+            "desc": "Click the button below to create new user data.",
+            "btnsign": "Sign Up",
+            "btndecline": "Cancel"
+        },
+        "playcount": {
+            "desc_1": "To display your My Best list accurately, ",
+            "desc_2": "data for all patterns",
+            "desc_3": "is required.",
+            "button": {
+                "music": "Song Play Count",
+                "pt": "Pattern Play Count",
+                "gf": "Pattern Play Count (GF Only)",
+                "dm": "Pattern Play Count (DM Only)",
+                "scrshot": "Save Screenshot"
+            },
+            "table": {
+                "time": "Times"
+            },
+            "nodata": "No data available"
+        },
+        "reset": {
+            "title": "About Data Reset",
+            "desc1": "If you perform this process, all data you have registered so far will be deleted and cannot be recovered.",
+            "desc2t": "List of data to be deleted",
+            "desc2s": "Titles, names, GuitarFreaks and DrumMania user data (skills, all song skills, clear counts/highest difficulty, full combo counts/highest difficulty, excellent counts/highest difficulty, play count), play data for each song (skill per song, rank, combo, play count, clear count, achievement rate, score, skill meter, old achievement rate)",
+            "desc3": "Your account will not be deleted, but you can disconnect your Google account from the Google Account management page.",
+            "desc4": "Google - My Account - Account Settings - Connected Apps & Sites - Manage Apps - Select GITADORA Info - Deselect",
+            "desc5": "Do you want to delete your data?"
+        }
+    },
+    "search": {
+        "title": "Search Results",
+        "desc": "Search results are not case sensitive.",
+        "table": {
+            "empty": "No items to display."
+        }
     }
-  },
-  "search": {
-    "title": "Search Results",
-    "desc": "Search results are not case sensitive.",
-    "table": {
-      "empty": "No items to display."
-    }
-  }
 }

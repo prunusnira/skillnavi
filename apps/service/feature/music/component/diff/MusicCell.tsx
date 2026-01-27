@@ -44,7 +44,7 @@ export const MusicCell = ({ pattern, skill, patterncode }: Props) => {
             {rateString && rateString !== '' && (
                 <div className={cn(style.cell, 'link')}>
                     <Image
-                        src={`${IMG}/rank/${convertRank(convertRateToRank(rate || 0))}`}
+                        src={`${IMG}/rank/${convertRank('', rate ?? 0)}`}
                         alt={'rank'}
                         width={20}
                         height={20}
