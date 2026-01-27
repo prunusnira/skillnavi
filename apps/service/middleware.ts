@@ -15,8 +15,7 @@ const publicPages = [
     '/profile',
     '/music',
     '/pattern',
-    '/skill/exc',
-    '/skill/0',
+    '/skill',
     '/rank/skill',
     '/rank/playcount',
 ];
@@ -42,21 +41,21 @@ export const middleware = (req: NextRequest) => {
             .flatMap((p) =>
                 p === '/'
                     ? [
-                        '',
-                        '/',
-                    ]
+                          '',
+                          '/',
+                      ]
                     : p,
             )
             .join('|')})/?$)|((${publicPages
             .flatMap((p) =>
                 p === '/'
                     ? [
-                        '',
-                        '/',
-                    ]
-                    : p,
+                          '',
+                          '/',
+                      ]
+                    : `${p}.*`,
             )
-            .join('|')})/?.*))`,
+            .join('|')})/?))`,
         'i',
     );
     const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname);
