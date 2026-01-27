@@ -1,255 +1,256 @@
 {
-  "common": {
-    "yesno": {
-      "yes": "예",
-      "no": "아니오"
-    }
-  },
-  "navbar": {
-    "login": "가입/로그인",
-    "logout": "로그아웃"
-  },
-  "bottom": "이 사이트는 팬사이트로 영리적 목적을 가지고 있지 않습니다",
-  "sidemenu": {
-    "home": "메인 페이지",
-    "mydata": {
-      "title": "나의 데이터",
-      "profile": "프로필",
-      "mygf": "나의 GF 스킬",
-      "mydm": "나의 DM 스킬",
-      "count": "플레이 카운트",
-      "snapshot": "스냅샷 보관함"
+    "common": {
+        "yesno": {
+            "yes": "예",
+            "no": "아니오"
+        }
     },
-    "skill": {
-      "title": "스킬",
-      "recent": "최근 갱신 유저",
-      "ranking": "스킬랭킹",
-      "exc": "스킬이론치",
-      "countrank": "플카랭킹"
+    "navbar": {
+        "login": "가입/로그인",
+        "logout": "로그아웃"
     },
-    "pattern": {
-      "title": "패턴",
-      "list": "패턴목록",
-      "cleartable": "클리어테이블"
-    },
-    "tower": {
-      "title": "타워"
-    },
-    "search": {
-      "type": {
-        "music": "곡명 검색",
-        "player": "유저네임 검색",
-        "gfskill": "GF스킬 검색",
-        "dmskill": "DM스킬 검색"
-      },
-      "button": "검색",
-      "placeholder": "검색어 입력"
-    }
-  },
-  "main": {
-    "user": {
-      "title": "로그인",
-      "beforeLogin": {
-        "link": "로그인",
-        "desc": "을 먼저 해주세요"
-      },
-      "script": {
-        "title": "데이터 갱신 스크립트",
-        "desc": {
-          "desc1": "아래 박스를 클릭하면 스크립트가 복사됩니다",
-          "desc2": "스크립트는 개인별로 다르므로 절대 공유하지 마세요"
+    "copyright": "이 사이트에서 표시하는 모든 리소스와 내용의 저작권은 Konami Arcade Games 및 그 외 관련 저작권자에게 있습니다",
+    "bottom": "이 사이트는 팬사이트로 영리적 목적을 가지고 있지 않습니다",
+    "sidemenu": {
+        "home": "메인 페이지",
+        "mydata": {
+            "title": "나의 데이터",
+            "profile": "프로필",
+            "mygf": "나의 GF 스킬",
+            "mydm": "나의 DM 스킬",
+            "count": "플레이 카운트",
+            "snapshot": "스냅샷 보관함"
         },
-        "click": "맨 앞의 'j'를 제외한 스크립트가 복사되었습니다. 붙여넣을 때 주의하세요"
-      },
-      "button": {
-        "profile": "프로필",
-        "mygf": "내 GF스킬",
-        "mydm": "내 DM스킬",
-        "playcount": "플레이카운트"
-      }
-    },
-    "discord": {
-      "title": "Skill Navigator 디스코드 서버",
-      "desc": "서비스 공지사항 등 중요 내용을 Skill Navigator 디스코드에서 확인해주세요",
-      "link": "바로가기"
-    },
-    "howto": {
-      "part1": {
-        "title": "사용방법 (Step 1)",
-        "desc": {
-          "step1": "eAmusement 홈페이지로 이동합니다",
-          "step2": "사이트에 로그인합니다",
-          "step3": "스크립트를 주소창에 붙여넣고 실행합니다"
+        "skill": {
+            "title": "스킬",
+            "recent": "최근 갱신 유저",
+            "ranking": "스킬랭킹",
+            "exc": "스킬이론치",
+            "countrank": "플카랭킹"
+        },
+        "pattern": {
+            "title": "패턴",
+            "list": "패턴목록",
+            "cleartable": "클리어테이블"
+        },
+        "tower": {
+            "title": "타워"
+        },
+        "search": {
+            "type": {
+                "music": "곡명 검색",
+                "player": "유저네임 검색",
+                "gfskill": "GF스킬 검색",
+                "dmskill": "DM스킬 검색"
+            },
+            "button": "검색",
+            "placeholder": "검색어 입력"
         }
-      },
-      "part2": {
-        "title": "사용방법 (Step 2)",
-        "desc": {
-          "step1": "표시된 화면을 보고 버튼을 눌러 업데이트를 실행합니다",
-          "step2": "갱신중에는 eAmusement 사이트를 사용하면 안됩니다 (다른 디바이스 포함)"
+    },
+    "main": {
+        "user": {
+            "title": "로그인",
+            "beforeLogin": {
+                "link": "로그인",
+                "desc": "을 먼저 해주세요"
+            },
+            "script": {
+                "title": "데이터 갱신 스크립트",
+                "desc": {
+                    "desc1": "아래 박스를 클릭하면 스크립트가 복사됩니다",
+                    "desc2": "스크립트는 개인별로 다르므로 절대 공유하지 마세요"
+                },
+                "click": "맨 앞의 'j'를 제외한 스크립트가 복사되었습니다. 붙여넣을 때 주의하세요"
+            },
+            "button": {
+                "profile": "프로필",
+                "mygf": "내 GF스킬",
+                "mydm": "내 DM스킬",
+                "playcount": "플레이카운트"
+            }
+        },
+        "discord": {
+            "title": "Skill Navigator 디스코드 서버",
+            "desc": "서비스 공지사항 등 중요 내용을 Skill Navigator 디스코드에서 확인해주세요",
+            "link": "바로가기"
+        },
+        "howto": {
+            "part1": {
+                "title": "사용방법 (Step 1)",
+                "desc": {
+                    "step1": "eAmusement 홈페이지로 이동합니다",
+                    "step2": "사이트에 로그인합니다",
+                    "step3": "스크립트를 주소창에 붙여넣고 실행합니다"
+                }
+            },
+            "part2": {
+                "title": "사용방법 (Step 2)",
+                "desc": {
+                    "step1": "표시된 화면을 보고 버튼을 눌러 업데이트를 실행합니다",
+                    "step2": "갱신중에는 eAmusement 사이트를 사용하면 안됩니다 (다른 디바이스 포함)"
+                }
+            }
         }
-      }
-    }
-  },
-  "profile": {
-    "info": {
-      "title": "유저 정보",
-      "button": {
-        "count": "플레이카운트",
-        "cleartable": "클리어현황",
-        "comment": "코멘트 변경",
-        "openinfo": "정보공개 설정"
-      },
-      "skillbox": {
-        "open": "열기",
-        "close": "닫기"
-      }
     },
-    "graph": "스킬 추이",
-    "detail": {
-      "title": "상세정보",
-      "table": {
-        "skill": "스킬",
-        "clear": "클리어 (레벨/수)",
-        "fc": "풀콤보 (레벨/수)",
-        "exc": "엑설런트 (레벨/수)",
-        "count": "플레이 스테이지 수"
-      }
-    },
-    "board": "플레이어 보드",
-    "critical": {
-      "title": "크리티컬 영역",
-      "button": {
-        "reset": "데이터 초기화"
-      }
-    }
-  },
-  "reset": {
-    "title": "데이터 초기화",
-    "description": {
-      "desc1": "이 프로세스는 되돌릴 수 없으므로 신중하게 진행해주세요",
-      "desc2": "저장된 모든 기타도라 기록 데이터가 삭제됩니다",
-      "desc3": "정말로 진행하시겠습니까?"
-    },
-    "alert": {
-      "invalid": "유저가 확인되지 않았습니다",
-      "error": "오류가 발생하였습니다",
-      "success": "데이터 초기화 및 로그아웃이 완료되었습니다"
-    }
-  },
-  "pattern": {
-    "title": "패턴 목록"
-  },
-  "music": {
-    "title": "상세 기록",
-    "nodata": "데이터가 없습니다",
-    "version": "버전",
-    "mode": "게임모드",
-    "ranking": "패턴 랭킹 보기",
-    "menu": {
-      "musicVersion": "곡 버전",
-      "gameVersion": "게임 버전",
-      "difficulty": "난이도",
-      "rank": "랭크",
-      "close": "닫기"
-    }
-  },
-  "recent": "최근 갱신유저",
-  "ranking": "스킬 랭킹",
-  "skill": {
-    "title": "스킬",
-    "menu": {
-      "version": {
-        "title": "버전 선택"
-      },
-      "data": {
-        "title": "데이터 선택",
-        "target": "스킬대상곡",
-        "all": "전체스킬"
-      },
-      "table": {
-        "title": "테이블 타입",
-        "grid": "그리드형",
-        "list": "리스트형"
-      },
-      "game": {
-        "title": "게임 선택",
-        "gf": "기타프릭스",
-        "dm": "드럼매니아"
-      },
-      "button": {
-        "close": "닫기"
-      }
-    },
-    "snapshot": "스냅샷 생성하기",
-    "screenshot": "스크린샷 찍기"
-  },
-  "countrank": {
-    "title": "플레이 카운트 랭킹"
-  },
-  "cleartable": "클리어 테이블",
-  "tower": {
-    "title": "타워",
-    "changeIcon": {
-      "button": "아이콘 변경",
-      "dialog": "아이콘을 변경할까요?"
-    },
-    "status": {
-      "clear": "클리어",
-      "yet": "진행가능"
-    }
-  },
-  "user": {
-    "login": {
-      "placeholder": {
-        "id": "아이디",
-        "pw": "비밀번호"
-      },
-      "title": "로그인",
-      "google": "Google 계정으로 로그인"
-    },
-    "join": {
-      "title": "Skill Navigator에 오신 것을 환영합니다!",
-      "desc": "아래의 버튼을 누르면 신규 유저 데이터를 작성합니다",
-      "btnsign": "가입",
-      "btndecline": "취소"
-    },
-    "playcount": {
-      "desc_1": "마이베스트 리스트를 정확히 표시하려면 ",
-      "desc_2": "모든 패턴",
-      "desc_3": "의 데이터가 필요합니다",
-      "button": {
-        "music": "노래 플레이 수",
-        "pt": "패턴 플레이 수",
-        "gf": "패턴 플레이 수 (기타)",
-        "dm": "패턴 플레이 수 (드럼)",
-        "scrshot": "스샷 저장하기"
-      },
-      "table": {
-        "time": "회"
-      },
-      "nodata": "데이터가 없습니다"
+    "profile": {
+        "info": {
+            "title": "유저 정보",
+            "button": {
+                "count": "플레이카운트",
+                "cleartable": "클리어현황",
+                "comment": "코멘트 변경",
+                "openinfo": "정보공개 설정"
+            },
+            "skillbox": {
+                "open": "열기",
+                "close": "닫기"
+            }
+        },
+        "graph": "스킬 추이",
+        "detail": {
+            "title": "상세정보",
+            "table": {
+                "skill": "스킬",
+                "clear": "클리어 (레벨/수)",
+                "fc": "풀콤보 (레벨/수)",
+                "exc": "엑설런트 (레벨/수)",
+                "count": "플레이 스테이지 수"
+            }
+        },
+        "board": "플레이어 보드",
+        "critical": {
+            "title": "크리티컬 영역",
+            "button": {
+                "reset": "데이터 초기화"
+            }
+        }
     },
     "reset": {
-      "title": "데이터 리셋에 대하여",
-      "desc1": "이 과정을 실행하면 지금까지 등록한 모든 데이터가 삭제되며 다시는 복구할 수 없습니다.",
-      "desc2t": "삭제되는 데이터 목록",
-      "desc2s": "칭호, 이름, 기타프릭스 및 드럼매니아 유저 데이터(스킬, 전곡스킬, 클리어 횟수/최고난이도, 풀콤 횟수/최고난이도, 엑설런트 횟수/최고난이도, 플레이카운트), 각 곡별 플레이 데이터(곡별 스킬, 랭크, 콤보, 플레이 횟수, 클리어횟수, 달성률, 점수, 스킬미터, 구작 달성률)",
-      "desc3": "계정은 삭제되지 않지만 Google 계정연결 해제는 Google 홈페이지의 개인정보 관리에서 할 수 있습니다.",
-      "desc4": "Google - 내 계정 - 계정 환경설정 - 연결된 앱 및 사이트 - 앱 관리 - GITADORA Info 선택 - 선택 취소",
-      "desc5": "데이터를 삭제하겠습니까?"
-    }
-  },
-  "search": {
-    "title": "검색 결과",
-    "desc": {
-      "for": "다음 검색어에 대한 검색 결과입니다",
-      "type": "검색 타입",
-      "value": "검색 키워드",
-      "detail": "검색 결과는 영문 대소문자를 구분하지 않습니다"
+        "title": "데이터 초기화",
+        "description": {
+            "desc1": "이 프로세스는 되돌릴 수 없으므로 신중하게 진행해주세요",
+            "desc2": "저장된 모든 기타도라 기록 데이터가 삭제됩니다",
+            "desc3": "정말로 진행하시겠습니까?"
+        },
+        "alert": {
+            "invalid": "유저가 확인되지 않았습니다",
+            "error": "오류가 발생하였습니다",
+            "success": "데이터 초기화 및 로그아웃이 완료되었습니다"
+        }
     },
-    "table": {
-      "empty": "표시할 항목이 없습니다"
+    "pattern": {
+        "title": "패턴 목록"
+    },
+    "music": {
+        "title": "상세 기록",
+        "nodata": "데이터가 없습니다",
+        "version": "버전",
+        "mode": "게임모드",
+        "ranking": "패턴 랭킹 보기",
+        "menu": {
+            "musicVersion": "곡 버전",
+            "gameVersion": "게임 버전",
+            "difficulty": "난이도",
+            "rank": "랭크",
+            "close": "닫기"
+        }
+    },
+    "recent": "최근 갱신유저",
+    "ranking": "스킬 랭킹",
+    "skill": {
+        "title": "스킬",
+        "menu": {
+            "version": {
+                "title": "버전 선택"
+            },
+            "data": {
+                "title": "데이터 선택",
+                "target": "스킬대상곡",
+                "all": "전체스킬"
+            },
+            "table": {
+                "title": "테이블 타입",
+                "grid": "그리드형",
+                "list": "리스트형"
+            },
+            "game": {
+                "title": "게임 선택",
+                "gf": "기타프릭스",
+                "dm": "드럼매니아"
+            },
+            "button": {
+                "close": "닫기"
+            }
+        },
+        "snapshot": "스냅샷 생성하기",
+        "screenshot": "스크린샷 찍기"
+    },
+    "countrank": {
+        "title": "플레이 카운트 랭킹"
+    },
+    "cleartable": "클리어 테이블",
+    "tower": {
+        "title": "타워",
+        "changeIcon": {
+            "button": "아이콘 변경",
+            "dialog": "아이콘을 변경할까요?"
+        },
+        "status": {
+            "clear": "클리어",
+            "yet": "진행가능"
+        }
+    },
+    "user": {
+        "login": {
+            "placeholder": {
+                "id": "아이디",
+                "pw": "비밀번호"
+            },
+            "title": "로그인",
+            "google": "Google 계정으로 로그인"
+        },
+        "join": {
+            "title": "Skill Navigator에 오신 것을 환영합니다!",
+            "desc": "아래의 버튼을 누르면 신규 유저 데이터를 작성합니다",
+            "btnsign": "가입",
+            "btndecline": "취소"
+        },
+        "playcount": {
+            "desc_1": "마이베스트 리스트를 정확히 표시하려면 ",
+            "desc_2": "모든 패턴",
+            "desc_3": "의 데이터가 필요합니다",
+            "button": {
+                "music": "노래 플레이 수",
+                "pt": "패턴 플레이 수",
+                "gf": "패턴 플레이 수 (기타)",
+                "dm": "패턴 플레이 수 (드럼)",
+                "scrshot": "스샷 저장하기"
+            },
+            "table": {
+                "time": "회"
+            },
+            "nodata": "데이터가 없습니다"
+        },
+        "reset": {
+            "title": "데이터 리셋에 대하여",
+            "desc1": "이 과정을 실행하면 지금까지 등록한 모든 데이터가 삭제되며 다시는 복구할 수 없습니다.",
+            "desc2t": "삭제되는 데이터 목록",
+            "desc2s": "칭호, 이름, 기타프릭스 및 드럼매니아 유저 데이터(스킬, 전곡스킬, 클리어 횟수/최고난이도, 풀콤 횟수/최고난이도, 엑설런트 횟수/최고난이도, 플레이카운트), 각 곡별 플레이 데이터(곡별 스킬, 랭크, 콤보, 플레이 횟수, 클리어횟수, 달성률, 점수, 스킬미터, 구작 달성률)",
+            "desc3": "계정은 삭제되지 않지만 Google 계정연결 해제는 Google 홈페이지의 개인정보 관리에서 할 수 있습니다.",
+            "desc4": "Google - 내 계정 - 계정 환경설정 - 연결된 앱 및 사이트 - 앱 관리 - GITADORA Info 선택 - 선택 취소",
+            "desc5": "데이터를 삭제하겠습니까?"
+        }
+    },
+    "search": {
+        "title": "검색 결과",
+        "desc": {
+            "for": "다음 검색어에 대한 검색 결과입니다",
+            "type": "검색 타입",
+            "value": "검색 키워드",
+            "detail": "검색 결과는 영문 대소문자를 구분하지 않습니다"
+        },
+        "table": {
+            "empty": "표시할 항목이 없습니다"
+        }
     }
-  }
 }

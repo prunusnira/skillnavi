@@ -5,7 +5,6 @@ import { cn } from '@/lib/cn';
 import style from './MusicCell.module.css';
 import Image from 'next/image';
 import { IMG } from '@/url/url';
-import { convertRateToRank } from '@/lib/game/convertRateToRank';
 import { convertRank } from '@/lib/game/convertRank';
 
 interface Props {
@@ -44,7 +43,7 @@ export const MusicCell = ({ pattern, skill, patterncode }: Props) => {
             {rateString && rateString !== '' && (
                 <div className={cn(style.cell, 'link')}>
                     <Image
-                        src={`${IMG}/rank/${convertRank(convertRateToRank(rate || 0))}`}
+                        src={`${IMG}/rank/${convertRank('', rate ?? 0)}`}
                         alt={'rank'}
                         width={20}
                         height={20}

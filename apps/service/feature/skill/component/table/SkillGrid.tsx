@@ -92,7 +92,7 @@ const SkillGrid = ({ skill, index }: Props) => {
                         <Image
                             unoptimized={true}
                             alt={'rank'}
-                            src={`${IMG}/rank/${convertRank(skill.maxrank)}`}
+                            src={`${IMG}/rank/${convertRank(skill.maxrank, skill.rate)}`}
                             width={20}
                             height={20}
                         />
