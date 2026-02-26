@@ -95,6 +95,7 @@ const Pager = ({ page, allpage }: Props) => {
                         key={`page${0}`}
                         text={String(1)}
                         onClick={() => onPageClick(1)}
+                        isSelected={page === 1}
                     />
                     <span>......</span>
                     {list.map((v) => (
@@ -102,6 +103,7 @@ const Pager = ({ page, allpage }: Props) => {
                             key={`page${v}`}
                             text={String(v + 1)}
                             onClick={() => onPageClick(v + 1)}
+                            isSelected={page === v + 1}
                         />
                     ))}
                 </>

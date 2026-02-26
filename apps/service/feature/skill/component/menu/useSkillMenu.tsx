@@ -1,4 +1,4 @@
-import { ChangeEvent, useMemo, useState } from 'react';
+import { ChangeEvent, useMemo } from 'react';
 import { useAtomValue } from 'jotai';
 import { atomGameVersionList } from '@/common/game/data/atomGameVersion';
 import { TableDataType } from '@/feature/skill/data/TableDataType';
@@ -13,15 +13,6 @@ const useSkillMenu = () => {
     const searchParams = useSearchParams();
     const router = useRouter();
     const pathname = usePathname();
-
-    const [
-        active,
-        setActive,
-    ] = useState<boolean>(false);
-
-    const toggleMenu = () => {
-        setActive(!active);
-    };
 
     const versionSelectOption: SelectOption[] | undefined = useMemo(() => {
         return versionList?.map((ver) => ({
@@ -59,8 +50,6 @@ const useSkillMenu = () => {
     };
 
     return {
-        active,
-        toggleMenu,
         versionSelectOption,
         onChangeVersion,
         onChangeTable,

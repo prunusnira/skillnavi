@@ -1,12 +1,10 @@
 import { useParams, useSearchParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import { getSkillTable } from '@/feature/skill/api/getSkillTable';
-import { getProfile } from '@/feature/profile/api/getProfile';
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { TableDataType } from '@/feature/skill/data/TableDataType';
 import { GameType } from '@/common/game/data/GameType';
 import { OrderType } from '@/feature/skill/data/OrderType';
-import { getProfileSkill } from '@/feature/profile/api/getProfileSkill';
 import { TableType } from '@/feature/skill/data/TableType';
 
 const useSkillTable = () => {
@@ -64,36 +62,6 @@ const useSkillTable = () => {
         return sum;
     }, [skill]);
 
-    // 프로필 정보
-    const { data: profile } = useQuery({
-        queryKey: ['profile'],
-        queryFn: () => getProfile([Number(params.id)]),
-    });
-
-    const { data: profileSkill } = useQuery({
-        queryKey: ['profileSkill'],
-        queryFn: () => getProfileSkill([Number(params.id)]),
-    });
-
-    const userSkill = useMemo(() => {
-        if (!profile?.length) return undefined;
-        if (!profileSkill?.length) return undefined;
-        const version = Number(searchParams.get('version') || 0);
-        const skill = profileSkill.find((ps) => ps.version === version);
-
-        if (!skill) return undefined;
-
-        return {
-            all: skill.dskill + skill.gskill,
-            gf: skill.gskill,
-            dm: skill.dskill,
-        };
-    }, [
-        profile,
-        profileSkill,
-        searchParams,
-    ]);
-
     // Skill menu에 의하여 searchParams가 변경된 경우 데이터를 새로 가져오도록 처리
     useEffect(() => {
         refetch();
@@ -102,9 +70,7 @@ const useSkillTable = () => {
     const ref = useRef<HTMLDivElement | null>(null);
 
     return {
-        userSkill,
         skillSum,
-        profile: profile?.[0],
         skill,
         isLoading,
         pages,

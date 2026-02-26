@@ -1,8 +1,6 @@
 'use client';
 
 import { cn } from '@/lib/cn';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
 import useSkillMenu from '@/feature/skill/component/menu/useSkillMenu';
 import { Select } from '@skillnavi/ui';
 import { useTranslations } from 'next-intl';
@@ -10,8 +8,6 @@ import { ButtonRounded } from '@skillnavi/ui';
 
 const SkillMenu = () => {
     const {
-        active,
-        toggleMenu,
         versionSelectOption,
         onChangeVersion,
         onChangeTable,
@@ -22,27 +18,15 @@ const SkillMenu = () => {
     const t = useTranslations('skill.menu');
 
     return (
-        <>
-            <section className={cn('w-full p-2.5')}>
-                <FontAwesomeIcon
-                    className={'z-10 cursor-pointer'}
-                    onClick={toggleMenu}
-                    icon={faBars}
-                />
-            </section>
-            <section
-                className={cn(
-                    'absolute left-0 top-8 w-full md:w-768px flex-col-center bg-white dark:bg-black bg-opacity-80',
-                    'p-5 transition-left',
-                    {
-                        ['left-0']: active,
-                        ['-left-full']: !active,
-                    },
-                )}
-            >
-                {/* 버전 설정 */}
-                <div className={cn('mt-5')}>{t('version.title')}</div>
-                <div>
+        <section
+            className={cn(
+                'w-full md:w-768px flex-col-center bg-opacity-80 grid grid-cols-1 md:grid-cols-2 gap-[10px] p-[10px]',
+            )}
+        >
+            {/* 버전 설정 */}
+            <div>
+                <div className="w-full text-center">{t('version.title')}</div>
+                <div className="flex-center">
                     {versionSelectOption && (
                         <Select
                             onChange={onChangeVersion}
@@ -51,9 +35,11 @@ const SkillMenu = () => {
                         />
                     )}
                 </div>
+            </div>
 
-                {/* 데이터 설정 */}
-                <div className={cn('mt-5')}>{t('data.title')}</div>
+            {/* 데이터 설정 */}
+            <div>
+                <div className="w-full text-center">{t('data.title')}</div>
                 <div className={cn('flex-center')}>
                     <ButtonRounded
                         onClick={() => onChangeData('target')}
@@ -64,9 +50,11 @@ const SkillMenu = () => {
                         text={t('data.all')}
                     />
                 </div>
+            </div>
 
-                {/* 테이블 설정 */}
-                <div className={cn('mt-5')}>{t('table.title')}</div>
+            {/* 테이블 설정 */}
+            <div>
+                <div className="w-full text-center">{t('table.title')}</div>
                 <div className={cn('flex-center')}>
                     <ButtonRounded
                         onClick={() => onChangeTable('grid')}
@@ -77,9 +65,11 @@ const SkillMenu = () => {
                         text={t('table.list')}
                     />
                 </div>
+            </div>
 
-                {/* 게임 설정 */}
-                <div className={cn('mt-5')}>{t('game.title')}</div>
+            {/* 게임 설정 */}
+            <div>
+                <div className="w-full text-center">{t('game.title')}</div>
                 <div className={cn('flex-center')}>
                     <ButtonRounded
                         onClick={() => onChangeGame('gf')}
@@ -90,16 +80,8 @@ const SkillMenu = () => {
                         text={t('game.dm')}
                     />
                 </div>
-
-                {/* 닫기버튼 */}
-                <div className={cn('my-5')}>
-                    <ButtonRounded
-                        onClick={toggleMenu}
-                        text={t('button.close')}
-                    />
-                </div>
-            </section>
-        </>
+            </div>
+        </section>
     );
 };
 

@@ -60,7 +60,11 @@
                     "desc1": "Click the box below to copy the script.",
                     "desc2": "The script is unique to each user, so never share it."
                 },
-                "click": "The script (excluding the initial 'j') has been copied. Please be careful when pasting."
+                "button": {
+                    "all": "Copy all script",
+                    "except": "Copy except first 'j' letter"
+                },
+                "click": "Script copied"
             },
             "button": {
                 "profile": "Profile",
@@ -75,20 +79,30 @@
             "link": "Open Discord Link"
         },
         "howto": {
-            "part1": {
-                "title": "How to Use (Step 1)",
-                "desc": {
-                    "step1": "Go to the eAmusement website.",
-                    "step2": "Log in to the site.",
-                    "step3": "Paste and run the script in the address bar."
-                }
+            "buttonForPC": "PC (Chrome/Edge Browser)",
+            "pc_desc": {
+                "step1": "Copy the update script (copy entire text).",
+                "step2": "If the bookmark bar is hidden, press Ctrl (Cmd on Mac) + Shift + B to show it.",
+                "step3": "Right-click on an empty space on the bookmark bar and select 'Add Bookmark'.",
+                "step4": "Set a name, paste the script into the URL/address field, and save.",
+                "step5": "Go to the eAmusement Pass website and log in.",
+                "step6": "Click the bookmark to run the script."
             },
-            "part2": {
-                "title": "How to Use (Step 2)",
-                "desc": {
-                    "step1": "Check the displayed screen and press the button to update.",
-                    "step2": "Do not use the eAmusement site during the update (including other devices)."
-                }
+            "buttonForMOChrome": "Android (Chrome Browser)",
+            "chrome_desc": {
+                "step1": "Copy the update script (excluding the letter 'j').",
+                "step2": "Go to the eAmusement Pass website and log in.",
+                "step3": "Type 'j' in the address bar, paste the script next to it, and press Enter to run."
+            },
+            "buttonForMOSafari": "iOS (Safari Browser)",
+            "safari_desc": {
+                "step1": "Copy the update script (copy entire text).",
+                "step2": "Tap the Share menu at the bottom and select 'Add Bookmark'.",
+                "step3": "Tap the Bookmarks icon to view your bookmark list.",
+                "step4": "Long-press the bookmark you just added and select 'Edit'.",
+                "step5": "Change the name, paste the script into the address field, and save.",
+                "step6": "Log in to the eAmusement Pass website.",
+                "step7": "Open the Bookmarks menu and tap the bookmark you just edited to run the script."
             }
         }
     },
@@ -160,6 +174,7 @@
     "skill": {
         "title": "Skill",
         "menu": {
+            "title": "Skill Menu",
             "version": {
                 "title": "Select Version"
             },
@@ -183,7 +198,8 @@
             }
         },
         "snapshot": "Create Snapshot",
-        "screenshot": "Take Screenshot"
+        "screenshot": "Take Screenshot",
+        "noid": "No user found with provided ID"
     },
     "countrank": {
         "title": "Play Count Ranking"

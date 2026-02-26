@@ -2,8 +2,9 @@ import Card from '@/common/card/Card';
 import { getTranslations } from 'next-intl/server';
 import { getServerSession } from 'next-auth';
 import UserInfo from '@/feature/main/userCard/UserInfo';
-import { DISCORD, IMG, LINK_AUTH_LOGIN } from '@/url/url';
+import { DISCORD, LINK_AUTH_LOGIN } from '@/url/url';
 import Link from 'next/link';
+import { HowtoWrapper } from '@/feature/main/howto/HowtoWrapper';
 
 /**
  * @abou 메인 페이지
@@ -48,43 +49,7 @@ const PageIndex = async () => {
                 </Card>
             </section>
 
-            {/* 소개 및 사용방법 */}
-            <section className={'flex flex-col md:flex-row w-full'}>
-                {/* 카드 1 */}
-                <Card
-                    title={t('howto.part1.title')}
-                    option={{
-                        itemStartPosition: 'start',
-                    }}
-                >
-                    <section className={'px-2 py-1'}>
-                        <div>1. {t('howto.part1.desc.step1')}</div>
-                        <div>2. {t('howto.part1.desc.step2')}</div>
-                        <div>3. {t('howto.part1.desc.step3')}</div>
-                        <img
-                            alt={'how to image 1'}
-                            src={`${IMG}/howto/howto2-browser.png`}
-                        />
-                    </section>
-                </Card>
-
-                {/* 카드 2 */}
-                <Card
-                    title={t('howto.part2.title')}
-                    option={{
-                        itemStartPosition: 'start',
-                    }}
-                >
-                    <section className={'px-2 py-1'}>
-                        <div>{t('howto.part2.desc.step1')}</div>
-                        <div>{t('howto.part2.desc.step2')}</div>
-                        <img
-                            alt={'how to image 2'}
-                            src={`${IMG}/howto/howto3.png`}
-                        />
-                    </section>
-                </Card>
-            </section>
+            <HowtoWrapper />
         </article>
     );
 };

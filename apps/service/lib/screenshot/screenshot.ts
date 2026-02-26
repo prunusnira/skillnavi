@@ -1,4 +1,4 @@
-import html2canvas from '@skillnavi/data/src/html2canvas/html2canvas';
+import html2canvas from 'html2canvas-pro';
 
 function uriToBlob(uri: string): Blob {
     let byteString: string;
@@ -36,7 +36,9 @@ export const screenshot = (elem: HTMLDivElement, filename: string) => {
     window.scrollTo(0, 0);
     const style = document.createElement('style');
     document.head.appendChild(style);
-    style.sheet?.insertRule('body > div:last-child img { display: inline-block; }');
+    style.sheet?.insertRule(
+        'body > div:last-child img { display: inline-block; }',
+    );
 
     html2canvas(elem, {
         useCORS: true,

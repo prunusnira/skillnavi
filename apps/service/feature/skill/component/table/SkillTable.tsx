@@ -3,7 +3,6 @@
 import { cn } from '@/lib/cn';
 import Card from '@/common/card/Card';
 import SkillColor from '@/common/skillColor/SkillColor';
-import SkillMenu from '@/feature/skill/component/menu/SkillMenu';
 import SkillTableTitleVersion from '@/feature/skill/component/table/SkillTableTitleVersion';
 import useSkillTable from '@/feature/skill/component/table/useSkillTable';
 import SkillList from '@/feature/skill/component/table/SkillList';
@@ -11,19 +10,22 @@ import SkillGrid from '@/feature/skill/component/table/SkillGrid';
 import Pager from '@/common/pager/Pager';
 import SkillTableTextProfile from '@/feature/skill/component/table/SkillTableTextProfile';
 import Loading from '@/common/loading/Loading';
-import { ButtonRounded } from '@skillnavi/ui';
-import { screenshot } from '@/lib/screenshot/screenshot';
 import { useAtomValue } from 'jotai';
 import { atomUser } from '@/feature/profile/data/atomUser';
-import { useCreateSnapshot } from '@/feature/snapshot/component/useCreateSnapshot';
-import { createLog } from '@skillnavi/data/src/log/createLog';
 import { useTranslations } from 'next-intl';
+import { UserSkill } from '@/feature/skill/data/UserSkill';
+import { Profile } from '@/feature/profile/data/Profile';
+import { ButtonSnapshot } from '@/feature/skill/component/table/ButtonSnapshot';
+import { ButtonScreenshot } from '@/feature/skill/component/table/ButtonScreenshot';
 
-const SkillTable = () => {
+interface Props {
+    profile: Profile;
+    userSkill?: UserSkill;
+}
+
+const SkillTable = ({ profile, userSkill }: Props) => {
     const {
-        userSkill,
         skillSum,
-        profile,
         skill,
         isLoading,
         pages,
@@ -34,9 +36,6 @@ const SkillTable = () => {
         pageType,
         ref,
     } = useSkillTable();
-    const {
-        makeSnapshot,
-    } = useCreateSnapshot();
     const user = useAtomValue(atomUser);
     const t = useTranslations('skill');
 
@@ -51,58 +50,21 @@ const SkillTable = () => {
     return (
         <Card
             title={t('title')}
-            sub={(
+            sub={
                 <div className={'flex gap-[4px]'}>
                     {profile &&
                         profile?.id === user?.id &&
-                        pageType === 'target' &&
-                        (
-                            <ButtonRounded
-                                text={t('snapshot')}
-                                onClick={() => {
-                                    makeSnapshot({
-                                        uid: profile.id,
-                                        uname: profile.name,
-                                        type: game,
-                                        hot: skill?.find(set => set.title === 'HOT')?.data.map(data => ({
-                                            ...data,
-                                            mname: data.music.name,
-                                        })) || [],
-                                        other: skill?.find(set => set.title === 'OTHER')?.data.map(data => ({
-                                            ...data,
-                                            mname: data.music.name,
-                                        })) || [],
-                                    });
-                                    createLog({
-                                        uid: user?.id || 0,
-                                        action: 'click',
-                                        data: 'skill_create_snapshot',
-                                    })
-                                }}
+                        pageType === 'target' && (
+                            <ButtonSnapshot
+                                profile={profile}
+                                skill={skill}
                             />
                         )}
-                    <ButtonRounded
-                        text={t('screenshot')}
-                        onClick={() => {
-                            if (ref.current) {
-                                screenshot(ref.current, 'SkillNavigator-SkillTable');
-                                createLog({
-                                    uid: user?.id || 0,
-                                    action: 'click',
-                                    data: 'skill_screenshot',
-                                })
-                            } else {
-                                alert('Screenshot failed');
-                            }
-                        }}
-                    />
+                    <ButtonScreenshot targetEl={ref.current} />
                 </div>
-            )}
+            }
             ref={ref}
         >
-            {/* 메뉴버튼 영역 */}
-            <SkillMenu />
-
             {/* 타이틀 */}
             <section className={cn('text-2xl font-bold')}>
                 {/* 버전 */}
