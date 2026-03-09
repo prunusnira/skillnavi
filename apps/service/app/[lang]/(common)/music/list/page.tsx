@@ -46,7 +46,10 @@ const PageMusicList = async (props: {
     return (
         <Card title={t('title')}>
             <section className={'flex-col-center gap-[20px] w-full'}>
-                <PatternListMenu />
+                <PatternListMenu
+                    musicVersion={Number(musicVersion)}
+                    gameVersion={Number(gameVersion)}
+                />
 
                 {music.map((musicItem) => (
                     <MusicListItem

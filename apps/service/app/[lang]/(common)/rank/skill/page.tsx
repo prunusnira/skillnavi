@@ -7,11 +7,9 @@ import Card from '@/common/card/Card';
 import { getTranslations } from 'next-intl/server';
 import SkillRankType from '@/feature/rank/skill/component/SkillRankType';
 
-const PageSkillRank = async (
-    props: {
-        searchParams: Promise<{ page: string; type: GameType }>;
-    }
-) => {
+const PageSkillRank = async (props: {
+    searchParams: Promise<{ page: string; type: GameType }>;
+}) => {
     const searchParams = await props.searchParams;
     const { page, type } = searchParams;
     const { rank, pages } = await getSkillRank({ page: Number(page), type });
@@ -20,7 +18,7 @@ const PageSkillRank = async (
     return (
         <Card title={t('ranking')}>
             {/* 타입 선택 */}
-            <SkillRankType />
+            <SkillRankType type={type} />
 
             {/* 랭크 정보 */}
             <section className={'flex flex-col gap-[5px] w-full'}>

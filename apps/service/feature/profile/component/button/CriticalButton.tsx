@@ -24,7 +24,7 @@ export const CriticalButton = () => {
             <ButtonStandard
                 text={t('button.reset')}
                 onClick={() => router.push(LINK_PROFILE_RESET(user.id))}
-                customClass={'bg-red-700 text-white font-semibold'}
+                customTextClass={'bg-red-700 text-white font-semibold'}
             />
         </Card>
     );

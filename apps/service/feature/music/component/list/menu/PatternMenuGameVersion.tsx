@@ -1,10 +1,25 @@
 import { cn } from '@/lib/cn';
-import { usePatternGameVersion } from '@/feature/music/component/list/menu/usePatternGameVersion';
 import { useTranslations } from 'next-intl';
 import { VersionSelector } from '@/common/versionSelector/VersionSelector';
+import { VER_TB } from '@/feature/env/data/constant';
+import { usePatternMenu } from '@/feature/music/component/list/menu/usePatternMenu';
+import { ChangeEvent } from 'react';
 
-export const PatternMenuGameVersion = () => {
-    const { currentGameVersion, onChangeGameVersion } = usePatternGameVersion();
+interface Props {
+    musicVersion: number;
+    gameVersion: number;
+}
+
+export const PatternMenuGameVersion = ({
+    musicVersion,
+    gameVersion,
+}: Props) => {
+    const { updateSearchParams } = usePatternMenu();
+
+    const onChangeGameVersion = (e: ChangeEvent<HTMLSelectElement>) => {
+        updateSearchParams('gameVersion', e.currentTarget.value);
+    };
+
     const t = useTranslations('music.menu');
 
     return (
@@ -13,7 +28,9 @@ export const PatternMenuGameVersion = () => {
             <div>
                 <VersionSelector
                     onChangeVersion={onChangeGameVersion}
-                    currentVersion={currentGameVersion}
+                    currentVersion={gameVersion}
+                    versionFrom={VER_TB}
+                    disabledUntil={musicVersion - 1}
                 />
             </div>
         </>

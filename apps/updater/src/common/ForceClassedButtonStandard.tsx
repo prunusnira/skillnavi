@@ -17,7 +17,7 @@ export const ForceClassedButtonStandard = ({
             text={text}
             onClick={onClick}
             disabled={disabled}
-            customClass={'!px-[16px] !py-[8px] !bg-blue-400 !rounded-xl'}
+            customTextClass={'!px-[16px] !py-[8px] !bg-blue-400 !rounded-xl'}
         />
     );
 };

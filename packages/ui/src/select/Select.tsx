@@ -18,6 +18,7 @@ export const Select = ({ options, value, onChange }: Props) => {
                 <option
                     key={option.value}
                     value={option.value}
+                    disabled={option.disabled}
                 >
                     {option.display}
                 </option>

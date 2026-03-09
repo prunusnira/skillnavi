@@ -12,7 +12,8 @@ interface Props {
     // 커스터마이즈 가능한 tailwind 클래스
     customDisabledClass?: string;
     customSelectedClass?: string;
-    customClass?: string;
+    customTextClass?: string;
+    customButtonClass?: string;
 }
 
 export const ButtonStandard = ({
@@ -24,7 +25,8 @@ export const ButtonStandard = ({
     disabled,
     customDisabledClass,
     customSelectedClass,
-    customClass,
+    customTextClass,
+    customButtonClass,
 }: Props) => {
     const color = useMemo(() => {
         if (isSelected) {
@@ -33,7 +35,7 @@ export const ButtonStandard = ({
         if (disabled) {
             return customDisabledClass || 'bg-blue-200 text-white';
         }
-        return customClass || 'bg-blue-500 text-white';
+        return customTextClass || 'bg-blue-500 text-white';
     }, [
         disabled,
         isSelected,
@@ -44,6 +46,7 @@ export const ButtonStandard = ({
             className={clsx(
                 color,
                 'flex-center rounded-xl cursor-pointer px-[16px] py-[8px]',
+                customButtonClass,
             )}
             onClick={() => {
                 if (!disabled && onClick) {

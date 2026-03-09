@@ -54,7 +54,7 @@ export const SidebarSearch = () => {
                 onChange={(e) => setSearchText(e.currentTarget.value)}
             />
             <ButtonStandard
-                customClass={'break-keep bg-blue-400'}
+                customTextClass={'break-keep bg-blue-400'}
                 text={t('button')}
                 onClick={() => {
                     router.push(LINK_SEARCH(searchType, searchText));

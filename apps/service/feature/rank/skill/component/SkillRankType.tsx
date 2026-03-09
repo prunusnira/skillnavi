@@ -4,7 +4,11 @@ import { GameType } from '@/common/game/data/GameType';
 import { usePathname, useRouter } from '@/i18n/routing';
 import { ButtonStandard } from '@skillnavi/ui';
 
-const SkillRankType = () => {
+interface Props {
+    type: GameType;
+}
+
+const SkillRankType = ({ type }: Props) => {
     const pathname = usePathname();
     const router = useRouter();
 
@@ -16,14 +20,18 @@ const SkillRankType = () => {
     };
 
     return (
-        <section className={'flex'}>
+        <section className={'flex w-full'}>
             <ButtonStandard
                 text={'GF'}
                 onClick={() => changeType('gf')}
+                isSelected={type === 'gf'}
+                customButtonClass={'flex-1'}
             />
             <ButtonStandard
                 text={'DM'}
                 onClick={() => changeType('dm')}
+                isSelected={type === 'dm'}
+                customButtonClass={'flex-1'}
             />
         </section>
     );

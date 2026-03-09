@@ -17,15 +17,22 @@ interface Props {
 
 export const TowerUpdateFloorIcon = ({ icon }: Props) => {
     const user = useAtomValue(atomUser);
-    const [displayIcon, setDisplayIcon] = useState<boolean>(false);
+    const [
+        displayIcon,
+        setDisplayIcon,
+    ] = useState<boolean>(false);
     const t = useTranslations('tower.changeIcon');
 
     const { mutate } = useMutation({
-        mutationKey: ['tower', 'floor', 'icon'],
+        mutationKey: [
+            'tower',
+            'floor',
+            'icon',
+        ],
         mutationFn: changeTowerIcon,
         onSuccess: () => {
             setDisplayIcon(false);
-        }
+        },
     });
 
     if (!user) return null;
@@ -37,7 +44,7 @@ export const TowerUpdateFloorIcon = ({ icon }: Props) => {
                 onClick={() => {
                     setDisplayIcon(true);
                 }}
-                customClass={'bg-blue-500 text-sm'}
+                customTextClass={'bg-blue-500 text-sm'}
             />
             {icon && displayIcon && (
                 <Portal title={'Change Icon'}>
@@ -48,9 +55,7 @@ export const TowerUpdateFloorIcon = ({ icon }: Props) => {
                             width={50}
                             height={50}
                         />
-                        <span>
-                            {t('dialog')}
-                        </span>
+                        <span>{t('dialog')}</span>
                         <div className={'flex gap-[10px]'}>
                             <ButtonRounded
                                 text={'YES'}

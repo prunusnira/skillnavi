@@ -29,16 +29,13 @@ export const ButtonRounded = ({
     const color = useMemo(() => {
         if (disabled) {
             return (
-                customDisabledClass || 'bg-gray-500, text-white border-gray-500'
+                customDisabledClass || 'bg-gray-500 text-white border-gray-500'
             );
         }
         if (isSelected) {
             return customSelectedClass || 'bg-black text-white border-gray-500';
         }
-        return (
-            customClass ||
-            'bg-transparent text-black border-black dark:border-white dark:text-white'
-        );
+        return customClass || 'bg-white text-black border-black';
     }, [
         isSelected,
         disabled,
@@ -47,7 +44,7 @@ export const ButtonRounded = ({
     return (
         <button
             className={clsx(
-                'flex-center border rounded-2xl px-[8px] py-[4px]',
+                'flex-center border rounded-2xl px-[8px] py-[4px] text-sm',
                 color,
             )}
             onClick={onClick}
@@ -57,7 +54,7 @@ export const ButtonRounded = ({
             disabled={disabled}
         >
             {icon}
-            <div className={'text-sm'}>{text}</div>
+            {text}
         </button>
     );
 };
