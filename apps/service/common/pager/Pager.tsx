@@ -49,6 +49,7 @@ const Pager = ({ page, allpage }: Props) => {
                             key={`page${v}`}
                             text={String(v + 1)}
                             onClick={() => onPageClick(v + 1)}
+                            isSelected={v + 1 === current}
                         />
                     ))}
                 </>
@@ -70,6 +71,7 @@ const Pager = ({ page, allpage }: Props) => {
                             key={`page${v}`}
                             text={String(v + 1)}
                             onClick={() => onPageClick(v + 1)}
+                            isSelected={v + 1 === current}
                         />
                     ))}
 
@@ -128,6 +130,7 @@ const Pager = ({ page, allpage }: Props) => {
                         key={`page${v}`}
                         text={String(v + 1)}
                         onClick={() => onPageClick(v + 1)}
+                        isSelected={page === v + 1}
                     />
                 ))}
                 <span>...</span>
