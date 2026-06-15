@@ -1,10 +1,11 @@
 import * as cheerio from 'cheerio';
 import { MusicSkill, SkillData } from '@skillnavi/data/src/skill/SkillData';
+import normalizeMusicTitle from '../function/normalizeMusicTitle';
 
 const onSongSuccess = (data: string, setCurrent: (s: string) => void) => {
     const $ = cheerio.load(data);
 
-    const name = $('div.live_title').text();
+    const name = normalizeMusicTitle($('div.live_title').text());
 
     const music: MusicSkill = {
         musictitle: name,

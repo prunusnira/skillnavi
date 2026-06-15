@@ -1,6 +1,7 @@
 import axios from 'axios';
 import * as cheerio from 'cheerio';
 import { MusicSkill, SkillData } from '@skillnavi/data/src/skill/SkillData';
+import normalizeMusicTitle from '../../function/normalizeMusicTitle';
 
 interface Params {
     gtype: string;
@@ -47,7 +48,9 @@ const getTargetSimple = async (
         };
 
         // 타이틀
-        data.musictitle = $(v).find('.text_link').text();
+        data.musictitle = normalizeMusicTitle(
+            $(v).find('.text_link').text(),
+        );
 
         // ptcode
         let type = 'g';
