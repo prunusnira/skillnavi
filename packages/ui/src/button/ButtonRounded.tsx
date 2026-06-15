@@ -29,13 +29,20 @@ export const ButtonRounded = ({
     const color = useMemo(() => {
         if (disabled) {
             return (
-                customDisabledClass || 'bg-gray-500 text-white border-gray-500'
+                customDisabledClass ||
+                'border-slate-200 bg-slate-100 text-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-500'
             );
         }
         if (isSelected) {
-            return customSelectedClass || 'bg-black text-white border-gray-500';
+            return (
+                customSelectedClass ||
+                'border-indigo-600 bg-indigo-600 text-white dark:border-indigo-500 dark:bg-indigo-500'
+            );
         }
-        return customClass || 'bg-white text-black border-black';
+        return (
+            customClass ||
+            'border-slate-300 bg-white text-slate-700 hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-indigo-500 dark:hover:bg-indigo-500/10 dark:hover:text-indigo-300'
+        );
     }, [
         isSelected,
         disabled,
@@ -44,7 +51,8 @@ export const ButtonRounded = ({
     return (
         <button
             className={clsx(
-                'flex-center border rounded-2xl px-[8px] py-[4px] text-sm',
+                'flex-center min-h-9 rounded-xl border px-3 py-1.5 text-sm font-medium transition-colors',
+                disabled && 'cursor-not-allowed',
                 color,
             )}
             onClick={onClick}

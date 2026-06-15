@@ -16,34 +16,29 @@ const Card = forwardRef<HTMLDivElement, Props>(
         return (
             // 공통 카드 ui
             <section
-                className={
-                    'flex-col-center p-[6px] w-full flex-grow min-h-[300px]'
-                }
+                className={'w-full py-2'}
                 ref={ref}
             >
-                {title && (
-                    <div
-                        className={
-                            'w-full bg-purple-300 dark:bg-gray-600 text-black dark:text-white text-xl font-bold rounded-t-2xl px-[20px] py-[10px] flex justify-between'
-                        }
-                    >
-                        <span>{title}</span>
-                        <div>{sub}</div>
-                    </div>
-                )}
-                <div
-                    className={cn(
-                        'flex flex-col items-center bg-purple-200 dark:bg-gray-700 w-full h-full flex-grow py-[20px]',
-                        {
-                            ['rounded-2xl']: !title,
-                            ['rounded-b-2xl rounded-t-none']: !!title,
-                        },
+                <div className="panel">
+                    {title && (
+                        <div className="panel-title">
+                            <span>{title}</span>
+                            <div>{sub}</div>
+                        </div>
                     )}
-                    style={{
-                        justifyContent: option?.itemStartPosition ?? 'center',
-                    }}
-                >
-                    {children}
+                    <div
+                        className={cn('panel-content', {
+                            ['justify-start']:
+                                option?.itemStartPosition === 'start',
+                            ['justify-center']:
+                                !option?.itemStartPosition ||
+                                option.itemStartPosition === 'center',
+                            ['justify-end']:
+                                option?.itemStartPosition === 'end',
+                        })}
+                    >
+                        {children}
+                    </div>
                 </div>
             </section>
         );

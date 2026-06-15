@@ -30,12 +30,18 @@ export const ButtonStandard = ({
 }: Props) => {
     const color = useMemo(() => {
         if (isSelected) {
-            return customSelectedClass || 'bg-green-500 text-white';
+            return customSelectedClass || 'bg-indigo-600 text-white';
         }
         if (disabled) {
-            return customDisabledClass || 'bg-blue-200 text-white';
+            return (
+                customDisabledClass ||
+                'bg-slate-200 text-slate-400 dark:bg-slate-800 dark:text-slate-500'
+            );
         }
-        return customTextClass || 'bg-blue-500 text-white';
+        return (
+            customTextClass ||
+            'bg-indigo-600 text-white hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-400'
+        );
     }, [
         disabled,
         isSelected,
@@ -45,7 +51,8 @@ export const ButtonStandard = ({
         <section
             className={clsx(
                 color,
-                'flex-center rounded-xl cursor-pointer px-[16px] py-[8px]',
+                'flex-center min-h-10 rounded-xl px-4 py-2 font-medium shadow-sm transition-colors',
+                disabled ? 'cursor-not-allowed' : 'cursor-pointer',
                 customButtonClass,
             )}
             onClick={() => {

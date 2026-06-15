@@ -15,14 +15,14 @@ interface Props {
 }
 
 const PlayCountRankUser = ({
-                               rank,
-                               id,
-                               name,
-                               titletower,
-                               openinfo,
-                               gcount,
-                               dcount,
-                           }: Props) => {
+    rank,
+    id,
+    name,
+    titletower,
+    openinfo,
+    gcount,
+    dcount,
+}: Props) => {
     const searchParams = useSearchParams();
     const type = searchParams.get('type') || '';
     const value = useMemo(() => {
@@ -36,9 +36,13 @@ const PlayCountRankUser = ({
     }, [type]);
 
     return (
-        <section className={'flex w-full h-[40px]'}>
+        <section className={'list-row'}>
             {/* 랭크 */}
-            <div className={'w-[50px] px-[10px] text-center shrink-0'}>
+            <div
+                className={
+                    'w-12 shrink-0 text-center text-sm font-semibold text-slate-500 dark:text-slate-400'
+                }
+            >
                 {rank}
             </div>
 
@@ -55,7 +59,11 @@ const PlayCountRankUser = ({
             </div>
 
             {/* 수치 */}
-            <div className={'px-[10px] text-center w-[120px] shrink-0'}>
+            <div
+                className={
+                    'w-28 shrink-0 text-center font-semibold tabular-nums'
+                }
+            >
                 {value}
             </div>
         </section>

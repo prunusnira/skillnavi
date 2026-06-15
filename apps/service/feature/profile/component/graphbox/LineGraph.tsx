@@ -17,17 +17,13 @@ import { cn } from '@/lib/cn';
 import dayjs from 'dayjs';
 
 const CustomTooltip = ({
-                           active,
-                           payload,
-                           label,
-                       }: TooltipProps<ValueType, NameType>) => {
+    active,
+    payload,
+    label,
+}: TooltipProps<ValueType, NameType>) => {
     if (active && payload && payload.length) {
         return (
-            <div
-                className={cn(
-                    'flex-col-center bg-white dark:bg-black border-black dark:border-white border border-solid p-2',
-                )}
-            >
+            <div className={cn('surface-muted flex-col-center p-2')}>
                 <div>Date: {dayjs(label).format('YYYY-MM-DD')}</div>
                 <div>Skill: {payload[0]?.value}</div>
             </div>

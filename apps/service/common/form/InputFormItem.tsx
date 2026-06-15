@@ -13,15 +13,15 @@ interface Props {
 }
 
 const InputFormItem = ({
-                           label,
-                           placeholder,
-                           id,
-                           type,
-                           labelWidth,
-                           inputWidth,
-                           value,
-                           onChange,
-                       }: Props) => {
+    label,
+    placeholder,
+    id,
+    type,
+    labelWidth,
+    inputWidth,
+    value,
+    onChange,
+}: Props) => {
     return (
         <div className={cn('flex-center')}>
             <label
@@ -35,8 +35,9 @@ const InputFormItem = ({
             </label>
             <input
                 className={cn(
-                    'text-sm bg-white dark:bg-gray-900 text-black dark:text-white placeholder-gray-500',
-                    'border border-white rounded-2xl bg-transparent p-2',
+                    'rounded-xl border border-slate-300 bg-white p-2 text-sm text-slate-950 shadow-sm',
+                    'placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20',
+                    'dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50 dark:placeholder:text-slate-500',
                 )}
                 id={id}
                 type={type}

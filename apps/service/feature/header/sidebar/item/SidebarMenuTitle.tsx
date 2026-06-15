@@ -10,7 +10,8 @@ export const SidebarMenuTitle = async ({ id, iconSrc, href }: SidebarMenu) => {
     return (
         <Link
             className={clsx(
-                'flex gap-[8px] items-center', {
+                'flex items-center gap-3 rounded-xl p-1 transition-colors hover:text-indigo-600 dark:hover:text-indigo-400',
+                {
                     ['cursor-pointer']: href !== undefined,
                     ['cursor-no-drop']: href === undefined,
                 },
@@ -20,13 +21,20 @@ export const SidebarMenuTitle = async ({ id, iconSrc, href }: SidebarMenu) => {
         >
             {/* 아이콘 */}
             <div
-                className={'bg-black rounded-xl p-[4px]'}
+                className={
+                    'rounded-xl bg-slate-900 p-1 ring-1 ring-slate-700 dark:bg-slate-800'
+                }
             >
-                <Image src={iconSrc} alt={'icon'} width={35} height={35} />
+                <Image
+                    src={iconSrc}
+                    alt={'icon'}
+                    width={35}
+                    height={35}
+                />
             </div>
 
             {/* 타이틀 */}
-            <div className={'text-lg font-semibold text-black'}>{t(id)}</div>
+            <div className={'text-lg font-semibold'}>{t(id)}</div>
         </Link>
     );
 };

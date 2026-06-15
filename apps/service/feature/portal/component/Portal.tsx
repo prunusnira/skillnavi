@@ -23,7 +23,7 @@ const Portal = ({ children, title }: Props) => {
             {createPortal(
                 <div
                     className={
-                        'w-screen h-screen fixed left-0 top-0 bg-white bg-opacity-70 flex-center'
+                        'fixed left-0 top-0 z-50 h-screen w-screen overflow-y-auto bg-slate-950/50 p-4 backdrop-blur-sm flex-center'
                     }
                 >
                     <Card title={title}>{children}</Card>

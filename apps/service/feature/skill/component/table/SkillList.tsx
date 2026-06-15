@@ -54,8 +54,9 @@ const SkillList = ({ skill, index }: Props) => {
                 {/* 제목 */}
                 <AnchorText
                     className={cn(
-                        'w-full text-ellipsis break-all overflow-hidden whitespace-nowrap',
-                        'px-[8px] link',
+                        'w-full overflow-hidden text-ellipsis whitespace-nowrap px-2',
+                        'font-semibold text-indigo-700 underline-offset-4 transition-colors',
+                        'hover:text-indigo-900 hover:underline dark:text-indigo-300 dark:hover:text-indigo-200',
                     )}
                     text={music.name}
                     path={LINK_MUSIC_INFO({

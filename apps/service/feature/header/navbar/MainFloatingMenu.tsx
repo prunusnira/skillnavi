@@ -10,10 +10,10 @@ export const MainFloatingMenu = () => {
     return (
         <div
             className={clsx(
-                'fixed top-[20px] right-[20px] z-10',
-                'w-[20px] h-[20px] flex-center p-[5px]',
-                'cursor-pointer',
-                'bg-white dark:bg-black rounded-[50%]',
+                'fixed right-4 top-3 z-50 sm:right-6',
+                'h-10 w-10 flex-center',
+                'rounded-xl border bg-white shadow-sm transition-colors',
+                'hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800',
             )}
             onClick={controlMenu}
         >

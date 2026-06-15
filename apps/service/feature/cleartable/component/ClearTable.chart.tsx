@@ -18,20 +18,14 @@ import {
     ValueType,
 } from 'recharts/types/component/DefaultTooltipContent';
 
-const CustomTooltip = (
-    {
-        active,
-        payload,
-        label,
-    }: TooltipProps<ValueType, NameType>,
-) => {
+const CustomTooltip = ({
+    active,
+    payload,
+    label,
+}: TooltipProps<ValueType, NameType>) => {
     if (active && payload && payload.length) {
         return (
-            <section
-                className={
-                    'bg-white flex flex-col gap-[8px] px-[20px] py-[10px]'
-                }
-            >
+            <section className={'surface-muted flex flex-col gap-2 px-5 py-3'}>
                 {payload.map((item, index) => (
                     <div
                         key={`${label}${index}`}

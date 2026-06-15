@@ -50,8 +50,9 @@ const SkillGridForSnapshot = ({ skill, index }: Props) => {
             {/* 곡 제목 */}
             <AnchorText
                 className={cn(
-                    'w-full text-center text-ellipsis break-all overflow-hidden whitespace-nowrap text-black',
-                    'px-2 link',
+                    'w-full overflow-hidden text-ellipsis whitespace-nowrap px-2 py-1 text-center',
+                    'font-semibold text-indigo-700 underline-offset-4 transition-colors',
+                    'hover:text-indigo-900 hover:underline dark:text-indigo-300 dark:hover:text-indigo-200',
                 )}
                 text={skill.mname}
                 path={LINK_MUSIC_INFO({

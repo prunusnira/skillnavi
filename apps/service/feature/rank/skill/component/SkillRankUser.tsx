@@ -15,9 +15,13 @@ const SkillRankUser = ({ rank, data }: Props) => {
     const type = searchParams.get('type');
 
     return (
-        <section className={'flex w-full h-[40px]'}>
+        <section className={'list-row'}>
             {/* 랭크 */}
-            <div className={'w-[50px] px-[10px] text-center shrink-0'}>
+            <div
+                className={
+                    'w-12 shrink-0 text-center text-sm font-semibold text-slate-500 dark:text-slate-400'
+                }
+            >
                 {rank}
             </div>
 
@@ -34,12 +38,16 @@ const SkillRankUser = ({ rank, data }: Props) => {
             </div>
 
             {/* 기준 */}
-            <div className={'px-[10px] text-center w-[40px] shrink-0'}>
+            <div
+                className={
+                    'w-10 shrink-0 text-center text-xs font-semibold text-slate-500 dark:text-slate-400'
+                }
+            >
                 {type?.toUpperCase()}
             </div>
 
             {/* 수치 */}
-            <div className={'px-[10px] text-center w-[120px] shrink-0'}>
+            <div className={'w-28 shrink-0 text-center'}>
                 <SkillColor value={data.value / 100} />
             </div>
         </section>

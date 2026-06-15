@@ -7,12 +7,13 @@ const Footer = async () => {
     return (
         <footer
             className={cn(
-                'w-full flex justify-center items-center sticky top-[100vh] bg-gray-400 dark:bg-gray-950',
+                'sticky top-[100vh] flex w-full items-center justify-center border-t bg-white',
+                'dark:border-slate-800 dark:bg-slate-950',
             )}
         >
             <section
                 className={cn(
-                    'flex flex-col w-full max-w-[1920px] gap-2 text-sm px-10 py-8',
+                    'flex w-full max-w-6xl flex-col gap-2 px-4 py-8 text-sm text-slate-500 sm:px-6 lg:px-8 dark:text-slate-400',
                 )}
             >
                 <div>(c) 2016 Nira, Made with NextJS</div>

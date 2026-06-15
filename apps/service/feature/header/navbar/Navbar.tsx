@@ -19,13 +19,17 @@ const Navbar = () => {
     const router = useRouter();
 
     return (
-        <nav className={'w-full h-full flex-between'}>
+        <nav className={'mx-auto h-full w-full max-w-6xl flex-between'}>
             {/* left side (logo) */}
             <div
-                className={'cursor-pointer flex-center gap-[8px]'}
+                className={'group flex-center gap-2 rounded-xl py-1 pr-2'}
                 onClick={handleLinkMain}
             >
-                <div className={'w-[40px] h-[40px]'}>
+                <div
+                    className={
+                        'h-10 w-10 overflow-hidden rounded-xl ring-1 ring-slate-200 dark:ring-slate-700'
+                    }
+                >
                     <Image
                         unoptimized={true}
                         alt={'icon'}
@@ -36,19 +40,27 @@ const Navbar = () => {
                 </div>
 
                 <div className={'hidden md:flex flex-col'}>
-                    <div className={'text-sm'}>
+                    <div
+                        className={
+                            'text-xs font-medium text-slate-500 dark:text-slate-400'
+                        }
+                    >
                         GITADORA Series Skill Simulator
                     </div>
-                    <div className={'text-xl'}>Skill Navigator</div>
+                    <div className={'text-lg font-semibold tracking-tight'}>
+                        Skill Navigator
+                    </div>
                 </div>
             </div>
 
             {/* right side */}
-            <div className={'flex-center'}>
+            <div className={'flex-center pr-10'}>
                 {/* 디스코드 링크 */}
                 <NavItem>
                     <div
-                        className={'cursor-pointer'}
+                        className={
+                            'flex h-9 w-9 items-center justify-center rounded-lg text-slate-600 transition-colors hover:bg-slate-100 hover:text-indigo-600 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-indigo-400'
+                        }
                         onClick={() => router.push(DISCORD)}
                     >
                         <FontAwesomeIcon icon={faDiscord} />
@@ -58,7 +70,9 @@ const Navbar = () => {
                 {/* 옵션메뉴 */}
                 <NavItem>
                     <div
-                        className={'cursor-pointer'}
+                        className={
+                            'flex h-9 w-9 items-center justify-center rounded-lg text-slate-600 transition-colors hover:bg-slate-100 hover:text-indigo-600 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-indigo-400'
+                        }
                         onClick={controlOption}
                     >
                         <FontAwesomeIcon icon={faGear} />

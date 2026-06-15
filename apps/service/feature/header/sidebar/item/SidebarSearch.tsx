@@ -22,7 +22,7 @@ export const SidebarSearch = () => {
     return (
         <div
             className={
-                'flex flex-col md:flex-row w-full max-w-[768px] gap-[4px]'
+                'surface-muted flex w-full max-w-3xl flex-col gap-2 p-3 md:flex-row'
             }
         >
             <Select
@@ -48,13 +48,15 @@ export const SidebarSearch = () => {
                 onChange={(e) => setSearchType(e.currentTarget.value)}
             />
             <InputText
-                customClass={'flex-1 w-full placeholder-gray-500 text-black'}
+                customClass={'flex-1 w-full'}
                 value={searchText}
                 placeholder={t('placeholder')}
                 onChange={(e) => setSearchText(e.currentTarget.value)}
             />
             <ButtonStandard
-                customTextClass={'break-keep bg-blue-400'}
+                customTextClass={
+                    'break-keep bg-indigo-600 text-white hover:bg-indigo-700'
+                }
                 text={t('button')}
                 onClick={() => {
                     router.push(LINK_SEARCH(searchType, searchText));
