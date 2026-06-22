@@ -25,19 +25,5 @@
     "prettier": "^3.3.3",
     "prettier-plugin-multiline-arrays": "^3.0.6"
   },
-  "packageManager": "yarn@1.22.19",
-  "workspaces": {
-    "packages": [
-      "apps/*",
-      "packages/*"
-    ],
-    "nohoist": [
-      "**/.prisma/**",
-      "**/.prisma",
-      "**/@prisma/**",
-      "**/@prisma",
-      "**/prisma/**",
-      "**/prisma"
-    ]
-  }
+  "packageManager": "pnpm@11.8.0"
 }
