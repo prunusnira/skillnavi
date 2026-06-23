@@ -13,9 +13,9 @@ fi
 
 if [ "$ENV" == "dev" ]; then
   cp ./.env.dev ./.env
-  yarn build:dev
+  pnpm build:dev
 fi
 if [ "$ENV" == "prd" ]; then
   cp ./.env.prd ./.env
-  yarn build
+  pnpm build
 fi

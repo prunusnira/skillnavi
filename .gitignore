@@ -41,3 +41,16 @@ next-env.d.ts
 
 **/dist
 **/build
+
+# claude code
+
+.claude/settings.local.json
+.claude/CLAUDE.local.md
+.claude/drafts
+.claude/skills
+.claude/ocr
+
+# storybook
+
+*storybook.log
+storybook-static

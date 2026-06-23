@@ -13,6 +13,7 @@
     },
     "jsx": "preserve"
   },
+  "moduleResolution": "bundler",
   "include": [
     "next-env.d.ts",
     "**/*.ts",
@@ -20,6 +21,8 @@
     ".next/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "**/*.spec.ts",
+    "**/*.spec.tsx"
   ]
 }
