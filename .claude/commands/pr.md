@@ -1,6 +1,6 @@
 ---
-description: 현재 브랜치 변경사항을 정리해서 PR 생성. 사용법: /pr [target_branch] [--from origin_branch]
-argument-hint: [target_branch] [--from origin_branch]
+description: 현재 브랜치 변경사항을 정리해서 PR 생성. 사용법: /pr [target_branch] [--from origin_branch] [--ocr]
+argument-hint: [target_branch] [--from origin_branch] [--ocr]
 ---
 
 # /pr
@@ -17,11 +17,13 @@ argument-hint: [target_branch] [--from origin_branch]
 
 - `target_branch`: 위치 인자 (지정하지 않으면 `main`)
 - `--from {브랜치}`: 원본 브랜치. 지정하지 않으면 현재 브랜치 (`git rev-parse --abbrev-ref HEAD`)
+- `--ocr`: PR 생성 전 로컬 OCR 리뷰를 실행하고 결과를 PR 본문에 요약 포함. `ocr` CLI가 설치/설정되어 있지 않으면 이 플래그는 무시하고 안내만 출력
 
 예시:
 - `/pr` → target=main, from=현재 브랜치
 - `/pr develop` → target=develop, from=현재 브랜치
 - `/pr main --from NAVI-100` → target=main, from=NAVI-100
+- `/pr develop --ocr` → target=develop, OCR 로컬 리뷰 실행 후 결과 요약을 PR 본문에 포함
 
 ## 1단계: 사전 검증
 
@@ -57,6 +59,51 @@ origin_branch에서 티켓 ID를 추출한다. 일반적으로 브랜치명 자�
 조회된 이슈 본문을 1~3문장으로 요약한다. 이슈 본문이 모호하면 "이슈 본문 확인 필요"로 표기 (CLAUDE.md 8번 원칙).
 
 이슈를 찾지 못한 경우 PR 본문에서 연결 이슈 섹션을 생략하거나 "연결 이슈 없음"으로 표기.
+
+## 3.5단계: 로컬 OCR 리뷰 (`--ocr` 플래그 지정 시만)
+
+`--ocr` 플래그가 있을 때만 실행. 없으면 이 단계 전체를 건너뛴다.
+
+### 사전 검증
+
+병렬로 아래 명령 실행:
+
+- `which ocr` - CLI 설치 여부
+- `cat ~/.opencodereview/config.json 2>/dev/null` - LLM 설정 여부 (내용 출력 금지)
+
+둘 중 하나라도 없으면 "OCR을 생략합니다. `ocr` CLI 설치 또는 LLM 설정이 필요합니다." 만 출력하고 이 단계를 건너뛴다. PR 생성 자체는 계속 진행.
+
+### 캐시 조회
+
+`/ocr` 커맨드와 동일한 캐시 정책 사용:
+
+- base SHA: `git rev-parse origin/{target_branch}`
+- head SHA: `git rev-parse HEAD`
+- 캐시 키: `range:{base_sha}:{head_sha}`
+- `.claude/ocr/index.json`에서 조회 → hit면 CLI 실행 생략, 기존 HTML과 인덱스의 요약 사용
+- miss면 아래 리뷰 실행으로 진행
+
+### 리뷰 실행
+
+`/ocr` 커맨드의 2~4단계와 동일한 절차로 로컬 리뷰를 실행한다:
+
+- 모드: `range`, base=`origin/{target_branch}`, head=`HEAD`
+- 명령: `ocr review --from origin/{target_branch} --to HEAD --format json --background "{최신 커밋 메시지}"`
+- 결과: `/tmp/ocr-local-result.json`에 저장
+- HTML 결과: `.claude/ocr/{timestamp}-range-{origin_branch}.html`에 저장 (한국어, 서버 구동 없이 브라우저로 바로 열 수 있게)
+- 저장 후 `.claude/ocr/index.json`에 캐시 엔트리 갱신
+
+### 결과 수집
+
+`/tmp/ocr-local-result.json`에서 4단계 본문 작성을 위해 아래 값을 추출한다:
+
+- 발견된 이슈 수 (comments.length)
+- 심각도별 분류 (severity 필드가 있을 경우 집계, 없으면 미분류 N건)
+- 주요 이슈 최대 5건: 파일 경로, 시작/끝 라인, 내용 1줄 요약
+- 저장된 HTML 파일명
+- warnings가 있으면 함께 기록
+
+실행 실패 시 실패 사실만 기록하고 계속 진행 (PR 생성은 막지 않음).
 
 ## 4단계: PR 본문 작성
 
@@ -95,6 +142,28 @@ origin_branch에서 티켓 ID를 추출한다. 일반적으로 브랜치명 자�
 - 후속 티켓 필요 여부 (예: "페이지 컴포넌트 테스트는 별도 티켓에서 진행")
 - 리뷰어가 특별히 봐야 할 부분
 - 설정 마이그레이션 필요 (`pnpm install` 재실행 등)
+
+### OCR 리뷰 섹션 (optional, `--ocr` 플래그 지정 시만)
+
+아래 템플릿을 `### 비고` 위에 추가한다. OCR 실행 결과(`5.5단계`)에서 수집한 값을 반영한다.
+
+```markdown
+---
+
+### AI 로컬 리뷰 (OCR)
+
+- 발견 이슈: {N}건 (심각 {critical} / 경고 {warning} / 정보 {info})
+- 주요 이슈:
+  - {파일경로}:L{시작}-L{끝} — {이슈 요약 1줄}
+  - {파일경리}:L{시작}-L{끝} — {이슈 요약 1줄}
+- 상세: `{.claude/ocr/파일명.html}`
+```
+
+작성 규칙:
+- 심각도 분류가 없으면 "발견 이슈: N건"으로만 표기
+- 주요 이슈는 최대 5건. 그 이상은 상세 HTML로 유도
+- 빈 결과(0건)면 섹션 전체를 "발견된 이슈 없음" 한 줄로 대체
+- OCR 실행 자체를 실패한 경우 섹션을 생략하고 실패 사실만 비고에 1줄 기록
 
 ## 5단계: PR 제목 작성
 
@@ -137,6 +206,7 @@ PR 생성 후 아래만 짧게 출력:
 - PR 번호
 - 변경 파일 수 (신규 N / 수정 M / 삭제 K)
 - 커밋 수
+- `--ocr` 실행 시: OCR 발견 이슈 수 + 저장된 HTML 파일 경로
 
 전체 본문을 다시 출력하지 않는다 (CLAUDE.md 6번 원칙).
 
