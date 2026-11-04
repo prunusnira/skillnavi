@@ -6,17 +6,18 @@ import useNavbar from '@/feature/header/navbar/useNavbar';
 import { useTranslations } from 'next-intl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGear } from '@fortawesome/free-solid-svg-icons';
-import { signOut, useSession } from 'next-auth/react';
 import { useRouter } from '@/i18n/routing';
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 import Image from 'next/image';
 import { MainFloatingMenu } from '@/feature/header/navbar/MainFloatingMenu';
+import { googleLogout } from '@react-oauth/google';
+import { useSession } from '@/feature/auth/hook/useSession';
 
 const Navbar = () => {
     const { handleLinkMain, controlOption } = useNavbar();
     const t = useTranslations('navbar');
-    const { data: session } = useSession();
     const router = useRouter();
+    const session = useSession();
 
     return (
         <nav className={'mx-auto h-full w-full max-w-6xl flex-between'}>
@@ -85,7 +86,7 @@ const Navbar = () => {
                         className={'btn-transparent text-[14px] cursor-pointer'}
                     >
                         {session ? (
-                            <div onClick={() => signOut()}>{t('logout')}</div>
+                            <div onClick={() => googleLogout()}>{t('logout')}</div>
                         ) : (
                             <div onClick={() => router.push(LINK_AUTH_LOGIN)}>
                                 {t('login')}

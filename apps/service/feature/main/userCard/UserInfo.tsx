@@ -1,10 +1,10 @@
 import { cn } from '@/lib/cn';
 import { getProfileSession } from '@/feature/profile/api/getProfileSession';
-import { getServerSession } from 'next-auth';
 import UserButton from '@/feature/main/userCard/UserButton';
 import UserBox from '@/feature/profile/component/UserBox';
 import { getTranslations } from 'next-intl/server';
 import UserScript from '@/feature/main/userCard/UserScript';
+import { getServerSession } from '@/feature/auth/server';
 
 const UserInfo = async () => {
     const session = await getServerSession();

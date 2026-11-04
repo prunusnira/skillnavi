@@ -1,33 +1,18 @@
-import { NextAuthOptions } from 'next-auth';
-import Google from 'next-auth/providers/google';
-import { authPages } from '@/feature/auth/data/authPages';
+import { CodeResponse } from '@react-oauth/google';
+import { fetchAdv } from '@/lib/fetch/fetchAdv';
 
-export const authOptions: NextAuthOptions = {
-    providers: [
-        Google({
-            clientId: process.env.GOOGLE_CLIENT_ID || '',
-            clientSecret: process.env.GOOGLE_SECRET || '',
-        }),
-    ],
-    cookies: {
-        pkceCodeVerifier: {
-            name: 'next-auth.pkce.code_verifier',
-            options: {
-                httpOnly: true,
-                sameSite: 'none',
-                path: '/',
-                secure: true,
+export const onLoginSuccess = async (res: Omit<CodeResponse, 'error' | 'error_description' | 'error_uri'>) => {
+    console.log(res);
+    const tokens = await fetchAdv.post(
+        'http://localhost:3001/auth/google', {
+            body: {
+                code: res.code,
             },
-        },
-    },
-    secret: process.env.NEXTAUTH_SECRET || '',
-    callbacks: {
-        jwt: async ({ token, user }) => {
-            return { ...token, ...user };
-        },
-        session: async ({ session, token }) => {
-            return session;
-        },
-    },
-    pages: authPages,
-};
+        });
+
+    console.log(tokens);
+}
+
+export const onLoginFailure = (res: Pick<CodeResponse, 'error' | 'error_description' | 'error_uri'>) => {
+    console.log(res);
+}

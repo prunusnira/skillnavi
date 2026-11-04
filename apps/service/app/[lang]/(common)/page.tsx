@@ -1,6 +1,5 @@
 import Card from '@/common/card/Card';
 import { getTranslations } from 'next-intl/server';
-import { getServerSession } from 'next-auth';
 import UserInfo from '@/feature/main/userCard/UserInfo';
 import { DISCORD, LINK_AUTH_LOGIN } from '@/url/url';
 import Link from 'next/link';
@@ -11,7 +10,6 @@ import { HowtoWrapper } from '@/feature/main/howto/HowtoWrapper';
  * @componentType nextjs page
  */
 const PageIndex = async () => {
-    const session = await getServerSession();
     const t = await getTranslations('main');
 
     return (

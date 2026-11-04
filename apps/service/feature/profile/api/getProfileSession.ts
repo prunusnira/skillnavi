@@ -1,5 +1,4 @@
 import { fetchAdv } from '@/lib/fetch/fetchAdv';
-import { Session } from 'next-auth';
 import { getTokenFromSession } from '@/lib/session/getTokenFromSession';
 import { Profile } from '@/feature/profile/data/Profile';
 import { API_PROFILE_BASIC } from '@/url/api';

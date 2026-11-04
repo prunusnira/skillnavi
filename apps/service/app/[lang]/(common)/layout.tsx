@@ -3,7 +3,6 @@ import { cn } from '@/lib/cn';
 import Footer from '@/feature/footer/Footer';
 import Version from '@/feature/version/Version';
 import { ReactNode } from 'react';
-import UserAuthWrapper from '@/feature/auth/wrapper/UserAuthWrapper';
 import Theme from '@/feature/theme/component/Theme';
 import { LogPageView } from '@/common/log/LogPageView';
 
@@ -28,7 +27,6 @@ const PageLayout = ({ children }: Props) => {
             </section>
             <Footer />
             <Version />
-            <UserAuthWrapper />
             <Theme />
             <LogPageView />
         </main>
