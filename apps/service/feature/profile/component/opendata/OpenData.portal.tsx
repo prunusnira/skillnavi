@@ -8,7 +8,7 @@ import { updateOpenData } from '@/feature/profile/api/updateOpenData';
 import { useMutation } from '@tanstack/react-query';
 import { ButtonStandard } from '@skillnavi/ui';
 import { RadioGroup } from '@skillnavi/ui/src/radio';
-import radioStyle from '@skillnavi/service/common/Radio.item.module.css';
+import radioStyle from '@/common/Radio.item.module.css';
 
 interface Props {
     profile: Profile;
