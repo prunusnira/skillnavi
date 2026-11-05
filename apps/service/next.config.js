@@ -4,6 +4,26 @@ const createNextIntlPlugin = require('next-intl/plugin');
 const { nanoid } = require('nanoid');
 const withNextIntl = createNextIntlPlugin();
 
+const cspHeader = `
+        default-src 'self' 'https://accounts.google.com/gsi/';
+        connect-src 'self' 'https://accounts.google.com/gsi/';
+        script-src 'self' 'strict-dynamic' 'https://accounts.google.com/gsi/client';
+        style-src 'self' 'https://accounts.google.com/gsi/style';
+        frame-src 'self' 'https://accounts.google.com/gsi/';
+        img-src 'self' blob: data:;
+        font-src 'self';
+        object-src 'none';
+        base-uri 'self';
+        form-action 'self';
+        frame-ancestors 'self' 'https://nira.one' 'https://sin.nira.one';
+        upgrade-insecure-requests;
+    `;
+
+// Replace newline characters and spaces
+const contentSecurityPolicyHeaderValue = cspHeader
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     generateBuildId: async () => {
@@ -34,6 +54,14 @@ const nextConfig = {
                     {
                         key: 'Access-Control-Allow-Headers',
                         value: 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version',
+                    },
+                    {
+                        key: 'Cross-Origin-Opener-Policy',
+                        value: 'same-origin',
+                    },
+                    {
+                        key: 'Content-Security-Policy',
+                        value: contentSecurityPolicyHeaderValue,
                     },
                 ],
             },

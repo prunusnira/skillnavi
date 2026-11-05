@@ -24,7 +24,11 @@ export default defineConfig({
     rollupOptions: {
       // 라이브러리에 포함하지 않을
       // 디펜던시를 명시해주세요
-      external: ['react', 'react-dom'],
+      external: (id) =>
+        id === 'react' ||
+        id.startsWith('react/') ||
+        id === 'react-dom' ||
+        id.startsWith('react-dom/'),
       output: {
         globals: {
           react: 'React',
