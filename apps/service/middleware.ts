@@ -21,6 +21,7 @@ const publicPages = [
     '/skill',
     '/rank/skill',
     '/rank/playcount',
+    '/search',
 ];
 
 const handleI18nRouting = createMiddleware(routing);

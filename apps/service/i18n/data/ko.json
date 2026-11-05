@@ -167,7 +167,11 @@
             "difficulty": "난이도",
             "rank": "랭크",
             "close": "닫기"
-        }
+        },
+        "rate": "달셩률",
+        "rank": "랭크",
+        "skill": "스킬",
+        "combo": "콤보"
     },
     "recent": "최근 갱신유저",
     "ranking": "스킬 랭킹",

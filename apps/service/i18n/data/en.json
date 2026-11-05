@@ -167,7 +167,11 @@
             "difficulty": "Difficulty",
             "rank": "Rank",
             "close": "Close"
-        }
+        },
+        "rate": "Rate",
+        "rank": "Rank",
+        "skill": "Skill",
+        "combo": "Combo"
     },
     "recent": "Recently Updated Users",
     "ranking": "Skill Ranking",
@@ -260,7 +264,12 @@
     },
     "search": {
         "title": "Search Results",
-        "desc": "Search results are not case sensitive.",
+        "desc": {
+            "for": "Search result",
+            "type": "Search Type",
+            "value": "Search Keyword",
+            "detail": "Search result is not case-sensitive"
+        },
         "table": {
             "empty": "No items to display."
         }
