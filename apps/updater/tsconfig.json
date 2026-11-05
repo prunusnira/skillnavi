@@ -7,7 +7,7 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "nodenext",
     "noEmit": true,
     "jsx": "react-jsx",
     "esModuleInterop": true,
