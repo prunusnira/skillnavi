@@ -8,7 +8,7 @@ This workspace is the Skill Navigator web service, built with Next.js 15 App Rou
 - Locale configuration is in `i18n/`. Use the project's `@/i18n/routing` exports for localized links and navigation where applicable.
 - Domain functionality is organized under `feature/<domain>/`; reusable UI and infrastructure live in `common/` and `lib/`.
 - `@/*` resolves from this workspace root. Shared packages are imported through their `@skillnavi/*` names.
-- The app uses `next-intl`, `next-auth` v4, Jotai, TanStack Query, Tailwind CSS 4, and Prisma 6 with a MySQL datasource. Check the existing layer and nearby code before adding another pattern.
+- The app uses `next-intl`, `@react-oauth/google`, a signed HTTP-only app session cookie, Jotai, TanStack Query, Tailwind CSS 4, and Prisma 6 with a MySQL datasource. Check the existing layer and nearby code before adding another pattern.
 - `next.config.js` wraps the config with the `next-intl` plugin and transpiles `@skillnavi/ui`; preserve these integrations when changing config.
 - Environment-specific scripts load `.env.dev` or `.env.prd` through `env-cmd`. Never expose those files or assume their values.
 

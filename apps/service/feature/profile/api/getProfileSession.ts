@@ -1,18 +1,12 @@
-import { fetchAdv } from '@/lib/fetch/fetchAdv';
-import { getTokenFromSession } from '@/lib/session/getTokenFromSession';
-import { Profile } from '@/feature/profile/data/Profile';
-import { API_PROFILE_BASIC } from '@/url/api';
+import { getSessionToken } from '@/feature/auth/server/cookie';
+import { getUserFromToken } from '@/feature/auth/api/getUserFromToken';
 
-export const getProfileSession = async (session: Session | null) => {
-    const token = getTokenFromSession(session);
+export const getProfileSession = async () => {
+    const token = await getSessionToken();
 
     if (!token) {
         return undefined;
     }
 
-    return await fetchAdv.get<Profile>(API_PROFILE_BASIC, {
-        params: {
-            token,
-        },
-    });
+    return (await getUserFromToken(token)) ?? undefined;
 };

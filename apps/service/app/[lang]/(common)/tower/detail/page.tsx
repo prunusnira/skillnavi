@@ -9,7 +9,6 @@ import AlbumArt from '@/common/albumart/AlbumArt';
 import { getTowerInfo } from '@/feature/tower/api/getTowerInfo';
 import { getTowerType } from '@/feature/tower/data/getTowerType';
 import { getTowerDetailUserData } from '@/feature/tower/api/getTowerDetailUserData';
-import { getServerSession } from 'next-auth';
 import { getProfileSession } from '@/feature/profile/api/getProfileSession';
 import { Skill } from '@/feature/skill/data/Skill';
 import VersionDisplay from '@/feature/version/VersionDisplay';
@@ -23,8 +22,7 @@ const PageTowerDetail = async (props: { searchParams: Promise<{ id: number }> })
     const detailList = await getTowerDetail(id);
     const towerInfo = await getTowerInfo(id);
     const floorIcons = await getTowerIcon(id);
-    const session = await getServerSession();
-    const user = await getProfileSession(session);
+    const user = await getProfileSession();
     const t = await getTranslations('tower');
 
     if (!user) {

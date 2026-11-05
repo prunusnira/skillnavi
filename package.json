@@ -1,29 +1,30 @@
 {
-  "name": "skillnavi",
-  "version": "1.0.1",
-  "description": "skillnavi-workspaces",
-  "main": "index.js",
-  "repository": "https://github.com/prunusnira/skillnavi-nextjs.git",
-  "author": "Nira <prunusnira@gmail.com>",
-  "license": "MIT",
-  "private": true,
-  "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
-    "lint": "turbo run lint"
-  },
-  "devDependencies": {
-    "eslint": "^8",
-    "eslint-config-next": "14.2.14",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-next": "^0.0.0",
-    "eslint-plugin-prettier": "^5.2.1",
-    "eslint-plugin-react": "^7.37.1",
-    "eslint-plugin-react-hooks": "^4.6.2",
-    "turbo": "latest",
-    "prettier": "^3.3.3",
-    "prettier-plugin-multiline-arrays": "^3.0.6"
-  },
-  "packageManager": "pnpm@11.8.0"
+    "name": "skillnavi",
+    "version": "1.0.2",
+    "description": "skillnavi-workspaces",
+    "main": "index.js",
+    "repository": "https://github.com/prunusnira/skillnavi-nextjs.git",
+    "author": "Nira <prunusnira@gmail.com>",
+    "license": "MIT",
+    "private": true,
+    "scripts": {
+        "build": "turbo run build",
+        "dev": "turbo run dev",
+        "lint": "turbo run lint"
+    },
+    "devDependencies": {
+        "eslint": "^8",
+        "eslint-config-next": "14.2.14",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-import": "^2.31.0",
+        "eslint-plugin-next": "^0.0.0",
+        "eslint-plugin-prettier": "^5.2.1",
+        "eslint-plugin-react": "^7.37.1",
+        "eslint-plugin-react-hooks": "^4.6.2",
+        "@types/react": "catalog:",
+        "turbo": "latest",
+        "prettier": "^3.3.3",
+        "prettier-plugin-multiline-arrays": "^3.0.6"
+    },
+    "packageManager": "pnpm@11.8.0"
 }

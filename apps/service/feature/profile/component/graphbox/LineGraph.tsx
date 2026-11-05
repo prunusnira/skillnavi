@@ -4,7 +4,7 @@ import {
     LineChart,
     ResponsiveContainer,
     Tooltip,
-    TooltipProps,
+    TooltipContentProps,
     XAxis,
     YAxis,
 } from 'recharts';
@@ -20,7 +20,7 @@ const CustomTooltip = ({
     active,
     payload,
     label,
-}: TooltipProps<ValueType, NameType>) => {
+}: TooltipContentProps<ValueType, NameType>) => {
     if (active && payload && payload.length) {
         return (
             <div className={cn('surface-muted flex-col-center p-2')}>
@@ -66,7 +66,7 @@ const LineGraph = ({ type, data, min, max, color }: Props) => {
                 />
                 <Tooltip
                     cursor={true}
-                    content={<CustomTooltip />}
+                    content={(props) => <CustomTooltip {...props} />}
                 />
                 <Line
                     name={type}

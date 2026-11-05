@@ -1,11 +1,10 @@
 import Card from '@/common/card/Card';
 import { getSnapshotList } from '@/feature/snapshot/api/getSnapshotList';
 import { getProfileSession } from '@/feature/profile/api/getProfileSession';
-import { getServerSession } from 'next-auth';
 import { SnapshotsList } from '@/feature/snapshot/component/SnapshotList';
 
 const PageSnapshot = async () => {
-    const user = await getProfileSession(await getServerSession());
+    const user = await getProfileSession();
     if (!user) return null;
 
     const snapshotList = await getSnapshotList(user.id);

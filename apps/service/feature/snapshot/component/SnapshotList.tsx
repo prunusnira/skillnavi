@@ -1,6 +1,5 @@
 import { GameType } from '@/common/game/data/GameType';
 import { getProfileSession } from '@/feature/profile/api/getProfileSession';
-import { getServerSession } from 'next-auth';
 import { SnapshotListItem } from '@/feature/snapshot/component/SnapshotList.item';
 
 interface Props {
@@ -9,7 +8,7 @@ interface Props {
 }
 
 export const SnapshotsList = async ({ type, snapshotMap }: Props) => {
-    const user = await getProfileSession(await getServerSession());
+    const user = await getProfileSession();
     const typeStr =
         type === 'gf' ? 'GuitarFreaks' :
             type === 'dm' ? 'DrumMania' : '';

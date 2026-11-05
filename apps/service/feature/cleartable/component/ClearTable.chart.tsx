@@ -8,21 +8,18 @@ import {
     Legend,
     ResponsiveContainer,
     Tooltip,
-    TooltipProps,
+    TooltipContentProps,
     XAxis,
     YAxis,
 } from 'recharts';
 import { useMemo } from 'react';
-import {
-    NameType,
-    ValueType,
-} from 'recharts/types/component/DefaultTooltipContent';
+import { NameType, ValueType, } from 'recharts/types/component/DefaultTooltipContent';
 
 const CustomTooltip = ({
     active,
     payload,
     label,
-}: TooltipProps<ValueType, NameType>) => {
+}: TooltipContentProps<ValueType, NameType>) => {
     if (active && payload && payload.length) {
         return (
             <section className={'surface-muted flex flex-col gap-2 px-5 py-3'}>
@@ -73,7 +70,9 @@ const ClearTableChart = ({ tableData }: Props) => {
                         max={100}
                         label={'(%)'}
                     />
-                    <Tooltip content={<CustomTooltip />} />
+                    <Tooltip
+                        content={CustomTooltip}
+                    />
                     <Legend />
                     <Bar
                         dataKey="SS"

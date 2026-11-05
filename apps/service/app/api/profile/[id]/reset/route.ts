@@ -2,7 +2,6 @@ import RouteWrapper from '@/lib/fetch/routeWrapper';
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/db/prisma';
 import { Prisma } from '@prisma/client';
-import { getServerSession } from 'next-auth';
 import { getProfileSession } from '@/feature/profile/api/getProfileSession';
 
 export const POST = async (req: NextRequest, props: { params: Promise<{ id: string }> }) => {
@@ -11,8 +10,7 @@ export const POST = async (req: NextRequest, props: { params: Promise<{ id: stri
         req,
         work: async () => {
             const { id } = params;
-            const session = await getServerSession();
-            const user = await getProfileSession(session);
+            const user = await getProfileSession();
 
             if (!user || user?.id !== Number(id)) {
                 return NextResponse.json(

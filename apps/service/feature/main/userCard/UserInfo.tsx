@@ -1,24 +1,21 @@
 import { cn } from '@/lib/cn';
-import { getProfileSession } from '@/feature/profile/api/getProfileSession';
 import UserButton from '@/feature/main/userCard/UserButton';
 import UserBox from '@/feature/profile/component/UserBox';
 import { getTranslations } from 'next-intl/server';
 import UserScript from '@/feature/main/userCard/UserScript';
-import { getServerSession } from '@/feature/auth/server';
+import type { Profile } from '@/feature/profile/data/Profile';
 
-const UserInfo = async () => {
-    const session = await getServerSession();
-    const mydata = await getProfileSession(session);
+interface Props {
+    profile: Profile;
+}
+
+const UserInfo = async ({ profile }: Props) => {
     const t = await getTranslations('main.user.script');
-
-    if (!mydata) {
-        return null;
-    }
 
     return (
         <section className={cn('flex-col-center')}>
             {/* 프로필 정보 */}
-            <UserBox mydata={mydata} />
+            <UserBox mydata={profile} />
             <UserButton />
 
             {/* 갱신 스크립트 */}
@@ -28,7 +25,7 @@ const UserInfo = async () => {
                 <div className={'text-sm font-bold text-red-400'}>
                     {t('desc.desc2')}
                 </div>
-                <UserScript unique={mydata.unique_id} />
+                <UserScript unique={profile.unique_id} />
             </section>
         </section>
     );

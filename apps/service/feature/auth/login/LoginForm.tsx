@@ -2,20 +2,64 @@
 
 import { cn } from '@/lib/cn';
 import { useGoogleLogin } from '@react-oauth/google';
-import { fetchAdv } from '@/lib/fetch/fetchAdv';
-import { ButtonRounded } from '@skillnavi/ui/src';
+import { ButtonRounded } from '@skillnavi/ui';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { useTranslations } from 'next-intl';
-import { onLoginFailure, onLoginSuccess } from '@/feature/auth/data/authOptions';
+import { useState } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
+import { useRouter } from '@/i18n/routing';
+import { LINK_AUTH_NEWUSER, LINK_MAIN } from '@/url/url';
+import type { AuthSession } from '@/feature/auth/data/Session';
+import { API_AUTH_GOOGLE, API_SESSION } from '@/url/api';
 
 const LoginForm = () => {
     const t = useTranslations('user.login');
+    const queryClient = useQueryClient();
+    const router = useRouter();
+    const [error, setError] = useState(false);
 
     const googleLogin = useGoogleLogin({
         flow: 'auth-code',
-        onSuccess: onLoginSuccess,
-        onError: onLoginFailure,
+        onSuccess: async ({ code }) => {
+            setError(false);
+
+            try {
+                const response = await fetch(API_AUTH_GOOGLE, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Requested-With': 'XmlHttpRequest',
+                    },
+                    body: JSON.stringify({ code }),
+                });
+                if (!response.ok) {
+                    throw new Error('Google sign-in failed');
+                }
+
+                const sessionResponse = await fetch(API_SESSION, {
+                    cache: 'no-store',
+                });
+                if (!sessionResponse.ok) {
+                    throw new Error('App session could not be loaded');
+                }
+
+                const session = (await sessionResponse.json()) as AuthSession;
+                if (!session.authenticated) {
+                    throw new Error('App session was not created');
+                }
+
+                queryClient.setQueryData(['session'], session);
+                router.replace(
+                    session.profile ? LINK_MAIN : LINK_AUTH_NEWUSER,
+                );
+                router.refresh();
+            } catch {
+                setError(true);
+            }
+        },
+        onError: () => setError(true),
+        onNonOAuthError: () => setError(true),
     });
 
     return (
@@ -34,6 +78,11 @@ const LoginForm = () => {
                     fixedWidth={200}
                     onClick={googleLogin}
                 />
+                {error && (
+                    <p className="text-sm text-red-600" role="alert">
+                        {t('error')}
+                    </p>
+                )}
             </section>
         </section>
     );

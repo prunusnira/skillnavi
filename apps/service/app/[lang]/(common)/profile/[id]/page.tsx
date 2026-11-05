@@ -12,7 +12,6 @@ import { getProfileSkill } from '@/feature/profile/api/getProfileSkill';
 import { CriticalButton } from '@/feature/profile/component/button/CriticalButton';
 import Image from 'next/image';
 import { getProfileSession } from '@/feature/profile/api/getProfileSession';
-import { getServerSession } from 'next-auth';
 import { DetailedInfoTable } from '@/feature/profile/component/detailedinfo/DetailedInfoTable';
 import PrefetchQuery from '@/common/wrapper/PrefetchQuery';
 import { getProfileDetail } from '@/feature/profile/api/getProfileDetail';
@@ -25,8 +24,7 @@ const PageProfile = async (props: { params: Promise<{ id: string }> }) => {
     const mydata = await getProfile([Number(id)]);
     const myskill = await getProfileSkill([Number(id)]);
     const graph = await getProfileGraph(id);
-    const session = await getServerSession();
-    const user = await getProfileSession(session);
+    const user = await getProfileSession();
     const latest = await getLatestVersion();
 
     if (!mydata.length || !myskill) {

@@ -223,7 +223,8 @@
                 "pw": "Password"
             },
             "title": "Login",
-            "google": "Sign in with Google Account"
+            "google": "Sign in with Google Account",
+            "error": "Google sign-in failed. Please try again."
         },
         "join": {
             "title": "Welcome to Skill Navigator!",

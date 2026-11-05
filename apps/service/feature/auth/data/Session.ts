@@ -1,14 +1,6 @@
-export interface GoogleToken {
-    access_token: string;
-    refresh_token: string;
-    scope: string;
-    token_type: string;
-    id_token: string;
-    expiry_date: string;
-}
+import type { Profile } from '@/feature/profile/data/Profile';
 
-export interface User {
-    id: number;
-    name: string;
-    email: string;
+export interface AuthSession {
+    authenticated: boolean;
+    profile: Pick<Profile, 'id'> | null;
 }

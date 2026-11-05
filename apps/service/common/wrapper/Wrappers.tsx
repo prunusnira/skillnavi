@@ -8,14 +8,15 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 
 interface Props {
     children: ReactNode;
+    googleClientId: string;
 }
 
-const Wrappers = ({ children }: Props) => {
+const Wrappers = ({ children, googleClientId }: Props) => {
     const queryClient = new QueryClient();
 
     return (
         <QueryClientProvider client={queryClient}>
-            <GoogleOAuthProvider clientId={process.env.GOOGLE_CLIENT_ID ?? ''}>
+            <GoogleOAuthProvider clientId={googleClientId}>
                 <ClientProvider>
                     <DataProvider>{children}</DataProvider>
                 </ClientProvider>

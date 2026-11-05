@@ -223,7 +223,8 @@
                 "pw": "비밀번호"
             },
             "title": "로그인",
-            "google": "Google 계정으로 로그인"
+            "google": "Google 계정으로 로그인",
+            "error": "Google 로그인에 실패했습니다. 다시 시도해 주세요."
         },
         "join": {
             "title": "Skill Navigator에 오신 것을 환영합니다!",

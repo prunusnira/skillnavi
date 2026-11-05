@@ -1,6 +1,7 @@
 import Card from '@/common/card/Card';
 import { getTranslations } from 'next-intl/server';
 import UserInfo from '@/feature/main/userCard/UserInfo';
+import { getProfileSession } from '@/feature/profile/api/getProfileSession';
 import { DISCORD, LINK_AUTH_LOGIN } from '@/url/url';
 import Link from 'next/link';
 import { HowtoWrapper } from '@/feature/main/howto/HowtoWrapper';
@@ -11,6 +12,7 @@ import { HowtoWrapper } from '@/feature/main/howto/HowtoWrapper';
  */
 const PageIndex = async () => {
     const t = await getTranslations('main');
+    const profile = await getProfileSession();
 
     return (
         <article className={'flex-col-center w-full'}>
@@ -18,8 +20,8 @@ const PageIndex = async () => {
             <section className={'flex flex-col md:flex-row w-full'}>
                 {/* 로그인/사용자 정보 */}
                 <Card title={t('user.title')}>
-                    {session ? (
-                        <UserInfo />
+                    {profile ? (
+                        <UserInfo profile={profile} />
                     ) : (
                         <section className={'flex-col-center'}>
                             <div className={'link'}>

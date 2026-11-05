@@ -35,7 +35,9 @@ export default async function RootLayout({
                 )}
             >
                 <NextIntlClientProvider messages={messages}>
-                    <Wrappers>{children}</Wrappers>
+                    <Wrappers googleClientId={process.env.GOOGLE_CLIENT_ID ?? ''}>
+                        {children}
+                    </Wrappers>
                 </NextIntlClientProvider>
                 <div id="portal" />
             </body>

@@ -223,7 +223,8 @@
                 "pw": "パスワード"
             },
             "title": "ログイン",
-            "google": "Googleアカウントでログイン"
+            "google": "Googleアカウントでログイン",
+            "error": "Googleログインに失敗しました。もう一度お試しください。"
         },
         "join": {
             "title": "Skill Navigatorへようこそ！",

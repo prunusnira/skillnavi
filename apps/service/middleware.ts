@@ -1,7 +1,11 @@
 import createMiddleware from 'next-intl/middleware';
 import { locales, routing } from '@/i18n/routing';
-import { NextRequest } from 'next/server';
-import { authPages } from '@/feature/auth/data/authPages';
+import { NextRequest, NextResponse } from 'next/server';
+import { LINK_AUTH_LOGIN } from '@/url/url';
+import {
+    APP_SESSION_COOKIE,
+    getTokenFromSessionCookie,
+} from '@/feature/auth/server/sessionToken';
 
 const publicPagesExact = [
     '/',
@@ -21,7 +25,7 @@ const publicPages = [
 
 const handleI18nRouting = createMiddleware(routing);
 
-export const middleware = (req: NextRequest) => {
+export const middleware = async (req: NextRequest) => {
     const publicPathnameRegex = RegExp(
         `^(/(${locales.join('|')}))?(((${publicPagesExact
             .flatMap((p) =>
@@ -47,10 +51,27 @@ export const middleware = (req: NextRequest) => {
     const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname);
     if (isPublicPage) {
         return handleI18nRouting(req);
-    } else {
-        // eslint-disable-next-line
-        return req;
     }
+
+    const sessionToken = await getTokenFromSessionCookie(
+        req.cookies.get(APP_SESSION_COOKIE)?.value,
+    );
+    if (!sessionToken) {
+        const locale = locales.find(
+            (value) =>
+                req.nextUrl.pathname === `/${value}` ||
+                req.nextUrl.pathname.startsWith(`/${value}/`),
+        );
+        const signInPath = `${locale ? `/${locale}` : ''}${LINK_AUTH_LOGIN}`;
+        const signInUrl = new URL(signInPath, req.url);
+        signInUrl.searchParams.set(
+            'callbackUrl',
+            `${req.nextUrl.pathname}${req.nextUrl.search}`,
+        );
+        return NextResponse.redirect(signInUrl);
+    }
+
+    return handleI18nRouting(req);
 };
 
 export const config = {

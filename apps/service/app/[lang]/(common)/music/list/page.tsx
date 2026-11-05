@@ -6,7 +6,6 @@ import { getMusicList } from '@/feature/music/api/getMusicList';
 import { getLatestVersion } from '@/feature/env/api/getGameVersions';
 import { MusicListItem } from '@/feature/music/component/list/MusicListItem';
 import { PatternListMenu } from '@/feature/music/component/list/menu/PatternListMenu';
-import { getServerSession } from 'next-auth';
 import { getProfileSession } from '@/feature/profile/api/getProfileSession';
 
 const PageMusicList = async (props: {
@@ -18,8 +17,7 @@ const PageMusicList = async (props: {
         page?: string;
     }>;
 }) => {
-    const session = await getServerSession();
-    const profile = await getProfileSession(session);
+    const profile = await getProfileSession();
     const searchParams = await props.searchParams;
     const latest = await getLatestVersion();
     const {

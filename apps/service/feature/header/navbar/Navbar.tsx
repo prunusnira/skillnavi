@@ -1,6 +1,6 @@
 'use client';
 
-import { DISCORD, IMG, LINK_AUTH_LOGIN } from '@/url/url';
+import { DISCORD, IMG, LINK_AUTH_LOGIN, LINK_MAIN } from '@/url/url';
 import NavItem from '@/feature/header/NavItem';
 import useNavbar from '@/feature/header/navbar/useNavbar';
 import { useTranslations } from 'next-intl';
@@ -10,14 +10,26 @@ import { useRouter } from '@/i18n/routing';
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 import Image from 'next/image';
 import { MainFloatingMenu } from '@/feature/header/navbar/MainFloatingMenu';
-import { googleLogout } from '@react-oauth/google';
 import { useSession } from '@/feature/auth/hook/useSession';
+import { logout } from '@/feature/auth/api/logout';
+import { useQueryClient } from '@tanstack/react-query';
 
 const Navbar = () => {
     const { handleLinkMain, controlOption } = useNavbar();
     const t = useTranslations('navbar');
     const router = useRouter();
     const session = useSession();
+    const queryClient = useQueryClient();
+
+    const handleLogout = async () => {
+        await logout();
+        queryClient.setQueryData(['session'], {
+            authenticated: false,
+            profile: null,
+        });
+        router.push(LINK_MAIN);
+        router.refresh();
+    };
 
     return (
         <nav className={'mx-auto h-full w-full max-w-6xl flex-between'}>
@@ -85,8 +97,10 @@ const Navbar = () => {
                     <div
                         className={'btn-transparent text-[14px] cursor-pointer'}
                     >
-                        {session ? (
-                            <div onClick={() => googleLogout()}>{t('logout')}</div>
+                        {session?.authenticated ? (
+                            <div onClick={() => void handleLogout()}>
+                                {t('logout')}
+                            </div>
                         ) : (
                             <div onClick={() => router.push(LINK_AUTH_LOGIN)}>
                                 {t('login')}
