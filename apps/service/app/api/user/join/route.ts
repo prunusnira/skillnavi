@@ -1,9 +1,11 @@
 import RouteWrapper from '@/lib/fetch/routeWrapper';
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/db/prisma';
-import { getSessionToken } from '@/feature/auth/server';
+import { cookies } from 'next/headers';
+import { APP_SESSION_COOKIE, getTokenFromSessionCookie } from '@/feature/auth/server/sessionToken';
 
 export const POST = async (req: NextRequest) => {
+    const cookieStore = await cookies();
     const origin = req.headers.get('origin');
     if (!origin || origin !== req.nextUrl.origin) {
         return NextResponse.json(
@@ -12,10 +14,13 @@ export const POST = async (req: NextRequest) => {
         );
     }
 
+
     return RouteWrapper({
         req,
         work: async () => {
-            const token = await getSessionToken();
+            const token = await getTokenFromSessionCookie(
+                cookieStore.get(APP_SESSION_COOKIE)?.value,
+            );
 
             if (!token) {
                 return NextResponse.json(
