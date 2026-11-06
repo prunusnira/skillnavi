@@ -15,6 +15,7 @@
         "test:coverage": "vitest run --coverage"
     },
     "dependencies": {
+        "@aws-sdk/client-ssm": "^3.1162.0",
         "@fortawesome/fontawesome-svg-core": "catalog:",
         "@fortawesome/free-brands-svg-icons": "^7.3.1",
         "@fortawesome/free-solid-svg-icons": "catalog:",
