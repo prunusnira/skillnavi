@@ -13,6 +13,7 @@ interface Props {
     patterncode: number;
     mid: string | null;
     version: string | null;
+    showNoData: boolean;
 }
 
 interface DataProps {
@@ -33,12 +34,13 @@ const ColumnData = ({ title, content }: DataProps) => {
 
 // CSR 개별 기록 정보
 const MusicRecordItem = ({
-                             skill,
-                             level,
-                             patterncode,
-                             mid,
-                             version,
-                         }: Props) => {
+    skill,
+    level,
+    patterncode,
+    mid,
+    version,
+    showNoData,
+}: Props) => {
     const t = useTranslations('music');
     const difficulty = getPatternTypeFromCode(patterncode);
     const router = useRouter();
@@ -68,47 +70,49 @@ const MusicRecordItem = ({
             </div>
 
             {/* 데이터 */}
-            <div
-                className={cn(
-                    'w-full grid grid-cols-1 md:grid-cols-2 items-center gap-5 p-2.5',
-                )}
-            >
-                {/* 데이터 없음 */}
-                {!skill && (
-                    <div className={cn('text-center')}>{t('nodata')}</div>
-                )}
+            {(skill || showNoData) && (
+                <div
+                    className={cn(
+                        'w-full grid grid-cols-1 md:grid-cols-2 items-center gap-5 p-2.5',
+                    )}
+                >
+                    {/* 데이터 없음 */}
+                    {!skill && (
+                        <div className={cn('text-center')}>{t('nodata')}</div>
+                    )}
 
-                {skill && (
-                    <>
-                        {/* 달성률 */}
-                        <ColumnData
-                            title={t('rate')}
-                            content={`${(skill.rate / 100).toFixed(2)}%`}
-                        />
+                    {skill && (
+                        <>
+                            {/* 달성률 */}
+                            <ColumnData
+                                title={t('rate')}
+                                content={`${(skill.rate / 100).toFixed(2)}%`}
+                            />
 
-                        {/* 랭크 */}
-                        <ColumnData
-                            title={t('rank')}
-                            content={skill.maxrank}
-                        />
+                            {/* 랭크 */}
+                            <ColumnData
+                                title={t('rank')}
+                                content={skill.maxrank}
+                            />
 
-                        {/* 스킬 */}
-                        <ColumnData
-                            title={t('skill')}
-                            content={(
-                                Math.floor((level * skill.rate * 2) / 1000) /
-                                100
-                            ).toFixed(2)}
-                        />
+                            {/* 스킬 */}
+                            <ColumnData
+                                title={t('skill')}
+                                content={(
+                                    Math.floor((level * skill.rate * 2) / 1000) /
+                                    100
+                                ).toFixed(2)}
+                            />
 
-                        {/* 콤보 */}
-                        <ColumnData
-                            title={t('combo')}
-                            content={String(skill.combo)}
-                        />
-                    </>
-                )}
-            </div>
+                            {/* 콤보 */}
+                            <ColumnData
+                                title={t('combo')}
+                                content={String(skill.combo)}
+                            />
+                        </>
+                    )}
+                </div>
+            )}
         </section>
     );
 };

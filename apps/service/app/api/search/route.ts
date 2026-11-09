@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import RouteWrapper from '@/lib/fetch/routeWrapper';
-import { Music } from '@/feature/music/data/Music';
 import prisma from '@/lib/db/prisma';
 import { Prisma } from '@prisma/client';
 import { getLatestVersion } from '@/feature/env/api/getGameVersions';
@@ -17,33 +16,65 @@ export const GET = async (req: NextRequest) => {
             const type = searchParams.get('type');
             const value = searchParams.get('value');
             const page = Number(searchParams.get('page'));
-            const latest = await getLatestVersion();
+            const preview = searchParams.get('preview') === 'true';
 
             if (!type || !value) {
                 return NextResponse.json({ detail: 'failed' }, { status: 400 });
             }
+
+            const musicWhere: Prisma.MusicListWhereInput = {
+                OR: [
+                    { name: { contains: value } },
+                    { furigana: { contains: value } },
+                    { composer: { contains: value } },
+                    { search_korean: { contains: value } },
+                ],
+            };
+
+            if (type === 'music' && preview) {
+                const musicList = await prisma.musicList.findMany({
+                    where: musicWhere,
+                    select: {
+                        id: true,
+                        name: true,
+                        composer: true,
+                        version: true,
+                        remove: true,
+                    },
+                    orderBy: {
+                        name: 'asc',
+                    },
+                    take: MUSICLIST_SIZE,
+                });
+
+                const list: MusicListPageData[] = musicList.map((music) => ({
+                    mid: music.id,
+                    name: music.name ?? '',
+                    composer: music.composer ?? '',
+                    version: music.version ?? 0,
+                    remove: music.remove ?? 0,
+                    patterns: [],
+                    skills: [],
+                }));
+
+                return NextResponse.json({ list, page: 1 });
+            }
+
+            const latest = await getLatestVersion();
 
             let count: number = 0;
             let result: MusicListPageData[] | Recent[] | undefined;
 
             if (type === 'music') {
                 count = await prisma.musicList.count({
-                    where: {
-                        name: {
-                            contains: value,
-                        },
-                    },
+                    where: musicWhere,
                 });
 
-                const musicList = (await prisma.musicList.findMany({
-                    where: {
-                        name: {
-                            contains: value,
-                        },
-                    },
+                const musicList = await prisma.musicList.findMany({
+                    where: musicWhere,
                     take: MUSICLIST_SIZE,
                     skip: (page - 1) * MUSICLIST_SIZE,
-                })) as Music[];
+                });
 
                 const display: MusicListPageData[] = [];
 
@@ -66,10 +97,10 @@ export const GET = async (req: NextRequest) => {
 
                     const data: MusicListPageData = {
                         mid: id,
-                        name,
-                        composer,
-                        remove,
-                        version: musicVer,
+                        name: name ?? '',
+                        composer: composer ?? '',
+                        remove: remove ?? 0,
+                        version: musicVer ?? 0,
                         patterns: patternList,
                         skills: [],
                     };

@@ -31,6 +31,11 @@ export const MusicListItem = ({ data, version }: Props) => {
                 >
                     {data.name}
                 </div>
+                {data.composer && (
+                    <div className="max-w-[100px] break-all text-xs text-slate-600 line-clamp-2 dark:text-slate-300">
+                        {data.composer}
+                    </div>
+                )}
                 <MusicRemoved version={data.remove} />
             </section>
 

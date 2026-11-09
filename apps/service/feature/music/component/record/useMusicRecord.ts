@@ -34,7 +34,8 @@ const useMusicRecord = () => {
 
     const uid = searchParams.get('uid');
     const mid = searchParams.get('mid');
-    const version = searchParams.get('version');
+    const version =
+        searchParams.get('version') ?? (latest ? String(latest.id) : null);
 
     const getMusic = async () => {
         if (!mid) return undefined;
@@ -51,12 +52,13 @@ const useMusicRecord = () => {
     };
 
     const getRecord = () => {
-        if (!uid || !mid || !version) {
+        const userId = Number(uid);
+        if (!uid || !mid || !version || !Number.isFinite(userId)) {
             return undefined;
         }
         return getMusicRecord({
             mid: Number(mid),
-            uid: Number(uid),
+            uid: userId,
             version: Number(version),
         });
     };
@@ -78,6 +80,9 @@ const useMusicRecord = () => {
             version,
         ],
         queryFn: getRecord,
+        enabled: Boolean(
+            uid && Number.isFinite(Number(uid)) && mid && version,
+        ),
     });
 
     const skillDisplay = useMemo(() => {
@@ -130,8 +135,10 @@ const useMusicRecord = () => {
     // 데이터 업데이트
     const changeVersion = (nextver: number) => {
         const nextParams = new URLSearchParams();
-        nextParams.set('uid', String(uid));
-        nextParams.set('mid', String(mid));
+        if (uid && Number.isFinite(Number(uid))) {
+            nextParams.set('uid', uid);
+        }
+        if (mid) nextParams.set('mid', mid);
         nextParams.set('version', String(nextver));
         router.push(`${pathname}?${nextParams.toString()}`);
     };
@@ -162,6 +169,7 @@ const useMusicRecord = () => {
         skill: skillDisplay,
         ptcodeList,
         availableVersion,
+        uid,
         version,
         mid,
     };

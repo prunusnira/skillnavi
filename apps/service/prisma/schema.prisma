@@ -1,0 +1,223 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model GameVersion {
+  id           Int     @id
+  full         String? @db.Text
+  short        String? @db.Text
+  ableToUpdate Int?    @default(0) @db.TinyInt
+  baseUrl      String? @db.Text
+}
+
+model MusicList {
+  id            Int     @id @default(autoincrement())
+  name          String? @db.Text
+  furigana      String? @db.Text
+  composer      String? @db.Text
+  search_korean String? @db.Text
+  version       Int?
+  hot           Int?
+  hot_end       Int?
+  remove        Int?
+  patterns      PatternList[]
+}
+
+model PatternList {
+  mid         Int
+  patterncode Int
+  version     Int
+  level       Int?
+  music       MusicList  @relation(fields: [mid], references: [id])
+
+  @@id([mid, version, patterncode], name: "mid_version_paterncode")
+}
+
+model ProfileList {
+  id         Int      @id @default(autoincrement())
+  titletower String?  @db.VarChar(20)
+  title      String?  @db.VarChar(50)
+  name       String?  @db.VarChar(20)
+  unique_id  String   @unique(map: "ProfileList_pk") @db.VarChar(100)
+  openinfo   Boolean? @default(true)
+  comment    String?  @db.Text
+  update_at  DateTime @default(now()) @db.DateTime(0)
+  blocked    Int?     @default(0) @db.TinyInt
+  reason     String?  @db.Text
+  joindate   DateTime @default(now()) @db.DateTime(0)
+}
+
+model ProfileSkill {
+  uid        Int
+  version    Int
+  gskill     Int?
+  dskill     Int?
+  gall       Int?
+  dall       Int?
+  gclearlv   Int?
+  dclearlv   Int?
+  gclearnum  Int?
+  dclearnum  Int?
+  gfclv      Int?
+  dfclv      Int?
+  gfcnum     Int?
+  dfcnum     Int?
+  gexclv     Int?
+  dexclv     Int?
+  gexcnum    Int?
+  dexcnum    Int?
+  gcount     Int?
+  dcount     Int?
+  lastupdate DateTime? @db.DateTime(0)
+
+  @@id([uid, version], name: "version_uid")
+}
+
+model SkillList {
+  uid         Int
+  mid         Int
+  playver     Int
+  patterncode Int
+  level       Int?
+  playcount   Int?
+  clearcount  Int?
+  maxrank     String? @db.Text
+  rate        Int?
+  combo       Int?
+  fc          Boolean @default(false)
+  meter       String? @db.Text
+  hot         Boolean
+  skill       Int?
+
+  @@id([uid, playver, patterncode, mid], name: "uid_playver_patterncode_mid")
+  @@index([mid, patterncode, playver], map: "nonPrimaryIndex")
+}
+
+model notice {
+  id       Int      @id @default(autoincrement())
+  titleK   String   @db.Text
+  titleJ   String   @db.Text
+  titleE   String   @db.Text
+  contentK String   @db.Text
+  contentJ String   @db.Text
+  contentE String   @db.Text
+  time     DateTime @default(now()) @db.Timestamp(0)
+
+  @@index([id], map: "id")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model profile {
+  id         Int               @id @default(autoincrement())
+  titletower String            @default("") @db.VarChar(50)
+  title      String            @db.VarChar(50)
+  name       String            @db.VarChar(50)
+  token      String            @unique(map: "token") @db.VarChar(100)
+  gskill     Float?            @default(0)
+  dskill     Float?            @default(0)
+  gskillfu   Float             @default(0)
+  dskillfu   Float             @default(0)
+  gskillhv   Float             @default(0)
+  dskillhv   Float             @default(0)
+  gskillnx   Float             @default(0)
+  dskillnx   Float             @default(0)
+  gskillex   Float             @default(0)
+  dskillex   Float             @default(0)
+  gskillmx   Float             @default(0)
+  dskillmx   Float             @default(0)
+  gskilltbre Float             @default(0)
+  dskilltbre Float             @default(0)
+  gskilltb   Float             @default(0)
+  dskilltb   Float             @default(0)
+  gskillall  Float             @default(0)
+  dskillall  Float             @default(0)
+  gclearlv   Float             @default(0)
+  dclearlv   Float             @default(0)
+  gclearnum  Int               @default(0) @db.UnsignedSmallInt
+  dclearnum  Int               @default(0) @db.UnsignedSmallInt
+  gfclv      Float             @default(0)
+  dfclv      Float             @default(0)
+  gfcnum     Int               @default(0) @db.UnsignedSmallInt
+  dfcnum     Int               @default(0) @db.UnsignedSmallInt
+  gexclv     Float             @default(0)
+  dexclv     Float             @default(0)
+  gexcnum    Int               @default(0) @db.UnsignedSmallInt
+  dexcnum    Int               @default(0) @db.UnsignedSmallInt
+  opencount  profile_opencount @default(N)
+  countall   Int               @default(0) @db.UnsignedSmallInt
+  countgf    Int               @default(0) @db.UnsignedSmallInt
+  countdm    Int               @default(0) @db.UnsignedSmallInt
+  comment    String            @default("") @db.VarChar(25)
+  updatetime DateTime          @default(now()) @db.DateTime(0)
+  uptimelong Int               @default(0) @db.UnsignedInt
+  pausetype  profile_pausetype @default(None)
+  pausedate  DateTime?         @db.DateTime(0)
+
+  @@index([id, name], map: "id_name")
+}
+
+model UpdateUrl {
+  version Int    @db.TinyInt
+  urltype String @db.VarChar(20)
+  url     String @db.Text
+
+  @@unique([urltype, version], map: "UpdateUrl_pk")
+}
+
+model TowerItems {
+  tid         Int
+  floor       Int
+  mid         Int
+  ptcode      Int
+  compulsory  Boolean?
+  rate        Int?
+  fc          Boolean?
+  description String?  @db.Text
+  icon        String?  @db.VarChar(20)
+
+  @@unique([floor, mid, ptcode, tid], map: "TowerItems_pk")
+}
+
+model TowerList {
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(20)
+  game      String   @db.VarChar(2)
+  display   String   @db.Text
+  floors    Int
+  update_at DateTime @default(now()) @db.DateTime(0)
+}
+
+model TowerFloorIcon {
+  tid   Int
+  floor Int
+  type  Int
+  icon  String? @db.VarChar(20)
+
+  @@id([tid, type, floor])
+}
+
+model Log {
+  logid  String   @db.VarChar(21)
+  uid    Int
+  action String   @db.VarChar(30)
+  data   String?  @db.Text
+  date   DateTime @default(now()) @db.DateTime(0)
+
+  @@id([logid, uid, action])
+}
+
+enum profile_opencount {
+  Y
+  N
+}
+
+enum profile_pausetype {
+  None
+  Temp
+  Forever
+}

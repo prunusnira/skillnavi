@@ -45,5 +45,19 @@ export const API_USER_JOIN = `${PREFIX}/user/join`;
 export const API_SNAPSHOT_LIST = `${PREFIX}/snapshot/list`;
 export const API_SNAPSHOT_DETAIL = `${PREFIX}/snapshot/get`;
 export const API_SNAPSHOT_CREATE = `${PREFIX}/snapshot/create`;
-export const API_SEARCH = (type: string, value: string, page: number) =>
-    `${PREFIX}/search?type=${type}&value=${value}&page=${page}`;
+export const API_SEARCH = (
+    type: string,
+    value: string,
+    page: number,
+    preview = false,
+) => {
+    const params = new URLSearchParams({
+        type,
+        value,
+        page: String(page),
+    });
+    if (preview) {
+        params.set('preview', 'true');
+    }
+    return `${PREFIX}/search?${params.toString()}`;
+};

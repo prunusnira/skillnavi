@@ -158,6 +158,8 @@
     "music": {
         "title": "상세 기록",
         "nodata": "데이터가 없습니다",
+        "loginRequired": "기록을 보려면 로그인해주세요.",
+        "patternUnavailable": "패턴 정보가 없거나 수집 중입니다.",
         "version": "버전",
         "mode": "게임모드",
         "ranking": "패턴 랭킹 보기",

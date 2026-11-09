@@ -158,6 +158,8 @@
     "music": {
         "title": "詳細記録",
         "nodata": "データがありません",
+        "loginRequired": "記録を見るにはログインしてください。",
+        "patternUnavailable": "譜面情報がないか、収集中です。",
         "version": "バージョン",
         "mode": "ゲームモード",
         "ranking": "パターンランキングを見る",

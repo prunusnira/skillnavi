@@ -16,10 +16,16 @@ const MusicRecord = () => {
         changeVersion,
         ptcodeList,
         availableVersion,
+        uid,
         version,
         mid,
     } = useMusicRecord();
     const t = useTranslations('music');
+    const hasRecordUser = Boolean(uid && Number.isFinite(Number(uid)));
+    const hasPatternsForMode = music?.pattern.some(
+        (pattern) =>
+            ptcodeList.includes(pattern.patterncode) && pattern.level !== 0,
+    );
 
     return (
         <section className={cn('w-full')}>
@@ -63,6 +69,18 @@ const MusicRecord = () => {
                 </div>
             </section>
 
+            {!hasRecordUser && (
+                <div className="py-4 text-center font-medium text-slate-500">
+                    {t('loginRequired')}
+                </div>
+            )}
+
+            {ptcodeList.length > 0 && !hasPatternsForMode && (
+                <div className="py-8 text-center text-slate-500">
+                    {t('patternUnavailable')}
+                </div>
+            )}
+
             {/* 데이터 영역 */}
             {ptcodeList.map((ptcode) => {
                 const result = skill.find((s) => s.patterncode === ptcode);
@@ -81,6 +99,7 @@ const MusicRecord = () => {
                         patterncode={ptcode}
                         mid={mid}
                         version={version}
+                        showNoData={hasRecordUser}
                     />
                 );
             })}

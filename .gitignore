@@ -27,6 +27,7 @@ yarn-error.log*
 .env.dev
 .env.prd
 schema.prisma
+!apps/service/prisma/schema.prisma
 
 # vercel
 .vercel

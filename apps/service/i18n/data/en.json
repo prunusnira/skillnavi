@@ -158,6 +158,8 @@
     "music": {
         "title": "Detailed Record",
         "nodata": "No data available",
+        "loginRequired": "Please log in to view records.",
+        "patternUnavailable": "Pattern information is unavailable or still being collected.",
         "version": "Version",
         "mode": "Game Mode",
         "ranking": "View Pattern Ranking",
