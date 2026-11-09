@@ -52,7 +52,8 @@
         "pattern": {
             "title": "패턴",
             "list": "악곡 및 패턴 목록",
-            "cleartable": "클리어테이블"
+            "cleartable": "클리어테이블",
+            "difficultyCompare": "버전 별 난이도 비교"
         },
         "tower": {
             "title": "타워"
@@ -198,6 +199,26 @@
     "patternRank": {
         "title": "개별 패턴 랭킹",
         "patternUnavailable": "선택한 곡 또는 패턴 정보를 찾을 수 없습니다."
+    },
+    "patternCompare": {
+        "title": "버전 별 난이도 비교",
+        "version1": "선택 1 버전",
+        "version2": "선택 2 버전",
+        "searchLabel": "곡 검색",
+        "searchPlaceholder": "곡명, 작곡가, 한국어 음차 검색",
+        "searchButton": "검색",
+        "sortLabel": "정렬 기준",
+        "sortSong": "곡명 순",
+        "sortDifference": "난이도 차이 큰 순 (절대값)",
+        "albumArt": "곡 자켓",
+        "song": "곡명",
+        "difficulty": "난이도",
+        "version1Difficulty": "선택 1 난이도 ({version})",
+        "version2Difficulty": "선택 2 난이도 ({version})",
+        "difference": "난이도 차이",
+        "differenceDescription": "난이도 차이는 선택 1에서 선택 2를 뺀 값입니다.",
+        "noResults": "검색 결과가 없습니다.",
+        "requiresTwoVersions": "비교하려면 게임 버전이 두 개 이상 필요합니다."
     },
     "music": {
         "title": "상세 기록",

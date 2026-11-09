@@ -52,7 +52,8 @@
         "pattern": {
             "title": "Pattern",
             "list": "Music & Pattern List",
-            "cleartable": "Clear Table"
+            "cleartable": "Clear Table",
+            "difficultyCompare": "Difficulty Comparison by Version"
         },
         "tower": {
             "title": "Tower"
@@ -198,6 +199,26 @@
     "patternRank": {
         "title": "Pattern Ranking",
         "patternUnavailable": "The selected song or pattern could not be found."
+    },
+    "patternCompare": {
+        "title": "Difficulty Comparison by Version",
+        "version1": "Version 1",
+        "version2": "Version 2",
+        "searchLabel": "Search songs",
+        "searchPlaceholder": "Search by title, composer, or Korean transliteration",
+        "searchButton": "Search",
+        "sortLabel": "Sort by",
+        "sortSong": "Song title",
+        "sortDifference": "Largest difficulty difference (absolute)",
+        "albumArt": "Album art",
+        "song": "Song",
+        "difficulty": "Difficulty",
+        "version1Difficulty": "Version 1 difficulty ({version})",
+        "version2Difficulty": "Version 2 difficulty ({version})",
+        "difference": "Difference",
+        "differenceDescription": "Difference is Version 1 minus Version 2.",
+        "noResults": "No results found.",
+        "requiresTwoVersions": "At least two game versions are required for comparison."
     },
     "music": {
         "title": "Detailed Record",

@@ -1,6 +1,7 @@
 const PREFIX = '/api';
 
 export const API_ENV_VERSION = `${PREFIX}/env/version`;
+export const API_ENV_VERSIONS_FROM_TB = `${PREFIX}/env/versions/from-tb`;
 export const API_ENV_LATEST = `${PREFIX}/env/latest`;
 export const API_USER_TOKEN = `${PREFIX}/user/token`;
 export const API_AUTH_GOOGLE = `${PREFIX}/auth/google`;
@@ -31,6 +32,7 @@ export const API_MUSIC_RECORD = (mid: number) =>
 export const API_MUSIC_PATTERN = (mid: number) =>
     `${PREFIX}/music/${mid}/pattern`;
 export const API_PATTERN_RANK = `${PREFIX}/pattern/rank`;
+export const API_PATTERN_COMPARE = `${PREFIX}/pattern/compare`;
 export const API_PATTERN_RANK_META = `${PREFIX}/pattern/rank/meta`;
 export const API_RANK_SKILL = `${PREFIX}/rank/skill`;
 export const API_RANK_PLAYCOUNT = `${PREFIX}/rank/playcount`;

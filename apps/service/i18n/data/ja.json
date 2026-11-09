@@ -52,7 +52,8 @@
         "pattern": {
             "title": "パターン",
             "list": "楽曲・パターン一覧",
-            "cleartable": "クリア表"
+            "cleartable": "クリア表",
+            "difficultyCompare": "バージョン別難易度比較"
         },
         "tower": {
             "title": "タワー"
@@ -198,6 +199,26 @@
     "patternRank": {
         "title": "個別パターンランキング",
         "patternUnavailable": "選択した楽曲または譜面情報が見つかりません。"
+    },
+    "patternCompare": {
+        "title": "バージョン別難易度比較",
+        "version1": "バージョン1",
+        "version2": "バージョン2",
+        "searchLabel": "楽曲検索",
+        "searchPlaceholder": "楽曲名、作曲者、韓国語表記で検索",
+        "searchButton": "検索",
+        "sortLabel": "並び順",
+        "sortSong": "楽曲名順",
+        "sortDifference": "難易度差が大きい順（絶対値）",
+        "albumArt": "ジャケット画像",
+        "song": "楽曲名",
+        "difficulty": "難易度",
+        "version1Difficulty": "バージョン1の難易度（{version}）",
+        "version2Difficulty": "バージョン2の難易度（{version}）",
+        "difference": "難易度差",
+        "differenceDescription": "難易度差はバージョン1からバージョン2を引いた値です。",
+        "noResults": "検索結果がありません。",
+        "requiresTwoVersions": "比較には2つ以上のゲームバージョンが必要です。"
     },
     "music": {
         "title": "詳細記録",

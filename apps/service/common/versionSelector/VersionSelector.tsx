@@ -11,6 +11,7 @@ interface Props {
     withoutAll?: boolean;
     versionFrom?: number;
     disabledUntil?: number;
+    excludedVersions?: number[];
 }
 
 export const VersionSelector = ({
@@ -19,6 +20,7 @@ export const VersionSelector = ({
     withoutAll,
     versionFrom,
     disabledUntil,
+    excludedVersions,
 }: Props) => {
     const versionList = useAtomValue(atomGameVersionList);
 
@@ -30,6 +32,11 @@ export const VersionSelector = ({
         if (versionFrom) {
             list = list?.filter((version) => version.id >= versionFrom);
         }
+        if (excludedVersions?.length) {
+            list = list?.filter(
+                (version) => !excludedVersions.includes(version.id),
+            );
+        }
         return list?.map((ver) => ({
             value: ver.id.toString(),
             display: ver.full,
@@ -40,6 +47,7 @@ export const VersionSelector = ({
         versionList,
         withoutAll,
         disabledUntil,
+        excludedVersions,
     ]);
 
     return (

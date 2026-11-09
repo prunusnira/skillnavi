@@ -1,6 +1,7 @@
 import {
     IMG,
     LINK_MAIN,
+    LINK_PATTERN_COMPARE,
     LINK_PATTERN_LIST,
     LINK_PATTERN_TABLE,
     LINK_PLAYCOUNT,
@@ -91,6 +92,10 @@ export const SidebarMenuItems = {
             {
                 id: 'pattern.cleartable',
                 href: LINK_PATTERN_TABLE({}),
+            },
+            {
+                id: 'pattern.difficultyCompare',
+                href: LINK_PATTERN_COMPARE,
             },
         ],
     },

@@ -90,6 +90,7 @@ export const LINK_PATTERN_LIST = ({
     const query = searchParams.toString();
     return `/music/list${query.length > 0 ? `?${query}` : ''}`;
 };
+export const LINK_PATTERN_COMPARE = '/pattern/compare?page=1';
 export const LINK_PATTERN_TABLE = ({
     type,
     id,
