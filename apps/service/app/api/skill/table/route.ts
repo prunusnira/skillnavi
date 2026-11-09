@@ -24,6 +24,21 @@ import {
     getSkillExcGFOther,
 } from '@/feature/skill/db/Skill.prisma';
 
+const getUniqueMusicSkills = (skills: SkillForTable[]) => {
+    const seenMusic = new Set<number>();
+
+    return skills
+        .filter((skill) => {
+            if (seenMusic.has(skill.mid)) {
+                return false;
+            }
+
+            seenMusic.add(skill.mid);
+            return true;
+        })
+        .slice(0, 25);
+};
+
 export const GET = async (req: NextRequest) => {
     return RouteWrapper({
         req,
@@ -93,13 +108,16 @@ export const GET = async (req: NextRequest) => {
                     });
                 }
 
-                const hot = (await prisma.$queryRaw(
+                const hotResults = (await prisma.$queryRaw(
                     Prisma.sql`${hotQuery}`,
                 )) as SkillForTable[];
 
-                const other = (await prisma.$queryRaw(
+                const otherResults = (await prisma.$queryRaw(
                     Prisma.sql`${otherQuery}`,
                 )) as SkillForTable[];
+
+                const hot = getUniqueMusicSkills(hotResults);
+                const other = getUniqueMusicSkills(otherResults);
 
                 hot.map((hskill) => {
                     hskill.skill = Math.floor(hskill.skill / 1000);
@@ -127,12 +145,15 @@ export const GET = async (req: NextRequest) => {
                     otherQuery = getSkillExcDMOther(version);
                 }
 
-                const hot = (await prisma.$queryRaw(
+                const hotResults = (await prisma.$queryRaw(
                     Prisma.sql`${hotQuery}`,
                 )) as SkillForTable[];
-                const other = (await prisma.$queryRaw(
+                const otherResults = (await prisma.$queryRaw(
                     Prisma.sql`${otherQuery}`,
                 )) as SkillForTable[];
+
+                const hot = getUniqueMusicSkills(hotResults);
+                const other = getUniqueMusicSkills(otherResults);
 
                 tableItems.push({
                     title: 'HOT',

@@ -47,7 +47,7 @@ export const getQuerySkillTargetHotGF = ({
       and s1.playver = ${version}
       and s1.hot = 1
       and s1.patterncode < 9
-    order by skill desc limit 25
+    order by skill desc limit 30
 `;
 
 export const getQuerySkillTargetOtherGF = ({
@@ -83,7 +83,7 @@ export const getQuerySkillTargetOtherGF = ({
       and s1.playver = ${version}
       and s1.hot = 0
       and s1.patterncode < 9
-    order by skill desc limit 25
+    order by skill desc limit 30
 `;
 
 export const getQuerySkillTargetHotDM = ({
@@ -119,7 +119,7 @@ export const getQuerySkillTargetHotDM = ({
       and s1.playver = ${version}
       and s1.hot = 1
       and s1.patterncode > 8
-    order by skill desc limit 25
+    order by skill desc limit 30
 `;
 
 export const getQuerySkillTargetOtherDM = ({
@@ -155,7 +155,7 @@ export const getQuerySkillTargetOtherDM = ({
       and s1.playver = ${version}
       and s1.hot = 0
       and s1.patterncode > 8
-    order by skill desc limit 25
+    order by skill desc limit 30
 `;
 
 export const getQuerySkillAllGF = ({
@@ -238,7 +238,7 @@ export const getSkillExcGFHot = (version: number) =>
                                p.mid = list.mid and
                                p.version = list.patternVersion and
                                p.patterncode < 9
-        order by level desc limit 25
+        order by level desc, p.mid asc, p.patterncode asc limit 30
     `;
 
 export const getSkillExcDMHot = (version: number) =>
@@ -275,7 +275,7 @@ export const getSkillExcDMHot = (version: number) =>
                                p.mid = list.mid and
                                p.version = list.patternVersion and
                                p.patterncode > 8
-        order by level desc limit 25
+        order by level desc, p.mid asc, p.patterncode asc limit 30
     `;
 
 export const getSkillExcGFOther = (version: number) =>
@@ -312,7 +312,7 @@ export const getSkillExcGFOther = (version: number) =>
                                p.mid = list.mid and
                                p.version = list.patternVersion and
                                p.patterncode < 9
-        order by level desc limit 25
+        order by level desc, p.mid asc, p.patterncode asc limit 30
     `;
 
 export const getSkillExcDMOther = (version: number) =>
@@ -349,5 +349,5 @@ export const getSkillExcDMOther = (version: number) =>
                                p.mid = list.mid and
                                p.version = list.patternVersion and
                                p.patterncode > 8
-        order by level desc limit 25
+        order by level desc, p.mid asc, p.patterncode asc limit 30
     `;
