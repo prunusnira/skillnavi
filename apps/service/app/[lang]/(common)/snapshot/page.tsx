@@ -11,19 +11,23 @@ const PageSnapshot = async () => {
     const { gf, dm } = snapshotList;
     const gfMap = new Map<string, string>();
     const dmMap = new Map<string, string>();
-    gf.forEach(item => {
+    gf.forEach((item) => {
         gfMap.set(item[0]!, item[1]!);
     });
-    dm.forEach(item => {
+    dm.forEach((item) => {
         dmMap.set(item[0]!, item[1]!);
     });
 
-    return <Card title="Snapshot">
-        <section className={'flex flex-col md:flex-row gap-[20px] md:gap-[40px]'}>
-            <SnapshotsList type={'gf'} snapshotMap={gfMap} />
-            <SnapshotsList type={'dm'} snapshotMap={dmMap} />
-        </section>
-    </Card>;
+    return (
+        <Card title="Snapshot">
+            <section
+                className={'flex w-full flex-col gap-6 md:flex-row md:gap-10'}
+            >
+                <SnapshotsList type={'gf'} snapshotMap={gfMap} />
+                <SnapshotsList type={'dm'} snapshotMap={dmMap} />
+            </section>
+        </Card>
+    );
 };
 
 export default PageSnapshot;

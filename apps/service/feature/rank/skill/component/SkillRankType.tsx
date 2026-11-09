@@ -2,7 +2,8 @@
 
 import { GameType } from '@/common/game/data/GameType';
 import { usePathname, useRouter } from '@/i18n/routing';
-import { ButtonStandard } from '@skillnavi/ui';
+import { ButtonRounded } from '@skillnavi/ui';
+import { useTranslations } from 'next-intl';
 
 interface Props {
     type: GameType;
@@ -11,6 +12,7 @@ interface Props {
 const SkillRankType = ({ type }: Props) => {
     const pathname = usePathname();
     const router = useRouter();
+    const t = useTranslations('common');
 
     const changeType = (type: GameType) => {
         const newParams = new URLSearchParams();
@@ -20,19 +22,27 @@ const SkillRankType = ({ type }: Props) => {
     };
 
     return (
-        <section className={'flex w-full'}>
-            <ButtonStandard
-                text={'GF'}
-                onClick={() => changeType('gf')}
-                isSelected={type === 'gf'}
-                customButtonClass={'flex-1'}
-            />
-            <ButtonStandard
-                text={'DM'}
-                onClick={() => changeType('dm')}
-                isSelected={type === 'dm'}
-                customButtonClass={'flex-1'}
-            />
+        <section className="surface-muted flex w-full flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between sm:px-5">
+            <div>
+                <p className="text-sm font-bold text-slate-800 dark:text-slate-100">
+                    {t('type')}
+                </p>
+                <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                    {t('skillRankHint')}
+                </p>
+            </div>
+            <div className="grid w-full grid-cols-2 gap-2 sm:w-auto sm:min-w-60">
+                <ButtonRounded
+                    text="GF"
+                    onClick={() => changeType('gf')}
+                    isSelected={type === 'gf'}
+                />
+                <ButtonRounded
+                    text="DM"
+                    onClick={() => changeType('dm')}
+                    isSelected={type === 'dm'}
+                />
+            </div>
         </section>
     );
 };

@@ -8,9 +8,7 @@ const Header = () => {
     return (
         <header
             className={clsx(
-                'sticky top-0 z-40 h-16 w-full border-b px-4 sm:px-6',
-                'bg-white/85 shadow-sm backdrop-blur-xl',
-                'dark:border-slate-800 dark:bg-slate-950/85',
+                'sticky top-0 z-40 h-16 w-full border-b border-lime-300/70 bg-slate-950 px-4 text-white shadow-[0_10px_32px_rgba(10,15,30,0.22)] sm:px-6',
             )}
         >
             {/* 상단 네비바 */}

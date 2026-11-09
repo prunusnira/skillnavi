@@ -3,9 +3,10 @@
 import { cn } from '@/lib/cn';
 import { Skill } from '@/feature/skill/data/Skill';
 import { useTranslations } from 'next-intl';
-import { useRouter } from '@/i18n/routing';
+import { Link } from '@/i18n/routing';
 import { LINK_PATTERN_RANK } from '@/url/url';
 import { getPatternTypeFromCode } from '@/lib/pattern/getPatternTypeFromCode';
+import { useEffect, useRef } from 'react';
 
 interface Props {
     skill?: Skill;
@@ -14,6 +15,7 @@ interface Props {
     mid: string | null;
     version: string | null;
     showNoData: boolean;
+    isSelected?: boolean;
 }
 
 interface DataProps {
@@ -40,33 +42,49 @@ const MusicRecordItem = ({
     mid,
     version,
     showNoData,
+    isSelected = false,
 }: Props) => {
     const t = useTranslations('music');
     const difficulty = getPatternTypeFromCode(patterncode);
-    const router = useRouter();
+    const itemRef = useRef<HTMLElement>(null);
+
+    useEffect(() => {
+        if (!isSelected) {
+            return;
+        }
+
+        itemRef.current?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+        });
+    }, [isSelected]);
 
     return (
-        <section className={cn('flex-col-center px-2.5 py-5')}>
+        <section
+            id={`pattern-${patterncode}`}
+            ref={itemRef}
+            className={cn(
+                'flex-col-center px-2.5 py-5',
+                isSelected &&
+                    'scroll-mt-24 rounded-2xl border border-lime-400 bg-lime-50/70 shadow-sm ring-2 ring-lime-400/20 dark:bg-lime-950/25',
+            )}
+        >
             {/* 패턴 정보 */}
             <div className={cn('flex space-between items-center w-full')}>
                 <div className={cn('w-full font-bold text-xl')}>
                     {difficulty} {(level / 100).toFixed(2)}
                 </div>
-                <div
+                <Link
                     className={cn('link no-line-wrap')}
-                    onClick={() =>
-                        router.push(
-                            LINK_PATTERN_RANK(
-                                String(version),
-                                1,
-                                String(mid),
-                                patterncode,
-                            ),
-                        )
-                    }
+                    href={LINK_PATTERN_RANK(
+                        String(version),
+                        1,
+                        String(mid),
+                        patterncode,
+                    )}
                 >
                     {t('ranking')}
-                </div>
+                </Link>
             </div>
 
             {/* 데이터 */}

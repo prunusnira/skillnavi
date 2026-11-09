@@ -20,7 +20,7 @@ const PageLayout = ({ children }: Props) => {
             <Header />
             <section
                 className={cn(
-                    'page-container min-h-[calc(100vh-172px)] flex-1',
+                    'page-container min-h-[calc(100vh-172px)] min-w-0 flex-1',
                 )}
             >
                 {children}

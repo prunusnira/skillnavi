@@ -9,6 +9,7 @@ import { useMutation } from '@tanstack/react-query';
 import { ButtonStandard } from '@skillnavi/ui';
 import { RadioGroup } from '@skillnavi/ui/src/radio';
 import radioStyle from '@/common/Radio.item.module.css';
+import { useRouter } from '@/i18n/routing';
 
 interface Props {
     profile: Profile;
@@ -17,6 +18,8 @@ interface Props {
 
 const OpenDataPortal = ({ profile, closePortal }: Props) => {
     const t = useTranslations('common.yesno');
+    const tDialog = useTranslations('profile.info.dialog');
+    const router = useRouter();
     const [
         open,
         setOpen,
@@ -28,12 +31,18 @@ const OpenDataPortal = ({ profile, closePortal }: Props) => {
             'opendata',
         ],
         mutationFn: updateOpenData,
-        onSuccess: () => closePortal(),
+        onSuccess: () => {
+            closePortal();
+            router.refresh();
+        },
     });
 
     return (
-        <Portal title={'Change Data Open Status'}>
+        <Portal title={tDialog('openinfo.title')}>
             <section className={'flex-col-center gap-[30px]'}>
+                <p className="text-center text-sm text-slate-600 dark:text-slate-300">
+                    {tDialog('openinfo.description')}
+                </p>
                 <RadioGroup<'true' | 'false'>
                     radioGroupName={'opendata'}
                     itemList={[
@@ -60,10 +69,10 @@ const OpenDataPortal = ({ profile, closePortal }: Props) => {
                                 open,
                             })
                         }
-                        text={'OK'}
+                        text={tDialog('save')}
                     />
                     <ButtonStandard
-                        text={'Cancel'}
+                        text={tDialog('cancel')}
                         onClick={closePortal}
                     />
                 </div>

@@ -14,8 +14,13 @@ const SkillMenu = () => {
         onChangeData,
         onChangeGame,
         currentVersion,
+        currentTable,
+        currentData,
+        currentGame,
     } = useSkillMenu();
     const t = useTranslations('skill.menu');
+    const selectedButtonClass =
+        'border-lime-400 bg-lime-300 text-slate-950 shadow-sm';
 
     return (
         <section
@@ -44,10 +49,14 @@ const SkillMenu = () => {
                     <ButtonRounded
                         onClick={() => onChangeData('target')}
                         text={t('data.target')}
+                        isSelected={currentData === 'target'}
+                        customSelectedClass={selectedButtonClass}
                     />
                     <ButtonRounded
                         onClick={() => onChangeData('all')}
                         text={t('data.all')}
+                        isSelected={currentData === 'all'}
+                        customSelectedClass={selectedButtonClass}
                     />
                 </div>
             </div>
@@ -59,10 +68,14 @@ const SkillMenu = () => {
                     <ButtonRounded
                         onClick={() => onChangeTable('grid')}
                         text={t('table.grid')}
+                        isSelected={currentTable === 'grid'}
+                        customSelectedClass={selectedButtonClass}
                     />
                     <ButtonRounded
                         onClick={() => onChangeTable('list')}
                         text={t('table.list')}
+                        isSelected={currentTable === 'list'}
+                        customSelectedClass={selectedButtonClass}
                     />
                 </div>
             </div>
@@ -74,10 +87,14 @@ const SkillMenu = () => {
                     <ButtonRounded
                         onClick={() => onChangeGame('gf')}
                         text={t('game.gf')}
+                        isSelected={currentGame === 'gf'}
+                        customSelectedClass={selectedButtonClass}
                     />
                     <ButtonRounded
                         onClick={() => onChangeGame('dm')}
                         text={t('game.dm')}
+                        isSelected={currentGame === 'dm'}
+                        customSelectedClass={selectedButtonClass}
                     />
                 </div>
             </div>

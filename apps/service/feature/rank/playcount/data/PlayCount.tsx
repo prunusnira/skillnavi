@@ -2,7 +2,6 @@ export interface PlayCountRankData {
     uid: number;
     gcount: number;
     dcount: number;
-    allcount: number;
 }
 
 export interface UserPlayCount {

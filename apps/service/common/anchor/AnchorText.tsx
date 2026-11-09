@@ -1,6 +1,7 @@
 'use client';
 
 import { useRouter } from '@/i18n/routing';
+import { cn } from '@/lib/cn';
 
 interface Props {
     text: string;
@@ -10,9 +11,10 @@ interface Props {
 
 const AnchorText = ({ text, path, className }: Props) => {
     const router = useRouter();
+
     return (
         <div
-            className={className}
+            className={cn('cursor-pointer', className)}
             onClick={() => router.push(path)}
         >
             {text}

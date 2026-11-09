@@ -5,17 +5,17 @@
 }
 
 .musicRow {
-    @apply flex w-full flex-grow;
+    @apply flex min-h-12 w-full;
 }
 
 .musicCell {
-    @apply w-1/4 text-center;
+    @apply flex w-1/4 min-w-0 items-center justify-center text-center;
 }
 
 .titleCell {
-    @apply text-black bg-yellow-500 font-bold;
+    @apply bg-indigo-950 font-bold text-white;
 }
 
 .levelCell {
-    @apply flex items-center justify-center gap-[12px];
+    @apply gap-1 p-1;
 }

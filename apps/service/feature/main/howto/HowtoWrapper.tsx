@@ -7,10 +7,7 @@ import { HowtoCardiOSSafari } from '@/feature/main/howto/HowtoCardiOSSafari';
 import { HowtoCardAndroidChrome } from '@/feature/main/howto/HowtoCardAndroidChrome';
 
 export const HowtoWrapper = () => {
-    const [
-        howtoState,
-        setHowtoState,
-    ] = useState<number>(0);
+    const [howtoState, setHowtoState] = useState<number>(0);
 
     const changeHowtoOpenState = (howtoNumber: number) => {
         setHowtoState(howtoNumber);
@@ -18,7 +15,10 @@ export const HowtoWrapper = () => {
 
     return (
         <>
-            <HowtoButtons changeHowtoOpenState={changeHowtoOpenState} />
+            <HowtoButtons
+                activeHowto={howtoState}
+                changeHowtoOpenState={changeHowtoOpenState}
+            />
 
             {howtoState === 0 && <HowtoCardPCChrome />}
             {howtoState === 1 && <HowtoCardAndroidChrome />}

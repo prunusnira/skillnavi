@@ -1,24 +1,39 @@
 @reference '../../../app/globals.css';
 
 .table {
-    @apply flex flex-col justify-center items-center;
-    @apply w-full;
+    @apply flex w-full min-w-[332px] flex-col gap-2;
+}
+
+.tableViewport {
+    @apply w-full overflow-x-auto pb-1;
 }
 
 .tableRow {
-    @apply flex justify-center items-center;
+    display: grid;
+    grid-template-columns: minmax(56px, 1.2fr) repeat(5, minmax(44px, 1fr)) minmax(56px, 1.2fr);
+    @apply items-center;
 }
 
 .tableCell {
-    @apply w-[50px];
-    @apply text-center;
+    @apply flex min-h-12 items-center justify-center px-1 text-center text-xs font-medium text-slate-600 sm:text-sm dark:text-slate-300;
 }
 
 .isBold {
-    @apply font-bold;
+    @apply font-bold text-slate-900 dark:text-slate-50;
 }
 
 .isHeader {
-    @apply font-bold;
-    @apply bg-yellow-500 text-black;
+    @apply overflow-hidden rounded-xl border border-slate-200 bg-slate-100 font-bold text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100;
+}
+
+.dataRow {
+    @apply overflow-hidden rounded-xl border border-slate-200 bg-white transition-colors hover:border-slate-300 hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-slate-700 dark:hover:bg-slate-800;
+}
+
+.isAlternate {
+    @apply bg-slate-50/80 dark:bg-slate-800/50;
+}
+
+.isTotal {
+    @apply bg-lime-50 font-bold text-slate-900 dark:bg-lime-950/30 dark:text-slate-50;
 }

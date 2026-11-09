@@ -2,12 +2,15 @@ import { cn } from '@/lib/cn';
 import UserLinkIcon from '@/common/table/user/UserLinkIcon';
 import SkillColor from '@/common/skillColor/SkillColor';
 import { Recent } from '../data/Recent';
+import { getTranslations } from 'next-intl/server';
 
 interface Props {
     user: Recent;
 }
 
-export const RecentItem = ({ user }: Props) => {
+export const RecentItem = async ({ user }: Props) => {
+    const t = await getTranslations('common');
+
     return (
         <div className={cn('list-row border-b last:border-b-0')}>
             {/* 아이콘/이름 */}
@@ -19,6 +22,8 @@ export const RecentItem = ({ user }: Props) => {
                         titletower: user.titletower,
                         openinfo: user.openinfo,
                     }}
+                    privateNameLabel={t('namePrivate')}
+                    emptyNameLabel={t('nameMissing')}
                 />
             </div>
 

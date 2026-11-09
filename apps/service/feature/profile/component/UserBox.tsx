@@ -1,12 +1,15 @@
 import { IMG } from '@/url/url';
 import { Profile } from '@/feature/profile/data/Profile';
 import Image from 'next/image';
+import { getTranslations } from 'next-intl/server';
 
 interface Props {
     mydata: Profile;
 }
 
-const UserBox = ({ mydata }: Props) => {
+const UserBox = async ({ mydata }: Props) => {
+    const t = await getTranslations('common');
+
     return (
         <section className={'flex-col-center w-full gap-2'}>
             <div className={'text-sm font-light'}>({mydata.title})</div>
@@ -20,7 +23,17 @@ const UserBox = ({ mydata }: Props) => {
                         height={32}
                     />
                 )}
-                <div>{mydata.name}</div>
+                <div
+                    className={
+                        mydata.openinfo
+                            ? undefined
+                            : 'text-base font-medium text-slate-500 dark:text-slate-400'
+                    }
+                >
+                    {mydata.openinfo
+                        ? mydata.name || t('nameMissing')
+                        : t('namePrivate')}
+                </div>
             </div>
         </section>
     );

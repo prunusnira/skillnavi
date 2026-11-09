@@ -49,13 +49,22 @@ const useSkillMenu = () => {
         updateSearchParams('game', data);
     };
 
+    const currentTable =
+        (searchParams.get('display') as TableType | null) || 'grid';
+    const currentData =
+        (searchParams.get('pageType') as TableDataType | null) || 'target';
+    const currentGame = (searchParams.get('game') as GameType | null) || 'gf';
+
     return {
         versionSelectOption,
         onChangeVersion,
         onChangeTable,
         onChangeData,
         onChangeGame,
-        currentVersion: Number(searchParams.get('version')),
+        currentVersion: Number(searchParams.get('version') || 0),
+        currentTable,
+        currentData,
+        currentGame,
     };
 };
 

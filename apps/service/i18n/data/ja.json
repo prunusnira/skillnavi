@@ -3,11 +3,32 @@
         "yesno": {
             "yes": "はい",
             "no": "いいえ"
-        }
+        },
+        "namePrivate": "(名前非公開)",
+        "nameMissing": "(名前なし)",
+        "guitar": "ギター",
+        "bass": "ベース",
+        "drum": "ドラム",
+        "version": "バージョン",
+        "type": "ゲームタイプ",
+        "difficulty": "難易度",
+        "confirm": "適用",
+        "rank": "順位",
+        "player": "プレイヤー",
+        "rate": "達成率",
+        "skill": "スキル",
+        "playCount": "プレー回数",
+        "fc": "FC",
+        "all": "全て",
+        "emptyRank": "ランキングデータがありません",
+        "loadingRank": "ランキングを読み込み中です",
+        "skillRankHint": "GFまたはDMを選択して、スキルランキングを表示します"
     },
     "navbar": {
         "login": "登録 / ログイン",
-        "logout": "ログアウト"
+        "logout": "ログアウト",
+        "settings": "設定",
+        "closeSettings": "設定を閉じる"
     },
     "copyright": "このサイトに表示されるすべてのリソースとコンテンツの著作権は、Konami Arcade Gamesおよびその他の関連する著作権者に帰属します",
     "bottom": "このサイトはファンサイトであり、営利目的ではありません。",
@@ -30,7 +51,7 @@
         },
         "pattern": {
             "title": "パターン",
-            "list": "パターン一覧",
+            "list": "楽曲・パターン一覧",
             "cleartable": "クリア表"
         },
         "tower": {
@@ -112,10 +133,26 @@
             "button": {
                 "count": "プレイ回数",
                 "cleartable": "クリア状況",
+                "cleartableGF": "クリア状況 GF",
+                "cleartableDM": "クリア状況 DM",
                 "comment": "コメント変更",
                 "openinfo": "情報公開設定"
             },
+            "dialog": {
+                "comment": {
+                    "title": "コメント変更",
+                    "description": "プロフィールに表示するコメントを入力してください。",
+                    "label": "コメント"
+                },
+                "openinfo": {
+                    "title": "情報公開設定",
+                    "description": "プロフィール情報を他のユーザーに公開するか選択してください。"
+                },
+                "save": "保存",
+                "cancel": "キャンセル"
+            },
             "skillbox": {
+                "current": "現在",
                 "open": "開く",
                 "close": "閉じる"
             }
@@ -131,7 +168,10 @@
                 "count": "プレイステージ数"
             }
         },
-        "board": "プレイヤーボード",
+        "board": {
+            "title": "プレイヤーボード",
+            "noImage": "画像なし"
+        },
         "critical": {
             "title": "クリティカル",
             "button": {
@@ -153,7 +193,11 @@
         }
     },
     "pattern": {
-        "title": "パターン一覧"
+        "title": "楽曲・パターン一覧"
+    },
+    "patternRank": {
+        "title": "個別パターンランキング",
+        "patternUnavailable": "選択した楽曲または譜面情報が見つかりません。"
     },
     "music": {
         "title": "詳細記録",

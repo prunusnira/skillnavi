@@ -17,6 +17,7 @@ const PageMusic = async (
 ) => {
     const searchParams = await props.searchParams;
     const t = await getTranslations('music');
+    const tCommon = await getTranslations('common');
     const { mid, uid } = searchParams;
 
     const user = uid ? await getProfile([Number(uid)]) : [];
@@ -43,7 +44,17 @@ const PageMusic = async (
                                 height={48}
                             />
                         )}
-                        <div>{profile.name}</div>
+                        <div
+                            className={
+                                profile.openinfo
+                                    ? undefined
+                                    : 'text-slate-500 dark:text-slate-400'
+                            }
+                        >
+                            {profile.openinfo
+                                ? profile.name || tCommon('nameMissing')
+                                : tCommon('namePrivate')}
+                        </div>
                     </section>
                 )}
 

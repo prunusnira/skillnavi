@@ -1,21 +1,27 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useParams } from 'next/navigation';
-import { useAtomValue } from 'jotai';
-import { atomUser } from '@/feature/profile/data/atomUser';
 import { cn } from '@/lib/cn';
 import { useRouter } from '@/i18n/routing';
-import { LINK_PATTERN_TABLE, LINK_PLAYCOUNT } from '@/url/url';
+import {
+    LINK_PATTERN_TABLE,
+    LINK_PLAYCOUNT,
+    LINK_TOWER_MAIN,
+} from '@/url/url';
 import CommentPortal from '@/feature/profile/component/comment/Comment.portal';
 import useProfileButtonPortal from '@/feature/profile/component/button/useProfileButtonPortal';
 import OpenDataPortal from '@/feature/profile/component/opendata/OpenData.portal';
 import { ButtonRounded } from '@skillnavi/ui';
+import { Profile } from '@/feature/profile/data/Profile';
 
-const ProfileButton = () => {
+interface Props {
+    profile: Profile;
+    isOwner: boolean;
+}
+
+const ProfileButton = ({ profile, isOwner }: Props) => {
     const t = useTranslations('profile.info.button');
-    const { id } = useParams();
-    const user = useAtomValue(atomUser);
+    const tTower = useTranslations('tower.changeIcon');
     const router = useRouter();
     const {
         displayCommentPortal,
@@ -27,20 +33,38 @@ const ProfileButton = () => {
     } = useProfileButtonPortal();
 
     return (
-        <div className={cn('flex-center gap-2')}>
+        <div className={cn('flex flex-wrap items-center justify-center gap-2')}>
             <ButtonRounded
                 text={t('count')}
                 onClick={() =>
-                    router.push(`${LINK_PLAYCOUNT}?id=${id}&type=music`)
+                    router.push(
+                        `${LINK_PLAYCOUNT}?id=${profile.id}&type=music`,
+                    )
                 }
             />
             <ButtonRounded
-                text={t('cleartable')}
+                text={t('cleartableGF')}
                 onClick={() =>
-                    router.push(LINK_PATTERN_TABLE({ id: Number(id) }))
+                    router.push(
+                        LINK_PATTERN_TABLE({
+                            type: 'gf',
+                            id: profile.id,
+                        }),
+                    )
                 }
             />
-            {user && user.id === Number(id) ? (
+            <ButtonRounded
+                text={t('cleartableDM')}
+                onClick={() =>
+                    router.push(
+                        LINK_PATTERN_TABLE({
+                            type: 'dm',
+                            id: profile.id,
+                        }),
+                    )
+                }
+            />
+            {isOwner ? (
                 <>
                     <ButtonRounded
                         text={t('comment')}
@@ -50,21 +74,25 @@ const ProfileButton = () => {
                         text={t('openinfo')}
                         onClick={openOpenDataPortal}
                     />
+                    <ButtonRounded
+                        text={tTower('button')}
+                        onClick={() => router.push(LINK_TOWER_MAIN)}
+                    />
                 </>
             ) : null}
 
             {/* Comment change portal */}
-            {displayCommentPortal && user && (
+            {displayCommentPortal && isOwner && (
                 <CommentPortal
-                    profile={user}
+                    profile={profile}
                     closePortal={closeCommentPortal}
                 />
             )}
 
             {/* Open data change portal */}
-            {displayOpenDataPortal && user && (
+            {displayOpenDataPortal && isOwner && (
                 <OpenDataPortal
-                    profile={user}
+                    profile={profile}
                     closePortal={closeOpenDataPortal}
                 />
             )}

@@ -20,11 +20,17 @@ const PageSkill = async ({
     const userId = (await params).id;
     const queryString = await searchParams;
 
-    const profile = (await getProfile([Number(userId)])).at(0);
-    const profileSkill = await getProfileSkill([Number(userId)]);
+    const isTheorySkill =
+        Number(userId) === 0 && queryString.pageType === 'exc';
+    const profile = isTheorySkill
+        ? undefined
+        : (await getProfile([Number(userId)])).at(0);
+    const profileSkill = isTheorySkill
+        ? undefined
+        : await getProfileSkill([Number(userId)]);
     const t = await getTranslations('skill');
 
-    if (!profile) {
+    if (!profile && !isTheorySkill) {
         return (
             <article className="w-full text-center">
                 <Error title={t('title')}>
@@ -49,17 +55,18 @@ const PageSkill = async ({
     };
 
     return (
-        <article className={'w-full'}>
+        <article
+            className={
+                '-mx-4 w-[calc(100%_+_2rem)] sm:-mx-6 sm:w-[calc(100%_+_3rem)] md:mx-0 md:w-full'
+            }
+        >
             {/* 메뉴 */}
             <Card title={t('menu.title')}>
                 <SkillMenu />
             </Card>
 
             {/* 테이블 */}
-            <SkillTable
-                profile={profile}
-                userSkill={getUserSkill()}
-            />
+            <SkillTable profile={profile} userSkill={getUserSkill()} />
         </article>
     );
 };

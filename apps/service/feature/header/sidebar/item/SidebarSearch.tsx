@@ -191,7 +191,7 @@ export const SidebarSearch = () => {
                                 onMouseEnter={() => setActivePreviewIndex(index)}
                                 onClick={() => openMusic(music)}
                             >
-                                <div className="truncate text-sm font-medium">
+                                <div className="truncate text-sm font-medium text-slate-900 dark:text-slate-100">
                                     {music.name}
                                 </div>
                                 {music.composer && (

@@ -9,21 +9,21 @@ interface Props {
 
 export const SnapshotsList = async ({ type, snapshotMap }: Props) => {
     const user = await getProfileSession();
-    const typeStr =
-        type === 'gf' ? 'GuitarFreaks' :
-            type === 'dm' ? 'DrumMania' : '';
+    const typeStr = type === 'gf' ? 'GuitarFreaks' : 'DrumMania';
 
-    const keys = Array.from(snapshotMap.keys());
+    const keys = Array.from(snapshotMap.keys()).sort((a, b) =>
+        b.localeCompare(a),
+    );
 
     if (!user) {
         return null;
     }
 
     return (
-        <section>
-            <div className={'text-lg font-semibold'}>{typeStr}</div>
-            <div className={'flex-col-center text-sm'}>
-                {keys.map(key => (
+        <section className="w-full min-w-0 flex-1">
+            <div className="mb-3 text-lg font-semibold">{typeStr}</div>
+            <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2">
+                {keys.map((key) => (
                     <SnapshotListItem
                         key={`${user.id}_${type}_${key}`}
                         uid={user.id}

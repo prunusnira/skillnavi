@@ -44,7 +44,7 @@ describe('UserLinkIcon', () => {
         expect(screen.getByText('홍길동')).toBeInTheDocument();
     });
 
-    it('이름이 비어 있으면 (NO NAME)을 표시한다', () => {
+    it('이름이 비어 있으면 이름 없음으로 표시한다', () => {
         // Given
         const user = createUser({ name: '' });
 
@@ -52,10 +52,10 @@ describe('UserLinkIcon', () => {
         render(<UserLinkIcon user={user} />);
 
         // Then
-        expect(screen.getByText('(NO NAME)')).toBeInTheDocument();
+        expect(screen.getByText('(이름 없음)')).toBeInTheDocument();
     });
 
-    it('openinfo가 false면 (NO NAME)을 표시한다', () => {
+    it('openinfo가 false면 이름 비공개로 표시한다', () => {
         // Given
         const user = createUser({ openinfo: false, name: '숨김' });
 
@@ -63,7 +63,7 @@ describe('UserLinkIcon', () => {
         render(<UserLinkIcon user={user} />);
 
         // Then
-        expect(screen.getByText('(NO NAME)')).toBeInTheDocument();
+        expect(screen.getByText('(이름 비공개)')).toBeInTheDocument();
     });
 
     it('titletower가 있으면 아이콘 이미지를 표시한다', () => {
@@ -110,7 +110,7 @@ describe('UserLinkIcon', () => {
         render(<UserLinkIcon user={user} />);
 
         // When
-        fireEvent.click(screen.getByText('(NO NAME)'));
+        fireEvent.click(screen.getByText('(이름 비공개)'));
 
         // Then
         expect(mockPush).not.toHaveBeenCalled();

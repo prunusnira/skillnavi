@@ -2,16 +2,15 @@
 
 import { cn } from '@/lib/cn';
 import { getSkillCN } from '@/feature/skill/api/getSkillCN';
-import { IMG, LINK_MUSIC_INFO } from '@/url/url';
-import { convertPatternCode } from '@/lib/game/convertPatternCode';
+import { LINK_MUSIC_INFO } from '@/url/url';
 import { convertLevel } from '@/lib/game/convertLevel';
-import { convertRank } from '@/lib/game/convertRank';
 import { getClearState } from '@/lib/game/getClearState';
 import AlbumArt from '@/common/albumart/AlbumArt';
 import AnchorText from '@/common/anchor/AnchorText';
+import PatternTag from '@/common/pattern/PatternTag';
+import RankTag from '@/common/rank/RankTag';
 import { useParams, useSearchParams } from 'next/navigation';
 import { useMemo } from 'react';
-import Image from 'next/image';
 import { SkillForTable } from '@/feature/skill/data/Skill';
 
 interface Props {
@@ -29,6 +28,11 @@ const SkillGridForSnapshot = ({ skill, index }: Props) => {
         ],
     );
     const skillColor = getSkillCN((skillValue * 5) / 100000);
+    const clearState = getClearState({
+        rate: skill.rate,
+        fc: skill.fc,
+        short: true,
+    });
 
     return (
         <section
@@ -76,32 +80,22 @@ const SkillGridForSnapshot = ({ skill, index }: Props) => {
                     {/* 기타 */}
                     <div className={cn('flex justify-around')}>
                         <div className={cn('flex-center')}>
-                            <Image
-                                unoptimized={true}
-                                alt={'difficulty'}
-                                src={`${IMG}/diff/${convertPatternCode(skill.patterncode, 'image300')}`}
-                                width={40}
-                                height={10}
-                            />
+                            <PatternTag patternCode={skill.patterncode} />
                         </div>
                         <div className={cn('flex-center')}>
-                            {convertLevel(skill.level)}
+                            <span className="font-bold">
+                                {convertLevel(skill.level)}
+                            </span>
                         </div>
                     </div>
                     <div className={cn('flex justify-around')}>
-                        <Image
-                            unoptimized={true}
-                            alt={'rank'}
-                            src={`${IMG}/rank/${convertRank(skill.maxrank, skill.rate)}`}
-                            width={20}
-                            height={20}
-                        />
-                        <div className={cn('font-bold flex-center')}>
-                            {getClearState({
-                                rate: skill.rate,
-                                fc: skill.fc,
-                                short: true,
-                            })}
+                        <RankTag rank={skill.maxrank} rate={skill.rate} />
+                        <div
+                            className={cn(
+                                'flex-center min-w-7 shrink-0 font-bold',
+                            )}
+                        >
+                            {clearState}
                         </div>
                     </div>
                 </section>

@@ -24,7 +24,7 @@ const UserScript = ({ unique }: Props) => {
         <section>
             <div
                 className={
-                    'break-all px-[20px] py-[10px] text-sm bg-white text-black border cursor-pointer'
+                    'break-all px-[20px] py-[10px] text-sm bg-white text-black border cursor-text'
                 }
             >
                 j{text}

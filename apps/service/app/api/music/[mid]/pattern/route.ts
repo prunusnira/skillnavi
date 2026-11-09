@@ -13,13 +13,17 @@ export const GET = async (
         work: async () => {
             const searchParams = req.nextUrl.searchParams;
             const { mid } = params;
-            const version = Number(searchParams.get('version'));
+            const version = searchParams.get('version');
 
             const pattern = (await prisma.patternList.findMany({
                 where: {
                     mid: Number(mid),
-                    version,
+                    ...(version === null ? {} : { version: Number(version) }),
                 },
+                orderBy: [
+                    { version: 'asc' },
+                    { patterncode: 'asc' },
+                ],
             })) as Pattern[];
 
             return NextResponse.json(pattern);

@@ -3,11 +3,32 @@
         "yesno": {
             "yes": "Yes",
             "no": "No"
-        }
+        },
+        "namePrivate": "(Name hidden)",
+        "nameMissing": "(No name)",
+        "guitar": "Guitar",
+        "bass": "Bass",
+        "drum": "Drum",
+        "version": "Version",
+        "type": "Game Type",
+        "difficulty": "Difficulty",
+        "confirm": "Apply",
+        "rank": "Rank",
+        "player": "Player",
+        "rate": "Rate",
+        "skill": "Skill",
+        "playCount": "Plays",
+        "fc": "FC",
+        "all": "All",
+        "emptyRank": "No ranking data available",
+        "loadingRank": "Loading rankings",
+        "skillRankHint": "Choose GF or DM to view that skill ranking"
     },
     "navbar": {
         "login": "Sign Up / Login",
-        "logout": "Logout"
+        "logout": "Logout",
+        "settings": "Settings",
+        "closeSettings": "Close settings"
     },
     "copyright": "All resources and content displayed on this site are copyrighted by Konami Arcade Games and other related copyright holders",
     "bottom": "This site is a fan site and has no commercial purpose.",
@@ -30,7 +51,7 @@
         },
         "pattern": {
             "title": "Pattern",
-            "list": "Pattern List",
+            "list": "Music & Pattern List",
             "cleartable": "Clear Table"
         },
         "tower": {
@@ -112,10 +133,26 @@
             "button": {
                 "count": "Play Count",
                 "cleartable": "Clear Status",
+                "cleartableGF": "Clear Status GF",
+                "cleartableDM": "Clear Status DM",
                 "comment": "Change Comment",
                 "openinfo": "Privacy Settings"
             },
+            "dialog": {
+                "comment": {
+                    "title": "Change Comment",
+                    "description": "Enter the comment to display on your profile.",
+                    "label": "Comment"
+                },
+                "openinfo": {
+                    "title": "Privacy Settings",
+                    "description": "Choose whether to make your profile information visible to other users."
+                },
+                "save": "Save",
+                "cancel": "Cancel"
+            },
             "skillbox": {
+                "current": "Current",
                 "open": "Open",
                 "close": "Close"
             }
@@ -131,7 +168,10 @@
                 "count": "Number of Play Stages"
             }
         },
-        "board": "Player Board",
+        "board": {
+            "title": "Player Board",
+            "noImage": "No image"
+        },
         "critical": {
             "title": "Critical Area",
             "button": {
@@ -153,7 +193,11 @@
         }
     },
     "pattern": {
-        "title": "Pattern List"
+        "title": "Music & Pattern List"
+    },
+    "patternRank": {
+        "title": "Pattern Ranking",
+        "patternUnavailable": "The selected song or pattern could not be found."
     },
     "music": {
         "title": "Detailed Record",

@@ -17,7 +17,7 @@ const PageIndex = async () => {
     return (
         <article className={'flex-col-center w-full'}>
             {/* 사용자 로그인 정보 & 스크립트 / 공지사항 목록 */}
-            <section className={'flex flex-col md:flex-row w-full'}>
+            <section className="home-overview">
                 {/* 로그인/사용자 정보 */}
                 <Card title={t('user.title')}>
                     {profile ? (

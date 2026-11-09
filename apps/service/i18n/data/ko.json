@@ -3,11 +3,32 @@
         "yesno": {
             "yes": "예",
             "no": "아니오"
-        }
+        },
+        "namePrivate": "(이름 비공개)",
+        "nameMissing": "(이름 없음)",
+        "guitar": "기타",
+        "bass": "베이스",
+        "drum": "드럼",
+        "version": "버전",
+        "type": "게임 타입",
+        "difficulty": "난이도",
+        "confirm": "확인",
+        "rank": "순위",
+        "player": "플레이어",
+        "rate": "달성률",
+        "skill": "스킬",
+        "playCount": "플레이 수",
+        "fc": "FC",
+        "all": "전체",
+        "emptyRank": "랭킹 데이터가 없습니다",
+        "loadingRank": "랭킹을 불러오는 중입니다",
+        "skillRankHint": "GF 또는 DM을 선택해 해당 스킬 랭킹을 확인하세요"
     },
     "navbar": {
         "login": "가입/로그인",
-        "logout": "로그아웃"
+        "logout": "로그아웃",
+        "settings": "설정",
+        "closeSettings": "설정 닫기"
     },
     "copyright": "이 사이트에서 표시하는 모든 리소스와 내용의 저작권은 Konami Arcade Games 및 그 외 관련 저작권자에게 있습니다",
     "bottom": "이 사이트는 팬사이트로 영리적 목적을 가지고 있지 않습니다",
@@ -30,7 +51,7 @@
         },
         "pattern": {
             "title": "패턴",
-            "list": "패턴목록",
+            "list": "악곡 및 패턴 목록",
             "cleartable": "클리어테이블"
         },
         "tower": {
@@ -112,10 +133,26 @@
             "button": {
                 "count": "플레이카운트",
                 "cleartable": "클리어현황",
+                "cleartableGF": "클리어 현황 GF",
+                "cleartableDM": "클리어 현황 DM",
                 "comment": "코멘트 변경",
                 "openinfo": "정보공개 설정"
             },
+            "dialog": {
+                "comment": {
+                    "title": "코멘트 변경",
+                    "description": "프로필에 표시할 코멘트를 입력해 주세요.",
+                    "label": "코멘트"
+                },
+                "openinfo": {
+                    "title": "정보 공개 설정",
+                    "description": "다른 사용자에게 프로필 정보를 공개할지 선택해 주세요."
+                },
+                "save": "저장",
+                "cancel": "취소"
+            },
             "skillbox": {
+                "current": "현재",
                 "open": "열기",
                 "close": "닫기"
             }
@@ -131,7 +168,10 @@
                 "count": "플레이 스테이지 수"
             }
         },
-        "board": "플레이어 보드",
+        "board": {
+            "title": "플레이어 보드",
+            "noImage": "이미지 없음"
+        },
         "critical": {
             "title": "크리티컬 영역",
             "button": {
@@ -153,7 +193,11 @@
         }
     },
     "pattern": {
-        "title": "패턴 목록"
+        "title": "악곡 및 패턴 목록"
+    },
+    "patternRank": {
+        "title": "개별 패턴 랭킹",
+        "patternUnavailable": "선택한 곡 또는 패턴 정보를 찾을 수 없습니다."
     },
     "music": {
         "title": "상세 기록",

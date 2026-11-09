@@ -3,7 +3,12 @@
 .radioButton {
     @apply appearance-none;
     @apply w-[30px] h-[30px];
-    @apply border-[5px] border-solid border-white checked:border-blue-400;
+    @apply border-[5px] border-solid border-white checked:border-indigo-500;
     @apply rounded-lg;
     @apply cursor-pointer;
+    box-shadow: 0 0 0 1px rgb(148 163 184 / 0.32);
+}
+
+.radioButton:checked {
+    box-shadow: 0 0 0 2px rgb(88 86 214 / 0.22);
 }

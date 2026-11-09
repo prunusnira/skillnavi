@@ -1,6 +1,5 @@
 @reference '../../../../app/globals.css';
 
 .cell {
-    @apply flex justify-center items-center gap-[4px];
-    @apply w-[1/8] text-center;
+    @apply flex min-w-0 flex-1 flex-col items-center justify-center gap-0.5 text-center text-[10px] sm:text-xs;
 }

@@ -44,11 +44,27 @@ export const LINK_MUSIC_INFO = ({
     version,
     mid,
     uid,
+    ptcode,
 }: {
     version: number;
     mid: number;
-    uid: number;
-}) => `/music/info?mid=${mid}&uid=${uid}&version=${version}`;
+    uid?: number;
+    ptcode?: number;
+}) => {
+    const params = new URLSearchParams({
+        mid: String(mid),
+        version: String(version),
+    });
+
+    if (uid !== undefined) {
+        params.set('uid', String(uid));
+    }
+    if (ptcode !== undefined) {
+        params.set('ptcode', String(ptcode));
+    }
+
+    return `/music/info?${params.toString()}`;
+};
 
 export const LINK_PATTERN_LIST = ({
     version,

@@ -7,18 +7,21 @@ const Footer = async () => {
     return (
         <footer
             className={cn(
-                'sticky top-[100vh] flex w-full items-center justify-center border-t bg-white',
-                'dark:border-slate-800 dark:bg-slate-950',
+                'sticky top-[100vh] flex w-full items-center justify-center border-t border-t-lime-300/60 bg-slate-950',
             )}
         >
             <section
                 className={cn(
-                    'flex w-full max-w-6xl flex-col gap-2 px-4 py-8 text-sm text-slate-500 sm:px-6 lg:px-8 dark:text-slate-400',
+                    'flex w-full max-w-6xl flex-col gap-2 px-4 py-7 text-xs leading-relaxed text-slate-400 sm:px-6 sm:py-8 lg:px-8',
                 )}
             >
-                <div>(c) 2016 Nira, Made with NextJS</div>
-                <div>{t('copyright')}</div>
-                <div>{t('bottom')}</div>
+                <div className="flex flex-col gap-2 border-b border-white/10 pb-3 sm:flex-row sm:items-center sm:justify-between">
+                    <div className="font-semibold text-lime-200">
+                        (c) 2016 Studio Nira
+                    </div>
+                    <div>{t('copyright')}</div>
+                </div>
+                <div className="pt-1">{t('bottom')}</div>
             </section>
         </footer>
     );

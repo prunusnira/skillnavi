@@ -16,7 +16,7 @@ interface Props {
 }
 
 const CommentPortal = ({ profile, closePortal }: Props) => {
-    const t = useTranslations('user.profile.changecomment');
+    const t = useTranslations('profile.info.dialog');
     const router = useRouter();
     const [
         comment,
@@ -36,11 +36,11 @@ const CommentPortal = ({ profile, closePortal }: Props) => {
     });
 
     return (
-        <Portal title={'Change Comment'}>
+        <Portal title={t('comment.title')}>
             <section className={'flex-col-center gap-[10px]'}>
-                <div>{t('desc')}</div>
+                <div>{t('comment.description')}</div>
                 <InputFormItem
-                    label={'Comment'}
+                    label={t('comment.label')}
                     placeholder={''}
                     id={'profile.comment'}
                     type={'text'}
@@ -55,10 +55,10 @@ const CommentPortal = ({ profile, closePortal }: Props) => {
                                 comment,
                             })
                         }
-                        text={'OK'}
+                        text={t('save')}
                     />
                     <ButtonStandard
-                        text={'Cancel'}
+                        text={t('cancel')}
                         onClick={closePortal}
                     />
                 </div>

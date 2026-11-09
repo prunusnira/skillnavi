@@ -1,8 +1,7 @@
 'use client';
 
 import { cn } from '@/lib/cn';
-import SkillBoxRow from '@/feature/profile/component/skillbox/SkillBoxRow';
-import SkillBoxCell from '@/feature/profile/component/skillbox/SkillBoxCell';
+import style from './SkillBox.module.css';
 import SkillColor from '@/common/skillColor/SkillColor';
 import useSkillBox from '@/feature/profile/component/skillbox/useSkillBox';
 import { ProfileSkill } from '@/feature/profile/data/ProfileSkill';
@@ -30,98 +29,125 @@ const SkillBox = ({ skill }: Props) => {
     const router = useRouter();
     const { id } = useParams<{ id: string }>();
     const t = useTranslations('profile.info.skillbox');
+    const currentVersion = skillBox[0]?.version;
 
     return (
-        <section className={'flex-col-center py-[20px]'}>
-            <div
-                className={cn(
-                    'flex flex-col justify-start items-center overflow-y-hidden gap-[2px] bg-black',
-                )}
-                style={{
-                    height: viewAll ? 'auto' : '100px',
-                }}
-            >
-                <SkillBoxRow>
-                    <SkillBoxCell>#</SkillBoxCell>
-                    <SkillBoxCell>GF</SkillBoxCell>
-                    <SkillBoxCell>DM</SkillBoxCell>
-                </SkillBoxRow>
-                {skillBox.map((skill) => (
-                    <SkillBoxRow key={`skill${skill.version}`}>
-                        <SkillBoxCell>
-                            {
-                                versionList?.find(
-                                    (version) => version.id === skill.version,
-                                )?.short
-                            }
-                        </SkillBoxCell>
-                        <SkillBoxCell>
-                            <SkillColor
-                                externalStyleClass={
-                                    'cursor-pointer border border-transparent hover:border-white'
-                                }
-                                value={skill.gf}
-                                onClick={() =>
-                                    router.push(
-                                        LINK_SKILL_TABLE({
-                                            version: skill.version,
-                                            game: 'gf',
-                                            id: Number(id),
-                                            display: 'grid',
-                                            pageType: 'target',
-                                        }),
-                                    )
-                                }
-                            />
-                        </SkillBoxCell>
-                        <SkillBoxCell>
-                            <SkillColor
-                                externalStyleClass={
-                                    'cursor-pointer border border-transparent hover:border-white'
-                                }
-                                value={skill.dm}
-                                onClick={() =>
-                                    router.push(
-                                        LINK_SKILL_TABLE({
-                                            version: skill.version,
-                                            game: 'dm',
-                                            id: Number(id),
-                                            display: 'grid',
-                                            pageType: 'target',
-                                        }),
-                                    )
-                                }
-                            />
-                        </SkillBoxCell>
-                    </SkillBoxRow>
-                ))}
+        <section className={cn('flex w-full flex-col items-center py-5')}>
+            <div className={style.tableWrap}>
+                <div
+                    className={style.tableViewport}
+                    style={{ maxHeight: viewAll ? '5000px' : '190px' }}
+                >
+                    <table className={style.skillTable}>
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">GF</th>
+                                <th scope="col">DM</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {skillBox.map((row) => {
+                                const isCurrent =
+                                    row.version === currentVersion;
+                                const versionName =
+                                    versionList?.find(
+                                        (version) => version.id === row.version,
+                                    )?.short ?? row.version.toString();
+
+                                return (
+                                    <tr
+                                        className={cn(
+                                            isCurrent && style.currentRow,
+                                        )}
+                                        key={`skill${row.version}`}
+                                    >
+                                        <th
+                                            className={style.versionCell}
+                                            scope="row"
+                                        >
+                                            <div className={style.versionInfo}>
+                                                <span
+                                                    className={
+                                                        style.versionName
+                                                    }
+                                                >
+                                                    {versionName}
+                                                </span>
+                                                {isCurrent && (
+                                                    <span
+                                                        className={
+                                                            style.currentBadge
+                                                        }
+                                                    >
+                                                        {t('current')}
+                                                    </span>
+                                                )}
+                                            </div>
+                                        </th>
+                                        <td className={style.scoreCell}>
+                                            <button
+                                                aria-label={`GF ${row.gf.toFixed(2)} ${versionName}`}
+                                                className={style.scoreButton}
+                                                onClick={() =>
+                                                    router.push(
+                                                        LINK_SKILL_TABLE({
+                                                            version:
+                                                                row.version,
+                                                            game: 'gf',
+                                                            id: Number(id),
+                                                            display: 'grid',
+                                                            pageType: 'target',
+                                                        }),
+                                                    )
+                                                }
+                                                type="button"
+                                            >
+                                                <SkillColor value={row.gf} />
+                                            </button>
+                                        </td>
+                                        <td className={style.scoreCell}>
+                                            <button
+                                                aria-label={`DM ${row.dm.toFixed(2)} ${versionName}`}
+                                                className={style.scoreButton}
+                                                onClick={() =>
+                                                    router.push(
+                                                        LINK_SKILL_TABLE({
+                                                            version:
+                                                                row.version,
+                                                            game: 'dm',
+                                                            id: Number(id),
+                                                            display: 'grid',
+                                                            pageType: 'target',
+                                                        }),
+                                                    )
+                                                }
+                                                type="button"
+                                            >
+                                                <SkillColor value={row.dm} />
+                                            </button>
+                                        </td>
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            {viewAll ? (
-                <div
-                    className={
-                        'w-full flex-center cursor-pointer gap-[4px] py-[10px]'
-                    }
-                    onClick={closeViewBox}
+            {skillBox.length > 1 && (
+                <button
+                    aria-expanded={viewAll}
+                    className={style.toggleButton}
+                    onClick={viewAll ? closeViewBox : openViewBox}
+                    type="button"
                 >
-                    <div>{t('close')}</div>
+                    <span>{t(viewAll ? 'close' : 'open')}</span>
                     <FontAwesomeIcon
-                        icon={faCircleChevronUp}
-                        width={20}
+                        aria-hidden="true"
+                        icon={viewAll ? faCircleChevronUp : faCircleChevronDown}
+                        width={18}
                     />
-                </div>
-            ) : (
-                <div
-                    className={
-                        'w-full flex-center cursor-pointer gap-[4px] py-[10px]'
-                    }
-                    onClick={openViewBox}
-                >
-                    <div>{t('open')}</div>
-                    <FontAwesomeIcon
-                        icon={faCircleChevronDown}
-                        width={20}
-                    />
-                </div>
+                </button>
             )}
         </section>
     );

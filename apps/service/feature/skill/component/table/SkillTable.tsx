@@ -19,7 +19,7 @@ import { ButtonSnapshot } from '@/feature/skill/component/table/ButtonSnapshot';
 import { ButtonScreenshot } from '@/feature/skill/component/table/ButtonScreenshot';
 
 interface Props {
-    profile: Profile;
+    profile?: Profile;
     userSkill?: UserSkill;
 }
 
@@ -49,16 +49,14 @@ const SkillTable = ({ profile, userSkill }: Props) => {
 
     return (
         <Card
+            variant={'skill'}
             title={t('title')}
             sub={
                 <div className={'flex gap-[4px]'}>
                     {profile &&
                         profile?.id === user?.id &&
                         pageType === 'target' && (
-                            <ButtonSnapshot
-                                profile={profile}
-                                skill={skill}
-                            />
+                            <ButtonSnapshot profile={profile} skill={skill} />
                         )}
                     <ButtonScreenshot targetEl={ref.current} />
                 </div>
@@ -66,7 +64,11 @@ const SkillTable = ({ profile, userSkill }: Props) => {
             ref={ref}
         >
             {/* 타이틀 */}
-            <section className={cn('text-2xl font-bold')}>
+            <section
+                className={cn(
+                    'w-full px-4 py-5 text-2xl font-bold md:px-0 md:py-0',
+                )}
+            >
                 {/* 버전 */}
                 <SkillTableTitleVersion versionId={version} />
 
@@ -87,7 +89,7 @@ const SkillTable = ({ profile, userSkill }: Props) => {
             {/* 스킬 */}
             <section
                 className={cn(
-                    'flex-col-center w-full max-w-[600px] bg-black my-5 rounded-2xl',
+                    'flex-col-center my-2 w-full rounded-2xl bg-black px-3 py-2 md:my-5 md:px-0 md:py-0',
                 )}
             >
                 {pageType === 'all' && (
@@ -150,12 +152,20 @@ const SkillTable = ({ profile, userSkill }: Props) => {
                 skill?.map((table, tidx) => (
                     <section
                         key={`list_${tidx}`}
-                        className={'flex-col-center w-full md:px-[24px]'}
+                        className={'flex w-full flex-col items-center'}
                     >
-                        <div className={'text-2xl font-semibold py-[20px]'}>
+                        <div
+                            className={
+                                'w-full px-4 py-5 text-2xl font-semibold md:px-0'
+                            }
+                        >
                             {table.title}
                         </div>
-                        <div className={'w-full max-w-screen-lg'}>
+                        <div
+                            className={
+                                'flex w-full min-w-0 flex-col gap-px md:gap-2'
+                            }
+                        >
                             {table.data.map((skill, index) => (
                                 <SkillList
                                     key={skill.mid}
@@ -172,14 +182,18 @@ const SkillTable = ({ profile, userSkill }: Props) => {
                 skill?.map((table, tidx) => (
                     <section
                         key={`grid_${tidx}`}
-                        className={'flex-col-center w-full'}
+                        className={'flex w-full flex-col items-center'}
                     >
-                        <div className={'text-2xl font-semibold py-[20px]'}>
+                        <div
+                            className={
+                                'w-full px-4 py-5 text-2xl font-semibold md:px-0'
+                            }
+                        >
                             {table.title}
                         </div>
                         <div
                             className={cn(
-                                'w-full grid grid-cols-2 xs:grid-cols-3 md:grid-cols-4 max-w-screen-lg',
+                                'grid w-full grid-cols-2 xs:grid-cols-3 md:grid-cols-4 md:gap-3 lg:gap-4',
                             )}
                         >
                             {table.data.map((skill, index) => (
@@ -195,10 +209,9 @@ const SkillTable = ({ profile, userSkill }: Props) => {
 
             {/* pager */}
             {pageType === 'all' && !!pages && pages > 0 && (
-                <Pager
-                    page={page}
-                    allpage={pages}
-                />
+                <div className={'w-full px-4 md:px-0'}>
+                    <Pager page={page} allpage={pages} />
+                </div>
             )}
         </Card>
     );

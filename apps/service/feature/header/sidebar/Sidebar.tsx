@@ -22,7 +22,9 @@ const Sidebar = async () => {
                 return (
                     <section
                         key={`sidebar_${key}`}
-                        className={'flex w-full max-w-3xl flex-col'}
+                        className={
+                            'flex w-full max-w-3xl flex-col border-b border-white/10 pb-4 last:border-b-0'
+                        }
                     >
                         <SidebarMenuTitle
                             id={menu.id}
@@ -36,7 +38,7 @@ const Sidebar = async () => {
                                         key={menu.id}
                                         href={menu.href}
                                         className={
-                                            'rounded-lg px-3 py-2 text-sm text-slate-600 transition-colors hover:bg-white hover:text-indigo-600 dark:text-slate-300 dark:hover:bg-slate-900 dark:hover:text-indigo-400'
+                                            'rounded-xl px-3 py-2 text-sm font-medium text-slate-300 transition-colors hover:bg-white/10 hover:text-lime-200'
                                         }
                                     >
                                         {t(menu.id)}

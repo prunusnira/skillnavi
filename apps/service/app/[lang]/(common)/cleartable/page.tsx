@@ -31,11 +31,11 @@ const PageClearTable = async (props: {
             {/* 옵션변경 */}
             <ClearTableOption />
 
-            {/* 표 */}
-            <ClearTable tableData={data} />
-
             {/* 그래프 */}
             <ClearTableChart tableData={data} />
+
+            {/* 표 */}
+            <ClearTable tableData={data} />
         </Card>
     );
 };

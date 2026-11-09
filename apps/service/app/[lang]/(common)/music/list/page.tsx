@@ -54,6 +54,7 @@ const PageMusicList = async (props: {
                         key={musicItem.mid}
                         data={musicItem}
                         version={gameVersion}
+                        uid={profile?.id}
                     />
                 ))}
 

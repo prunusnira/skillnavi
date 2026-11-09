@@ -1,26 +1,17 @@
 export const getClearState = ({
-                                  rate,
-                                  fc,
-                                  short,
-                              }: {
+    rate,
+    fc,
+    short,
+}: {
     rate: number;
     fc: boolean;
     short?: boolean;
 }) => {
     if (fc && rate === 10000) {
-        if (short) {
-            return 'PF';
-        }
-        return 'PERFECT';
+        return short ? 'EXC' : 'EXCELLENT';
     }
     if (fc && rate < 10000) {
-        if (short) {
-            return 'FC';
-        }
-        return 'FULLCOMBO';
+        return short ? 'FC' : 'FULL COMBO';
     }
-    if (short) {
-        return 'CL';
-    }
-    return 'CLEARED';
+    return '';
 };

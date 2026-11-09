@@ -55,7 +55,7 @@ const ClearTableChart = ({ tableData }: Props) => {
     }, [tableData]);
 
     return (
-        <section className={'w-full h-[400px]'}>
+        <section className={'h-[320px] w-full sm:h-[400px]'}>
             <ResponsiveContainer
                 width="100%"
                 height="100%"

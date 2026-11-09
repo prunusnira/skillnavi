@@ -29,7 +29,7 @@ export interface SidebarMenu {
 export const SidebarMenuItems = {
     home: {
         id: 'home',
-        iconSrc: `${IMG}/header/logo.png`,
+        iconSrc: '/skill-navigator-mark.svg',
         href: LINK_MAIN,
     },
     mydata: {

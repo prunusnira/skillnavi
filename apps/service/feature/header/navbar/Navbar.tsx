@@ -1,7 +1,6 @@
 'use client';
 
-import { DISCORD, IMG, LINK_AUTH_LOGIN, LINK_MAIN } from '@/url/url';
-import NavItem from '@/feature/header/NavItem';
+import { DISCORD, LINK_AUTH_LOGIN, LINK_MAIN } from '@/url/url';
 import useNavbar from '@/feature/header/navbar/useNavbar';
 import { useTranslations } from 'next-intl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -34,82 +33,91 @@ const Navbar = () => {
     return (
         <nav className={'mx-auto h-full w-full max-w-6xl flex-between'}>
             {/* left side (logo) */}
-            <div
-                className={'group flex-center gap-2 rounded-xl py-1 pr-2'}
+            <button
+                type="button"
+                aria-label="Skill Navigator home"
+                className={
+                    'group flex items-center gap-2 rounded-2xl py-1 pr-2 text-left transition-opacity hover:opacity-80'
+                }
                 onClick={handleLinkMain}
             >
                 <div
                     className={
-                        'h-10 w-10 overflow-hidden rounded-xl ring-1 ring-slate-200 dark:ring-slate-700'
+                        'h-10 w-10 overflow-hidden rounded-[14px] ring-1 ring-lime-300/50 shadow-[0_0_20px_rgba(200,245,66,0.16)]'
                     }
                 >
                     <Image
                         unoptimized={true}
-                        alt={'icon'}
-                        src={`${IMG}/header/logoidx.png`}
+                        alt={''}
+                        src={'/skill-navigator-mark.svg'}
                         width={40}
                         height={40}
                     />
                 </div>
 
-                <div className={'hidden md:flex flex-col'}>
+                <div className={'navbar-brand-copy flex-col'}>
                     <div
                         className={
-                            'text-xs font-medium text-slate-500 dark:text-slate-400'
+                            'text-[10px] font-semibold uppercase tracking-[0.1em] text-lime-200/80'
                         }
                     >
                         GITADORA Series Skill Simulator
                     </div>
-                    <div className={'text-lg font-semibold tracking-tight'}>
+                    <div
+                        className={
+                            'text-lg font-bold tracking-tight text-white'
+                        }
+                    >
                         Skill Navigator
                     </div>
                 </div>
-            </div>
+            </button>
 
             {/* right side */}
-            <div className={'flex-center pr-10'}>
+            <div className={'flex items-center gap-1 pr-12 sm:gap-2'}>
                 {/* 디스코드 링크 */}
-                <NavItem>
-                    <div
-                        className={
-                            'flex h-9 w-9 items-center justify-center rounded-lg text-slate-600 transition-colors hover:bg-slate-100 hover:text-indigo-600 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-indigo-400'
-                        }
-                        onClick={() => router.push(DISCORD)}
-                    >
-                        <FontAwesomeIcon icon={faDiscord} />
-                    </div>
-                </NavItem>
+                <button
+                    type="button"
+                    aria-label="Discord"
+                    className={'nav-action'}
+                    onClick={() => router.push(DISCORD)}
+                >
+                    <FontAwesomeIcon icon={faDiscord} />
+                </button>
 
                 {/* 옵션메뉴 */}
-                <NavItem>
-                    <div
-                        className={
-                            'flex h-9 w-9 items-center justify-center rounded-lg text-slate-600 transition-colors hover:bg-slate-100 hover:text-indigo-600 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-indigo-400'
-                        }
-                        onClick={controlOption}
-                    >
-                        <FontAwesomeIcon icon={faGear} />
-                    </div>
-                </NavItem>
+                <button
+                    type="button"
+                    aria-label={t('settings')}
+                    data-settings-trigger
+                    className={'nav-action'}
+                    onClick={controlOption}
+                >
+                    <FontAwesomeIcon icon={faGear} />
+                </button>
 
                 {/* 사용자 로그인/로그아웃 */}
-                <NavItem>
-                    <div
-                        className={'btn-transparent text-[14px] cursor-pointer'}
+                {session?.authenticated ? (
+                    <button
+                        type="button"
+                        className={
+                            'ml-1 rounded-xl border border-white/15 bg-white/5 px-3.5 py-2 text-sm font-semibold text-slate-200 transition-colors hover:border-lime-300/40 hover:bg-white/10 hover:text-white'
+                        }
+                        onClick={() => void handleLogout()}
                     >
-                        {session?.authenticated ? (
-                            <div onClick={() => void handleLogout()}>
-                                {t('logout')}
-                            </div>
-                        ) : (
-                            <div onClick={() => router.push(LINK_AUTH_LOGIN)}>
-                                {t('login')}
-                            </div>
-                        )}
-                    </div>
-                </NavItem>
-
-                <NavItem> </NavItem>
+                        {t('logout')}
+                    </button>
+                ) : (
+                    <button
+                        type="button"
+                        className={
+                            'ml-1 rounded-xl bg-lime-300 px-3.5 py-2 text-sm font-extrabold text-slate-950 shadow-md shadow-lime-300/15 transition-all hover:-translate-y-0.5 hover:bg-lime-200'
+                        }
+                        onClick={() => router.push(LINK_AUTH_LOGIN)}
+                    >
+                        {t('login')}
+                    </button>
+                )}
             </div>
 
             {/* 메뉴 버튼 */}

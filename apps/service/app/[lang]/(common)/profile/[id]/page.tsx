@@ -10,12 +10,12 @@ import ProfileButton from '@/feature/profile/component/button/ProfileButton';
 import { getProfileSkill } from '@/feature/profile/api/getProfileSkill';
 
 import { CriticalButton } from '@/feature/profile/component/button/CriticalButton';
-import Image from 'next/image';
 import { getProfileSession } from '@/feature/profile/api/getProfileSession';
 import { DetailedInfoTable } from '@/feature/profile/component/detailedinfo/DetailedInfoTable';
 import PrefetchQuery from '@/common/wrapper/PrefetchQuery';
 import { getProfileDetail } from '@/feature/profile/api/getProfileDetail';
 import { getLatestVersion } from '@/feature/env/api/getGameVersions';
+import PlayerBoard from '@/feature/profile/component/PlayerBoard';
 
 const PageProfile = async (props: { params: Promise<{ id: string }> }) => {
     const params = await props.params;
@@ -58,7 +58,10 @@ const PageProfile = async (props: { params: Promise<{ id: string }> }) => {
                 <div>{profile.comment}</div>
 
                 {/* 버튼 */}
-                <ProfileButton />
+                <ProfileButton
+                    profile={profile}
+                    isOwner={user?.id === profile.id}
+                />
 
                 {/* 스킬 기록 */}
                 <SkillBox skill={myskill} />
@@ -86,19 +89,19 @@ const PageProfile = async (props: { params: Promise<{ id: string }> }) => {
                 </Card>
             )}
 
-            {/* 플레이어 보드: 사이즈 조정으로 제공, 클릭 시 새 탭으로 열기 */}
-            <Card title={t('board')}>
-                <Image
-                    unoptimized={true}
-                    alt="playerboard"
-                    src={`${process.env.NEXT_PUBLIC_URL_DATA}/board/${id}.png`}
-                    width={320}
-                    height={580}
+            {/* 플레이어 보드 */}
+            <Card title={t('board.title')}>
+                <PlayerBoard
+                    userId={id}
+                    label={t('board.title')}
+                    noImageText={t('board.noImage')}
                 />
             </Card>
 
             {/* 로그인 사용자에게만 보이는 영역 */}
-            {user?.id === Number(id) && <CriticalButton />}
+            {user?.id === profile.id && (
+                <CriticalButton userId={profile.id} />
+            )}
         </article>
     );
 };

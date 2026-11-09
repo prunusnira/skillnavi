@@ -19,6 +19,7 @@ const MusicRecord = () => {
         uid,
         version,
         mid,
+        targetPatternCode,
     } = useMusicRecord();
     const t = useTranslations('music');
     const hasRecordUser = Boolean(uid && Number.isFinite(Number(uid)));
@@ -100,6 +101,7 @@ const MusicRecord = () => {
                         mid={mid}
                         version={version}
                         showNoData={hasRecordUser}
+                        isSelected={targetPatternCode === ptcode}
                     />
                 );
             })}

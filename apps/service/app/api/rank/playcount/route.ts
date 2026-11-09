@@ -14,6 +14,7 @@ import {
     getPlayCountRankDMQuery,
     getPlayCountRankGFQuery,
 } from '@/feature/rank/playcount/db/PlayCountRank.prisma';
+import { MUSICLIST_SIZE } from '@/feature/env/data/constant';
 
 export const GET = async (req: NextRequest) => {
     return RouteWrapper({
@@ -33,9 +34,10 @@ export const GET = async (req: NextRequest) => {
                       ? getPlayCountRankDMQuery({ page, version })
                       : getPlayCountRankALLQuery({ page, version });
 
-            const rankdata = (await prisma.$queryRaw(
-                Prisma.sql`${query}`,
-            )) as PlayCountRankData[];
+            const [rankdata, total] = await Promise.all([
+                prisma.$queryRaw<PlayCountRankData[]>(Prisma.sql`${query}`),
+                prisma.profileSkill.count({ where: { version } }),
+            ]);
 
             const uidList = rankdata.map((u) => u.uid);
 
@@ -61,13 +63,13 @@ export const GET = async (req: NextRequest) => {
                         ...user,
                         gcount: cnt.gcount || 0,
                         dcount: cnt.dcount || 0,
-                        allcount: cnt.allcount || 0,
+                        allcount: cnt.gcount + cnt.dcount,
                     });
                 }
             });
 
             const result: PlayCount = {
-                pages: rankdata.length,
+                pages: Math.max(1, Math.ceil(total / MUSICLIST_SIZE)),
                 users: list,
             };
 

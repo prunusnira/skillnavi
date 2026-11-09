@@ -4,10 +4,7 @@ import { usePathname } from '@/i18n/routing';
 import { atomEnv } from '@/feature/env/data/AtomEnv';
 
 export const useSidebar = () => {
-    const [
-        env,
-        setEnv,
-    ] = useAtom(atomEnv);
+    const [env, setEnv] = useAtom(atomEnv);
 
     const pathname = usePathname();
 
@@ -15,7 +12,12 @@ export const useSidebar = () => {
         setEnv({ menu: false });
     }, [pathname]);
 
+    const closeMenu = () => {
+        setEnv({ menu: false });
+    };
+
     return {
         isMenuOpen: env.menu,
+        closeMenu,
     };
 };

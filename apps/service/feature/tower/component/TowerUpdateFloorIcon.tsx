@@ -3,20 +3,23 @@
 import { ButtonRounded, ButtonStandard } from '@skillnavi/ui';
 import { useMutation } from '@tanstack/react-query';
 import { changeTowerIcon } from '@/feature/tower/api/changeTowerIcon';
-import { useAtomValue } from 'jotai';
-import { atomUser } from '@/feature/profile/data/atomUser';
 import Portal from '@/feature/portal/component/Portal';
 import Image from 'next/image';
 import { IMG } from '@/url/url';
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { useSession } from '@/feature/auth/hook/useSession';
 
 interface Props {
     icon: string;
 }
 
 export const TowerUpdateFloorIcon = ({ icon }: Props) => {
-    const user = useAtomValue(atomUser);
+    const session = useSession();
+    const userId =
+        session?.authenticated && session.profile
+            ? session.profile.id
+            : undefined;
     const [
         displayIcon,
         setDisplayIcon,
@@ -35,7 +38,7 @@ export const TowerUpdateFloorIcon = ({ icon }: Props) => {
         },
     });
 
-    if (!user) return null;
+    if (userId === undefined) return null;
 
     return (
         <>
@@ -61,7 +64,7 @@ export const TowerUpdateFloorIcon = ({ icon }: Props) => {
                                 text={'YES'}
                                 onClick={() => {
                                     mutate({
-                                        uid: user.id,
+                                        uid: userId,
                                         icon,
                                     });
                                 }}

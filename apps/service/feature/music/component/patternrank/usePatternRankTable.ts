@@ -30,7 +30,7 @@ const usePatternRankTable = () => {
     });
 
     // 랭크 사이즈
-    const { data: pages } = useQuery({
+    const { data: pages, isLoading: isPagesLoading } = useQuery({
         queryKey: [
             'pattern',
             'rank',
@@ -43,7 +43,7 @@ const usePatternRankTable = () => {
 
     // 유저 데이터
     const uids = useMemo(() => rankdata?.map((r) => r.uid), [rankdata]);
-    const { data: userdata } = useQuery({
+    const { data: userdata, isLoading: isUserLoading } = useQuery({
         queryKey: [
             'pattern',
             'user',
@@ -67,8 +67,10 @@ const usePatternRankTable = () => {
             if (user) {
                 displayData.push({
                     position: (page - 1) * MUSICLIST_SIZE + index + 1,
+                    id: user.id,
                     icon: user.titletower,
                     name: user.name,
+                    openinfo: user.openinfo,
                     rate,
                     rank: convertRateToRank(rate),
                     fc: !!fc,
@@ -81,7 +83,11 @@ const usePatternRankTable = () => {
         userdata,
     ]);
 
-    return { rankTableData, pages, isLoading };
+    return {
+        rankTableData,
+        pages,
+        isLoading: isLoading || isUserLoading || isPagesLoading,
+    };
 };
 
 export default usePatternRankTable;

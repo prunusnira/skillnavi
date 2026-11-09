@@ -20,7 +20,12 @@ const SkillColor = ({
     const className = useMemo(() => getSkillCN(value * multiplier), [value]);
     return (
         <div
-            className={cn(className, 'skill-text', externalStyleClass)}
+            className={cn(
+                className,
+                'skill-text',
+                externalStyleClass,
+                onClick && 'cursor-pointer',
+            )}
             onClick={() => onClick?.()}
         >
             {value.toFixed(2)}

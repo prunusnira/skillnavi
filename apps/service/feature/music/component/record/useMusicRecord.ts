@@ -18,11 +18,24 @@ const useMusicRecord = () => {
     const searchParams = useSearchParams();
     const router = useRouter();
     const pathname = usePathname();
+    const patternCodeParam = Number(searchParams.get('ptcode'));
+    const targetPatternCode =
+        Number.isInteger(patternCodeParam) &&
+        patternCodeParam >= 1 &&
+        patternCodeParam <= 12
+            ? patternCodeParam
+            : undefined;
+    const initialGameMode: GameMode =
+        targetPatternCode === undefined || targetPatternCode <= 4
+            ? 'g'
+            : targetPatternCode <= 8
+              ? 'b'
+              : 'd';
 
     const [
         gameMode,
         setGameMode,
-    ] = useState<GameMode>('g');
+    ] = useState<GameMode>(initialGameMode);
 
     const [
         ptcodeList,
@@ -140,6 +153,9 @@ const useMusicRecord = () => {
         }
         if (mid) nextParams.set('mid', mid);
         nextParams.set('version', String(nextver));
+        if (targetPatternCode !== undefined) {
+            nextParams.set('ptcode', String(targetPatternCode));
+        }
         router.push(`${pathname}?${nextParams.toString()}`);
     };
 
@@ -172,6 +188,7 @@ const useMusicRecord = () => {
         uid,
         version,
         mid,
+        targetPatternCode,
     };
 };
 
