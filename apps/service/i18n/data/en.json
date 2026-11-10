@@ -21,6 +21,7 @@
         "fc": "FC",
         "all": "All",
         "emptyRank": "No ranking data available",
+        "emptySnapshot": "No saved snapshots.",
         "loadingRank": "Loading rankings",
         "skillRankHint": "Choose GF or DM to view that skill ranking"
     },

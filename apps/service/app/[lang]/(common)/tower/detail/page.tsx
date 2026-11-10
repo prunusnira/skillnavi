@@ -92,15 +92,15 @@ const PageTowerDetail = async (props: { searchParams: Promise<{ id: number }> })
 
     return (
         <Card title={t('title')}>
-            <section className={'flex-col-center'}>
-                <span className={'text-2xl font-bold'}>
+            <section className="flex w-full flex-col items-center gap-2 rounded-2xl border border-slate-200/80 bg-slate-50/80 px-4 py-5 text-center dark:border-slate-700 dark:bg-slate-900/80 sm:px-6">
+                <span className="rounded-full border border-lime-300/70 bg-lime-100 px-3 py-1 text-xs font-bold tracking-wide text-lime-900 dark:border-lime-300/30 dark:bg-lime-300/10 dark:text-lime-200">
                     {getTowerType(towerInfo.game)}
                 </span>
-                <span className={'text-3xl font-medium'}>
+                <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 sm:text-3xl">
                     {towerInfo.display}
-                </span>
+                </h1>
             </section>
-            <section className={'flex flex-col gap-[60px] w-full px-[10px] py-[20px]'}>
+            <section className="flex w-full flex-col gap-5 px-1 py-5 sm:gap-6 sm:px-2">
                 {keys.map(floor => {
                     const list = floorDetailData.get(floor)!;
                     const clearRate = list.filter(disp => disp.isCleared).length / list.length;
@@ -122,80 +122,96 @@ const PageTowerDetail = async (props: { searchParams: Promise<{ id: number }> })
                                 const { music, item, isCleared, data } = display;
 
                                 return (
-                                    <div
+                                    <article
                                         key={`${item.tid}_${item.mid}_${item.ptcode}`}
-                                        className={'w-full flex flex-col gap-[12px] relative border border-solid border-black dark:border-white rounded-2xl px-[16px] py-[16px]'}
+                                        className="grid w-full grid-cols-1 gap-4 rounded-2xl border border-slate-200/80 bg-white/80 p-4 shadow-sm dark:border-slate-700 dark:bg-slate-800 sm:p-5 lg:grid-cols-[minmax(0,1fr)_15rem]"
                                     >
-                                        <div className={'flex items-center gap-[8px]'}>
-                                            <div>
-                                                <AlbumArt
-                                                    mid={music.id}
-                                                    size={90}
-                                                    className={'rounded-full'}
-                                                />
-                                            </div>
-                                            <div>
-                                                <div className={'flex flex-col'}>
-                                                    <span className={'text-md font-semibold'}>
+                                        <div className="min-w-0 space-y-4">
+                                            <div className="flex min-w-0 items-center gap-3 sm:gap-4">
+                                                <div className="shrink-0 rounded-xl border border-slate-200 bg-slate-100 p-1 dark:border-slate-600 dark:bg-slate-900">
+                                                    <AlbumArt
+                                                        mid={music.id}
+                                                        size={76}
+                                                        className="rounded-lg"
+                                                    />
+                                                </div>
+                                                <div className="min-w-0 flex-1">
+                                                    <div className="break-words text-base font-bold leading-snug tracking-tight text-slate-900 dark:text-slate-100 sm:text-lg">
                                                         {music.name}
-                                                    </span>
-                                                    <span className={'text-sm font-medium'}>
+                                                    </div>
+                                                    <div className="mt-1 break-words text-sm text-slate-500 dark:text-slate-300">
                                                         {music.composer}
-                                                    </span>
-                                                    <span className={'text-sm font-normal'}>
-                                                        {getPatternTypeFromCode(item.ptcode)}&nbsp;
-                                                        {getGameTypeFromCode(item.ptcode)}
-                                                    </span>
+                                                    </div>
+                                                    <div className="mt-2 flex flex-wrap gap-2">
+                                                        <span className="rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs font-semibold text-slate-600 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-200">
+                                                            {getPatternTypeFromCode(item.ptcode)}
+                                                        </span>
+                                                        <span className="rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs font-semibold text-slate-600 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-200">
+                                                            {getGameTypeFromCode(item.ptcode)}
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <div>
-                                            <div className={'text-md font-semibold'}>Clear Condition</div>
-                                            <div className={'flex gap-[20px]'}>
-                                                    <span className={'text-sm font-normal'}>
-                                                        {item.fc ? 'Full Combo' : 'Clear'}
-                                                    </span>
-                                                <span className={'text-sm font-normal'}>
-                                                        {(item.rate / 100).toFixed(2)}%
-                                                    </span>
-                                                <span className={'text-sm font-normal'}>
-                                                        {item.compulsory ? 'MUST' : ''}
-                                                    </span>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            {item.description}
-                                        </div>
-
-                                        <section
-                                            className={'absolute bottom-[24px] right-[16px] flex flex-col items-end'}>
-                                            <div className={'flex gap-[8px]'}>
-                                                <div className={'text-3xl font-bold'}>
-                                                    {isCleared ? t('status.clear') : t('status.yet')}
+                                            <div className="space-y-3 border-t border-slate-200 pt-4 dark:border-slate-700">
+                                                <div>
+                                                    <div className="mb-2 text-xs font-bold tracking-wide text-slate-500 uppercase dark:text-slate-400">
+                                                        Clear Condition
+                                                    </div>
+                                                    <div className="flex flex-wrap gap-2">
+                                                        <span className="rounded-lg bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-700 dark:text-slate-200">
+                                                            {item.fc ? 'Full Combo' : 'Clear'}
+                                                        </span>
+                                                        <span className="rounded-lg bg-slate-100 px-2.5 py-1 text-xs font-semibold tabular-nums text-slate-700 dark:bg-slate-700 dark:text-slate-200">
+                                                            {(item.rate / 100).toFixed(2)}%
+                                                        </span>
+                                                        {item.compulsory && (
+                                                            <span className="rounded-lg bg-amber-100 px-2.5 py-1 text-xs font-bold text-amber-800 dark:bg-amber-300/10 dark:text-amber-200">
+                                                                MUST
+                                                            </span>
+                                                        )}
+                                                    </div>
                                                 </div>
-                                                {isCleared && item.icon && (
-                                                    <TowerUpdateFloorIcon icon={item.icon} />
+                                                {item.description && (
+                                                    <p className="break-words text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                                                        {item.description}
+                                                    </p>
                                                 )}
                                             </div>
+                                        </div>
+
+                                        <aside className="flex flex-col gap-3 rounded-xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-600 dark:bg-slate-900 sm:flex-row sm:items-center sm:justify-between lg:flex-col lg:items-end lg:justify-center lg:text-right">
+                                            <div className="flex flex-col items-start gap-2 sm:items-end">
+                                                {isCleared && item.icon && (
+                                                    <TowerUpdateFloorIcon
+                                                        icon={item.icon}
+                                                    />
+                                                )}
+                                                <span
+                                                    className={`inline-flex w-fit rounded-full border px-3 py-1 text-xs font-bold ${isCleared ? 'border-lime-300 bg-lime-100 text-lime-800 dark:border-lime-300/30 dark:bg-lime-300/10 dark:text-lime-200' : 'border-slate-200 bg-white text-slate-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300'}`}
+                                                >
+                                                    {isCleared ? t('status.clear') : t('status.yet')}
+                                                </span>
+                                            </div>
                                             {data && (
-                                                <div className={'w-full text-right'}>
+                                                <div className="min-w-0 sm:text-right">
                                                     <VersionDisplay
                                                         version={data.playver}
-                                                        type={'full'}
-                                                        className={'text-sm'}
+                                                        type="full"
+                                                        className="text-xs font-medium text-slate-500 dark:text-slate-400"
                                                     />
-                                                    <span className={'text-md font-bold'}>
-                                                        {((data.rate || 0) / 100).toFixed(2)}%
-                                                    </span>
-                                                    <span className={'text-sm font-bold pl-[20px]'}>
-                                                        {data.fc ? 'Full Combo' : 'Cleared'}
-                                                    </span>
+                                                    <div className="mt-1 flex flex-wrap items-baseline gap-x-2 gap-y-1 sm:justify-end">
+                                                        <span className="text-xl font-extrabold tabular-nums text-slate-900 dark:text-slate-100">
+                                                            {((data.rate || 0) / 100).toFixed(2)}%
+                                                        </span>
+                                                        <span className="text-xs font-semibold text-slate-600 dark:text-slate-300">
+                                                            {data.fc ? 'Full Combo' : 'Cleared'}
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             )}
-                                        </section>
-                                    </div>
+                                        </aside>
+                                    </article>
                                 );
                             })}
                         </TowerDetailBlock>

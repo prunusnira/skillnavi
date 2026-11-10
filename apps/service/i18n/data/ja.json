@@ -21,6 +21,7 @@
         "fc": "FC",
         "all": "全て",
         "emptyRank": "ランキングデータがありません",
+        "emptySnapshot": "保存されたスナップショットはありません。",
         "loadingRank": "ランキングを読み込み中です",
         "skillRankHint": "GFまたはDMを選択して、スキルランキングを表示します"
     },

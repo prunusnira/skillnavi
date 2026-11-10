@@ -22,7 +22,7 @@ const CustomTooltip = ({
 }: TooltipContentProps<ValueType, NameType>) => {
     if (active && payload && payload.length) {
         return (
-            <section className={'surface-muted flex flex-col gap-2 px-5 py-3'}>
+            <section className="flex flex-col gap-2 rounded-2xl border border-slate-200 bg-white px-5 py-3 text-slate-800 shadow-lg dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100">
                 {payload.map((item, index) => (
                     <div
                         key={`${label}${index}`}
