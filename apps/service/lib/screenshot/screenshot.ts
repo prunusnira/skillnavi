@@ -32,36 +32,46 @@ function uriToBlob(uri: string): Blob {
     return new Blob([ia], { type: mime });
 }
 
-export const screenshot = (elem: HTMLDivElement, filename: string) => {
-    window.scrollTo(0, 0);
-    const style = document.createElement('style');
-    document.head.appendChild(style);
-    style.sheet?.insertRule(
-        'body > div:last-child img { display: inline-block; }',
-    );
+export const screenshot = async (elem: HTMLDivElement, filename: string) => {
+    let canvas: HTMLCanvasElement | null = null;
+    let style: HTMLStyleElement | null = null;
+    let downloadUrl: string | null = null;
 
-    html2canvas(elem, {
-        useCORS: true,
-        allowTaint: true,
-        logging: true,
-    })
-        .then((canvas: HTMLCanvasElement) => {
-            document.body.append(canvas);
-            // dataUrl로 뽑으면 파일명이 너무 길어서
-            // 웹킷 브라우저에서는 길이 제한으로 잘라버림
-            // 그래서 blob으로 변경할 필요가 있음
-            const dataUrl = canvas.toDataURL('image/jpeg');
-            const blob = uriToBlob(dataUrl);
-            const downloadUrl = URL.createObjectURL(blob);
+    try {
+        window.scrollTo(0, 0);
+        style = document.createElement('style');
+        document.head.appendChild(style);
+        style.sheet?.insertRule(
+            'body > div:last-child img { display: inline-block; }',
+        );
 
-            const el = document.createElement('a');
-            el.href = downloadUrl;
-            el.download = filename;
-            el.click();
-
-            URL.revokeObjectURL(downloadUrl);
-        })
-        .catch((error: Error) => {
-            console.error('html2canvas error', error);
+        canvas = await html2canvas(elem, {
+            useCORS: true,
+            allowTaint: true,
+            logging: true,
         });
+
+        document.body.append(canvas);
+        // dataUrl로 뽑으면 파일명이 너무 길어서
+        // 웹킷 브라우저에서는 길이 제한으로 잘라버림
+        // 그래서 blob으로 변경할 필요가 있음
+        const dataUrl = canvas.toDataURL('image/jpeg');
+        const blob = uriToBlob(dataUrl);
+        downloadUrl = URL.createObjectURL(blob);
+
+        const el = document.createElement('a');
+        el.href = downloadUrl;
+        el.download = filename;
+        el.click();
+    } catch (error) {
+        console.error('html2canvas error', error);
+    } finally {
+        canvas?.remove();
+        style?.remove();
+
+        if (downloadUrl) {
+            const urlToRevoke = downloadUrl;
+            window.setTimeout(() => URL.revokeObjectURL(urlToRevoke), 1000);
+        }
+    }
 };

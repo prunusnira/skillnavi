@@ -21,6 +21,7 @@
         "fc": "FC",
         "all": "전체",
         "emptyRank": "랭킹 데이터가 없습니다",
+        "emptySnapshot": "저장된 스냅샷이 없습니다.",
         "loadingRank": "랭킹을 불러오는 중입니다",
         "skillRankHint": "GF 또는 DM을 선택해 해당 스킬 랭킹을 확인하세요"
     },

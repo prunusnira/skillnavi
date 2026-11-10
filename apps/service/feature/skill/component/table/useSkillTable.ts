@@ -1,7 +1,7 @@
 import { useParams, useSearchParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import { getSkillTable } from '@/feature/skill/api/getSkillTable';
-import { useCallback, useEffect, useMemo, useRef } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import { TableDataType } from '@/feature/skill/data/TableDataType';
 import { GameType } from '@/common/game/data/GameType';
 import { OrderType } from '@/feature/skill/data/OrderType';
@@ -67,8 +67,6 @@ const useSkillTable = () => {
         refetch();
     }, [searchParams]);
 
-    const ref = useRef<HTMLDivElement | null>(null);
-
     return {
         skillSum,
         skill,
@@ -80,7 +78,6 @@ const useSkillTable = () => {
         version,
         display,
         pageType,
-        ref,
     };
 };
 

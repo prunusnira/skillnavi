@@ -31,7 +31,7 @@
         "dayjs": "^1.11.13",
         "env-cmd": "^10.1.0",
         "google-auth-library": "^11.3.3",
-        "html2canvas-pro": "^2.0.2",
+        "html2canvas-pro": "^2.6.3",
         "jotai": "catalog:",
         "js-sha256": "^0.11.0",
         "lodash": "^4.17.23",

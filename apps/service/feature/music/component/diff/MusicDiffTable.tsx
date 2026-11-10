@@ -6,10 +6,9 @@ import { cn } from '@/lib/cn';
 import PatternTag from '@/common/pattern/PatternTag';
 import { Link } from '@/i18n/routing';
 import { LINK_MUSIC_INFO } from '@/url/url';
-import { useAtomValue } from 'jotai';
-import { atomUser } from '@/feature/profile/data/atomUser';
 import { Skill } from '@/feature/skill/data/Skill';
 import { MusicCell } from '@/feature/music/component/diff/MusicCell';
+import { useSession } from '@/feature/auth/hook/useSession';
 
 interface Props {
     pattern: Pattern[];
@@ -21,8 +20,8 @@ interface Props {
 
 // CSR 난이도 테이블
 const MusicDiffTable = ({ pattern, skill, mid, version, uid }: Props) => {
-    const user = useAtomValue(atomUser);
-    const userId = uid ?? user?.id;
+    const session = useSession();
+    const userId = uid ?? session?.profile?.id;
     const renderPatternCell = (patterncode: number) => {
         const cellClassName = cn(style.musicCell, style.levelCell);
         const cellContent = (

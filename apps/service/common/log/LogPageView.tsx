@@ -2,19 +2,20 @@
 
 import { usePathname } from '@/i18n/routing';
 import { useEffect } from 'react';
-import { useAtomValue } from 'jotai';
-import { atomUser } from '@/feature/profile/data/atomUser';
 import { createLog } from '@skillnavi/data/src/log/createLog';
+import { useSession } from '@/feature/auth/hook/useSession';
 
 export const LogPageView = () => {
     const pathname = usePathname();
-    const user = useAtomValue(atomUser);
+    const session = useSession();
     useEffect(() => {
+        if (!session) return;
+
         createLog({
-            uid: user?.id || 0,
+            uid: session.profile?.id ?? 0,
             action: 'pageview',
             data: pathname,
         });
-    }, [pathname]);
+    }, [pathname, session]);
     return null;
 };

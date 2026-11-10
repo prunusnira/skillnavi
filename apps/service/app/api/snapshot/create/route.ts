@@ -11,7 +11,10 @@ export const POST = async (req: NextRequest) => {
                 const body = (await req.json()) as SnapshotData;
                 const { date, uid, type } = body;
 
-                const filePath = `${process.env.NEXT_PUBLIC_SNAPSHOT}/${uid}/${date}_${type}.json`;
+                const directoryPath = `${process.env.NEXT_PUBLIC_SNAPSHOT}${uid}/`;
+                fs.mkdirSync(directoryPath, { recursive: true });
+
+                const filePath = `${directoryPath}${date}_${type}.json`;
                 fs.writeFileSync(filePath, JSON.stringify(body));
                 return NextResponse.json({ detail: 'success' });
             } catch (error) {

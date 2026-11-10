@@ -1,6 +1,7 @@
 import SkillTable from '@/feature/skill/component/table/SkillTable';
 import { getProfile } from '@/feature/profile/api/getProfile';
 import { getProfileSkill } from '@/feature/profile/api/getProfileSkill';
+import { getProfileSession } from '@/feature/profile/api/getProfileSession';
 import { getTranslations } from 'next-intl/server';
 import { Error } from '@/common/error/Error';
 import Card from '@/common/card/Card';
@@ -25,6 +26,7 @@ const PageSkill = async ({
     const profile = isTheorySkill
         ? undefined
         : (await getProfile([Number(userId)])).at(0);
+    const user = isTheorySkill ? undefined : await getProfileSession();
     const profileSkill = isTheorySkill
         ? undefined
         : await getProfileSkill([Number(userId)]);
@@ -66,7 +68,11 @@ const PageSkill = async ({
             </Card>
 
             {/* 테이블 */}
-            <SkillTable profile={profile} userSkill={getUserSkill()} />
+            <SkillTable
+                profile={profile}
+                userSkill={getUserSkill()}
+                isOwner={user?.id === profile?.id}
+            />
         </article>
     );
 };

@@ -10,20 +10,20 @@ import SkillGrid from '@/feature/skill/component/table/SkillGrid';
 import Pager from '@/common/pager/Pager';
 import SkillTableTextProfile from '@/feature/skill/component/table/SkillTableTextProfile';
 import Loading from '@/common/loading/Loading';
-import { useAtomValue } from 'jotai';
-import { atomUser } from '@/feature/profile/data/atomUser';
 import { useTranslations } from 'next-intl';
 import { UserSkill } from '@/feature/skill/data/UserSkill';
 import { Profile } from '@/feature/profile/data/Profile';
 import { ButtonSnapshot } from '@/feature/skill/component/table/ButtonSnapshot';
 import { ButtonScreenshot } from '@/feature/skill/component/table/ButtonScreenshot';
+import { useRef } from 'react';
 
 interface Props {
     profile?: Profile;
     userSkill?: UserSkill;
+    isOwner: boolean;
 }
 
-const SkillTable = ({ profile, userSkill }: Props) => {
+const SkillTable = ({ profile, userSkill, isOwner }: Props) => {
     const {
         skillSum,
         skill,
@@ -34,9 +34,9 @@ const SkillTable = ({ profile, userSkill }: Props) => {
         version,
         display,
         pageType,
-        ref,
     } = useSkillTable();
-    const user = useAtomValue(atomUser);
+
+    const ref = useRef<HTMLDivElement | null>(null);
     const t = useTranslations('skill');
 
     if (isLoading) {
@@ -53,12 +53,10 @@ const SkillTable = ({ profile, userSkill }: Props) => {
             title={t('title')}
             sub={
                 <div className={'flex gap-[4px]'}>
-                    {profile &&
-                        profile?.id === user?.id &&
-                        pageType === 'target' && (
-                            <ButtonSnapshot profile={profile} skill={skill} />
-                        )}
-                    <ButtonScreenshot targetEl={ref.current} />
+                    {profile && isOwner && pageType === 'target' && (
+                        <ButtonSnapshot profile={profile} skill={skill} />
+                    )}
+                    <ButtonScreenshot targetRef={ref} />
                 </div>
             }
             ref={ref}

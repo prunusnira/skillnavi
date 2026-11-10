@@ -1,7 +1,6 @@
 'use client';
 
 import { ProfileGraphRaw } from '@/feature/profile/data/ProfileGraph';
-import useGraph from '@/feature/profile/component/graphbox/useGraph';
 import LineGraph from '@/feature/profile/component/graphbox/LineGraph';
 import { cn } from '@/lib/cn';
 import useTheme from '@/feature/header/option/useTheme';
@@ -11,23 +10,38 @@ interface Props {
 }
 
 const GraphBox = ({ data }: Props) => {
-    const { gfdata, dmdata, gfmin, gfmax, dmmin, dmmax } = useGraph({ data });
     const { theme } = useTheme();
+
+    const gfColor = '#2563eb';
+    const dmColor = '#f97316';
+
     return (
         <section className={cn('w-full text-sm')}>
+            {data.length > 0 && (
+                <div className="mb-3 flex flex-wrap items-center gap-x-6 gap-y-2">
+                    <div className="flex items-center gap-2">
+                        <span
+                            aria-hidden="true"
+                            className="h-3 w-3 rounded-full"
+                            style={{ backgroundColor: gfColor }}
+                        />
+                        <span>GF</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <span
+                            aria-hidden="true"
+                            className="h-3 w-3 rounded-full"
+                            style={{ backgroundColor: dmColor }}
+                        />
+                        <span>DM</span>
+                    </div>
+                </div>
+            )}
             <LineGraph
-                type="gf"
-                data={gfdata}
-                min={gfmin}
-                max={gfmax}
+                data={data}
                 color={theme === 'dark' ? 'white' : 'black'}
-            />
-            <LineGraph
-                type="dm"
-                data={dmdata}
-                min={dmmin}
-                max={dmmax}
-                color={theme === 'dark' ? 'white' : 'black'}
+                gfColor={gfColor}
+                dmColor={dmColor}
             />
         </section>
     );

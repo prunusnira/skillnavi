@@ -1,15 +1,18 @@
 import { ChangeEvent, useMemo } from 'react';
-import { useAtomValue } from 'jotai';
-import { atomGameVersionList } from '@/common/game/data/atomGameVersion';
+import { useQuery } from '@tanstack/react-query';
 import { TableDataType } from '@/feature/skill/data/TableDataType';
 import { TableType } from '@/feature/skill/data/TableType';
 import { GameType } from '@/common/game/data/GameType';
 import { useSearchParams } from 'next/navigation';
 import { usePathname, useRouter } from '@/i18n/routing';
 import { SelectOption } from '@skillnavi/ui';
+import { getGameVersionsFromTb } from '@/feature/env/api/getGameVersions';
 
 const useSkillMenu = () => {
-    const versionList = useAtomValue(atomGameVersionList);
+    const { data: versionList } = useQuery({
+        queryKey: ['version', 'from-tb'],
+        queryFn: getGameVersionsFromTb,
+    });
     const searchParams = useSearchParams();
     const router = useRouter();
     const pathname = usePathname();

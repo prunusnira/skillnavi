@@ -11,7 +11,7 @@ export const GET = async (req: NextRequest) => {
             const type = searchParams.get('type');
             const date = searchParams.get('date');
 
-            const filepath = `${process.env.NEXT_PUBLIC_SNAPSHOT}/${id}/${date}_${type}.json`;
+            const filepath = `${process.env.NEXT_PUBLIC_SNAPSHOT}${id}/${date}_${type}.json`;
             const file = fs.readFileSync(filepath, 'utf8');
 
             return NextResponse.json(file);

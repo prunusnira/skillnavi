@@ -45,7 +45,7 @@ describe('Pager', () => {
         }
     });
 
-    it('현재 페이지 버튼은 선택 상태로 표시된다', () => {
+    it('현재 페이지 버튼에 선택 상태를 전달한다', () => {
         // Given
         const page = 3;
         const allpage = 5;
@@ -60,8 +60,7 @@ describe('Pager', () => {
 
         // Then
         const currentBtn = screen.getByRole('button', { name: '3' });
-        // isSelected 클래스가 적용되어 있는지 확인
-        expect(currentBtn.className).toContain('indigo-600');
+        expect(currentBtn).toHaveAttribute('data-selected', 'true');
     });
 
     it('페이지 버튼 클릭 시 router.push가 page 쿼리를 갱신하여 호출된다', () => {

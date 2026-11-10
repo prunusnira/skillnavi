@@ -10,8 +10,8 @@ import { InputText } from '@skillnavi/ui/src/input/InputText';
 import { getSearchResult } from '@/feature/search/api/getSearchResult';
 import { MusicListPageData } from '@/feature/music/data/MusicListPageData';
 import { useAtomValue } from 'jotai';
-import { atomUser } from '@/feature/profile/data/atomUser';
 import { atomGameVersionLatest } from '@/common/game/data/atomGameVersion';
+import { useSession } from '@/feature/auth/hook/useSession';
 
 export const SidebarSearch = () => {
     const [
@@ -25,7 +25,7 @@ export const SidebarSearch = () => {
     const [musicPreview, setMusicPreview] = useState<MusicListPageData[]>([]);
     const [activePreviewIndex, setActivePreviewIndex] = useState(-1);
     const router = useRouter();
-    const user = useAtomValue(atomUser);
+    const session = useSession();
     const latestVersion = useAtomValue(atomGameVersionLatest);
     const t = useTranslations('sidemenu.search');
 
@@ -66,17 +66,19 @@ export const SidebarSearch = () => {
     }, [searchText, searchType]);
 
     const openMusic = (music: MusicListPageData) => {
-        if (user && latestVersion) {
+        const userId = session?.profile?.id;
+
+        if (userId && latestVersion) {
             router.push(
                 LINK_MUSIC_INFO({
-                    uid: user.id,
+                    uid: userId,
                     mid: music.mid,
                     version: latestVersion.id,
                 }),
             );
         } else {
             const params = new URLSearchParams({ mid: String(music.mid) });
-            if (user) params.set('uid', String(user.id));
+            if (userId) params.set('uid', String(userId));
             if (latestVersion) {
                 params.set('version', String(latestVersion.id));
             }

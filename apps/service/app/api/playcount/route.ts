@@ -31,7 +31,7 @@ export const GET = async (req: NextRequest) => {
                                            and playcount > 0
                                            and playver = ${version}
                                          GROUP BY mid) s ON m.id = s.mid
-                    ORDER BY s.playcount DESC LIMIT 50
+                    ORDER BY s.playcount DESC, m.name ASC LIMIT 50
                 `)) as PlayCountResponse[];
             } else if (type === 'gf') {
                 result = (await prisma.$queryRaw(Prisma.sql`
@@ -47,7 +47,7 @@ export const GET = async (req: NextRequest) => {
                                            and playver = ${version}
                                            and patterncode < 9
                                          GROUP BY mid) s ON m.id = s.mid
-                    ORDER BY s.playcount DESC LIMIT 50
+                    ORDER BY s.playcount DESC, m.name ASC, s.patterncode ASC LIMIT 50
                 `)) as PlayCountResponse[];
             } else if (type === 'dm') {
                 result = (await prisma.$queryRaw(Prisma.sql`
@@ -63,7 +63,7 @@ export const GET = async (req: NextRequest) => {
                                            and playver = ${version}
                                            and patterncode > 8
                                          GROUP BY mid) s ON m.id = s.mid
-                    ORDER BY s.playcount DESC LIMIT 50
+                    ORDER BY s.playcount DESC, m.name ASC, s.patterncode ASC LIMIT 50
                 `)) as PlayCountResponse[];
             } else {
                 result = (await prisma.$queryRaw(Prisma.sql`
@@ -78,7 +78,7 @@ export const GET = async (req: NextRequest) => {
                                            and playcount > 0
                                            and playver = ${version}
                                          GROUP BY mid) s ON m.id = s.mid
-                    ORDER BY s.playcount DESC LIMIT 50
+                    ORDER BY s.playcount DESC, m.name ASC, s.patterncode ASC LIMIT 50
                 `)) as PlayCountResponse[];
             }
 
