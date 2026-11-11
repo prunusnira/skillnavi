@@ -6,14 +6,6 @@ import { APP_SESSION_COOKIE, getTokenFromSessionCookie } from '@/feature/auth/se
 
 export const POST = async (req: NextRequest) => {
     const cookieStore = await cookies();
-    const origin = req.headers.get('origin');
-    if (!origin || origin !== req.nextUrl.origin) {
-        return NextResponse.json(
-            { detail: 'invalid origin' },
-            { status: 403 },
-        );
-    }
-
 
     return RouteWrapper({
         req,
