@@ -11,6 +11,7 @@ const crawlAllSong = (
         version,
         setCurrent,
         setBtnDisabled,
+        onMusicConflicts,
     }: CrawlerAllParams,
 ) => {
     const allCategories = 37; // 고정값
@@ -28,6 +29,7 @@ const crawlAllSong = (
         getMusicUrl({
             gtype, allCategories, delay, category: catArr, currentIndex: 0, urlArray, sid, page,
             version, setCurrent, setBtnDisabled,
+            onMusicConflicts,
         });
         // gtype, 카테고리 개수, delay, 카테고리 배열, 현재 카테고리, url, sid, page
     } else {
@@ -36,6 +38,7 @@ const crawlAllSong = (
         getMusicUrl({
             gtype, allCategories: category.length, delay, category, currentIndex: 0, urlArray, sid, page,
             version, setCurrent, setBtnDisabled,
+            onMusicConflicts,
         });
         // gtype, 카테고리 개수, delay, 카테고리 배열, 현재 카테고리, url, sid, page
     }

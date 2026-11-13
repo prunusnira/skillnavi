@@ -24,6 +24,7 @@ const getMusicUrl = async (
         version,
         setCurrent,
         setBtnDisabled,
+        onMusicConflicts,
     }: Params,
 ) => {
     const url = window.sinUrl.find(url => url.version === version && url.urltype === 'music')?.url;
@@ -47,13 +48,21 @@ const getMusicUrl = async (
             await getMusicUrl({
                 gtype, allCategories, delay, category, currentIndex: currentIndex + 1, urlArray, sid, page,
                 version, setCurrent, setBtnDisabled,
+                onMusicConflicts,
             });
         }, delay);
     } else {
         console.log('Skill data collecting...');
 
         // 수집된 모든 URL 데이터를 이용하여 데이터 수집 시행
-        crawlFromUrlList({ urls: urlArray, delay, version, setCurrent, setBtnDisabled });
+        crawlFromUrlList({
+            urls: urlArray,
+            delay,
+            version,
+            setCurrent,
+            setBtnDisabled,
+            onMusicConflicts,
+        });
     }
 };
 

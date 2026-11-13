@@ -1,5 +1,12 @@
 import UrlData from '../../../crawl/data/urlData';
-import { UpdateSkill } from '@skillnavi/data/src/skill/SkillData';
+import {
+    MusicDuplicateGroup,
+    UpdateSkill,
+} from '@skillnavi/data/src/skill/SkillData';
+
+export type MusicConflictHandler = (
+    conflicts: MusicDuplicateGroup[],
+) => Promise<Record<string, number> | null>;
 
 export interface CrawlerParams {
     page: number;
@@ -10,6 +17,7 @@ export interface CrawlerParams {
     version: number;
     setCurrent: (s: string) => void;
     setBtnDisabled: (b: boolean) => void;
+    onMusicConflicts?: MusicConflictHandler;
 }
 
 export type CrawlerAllParams = Omit<CrawlerParams, 'page'>;
@@ -21,7 +29,12 @@ export type CrawlerProfileParams = Pick<
 
 export type CrawlerTargetParams = Pick<
     CrawlerParams,
-    'gtype' | 'delay' | 'version' | 'setCurrent' | 'setBtnDisabled'
+    | 'gtype'
+    | 'delay'
+    | 'version'
+    | 'setCurrent'
+    | 'setBtnDisabled'
+    | 'onMusicConflicts'
 >;
 
 export type CrawlerTargetUrl = Pick<
@@ -31,7 +44,13 @@ export type CrawlerTargetUrl = Pick<
 
 export type CrawlerFavoParams = Pick<
     CrawlerParams,
-    'page' | 'gtype' | 'delay' | 'setCurrent' | 'setBtnDisabled'
+    | 'page'
+    | 'gtype'
+    | 'delay'
+    | 'version'
+    | 'setCurrent'
+    | 'setBtnDisabled'
+    | 'onMusicConflicts'
 >;
 
 export type CralwerFavoUrl = Pick<
@@ -50,6 +69,7 @@ export interface CrawlerUrlList {
     version: number;
     setCurrent: (s: string) => void;
     setBtnDisabled: (b: boolean) => void;
+    onMusicConflicts?: MusicConflictHandler;
 }
 
 export interface CrawlerUrlRunner extends CrawlerUrlList {
@@ -63,4 +83,6 @@ export interface CrawlerUpload {
     version: number;
     setCurrent: (s: string) => void;
     setBtnDisabled: (b: boolean) => void;
+    keepBtnDisabled?: boolean;
+    onMusicConflicts?: MusicConflictHandler;
 }

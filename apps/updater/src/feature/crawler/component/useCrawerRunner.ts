@@ -6,8 +6,9 @@ import crawlFavo from '../../../crawl/crawlFavo';
 import crawlBoard from '../../../crawl/crawlBoard';
 import { useAtom } from 'jotai';
 import { atomCrawler } from '../atom/Crawler.atom';
+import { MusicConflictHandler } from './CrawlerImport.type';
 
-const useCrawerRunner = () => {
+const useCrawerRunner = (onMusicConflicts: MusicConflictHandler) => {
     const [
         env,
         setEnv,
@@ -40,6 +41,7 @@ const useCrawerRunner = () => {
                     version,
                     setCurrent,
                     setBtnDisabled,
+                    onMusicConflicts,
                 });
                 break;
             case 11:
@@ -48,6 +50,7 @@ const useCrawerRunner = () => {
                     version,
                     setCurrent,
                     setBtnDisabled,
+                    onMusicConflicts,
                 });
                 break;
             case 12:
@@ -56,6 +59,7 @@ const useCrawerRunner = () => {
                     version,
                     setCurrent,
                     setBtnDisabled,
+                    onMusicConflicts,
                 });
                 break;
 
@@ -69,6 +73,7 @@ const useCrawerRunner = () => {
                     version,
                     setCurrent,
                     setBtnDisabled,
+                    onMusicConflicts,
                 });
                 break;
             case 21:
@@ -80,6 +85,7 @@ const useCrawerRunner = () => {
                     version,
                     setCurrent,
                     setBtnDisabled,
+                    onMusicConflicts,
                 });
                 break;
             case 22:
@@ -91,6 +97,7 @@ const useCrawerRunner = () => {
                     version,
                     setCurrent,
                     setBtnDisabled,
+                    onMusicConflicts,
                 });
                 break;
 
@@ -102,6 +109,7 @@ const useCrawerRunner = () => {
                     version,
                     setCurrent,
                     setBtnDisabled,
+                    onMusicConflicts,
                 });
                 break;
             case 31:
@@ -111,6 +119,7 @@ const useCrawerRunner = () => {
                     version,
                     setCurrent,
                     setBtnDisabled,
+                    onMusicConflicts,
                 });
                 break;
             case 32:
@@ -120,6 +129,7 @@ const useCrawerRunner = () => {
                     version,
                     setCurrent,
                     setBtnDisabled,
+                    onMusicConflicts,
                 });
                 break;
 
@@ -129,8 +139,10 @@ const useCrawerRunner = () => {
                     page: 1,
                     gtype: 'all',
                     delay,
+                    version,
                     setCurrent,
                     setBtnDisabled,
+                    onMusicConflicts,
                 });
                 break;
             case 411:
@@ -138,8 +150,10 @@ const useCrawerRunner = () => {
                     page: 1,
                     gtype: 'gf',
                     delay,
+                    version,
                     setCurrent,
                     setBtnDisabled,
+                    onMusicConflicts,
                 });
                 break;
             case 421:
@@ -147,8 +161,10 @@ const useCrawerRunner = () => {
                     page: 1,
                     gtype: 'dm',
                     delay,
+                    version,
                     setCurrent,
                     setBtnDisabled,
+                    onMusicConflicts,
                 });
                 break;
             case 402:
@@ -156,8 +172,10 @@ const useCrawerRunner = () => {
                     page: 2,
                     gtype: 'all',
                     delay,
+                    version,
                     setCurrent,
                     setBtnDisabled,
+                    onMusicConflicts,
                 });
                 break;
             case 412:
@@ -165,8 +183,10 @@ const useCrawerRunner = () => {
                     page: 2,
                     gtype: 'gf',
                     delay,
+                    version,
                     setCurrent,
                     setBtnDisabled,
+                    onMusicConflicts,
                 });
                 break;
             case 422:
@@ -174,8 +194,10 @@ const useCrawerRunner = () => {
                     page: 2,
                     gtype: 'dm',
                     delay,
+                    version,
                     setCurrent,
                     setBtnDisabled,
+                    onMusicConflicts,
                 });
                 break;
             case 403:
@@ -183,8 +205,10 @@ const useCrawerRunner = () => {
                     page: 3,
                     gtype: 'all',
                     delay,
+                    version,
                     setCurrent,
                     setBtnDisabled,
+                    onMusicConflicts,
                 });
                 break;
             case 413:
@@ -192,8 +216,10 @@ const useCrawerRunner = () => {
                     page: 3,
                     gtype: 'gf',
                     delay,
+                    version,
                     setCurrent,
                     setBtnDisabled,
+                    onMusicConflicts,
                 });
                 break;
             case 423:
@@ -201,8 +227,10 @@ const useCrawerRunner = () => {
                     page: 3,
                     gtype: 'dm',
                     delay,
+                    version,
                     setCurrent,
                     setBtnDisabled,
+                    onMusicConflicts,
                 });
                 break;
 
@@ -255,6 +283,7 @@ const useCrawerRunner = () => {
                 version,
                 setCurrent,
                 setBtnDisabled,
+                onMusicConflicts,
             });
         } else if (type === 2) {
             crawlAllSong({
@@ -265,6 +294,7 @@ const useCrawerRunner = () => {
                 version,
                 setCurrent,
                 setBtnDisabled,
+                onMusicConflicts,
             });
         }
 

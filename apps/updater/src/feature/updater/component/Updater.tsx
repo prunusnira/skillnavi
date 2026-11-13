@@ -1,16 +1,41 @@
 import text from '../../../text/text';
-import React from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { useAtomValue } from 'jotai';
 import { atomCrawler } from '../../crawler/atom/Crawler.atom';
 import useCrawerRunner from '../../crawler/component/useCrawerRunner';
+import { MusicConflictHandler } from '../../crawler/component/CrawlerImport.type';
+import { MusicDuplicateGroup } from '@skillnavi/data/src/skill/SkillData';
 import { UpdaterRow } from './Updater.data';
 import UpdaterItemRow from './Updater.item.row';
 import UpdaterBlock from './Updater.block';
 import { ForceClassedButtonStandard } from '../../../common/ForceClassedButtonStandard';
+import MusicConflictDialog from './MusicConflictDialog';
 
 const Updater = () => {
     const env = useAtomValue(atomCrawler);
-    const { crawlSelRunner, crawlRunner } = useCrawerRunner();
+    const [musicConflicts, setMusicConflicts] = useState<MusicDuplicateGroup[]>(
+        [],
+    );
+    const selectionResolver = useRef<
+        ((selected: Record<string, number> | null) => void) | null
+    >(null);
+    const onMusicConflicts: MusicConflictHandler = useCallback(
+        (conflicts) =>
+            new Promise((resolve) => {
+                selectionResolver.current = resolve;
+                setMusicConflicts(conflicts);
+            }),
+        [],
+    );
+    const finishConflictSelection = (
+        selectedMusicIds: Record<string, number> | null,
+    ) => {
+        const resolve = selectionResolver.current;
+        selectionResolver.current = null;
+        setMusicConflicts([]);
+        resolve?.(selectedMusicIds);
+    };
+    const { crawlSelRunner, crawlRunner } = useCrawerRunner(onMusicConflicts);
     const { lang, btnDisabled } = env;
 
     return (
@@ -122,6 +147,15 @@ const Updater = () => {
                     </div>
                 </div>
             </UpdaterBlock>
+
+            <MusicConflictDialog
+                conflicts={musicConflicts}
+                lang={lang}
+                onCancel={() => finishConflictSelection(null)}
+                onConfirm={(selectedMusicIds) =>
+                    finishConflictSelection(selectedMusicIds)
+                }
+            />
         </section>
     );
 };

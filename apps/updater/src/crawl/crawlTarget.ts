@@ -10,6 +10,7 @@ const crawlTarget = async (
         version,
         setCurrent,
         setBtnDisabled,
+        onMusicConflicts,
     }: CrawlerTargetParams,
 ) => {
     // url 리스트를 가져온 후 url 목록에 대한 곡 파싱 수행
@@ -37,7 +38,14 @@ const crawlTarget = async (
     }
 
     setCurrent('Collecting Data... Initiating');
-    crawlFromUrlList({ urls, delay, version, setCurrent, setBtnDisabled });
+    crawlFromUrlList({
+        urls,
+        delay,
+        version,
+        setCurrent,
+        setBtnDisabled,
+        onMusicConflicts,
+    });
 };
 
 export default crawlTarget;

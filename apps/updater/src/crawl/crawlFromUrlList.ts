@@ -1,6 +1,6 @@
 import axios from 'axios';
 import crawlMusic from './crawlMusic';
-import upload from './upload';
+import { uploadSkillData } from './upload';
 import {
     CrawlerUrlList,
     CrawlerUrlRunner,
@@ -14,6 +14,7 @@ const crawlFromUrlList = ({
                               version,
                               setCurrent,
                               setBtnDisabled,
+                              onMusicConflicts,
                           }: CrawlerUrlList) => {
     // 순서
     // 1. ref로 이동
@@ -31,6 +32,7 @@ const crawlFromUrlList = ({
         version,
         setCurrent,
         setBtnDisabled,
+        onMusicConflicts,
     });
 };
 
@@ -42,6 +44,7 @@ const runUrlIndex = async ({
                                index,
                                setBtnDisabled,
                                setCurrent,
+                               onMusicConflicts,
                            }: CrawlerUrlRunner) => {
     if (index < urls.length) {
         const current = urls[index];
@@ -66,34 +69,22 @@ const runUrlIndex = async ({
                 version,
                 setCurrent,
                 setBtnDisabled,
+                onMusicConflicts,
             });
         }, delay);
     } else {
-        // 완성된 데이터 업로드
-        const dataLength = skillData.musicData.length;
-        const skillDataList: UpdateSkill[] = [];
+        const success = await uploadSkillData({
+            skillData,
+            type: 'skill',
+            version,
+            setCurrent,
+            setBtnDisabled,
+            onMusicConflicts,
+        });
 
-        let done = 0;
-        while (done < dataLength) {
-            skillDataList.push({
-                uid: skillData.uid,
-                version: skillData.version,
-                musicData: skillData.musicData.slice(done, done + 100),
-            });
-            done += 100;
+        if (!success) {
+            return;
         }
-
-        await Promise.allSettled(
-            skillDataList.map((data) =>
-                upload({
-                    json: JSON.stringify(data),
-                    type: 'skill',
-                    version,
-                    setCurrent,
-                    setBtnDisabled,
-                }),
-            ),
-        );
 
         await crawlProfile({
             version,

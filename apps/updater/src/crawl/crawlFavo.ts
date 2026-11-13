@@ -8,8 +8,10 @@ const crawlFavo = async (
         page,
         gtype,
         delay,
+        version,
         setCurrent,
         setBtnDisabled,
+        onMusicConflicts,
     }: CrawlerFavoParams,
 ) => {
     // url 리스트를 가져온 후 url 목록에 대한 곡 파싱 수행
@@ -21,7 +23,14 @@ const crawlFavo = async (
         urls.push(...await getFavoUrl({ page, gtype: 'dm', setCurrent }));
     }
 
-    crawlFromUrlList({ urls, delay, version: 0, setCurrent, setBtnDisabled });
+    crawlFromUrlList({
+        urls,
+        delay,
+        version,
+        setCurrent,
+        setBtnDisabled,
+        onMusicConflicts,
+    });
 };
 
 export default crawlFavo;

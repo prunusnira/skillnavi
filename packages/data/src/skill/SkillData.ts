@@ -14,6 +14,23 @@ export interface SkillData {
 export interface MusicSkill {
     musictitle: string;
     data: SkillData[];
+    mid?: number;
+}
+
+export interface MusicDuplicateCandidate {
+    mid: number;
+    title: string;
+    composer: string;
+    patterns: Array<{
+        patterncode: number;
+        level: number | null;
+    }>;
+    jacketUrl: string | null;
+}
+
+export interface MusicDuplicateGroup {
+    title: string;
+    candidates: MusicDuplicateCandidate[];
 }
 
 export interface UpdateSkill {

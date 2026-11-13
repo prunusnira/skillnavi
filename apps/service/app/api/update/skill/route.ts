@@ -22,7 +22,19 @@ export const POST = async (req: NextRequest) => {
 
             const { musicData, version, uid } = result;
 
-            const updateMusicData = async (musictitle: string) => {
+            const updateMusicData = async (musictitle: string, mid?: number) => {
+                if (mid !== undefined) {
+                    const selectedMusic = await prisma.musicList.findUnique({
+                        where: { id: mid },
+                    });
+
+                    if (!selectedMusic || selectedMusic.name !== musictitle) {
+                        throw new Error('Selected music does not match title');
+                    }
+
+                    return selectedMusic as Music;
+                }
+
                 // 현재 음악이 존재하는 음악인지 확인
                 const count = await prisma.musicList.count({
                     where: {
@@ -188,23 +200,19 @@ export const POST = async (req: NextRequest) => {
 
             // 음악 데이터 처리
             const musicPromise = await Promise.allSettled(
-                musicData.map((music) => updateMusicData(music.musictitle)),
+                musicData.map((music) =>
+                    updateMusicData(music.musictitle, music.mid),
+                ),
             );
 
-            const musicArray: Music[] = [];
-            musicPromise.forEach((p) => {
-                if (p.status === 'fulfilled') {
-                    musicArray.push(p.value);
-                }
-            });
+            const musicArray = musicPromise.map((promise) =>
+                promise.status === 'fulfilled' ? promise.value : undefined,
+            );
 
             // 패턴 데이터 처리
             const patternPromise = await Promise.allSettled(
-                musicData.map((music) =>
-                    updatePatternData(
-                        music,
-                        musicArray.find((m) => m.name === music.musictitle),
-                    ),
+                musicData.map((music, index) =>
+                    updatePatternData(music, musicArray[index]),
                 ),
             );
 
@@ -220,11 +228,8 @@ export const POST = async (req: NextRequest) => {
 
             // 스킬 데이터 가져오기
             const skillPromises = await Promise.allSettled(
-                musicData.map((skill) =>
-                    updateSkillData(
-                        skill,
-                        musicArray.find((m) => m.name === skill.musictitle),
-                    ),
+                musicData.map((skill, index) =>
+                    updateSkillData(skill, musicArray[index]),
                 ),
             );
 
